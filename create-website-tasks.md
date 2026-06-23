@@ -35,10 +35,19 @@ The final website must be deployable as static files on InterServer Windows shar
 
 ## Website Purpose
 
-The website has two main goals:
+The website has three main goals:
 
 1. Represent the clinic as a modern, trustworthy, premium dentistry business.
 2. Rank well on Google search through strong technical SEO, local SEO, performance, accessibility, and good content structure.
+3. Support multilingual content with Italian as the primary language and English as the secondary language.
+
+The website must:
+
+* Use Italian (it) as the default language.
+* Use English (en) as the secondary language.
+* Prioritize Italian content quality, UX, and SEO.
+* Provide a complete English experience for international visitors.
+* Support language switching throughout the website.
 
 Do not promise unrealistic SEO results, but implement everything that improves ranking quality.
 
@@ -74,6 +83,39 @@ Include tasks for:
 * High performance images
 * Accessibility basics
 
+## Internationalization Requirements
+
+The website must be designed as a multilingual website from the beginning.
+
+Requirements:
+
+* Italian (it) is the default language.
+* English (en) is the secondary language.
+* No hardcoded content directly inside page components.
+* Content should be organized to support future languages.
+* Use a structured content approach suitable for Astro.
+* All navigation labels, metadata, page titles, buttons, CTAs, and SEO content must support localization.
+* Implement language-specific routes.
+
+Preferred URL structure:
+
+/it/
+/it/servizi/
+/it/contatti/
+
+/en/
+/en/services/
+/en/contact/
+
+Implement proper hreflang tags and canonical URLs.
+
+All localized pages must have:
+
+* localized title
+* localized meta description
+* localized Open Graph metadata
+* localized structured data where applicable
+
 ## SEO Requirements
 
 Create tasks that cover:
@@ -94,6 +136,13 @@ Create tasks that cover:
 * 404 page
 * Google Search Console readiness
 * Google Business Profile link/CTA if available in materials
+* Hreflang implementation
+* Language-specific metadata
+* Language-specific sitemap support
+* Canonical URL strategy
+* Localized structured data
+* Italian-first SEO strategy
+* English SEO support
 
 Important: avoid keyword stuffing. Content should sound natural and professional.
 
@@ -157,25 +206,29 @@ Create tasks similar to:
 
 1. Project setup in `website/`
 2. Materials/content audit
-3. Site information architecture and URL plan
-4. Design system: colors, typography, spacing, buttons
-5. Layout shell: header, footer, navigation
-6. Homepage hero and trust sections
-7. Services data model
-8. Services overview page
-9. Individual service pages
-10. About clinic page
-11. Team/doctors section
-12. Reviews/testimonials section using free/static approach
-13. Google Maps and location section
-14. Facebook embed section
-15. Contact page and free email form strategy
-16. SEO metadata system
-17. Local business JSON-LD schema
-18. Sitemap and robots.txt
-19. Image optimization and accessibility pass
-20. Performance/mobile polish
-21. Final QA checklist and deployment notes for InterServer Windows shared hosting
+3. Internationalization architecture
+4. Language routing strategy
+5. Localized content structure
+6. Design system: colors, typography, spacing, buttons
+7. Site information architecture and URL plan
+8. Design system: colors, typography, spacing, buttons
+9. Layout shell: header, footer, navigation
+10. Homepage hero and trust sections
+11. Services data model
+12. Services overview page
+13. Individual service pages
+14. About clinic page
+15. Team/doctors section
+16. Reviews/testimonials section using free/static approach
+17. Google Maps and location section
+18. Facebook embed section
+19. Contact page and free email form strategy
+20. SEO metadata system
+21. Local business JSON-LD schema
+22. Sitemap and robots.txt
+23. Image optimization and accessibility pass
+24. Performance/mobile polish
+25. Final QA checklist and deployment notes for InterServer Windows shared hosting
 
 You may adjust the exact task list after inspecting `materials/`.
 
@@ -190,6 +243,11 @@ You may adjust the exact task list after inspecting `materials/`.
 * If content is missing, create clear placeholders and a `materials/MISSING_CONTENT.md` list.
 * Keep the website clean, modern, professional, and trustworthy.
 * Prioritize SEO, speed, and easy maintenance.
+* Italian must always be treated as the primary language.
+* English must never replace Italian as the default experience.
+* Do not duplicate content blindly across languages.
+* Maintain SEO best practices for multilingual websites.
+* All future languages should be addable without major refactoring.
 
 ## Final Output Required
 
@@ -206,3 +264,23 @@ This README must include:
 * Which tasks depend on earlier tasks
 * Suggested model/reasoning per task
 * Final deployment checklist
+
+The generated tasks must clearly identify:
+
+* which tasks are multilingual-specific
+* localization dependencies
+* SEO dependencies related to multilingual content
+* translation content requirements
+
+Create dedicated service pages for each dentistry service instead of a single services page.
+
+Examples:
+
+* Dental Implants
+* Orthodontics
+* Teeth Whitening
+* Oral Surgery
+* Dental Hygiene
+* Pediatric Dentistry
+
+Generate separate SEO-focused tasks for each service page if materials support the content.
