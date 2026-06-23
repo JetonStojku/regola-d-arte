@@ -1,0 +1,19 @@
+{
+  "name": "regola-d-arte-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "*"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "*",
+    "tailwindcss": "*",
+    "typescript": "*"
+  }
+}

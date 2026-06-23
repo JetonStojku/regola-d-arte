@@ -40,7 +40,7 @@ Run from `website/`:
 ```sh
 npm install
 npm run build
-```
+```0
 
 ## Notes / constraints
 
