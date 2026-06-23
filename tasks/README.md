@@ -3,6 +3,7 @@
 This folder contains the implementation tasks for building the static multilingual dentistry clinic website in `website/`.
 
 ## Recommended execution order
+
 1. `001-project-setup.md`
 2. `002-materials-content-audit.md`
 3. `003-information-architecture.md`
@@ -32,6 +33,7 @@ This folder contains the implementation tasks for building the static multilingu
 27. `027-final-qa.md`
 
 ## Dependencies
+
 - Setup dependency: all website-building tasks depend on `001-project-setup.md`.
 - Content dependency: page, service, team, review, contact, map, Facebook, and schema tasks depend on `002-materials-content-audit.md`.
 - Multilingual dependency: routes, page content, navigation, metadata, sitemap, and service pages depend on `003-information-architecture.md` and `004-i18n-content-architecture.md`.
@@ -39,17 +41,20 @@ This folder contains the implementation tasks for building the static multilingu
 - Design dependency: page and component tasks should follow `005-design-system.md` and `006-layout-shell.md`.
 
 ## Tasks that can run independently after dependencies
+
 - The five individual service page tasks can run in parallel after `010-services-data-model.md`, `006-layout-shell.md`, and `007-seo-metadata-system.md`.
 - `017-team-section.md`, `018-reviews-testimonials.md`, `019-location-google-maps.md`, and `020-facebook-embed.md` can run independently after the content audit.
 - `026-interserver-deployment-notes.md` can start once project setup and build output are known, then be finalized near the end.
 
 ## Model and reasoning guide
+
 - Use `GPT-5.4-mini low` for straightforward page/component/content tasks:
   `002`, `008`, `009`, `011`, `012`, `013`, `014`, `015`, `016`, `017`, `018`.
 - Use `GPT-5.4-mini medium` for setup, architecture, SEO, schema, forms, image optimization, performance, deployment, and final QA:
   `001`, `003`, `004`, `005`, `006`, `007`, `010`, `019`, `020`, `021`, `022`, `023`, `024`, `025`, `026`, `027`.
 
 ## Multilingual and SEO notes
+
 - Italian is the primary language and must remain the default experience under `/it/`.
 - English is secondary and must be complete under `/en/`.
 - Do not hardcode visible content in components; use localized content files.
@@ -58,6 +63,7 @@ This folder contains the implementation tasks for building the static multilingu
 - Missing translations or missing clinic facts must be explicit and tracked.
 
 ## Final deployment checklist
+
 - [ ] `npm run build` succeeds in `website/`.
 - [ ] Built output contains static HTML/CSS/JS and optimized assets.
 - [ ] `/it/` and `/en/` pages work.

@@ -1,0 +1,22 @@
+# Missing content to confirm before publishing
+
+- Exact clinic address - Via Taranto, 237, 73100 Lecce LE, Italy
+- City and country for public display Lecce - LE, Italy
+- Phone number - +393279747044
+- Email address - info@<https://regola-darte.it/>
+- Website URL - <https://regola-darte.it/>
+- WhatsApp contact - +393279747044
+- Social profile URLs - <https://www.instagram.com/regoladarte_studiodentistico/>, <https://www.facebook.com/profile.php?id=61558839905177&ref=NONE_xav_ig_profile_page_web#>
+- Google Maps listing URL - <https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6>
+- Opening hours - Wednesday, Closed; Thursday, 9 AM–8 PM; Friday, Closed; Saturday, 9 AM–7 PM; Sunday, Closed; Monday, 9 AM–8 PM; Tuesday, Closed
+- Emergency / after-hours contact policy
+- Named doctor list and titles - Dott. Genti Dylgjeri
+- Names of owner, associates, hygienists, assistants, and admin staff - add demo data
+- Team bios and credentials - add demo data
+- Review snippets or review source links - add demo data
+- Insurance / payment / financing details - add demo data
+- Languages spoken by staff - add demo data
+- Specific treatment pricing - add demo data
+- Warranty or post-treatment follow-up terms - add demo data
+- Before/after patient consent status for each image - Yes I have got it
+- Video usage rights and whether the spot is approved for web/social reuse own videos made
