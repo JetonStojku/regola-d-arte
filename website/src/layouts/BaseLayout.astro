@@ -4,11 +4,13 @@ import '../styles/global.css';
 type Props = {
   title?: string;
   description?: string;
+  robots?: string;
 };
 
 const {
   title = 'Regola D\'arte',
   description = 'Regola D\'arte clinic website scaffold.',
+  robots,
 } = Astro.props as Props;
 ---
 
@@ -19,6 +21,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
   </head>
   <body>
     <slot />

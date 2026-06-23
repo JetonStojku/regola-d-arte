@@ -1,16 +1,146 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import {
+  internalLinkStrategy,
+  localeMeta,
+  navigation,
+  primaryLocale,
+  rootRouteBehavior,
+  sectionRoutes,
+  services,
+} from '@/lib/siteArchitecture';
+
+const localeChoices = [primaryLocale, 'en'] as const;
+
+const serviceList = Object.entries(services).map(([, service]) => ({
+  label: service.labels.it,
+  href: service.paths.it,
+}));
 ---
 
 <BaseLayout
-  title="Regola D'arte"
-  description="Static Astro project setup for the Regola D'arte dentistry website."
+  title="Regola D'arte | Porta lingua"
+  description="Porta statica per la struttura bilingue del sito Regola D'arte."
+  robots="noindex,follow"
 >
-  <main class="mx-auto min-h-screen max-w-4xl px-6 py-20">
-    <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Project setup</p>
-    <h1 class="mt-4 text-4xl font-semibold text-slate-950">Regola D'arte</h1>
-    <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-700">
-      Astro and Tailwind are configured here as the foundation for the multilingual clinic site.
-    </p>
+  <main class="mx-auto flex min-h-screen max-w-5xl items-center px-6 py-16">
+    <section class="grid w-full gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+      <div class="space-y-6">
+        <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Architettura informativa</p>
+        <div class="space-y-4">
+          <h1 class="text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+            Struttura del sito Regola D&apos;arte
+          </h1>
+          <p class="max-w-2xl text-lg leading-8 text-slate-700">
+            L&apos;italiano resta l&apos;esperienza principale e la struttura parte da
+            <span class="font-medium text-slate-950">{sectionRoutes.home.it}</span>, con una
+            versione inglese separata in <span class="font-medium text-slate-950">{sectionRoutes.home.en}</span>.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          {localeChoices.map((locale) => (
+            <a
+              href={sectionRoutes.home[locale]}
+              class:list={[
+                'rounded-2xl border p-5 transition',
+                locale === primaryLocale
+                  ? 'border-slate-950 bg-slate-950 text-white'
+                  : 'border-slate-200 bg-white text-slate-900 hover:border-slate-400',
+              ]}
+            >
+              <p class="text-sm uppercase tracking-[0.2em] opacity-70">{localeMeta[locale].label}</p>
+              <p class="mt-3 text-xl font-semibold">
+                {locale === primaryLocale ? 'Percorso predefinito' : 'Percorso secondario'}
+              </p>
+              <p class="mt-2 text-sm leading-6 opacity-80">{sectionRoutes.home[locale]}</p>
+            </a>
+          ))}
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Mappa URL</p>
+          <ul class="mt-4 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+            <li>Home: {sectionRoutes.home.it} | {sectionRoutes.home.en}</li>
+            <li>About: {sectionRoutes.about.it} | {sectionRoutes.about.en}</li>
+            <li>Services: {sectionRoutes.servicesOverview.it} | {sectionRoutes.servicesOverview.en}</li>
+            <li>Contact: {sectionRoutes.contact.it} | {sectionRoutes.contact.en}</li>
+            <li>404: {sectionRoutes.notFound.it}</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="space-y-6 rounded-3xl border border-slate-200 bg-slate-50 p-6">
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Navigazione</p>
+          <div class="mt-4 space-y-3 text-sm text-slate-700">
+            <p>
+              Primary IT:
+              {navigation.primary.it.map((item) => ` ${item.label} -> ${item.href}`).join(' | ')}
+            </p>
+            <p>
+              Primary EN:
+              {navigation.primary.en.map((item) => ` ${item.label} -> ${item.href}`).join(' | ')}
+            </p>
+            <p>
+              Footer IT:
+              {navigation.footer.it.map((item) => ` ${item.label} -> ${item.href}`).join(' | ')}
+            </p>
+            <p>
+              Footer EN:
+              {navigation.footer.en.map((item) => ` ${item.label} -> ${item.href}`).join(' | ')}
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Slug servizi</p>
+          <ul class="mt-4 space-y-3 text-sm text-slate-700">
+            {Object.entries(services).map(([key, service]) => (
+              <li>
+                <span class="font-medium text-slate-950">{service.labels.it}</span>
+                <div class="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
+                  IT {service.paths.it} | EN {service.paths.en}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Link interni</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li>Home IT: {internalLinkStrategy.home.it.join(' | ')}</li>
+            <li>Home EN: {internalLinkStrategy.home.en.join(' | ')}</li>
+            <li>About IT: {internalLinkStrategy.about.it.join(' | ')}</li>
+            <li>About EN: {internalLinkStrategy.about.en.join(' | ')}</li>
+            <li>Services IT: {internalLinkStrategy.servicesOverview.it.join(' | ')}</li>
+            <li>Services EN: {internalLinkStrategy.servicesOverview.en.join(' | ')}</li>
+            <li>Contact IT: {internalLinkStrategy.contact.it.join(' | ')}</li>
+            <li>Contact EN: {internalLinkStrategy.contact.en.join(' | ')}</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Comportamento root</p>
+          <p class="mt-4 text-sm leading-6 text-slate-700">
+            La root route è una porta statica che indirizza verso
+            <span class="font-medium text-slate-950"> {rootRouteBehavior.destination}</span> e mantiene
+            l&apos;italiano in primo piano nell&apos;interfaccia.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-500">Pagine previste</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            {serviceList.map((service) => (
+              <li>
+                {service.label}: {service.href}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </section>
   </main>
 </BaseLayout>

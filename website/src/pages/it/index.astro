@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { navigation, sectionRoutes } from '@/lib/siteArchitecture';
+---
+
+<BaseLayout
+  title="Regola D'arte | Home italiana"
+  description="Shell iniziale della homepage italiana di Regola D'arte."
+  robots="noindex,follow"
+>
+  <main class="mx-auto min-h-screen max-w-4xl px-6 py-16">
+    <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Homepage italiana</p>
+    <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950">
+      Regola D&apos;arte
+    </h1>
+    <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-700">
+      Questa pagina esiste come punto di ingresso statico per il percorso italiano. I contenuti
+      editoriali completi arriveranno nei task successivi.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3 text-sm">
+      {navigation.primary.it.map((item) => (
+        <a class="rounded-full border border-slate-300 px-4 py-2 text-slate-900" href={item.href}>
+          {item.label}
+        </a>
+      ))}
+    </div>
+
+    <p class="mt-10 text-sm text-slate-500">
+      Home: {sectionRoutes.home.it}
+    </p>
+  </main>
+</BaseLayout>
