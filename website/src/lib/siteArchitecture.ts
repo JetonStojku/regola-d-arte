@@ -31,10 +31,7 @@ export type SiteSectionKey =
   | 'contact'
   | 'notFound';
 
-export const sectionRoutes: Record<
-  SiteSectionKey,
-  Record<Locale, string>
-> = {
+export const sectionRoutes: Record<SiteSectionKey, Record<Locale, string>> = {
   home: {
     it: '/it/',
     en: '/en/',
@@ -144,73 +141,65 @@ export const services: Record<
   },
 };
 
-export const navigation = {
-  primary: {
-    it: [
-      { label: 'Chi siamo', href: sectionRoutes.about.it },
-      { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
-      { label: 'Contatti', href: sectionRoutes.contact.it },
-    ],
-    en: [
-      { label: 'About', href: sectionRoutes.about.en },
-      { label: 'Services', href: sectionRoutes.servicesOverview.en },
-      { label: 'Contact', href: sectionRoutes.contact.en },
-    ],
-  },
-  footer: {
-    it: [
-      { label: 'Home', href: sectionRoutes.home.it },
-      { label: 'Chi siamo', href: sectionRoutes.about.it },
-      { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
-      { label: 'Contatti', href: sectionRoutes.contact.it },
-    ],
-    en: [
-      { label: 'Home', href: sectionRoutes.home.en },
-      { label: 'About', href: sectionRoutes.about.en },
-      { label: 'Services', href: sectionRoutes.servicesOverview.en },
-      { label: 'Contact', href: sectionRoutes.contact.en },
-    ],
-  },
-};
+export function isLocale(value: string): value is Locale {
+  return (supportedLocales as readonly string[]).includes(value);
+}
 
-export const internalLinkStrategy = {
-  home: {
-    it: [
-      sectionRoutes.about.it,
-      sectionRoutes.servicesOverview.it,
-      sectionRoutes.contact.it,
-    ],
-    en: [
-      sectionRoutes.about.en,
-      sectionRoutes.servicesOverview.en,
-      sectionRoutes.contact.en,
-    ],
-  },
-  about: {
-    it: [sectionRoutes.home.it, sectionRoutes.servicesOverview.it, sectionRoutes.contact.it],
-    en: [sectionRoutes.home.en, sectionRoutes.servicesOverview.en, sectionRoutes.contact.en],
-  },
-  servicesOverview: {
-    it: [
-      sectionRoutes.about.it,
-      sectionRoutes.contact.it,
-      ...Object.values(services).map((service) => service.paths.it),
-    ],
-    en: [
-      sectionRoutes.about.en,
-      sectionRoutes.contact.en,
-      ...Object.values(services).map((service) => service.paths.en),
-    ],
-  },
-  servicePages: {
-    it: [sectionRoutes.servicesOverview.it, sectionRoutes.about.it, sectionRoutes.contact.it],
-    en: [sectionRoutes.servicesOverview.en, sectionRoutes.about.en, sectionRoutes.contact.en],
-  },
-  contact: {
-    it: [sectionRoutes.home.it, sectionRoutes.servicesOverview.it],
-    en: [sectionRoutes.home.en, sectionRoutes.servicesOverview.en],
-  },
-} as const;
+export function resolveLocale(value: string | undefined, fallback: Locale = primaryLocale): Locale {
+  return value && isLocale(value) ? value : fallback;
+}
+
+export function getSectionPath(section: SiteSectionKey, locale: Locale): string {
+  return sectionRoutes[section][locale];
+}
+
+export function getServicePath(serviceKey: ServiceKey, locale: Locale): string {
+  return services[serviceKey].paths[locale];
+}
+
+export function getOtherLocale(locale: Locale): Locale {
+  return locale === 'it' ? 'en' : 'it';
+}
+
+export function getLocalizedPath<T extends Record<Locale, string>>(
+  paths: T,
+  locale: Locale,
+): string {
+  return paths[locale];
+}
+
+export function getLanguageSwitcherLinks(
+  section: SiteSectionKey,
+  currentLocale: Locale,
+): Array<{
+  locale: Locale;
+  label: string;
+  href: string;
+  isCurrent: boolean;
+}> {
+  return supportedLocales.map((locale) => ({
+    locale,
+    label: localeMeta[locale].label,
+    href: getSectionPath(section, locale),
+    isCurrent: locale === currentLocale,
+  }));
+}
+
+export function getAlternateLocalePath(
+  section: SiteSectionKey,
+  currentLocale: Locale,
+): string {
+  return getSectionPath(section, getOtherLocale(currentLocale));
+}
+
+export function getLocalizedServiceLinks(locale: Locale) {
+  return Object.entries(services).map(([key, service]) => ({
+    key: key as ServiceKey,
+    label: service.labels[locale],
+    slug: service.slugs[locale],
+    href: service.paths[locale],
+  }));
+}
 
 export const rootRouteBehavior = {
   path: '/',

@@ -1,26 +1,40 @@
 ---
 import '../styles/global.css';
+import type { Locale } from '@/lib/siteArchitecture';
 
 type Props = {
   title?: string;
   description?: string;
   robots?: string;
+  locale?: Locale;
+  canonical?: string;
+  alternateLinks?: Array<{
+    locale: Locale;
+    href: string;
+  }>;
 };
 
 const {
   title = 'Regola D\'arte',
   description = 'Regola D\'arte clinic website scaffold.',
   robots,
+  locale = 'it',
+  canonical,
+  alternateLinks = [],
 } = Astro.props as Props;
 ---
 
 <!doctype html>
-<html lang="it">
+<html lang={locale} data-locale={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {alternateLinks.map((link) => (
+      <link rel="alternate" hreflang={link.locale} href={link.href} />
+    ))}
     {robots && <meta name="robots" content={robots} />}
   </head>
   <body>
