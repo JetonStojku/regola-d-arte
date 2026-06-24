@@ -1,0 +1,34 @@
+---
+type Props = {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'md' | 'sm';
+  class?: string;
+};
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+} = Astro.props as Props;
+
+const variantClassMap = {
+  primary: 'button--primary',
+  secondary: 'button--secondary',
+  ghost: 'button--ghost',
+} as const;
+---
+
+{href ? (
+  <a
+    href={href}
+    class:list={['button', variantClassMap[variant], size === 'sm' && 'button--sm', className]}
+  >
+    <slot />
+  </a>
+) : (
+  <button class:list={['button', variantClassMap[variant], size === 'sm' && 'button--sm', className]}>
+    <slot />
+  </button>
+)}

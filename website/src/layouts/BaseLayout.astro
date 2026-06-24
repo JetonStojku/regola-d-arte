@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
+import BrandLockup from '@/components/BrandLockup.astro';
 import type { Locale } from '@/lib/siteArchitecture';
+import { sectionRoutes } from '@/lib/siteArchitecture';
 
 type Props = {
   title?: string;
@@ -31,6 +33,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f3ed" />
     {canonical && <link rel="canonical" href={canonical} />}
     {alternateLinks.map((link) => (
       <link rel="alternate" hreflang={link.locale} href={link.href} />
@@ -38,6 +41,29 @@ const {
     {robots && <meta name="robots" content={robots} />}
   </head>
   <body>
+    <a class="skip-link" href="#content">
+      {locale === 'it' ? 'Vai al contenuto principale' : 'Skip to content'}
+    </a>
+    <header class="page-shell pt-4 sm:pt-6">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <BrandLockup href={sectionRoutes.home[locale]} compact class="max-w-[18rem]" />
+        {alternateLinks.length > 0 && (
+          <nav aria-label={locale === 'it' ? 'Selettore lingua' : 'Language selector'}>
+            <div class="flex flex-wrap justify-start gap-2 sm:justify-end">
+              {alternateLinks.map((link) => (
+                <a
+                  href={link.href}
+                  aria-current={link.isCurrent ? 'page' : undefined}
+                  class:list={[link.isCurrent ? 'chip--active' : 'chip--quiet', 'chip']}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
+      </div>
+    </header>
     <slot />
   </body>
 </html>

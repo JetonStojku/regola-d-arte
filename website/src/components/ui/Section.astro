@@ -1,0 +1,26 @@
+---
+type Props = {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  class?: string;
+  align?: 'left' | 'center';
+};
+
+const {
+  eyebrow,
+  title,
+  intro,
+  class: className = '',
+  align = 'left',
+} = Astro.props as Props;
+---
+
+<section class:list={['section-shell', className]}>
+  <div class:list={[align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl']}>
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    {title && <h2 class:list={['section-title', eyebrow && 'mt-4']}>{title}</h2>}
+    {intro && <p class:list={['lead', title && 'mt-4']}>{intro}</p>}
+  </div>
+  <slot />
+</section>

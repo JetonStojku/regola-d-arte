@@ -1,0 +1,21 @@
+---
+type Props = {
+  tone?: 'neutral' | 'accent' | 'warm';
+  class?: string;
+};
+
+const {
+  tone = 'neutral',
+  class: className = '',
+} = Astro.props as Props;
+
+const toneClassMap = {
+  neutral: 'ds-badge--neutral',
+  accent: 'ds-badge--accent',
+  warm: 'ds-badge--warm',
+} as const;
+---
+
+<span class:list={['ds-badge', toneClassMap[tone], className]}>
+  <slot />
+</span>
