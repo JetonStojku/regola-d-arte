@@ -10,17 +10,20 @@ export const localeMeta: Record<
     label: string;
     routePrefix: string;
     isPrimary: boolean;
+    ogLocale: string;
   }
 > = {
   it: {
     label: 'Italiano',
     routePrefix: '/it',
     isPrimary: true,
+    ogLocale: 'it_IT',
   },
   en: {
     label: 'English',
     routePrefix: '/en',
     isPrimary: false,
+    ogLocale: 'en_US',
   },
 };
 
@@ -183,6 +186,38 @@ export function getLanguageSwitcherLinks(
     href: getSectionPath(section, locale),
     isCurrent: locale === currentLocale,
   }));
+}
+
+export function getSeoAlternateLinks<T extends Record<Locale, string>>(
+  paths: T,
+  currentLocale: Locale,
+  options?: {
+    includeXDefault?: boolean;
+    xDefaultLocale?: Locale;
+  },
+): Array<{
+  hreflang: Locale | 'x-default';
+  href: string;
+}> {
+  const includeXDefault = options?.includeXDefault ?? true;
+  const xDefaultLocale = options?.xDefaultLocale ?? primaryLocale;
+
+  const links = supportedLocales.map((locale) => ({
+    hreflang: locale,
+    href: paths[locale],
+  }));
+
+  if (!includeXDefault) {
+    return links;
+  }
+
+  return [
+    ...links,
+    {
+      hreflang: 'x-default',
+      href: paths[xDefaultLocale ?? currentLocale],
+    },
+  ];
 }
 
 export function getAlternateLocalePath(

@@ -1,67 +1,111 @@
 import type { Locale } from '@/lib/siteArchitecture';
+import { serviceCopy } from '@/content/services';
+import { services, type ServiceKey } from '@/lib/siteArchitecture';
+
+type SeoMetadata = {
+  title: string;
+  description: string;
+};
+
+type LocalizedSeoMetadata = Record<Locale, SeoMetadata>;
+
+function buildServiceMetadata(serviceKey: ServiceKey): LocalizedSeoMetadata {
+  const service = services[serviceKey];
+
+  return {
+    it: {
+      title: `${service.labels.it} | Regola D'arte`,
+      description: `${serviceCopy[serviceKey].summary.it} ${serviceCopy[serviceKey].details.it}`,
+    },
+    en: {
+      title: `${service.labels.en} | Regola D'arte`,
+      description: `${serviceCopy[serviceKey].summary.en} ${serviceCopy[serviceKey].details.en}`,
+    },
+  };
+}
 
 export const pageMetadata = {
   rootGateway: {
     it: {
       title: 'Regola D\'arte | Porta lingua',
-      description: 'Porta statica per la struttura bilingue del sito Regola D\'arte.',
+      description:
+        'Porta statica verso il percorso bilingue del sito Regola D\'arte, con accesso diretto alle versioni italiana e inglese.',
     },
     en: {
       title: 'Regola D\'arte | Language gateway',
-      description: 'Static gateway for the bilingual structure of the Regola D\'arte website.',
+      description:
+        'Static gateway to the bilingual Regola D\'arte website, with direct access to the Italian and English routes.',
     },
   },
   home: {
     it: {
       title: 'Regola D\'arte | Home italiana',
-      description: 'Homepage italiana del sito Regola D\'arte.',
+      description:
+        'Homepage italiana dello studio Regola D\'arte, con accesso alla navigazione principale e ai servizi confermati.',
     },
     en: {
       title: 'Regola D\'arte | English home',
-      description: 'English homepage for the Regola D\'arte website.',
+      description:
+        'English homepage for Regola D\'arte, with access to the main navigation and confirmed services.',
     },
   },
   notFound: {
     it: {
       title: 'Regola D\'arte | Pagina non trovata',
-      description: 'Pagina 404 statica per il sito Regola D\'arte.',
+      description:
+        'La pagina richiesta non è disponibile. Usa la home italiana o la versione inglese per continuare la navigazione.',
     },
     en: {
       title: 'Regola D\'arte | Page not found',
-      description: 'Static 404 page for the Regola D\'arte website.',
+      description:
+        'The requested page is not available yet. Use the Italian home or the English version to continue browsing.',
     },
   },
   about: {
     it: {
       title: 'Regola D\'arte | Chi siamo',
-      description: 'Chi siamo dello studio dentistico Regola D\'arte.',
+      description:
+        'Chi siamo dello studio dentistico Regola D\'arte, con competenze cliniche, attenzione alla persona e piani su misura.',
     },
     en: {
       title: 'Regola D\'arte | About',
-      description: 'About the Regola D\'arte dental clinic.',
+      description:
+        'About Regola D\'arte dental clinic, with clinical expertise, patient care, and tailored treatment planning.',
     },
   },
   servicesOverview: {
     it: {
       title: 'Regola D\'arte | Servizi',
-      description: 'Panoramica dei servizi dello studio dentistico Regola D\'arte.',
+      description:
+        'Panoramica dei servizi odontoiatrici confermati, dalla conservativa all implantologia, con un approccio clinico accurato.',
     },
     en: {
       title: 'Regola D\'arte | Services',
-      description: 'Service overview for the Regola D\'arte dental clinic.',
+      description:
+        'Overview of the confirmed dental services, from restorative care to implantology, with careful clinical planning.',
     },
   },
   contact: {
     it: {
       title: 'Regola D\'arte | Contatti',
-      description: 'Contatti e orari dello studio dentistico Regola D\'arte.',
+      description:
+        'Contatti e orari dello studio Regola D\'arte, con informazioni utili per prenotare o chiedere un primo confronto.',
     },
     en: {
       title: 'Regola D\'arte | Contact',
-      description: 'Contact details and opening hours for Regola D\'arte.',
+      description:
+        'Contact details and opening hours for Regola D\'arte, with the information needed to book or ask for a first consultation.',
     },
   },
 } as const satisfies Record<
   string,
-  Record<Locale, { title: string; description: string }>
+  Record<Locale, SeoMetadata>
 >;
+
+export const serviceMetadata = {
+  'conservative-dentistry-endodontics': buildServiceMetadata('conservative-dentistry-endodontics'),
+  'oral-surgery-implantology': buildServiceMetadata('oral-surgery-implantology'),
+  orthodontics: buildServiceMetadata('orthodontics'),
+  'dental-aesthetics': buildServiceMetadata('dental-aesthetics'),
+  'oral-hygiene-prevention': buildServiceMetadata('oral-hygiene-prevention'),
+} as const satisfies Record<ServiceKey, LocalizedSeoMetadata>;

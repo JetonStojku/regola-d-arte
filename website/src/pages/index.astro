@@ -8,6 +8,7 @@ import { navigationContent } from '@/content/navigation';
 import { metaContent, rootGatewayPageContent, serviceOverviewCardList } from '@/content/pages';
 import {
   getLanguageSwitcherLinks,
+  getSeoAlternateLinks,
   getLocalizedServiceLinks,
   localeMeta,
   primaryLocale,
@@ -34,6 +35,7 @@ const routeRows = [
   description={metadata.description}
   locale={primaryLocale}
   canonical={rootRouteBehavior.path}
+  hreflangLinks={getSeoAlternateLinks(sectionRoutes.home, primaryLocale)}
   alternateLinks={getLanguageSwitcherLinks('home', primaryLocale)}
   robots="noindex,follow"
 >

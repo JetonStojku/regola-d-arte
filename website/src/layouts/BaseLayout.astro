@@ -6,7 +6,9 @@ import { commonLabels } from '@/content/common';
 import { ctaCopy } from '@/content/ctas';
 import { navigationContent } from '@/content/navigation';
 import { brandContent } from '@/content/pages';
-import { sectionRoutes, type Locale } from '@/lib/siteArchitecture';
+import { localeMeta, sectionRoutes, supportedLocales, type Locale } from '@/lib/siteArchitecture';
+import type { SeoAlternateLink } from '@/lib/seo';
+import { resolveCanonicalUrl } from '@/lib/seo';
 
 type Props = {
   title?: string;
@@ -14,6 +16,7 @@ type Props = {
   robots?: string;
   locale?: Locale;
   canonical?: string;
+  hreflangLinks?: SeoAlternateLink[];
   alternateLinks?: Array<{
     locale: Locale;
     href: string;
@@ -26,10 +29,16 @@ const {
   robots,
   locale = 'it',
   canonical,
+  hreflangLinks = [],
   alternateLinks = [],
 } = Astro.props as Props;
 
 const pathname = Astro.url.pathname;
+const canonicalUrl = resolveCanonicalUrl(canonical ?? pathname, Astro.site);
+const ogLocale = localeMeta[locale].ogLocale;
+const ogLocaleAlternates = supportedLocales
+  .filter((supportedLocale) => supportedLocale !== locale)
+  .map((supportedLocale) => localeMeta[supportedLocale].ogLocale);
 const primaryNavigation = navigationContent.primary[locale];
 const footerNavigation = navigationContent.footer[locale];
 const legalNavigation = navigationContent.legal[locale];
@@ -58,9 +67,21 @@ const switcherLinkClass = (isCurrent: boolean) => [
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f7f3ed" />
-    {canonical && <link rel="canonical" href={canonical} />}
-    {alternateLinks.map((link) => (
-      <link rel="alternate" hreflang={link.locale} href={link.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={brandContent.name[locale]} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogLocaleAlternates.map((alternateLocale) => (
+      <meta property="og:locale:alternate" content={alternateLocale} />
+    ))}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {hreflangLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={resolveCanonicalUrl(link.href, Astro.site)} />
     ))}
     {robots && <meta name="robots" content={robots} />}
   </head>

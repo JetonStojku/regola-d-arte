@@ -8,6 +8,7 @@ import { homePageContent, metaContent } from '@/content/pages';
 import { navigationContent } from '@/content/navigation';
 import {
   getLanguageSwitcherLinks,
+  getSeoAlternateLinks,
   sectionRoutes,
 } from '@/lib/siteArchitecture';
 
@@ -21,6 +22,7 @@ const metadata = metaContent.home.en;
   description={metadata.description}
   locale={locale}
   canonical={sectionRoutes.home.en}
+  hreflangLinks={getSeoAlternateLinks(sectionRoutes.home, locale)}
   alternateLinks={getLanguageSwitcherLinks('home', locale)}
   robots="noindex,follow"
 >
