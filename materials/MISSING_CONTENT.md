@@ -201,6 +201,11 @@
 - Before/after patient consent status: confirmed as `Yes I have got it`
 - Video rights: `own videos made`
 
+### Legal pages
+
+- Privacy policy copy and page
+- Cookie policy copy and page
+
 ## Notes
 
 - This audit is intentionally limited to what is present in the provided materials.

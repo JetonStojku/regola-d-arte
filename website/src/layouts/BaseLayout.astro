@@ -1,8 +1,12 @@
 ---
 import '../styles/global.css';
 import BrandLockup from '@/components/BrandLockup.astro';
-import type { Locale } from '@/lib/siteArchitecture';
-import { sectionRoutes } from '@/lib/siteArchitecture';
+import Button from '@/components/ui/Button.astro';
+import { commonLabels } from '@/content/common';
+import { ctaCopy } from '@/content/ctas';
+import { navigationContent } from '@/content/navigation';
+import { brandContent } from '@/content/pages';
+import { sectionRoutes, type Locale } from '@/lib/siteArchitecture';
 
 type Props = {
   title?: string;
@@ -17,13 +21,33 @@ type Props = {
 };
 
 const {
-  title = 'Regola D\'arte',
+  title = "Regola D'arte",
   description = 'Regola D\'arte clinic website scaffold.',
   robots,
   locale = 'it',
   canonical,
   alternateLinks = [],
 } = Astro.props as Props;
+
+const pathname = Astro.url.pathname;
+const primaryNavigation = navigationContent.primary[locale];
+const footerNavigation = navigationContent.footer[locale];
+const legalNavigation = navigationContent.legal[locale];
+const isActivePath = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(href));
+const linkBaseClass =
+  'inline-flex items-center rounded-full border px-3 py-2 text-sm font-semibold leading-none transition';
+const desktopLinkClass = (href: string) => [
+  linkBaseClass,
+  isActivePath(href)
+    ? 'border-clinic-200 bg-clinic-50 text-clinic-900 shadow-[0_12px_24px_-20px_rgba(43,111,89,0.55)]'
+    : 'border-transparent bg-transparent text-ink-soft hover:border-border hover:bg-surface',
+];
+const switcherLinkClass = (isCurrent: boolean) => [
+  linkBaseClass,
+  isCurrent
+    ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
+    : 'border-border bg-white/80 text-ink-soft hover:border-clinic-200 hover:text-ink',
+];
 ---
 
 <!doctype html>
@@ -42,28 +66,212 @@ const {
   </head>
   <body>
     <a class="skip-link" href="#content">
-      {locale === 'it' ? 'Vai al contenuto principale' : 'Skip to content'}
+      {commonLabels.skipLink[locale]}
     </a>
-    <header class="page-shell pt-4 sm:pt-6">
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <BrandLockup href={sectionRoutes.home[locale]} compact class="max-w-[18rem]" />
-        {alternateLinks.length > 0 && (
-          <nav aria-label={locale === 'it' ? 'Selettore lingua' : 'Language selector'}>
-            <div class="flex flex-wrap justify-start gap-2 sm:justify-end">
-              {alternateLinks.map((link) => (
-                <a
-                  href={link.href}
-                  aria-current={link.isCurrent ? 'page' : undefined}
-                  class:list={[link.isCurrent ? 'chip--active' : 'chip--quiet', 'chip']}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </nav>
-        )}
+
+    <header class="sticky top-0 z-40 border-b border-border/70 bg-canvas/88 backdrop-blur">
+      <div class="page-shell py-4 sm:py-5">
+        <div class="flex items-center justify-between gap-4">
+          <BrandLockup
+            href={sectionRoutes.home[locale]}
+            label={brandContent.name[locale]}
+            tagline={brandContent.tagline[locale]}
+            class="max-w-[18rem]"
+          />
+
+          <div class="hidden flex-1 items-center justify-end gap-3 lg:flex">
+            <nav aria-label={commonLabels.primaryNavigation[locale]}>
+              <ul class="flex items-center gap-2">
+                {primaryNavigation.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      aria-current={isActivePath(item.href) ? 'page' : undefined}
+                      class:list={desktopLinkClass(item.href)}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {alternateLinks.length > 0 && (
+              <nav aria-label={commonLabels.languageSwitcher[locale]}>
+                <ul class="flex items-center gap-2">
+                  {alternateLinks.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        aria-current={link.isCurrent ? 'page' : undefined}
+                        class:list={switcherLinkClass(link.isCurrent)}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+
+            <Button href={sectionRoutes.contact[locale]} size="sm">
+              {ctaCopy.primary[locale]}
+            </Button>
+          </div>
+
+          <div class="flex items-center gap-2 lg:hidden">
+            <Button href={sectionRoutes.contact[locale]} variant="secondary" size="sm">
+              {ctaCopy.primary[locale]}
+            </Button>
+
+            <details class="relative">
+              <summary
+                class="mobile-menu-summary inline-flex cursor-pointer list-none items-center rounded-full border border-border bg-white/85 px-3 py-2 text-sm font-semibold leading-none text-ink-soft transition hover:border-clinic-200 hover:text-ink"
+                aria-label={commonLabels.mobileMenu[locale]}
+              >
+                {commonLabels.mobileMenu[locale]}
+              </summary>
+
+              <div class="absolute right-0 z-50 mt-3 max-h-[calc(100vh-7rem)] w-[min(92vw,24rem)] overflow-auto rounded-[var(--radius-clinic-lg)] border border-border bg-surface p-4 shadow-[0_24px_60px_-30px_rgba(23,33,29,0.4)]">
+                <div class="space-y-4">
+                  <nav aria-label={commonLabels.primaryNavigation[locale]}>
+                    <ul class="space-y-2">
+                      {primaryNavigation.map((item) => (
+                        <li>
+                          <a
+                            href={item.href}
+                            aria-current={isActivePath(item.href) ? 'page' : undefined}
+                            class:list={[
+                              'flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition',
+                              isActivePath(item.href)
+                                ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
+                                : 'border-border bg-white text-ink-soft hover:border-clinic-200 hover:text-ink',
+                            ]}
+                          >
+                            <span>{item.label}</span>
+                            <span aria-hidden="true">→</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+
+                  {alternateLinks.length > 0 && (
+                    <nav aria-label={commonLabels.languageSwitcher[locale]}>
+                      <ul class="flex flex-wrap gap-2">
+                        {alternateLinks.map((link) => (
+                          <li>
+                            <a
+                              href={link.href}
+                              aria-current={link.isCurrent ? 'page' : undefined}
+                              class:list={switcherLinkClass(link.isCurrent)}
+                            >
+                              {link.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  )}
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
       </div>
     </header>
-    <slot />
+
+    <main id="content" class="page-shell section-shell">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border/70 bg-canvas/75">
+      <div class="page-shell py-10 sm:py-12">
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_1fr_0.9fr]">
+          <section aria-labelledby="footer-navigation">
+            <p id="footer-navigation" class="eyebrow">
+              {commonLabels.footerNavigation[locale]}
+            </p>
+            <nav aria-label={commonLabels.footerNavigation[locale]} class="mt-4">
+              <ul class="grid gap-2 sm:grid-cols-2">
+                {footerNavigation.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      aria-current={isActivePath(item.href) ? 'page' : undefined}
+                      class:list={desktopLinkClass(item.href)}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
+
+          <section aria-labelledby="footer-contact">
+            <p id="footer-contact" class="eyebrow">
+              {commonLabels.footerContactTitle[locale]}
+            </p>
+            <p class="mt-4 max-w-md text-sm leading-7 text-ink-soft">
+              {commonLabels.footerContactNote[locale]}
+            </p>
+            <div class="mt-5">
+              <Button href={sectionRoutes.contact[locale]} variant="secondary" size="sm">
+                {ctaCopy.primary[locale]}
+              </Button>
+            </div>
+          </section>
+
+          <section aria-labelledby="footer-legal">
+            <p id="footer-legal" class="eyebrow">
+              {commonLabels.footerLegalTitle[locale]}
+            </p>
+            <nav aria-label={commonLabels.footerLegalTitle[locale]} class="mt-4">
+              <ul class="space-y-2">
+                {legalNavigation.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class="inline-flex rounded-full border border-border bg-white/80 px-3 py-2 text-sm font-semibold text-ink-soft transition hover:border-clinic-200 hover:text-ink"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </section>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-4 border-t border-border/70 pt-6 md:flex-row md:items-center md:justify-between">
+          <BrandLockup
+            href={sectionRoutes.home[locale]}
+            compact
+            label={brandContent.name[locale]}
+            tagline={brandContent.tagline[locale]}
+            class="max-w-[16rem]"
+          />
+
+          {alternateLinks.length > 0 && (
+            <nav aria-label={commonLabels.languageSwitcher[locale]}>
+              <ul class="flex flex-wrap gap-2">
+                {alternateLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      aria-current={link.isCurrent ? 'page' : undefined}
+                      class:list={switcherLinkClass(link.isCurrent)}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

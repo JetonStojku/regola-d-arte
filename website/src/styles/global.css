@@ -343,3 +343,11 @@ svg {
   text-transform: uppercase;
   color: var(--color-ink-soft);
 }
+
+.mobile-menu-summary {
+  list-style: none;
+}
+
+.mobile-menu-summary::-webkit-details-marker {
+  display: none;
+}

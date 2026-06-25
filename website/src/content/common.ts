@@ -18,11 +18,18 @@ export const brandCopy = {
 } as const satisfies Record<string, LocalizedText>;
 
 type CommonLabels = {
+  skipLink: LocalizedText;
   languageSwitcher: LocalizedText;
   localeCardPrimary: LocalizedText;
   localeCardSecondary: LocalizedText;
   primaryNavigation: LocalizedText;
   footerNavigation: LocalizedText;
+  footerContactTitle: LocalizedText;
+  footerContactNote: LocalizedText;
+  footerLegalTitle: LocalizedText;
+  mobileMenu: LocalizedText;
+  privacyPolicy: LocalizedText;
+  cookiePolicy: LocalizedText;
   routeMap: LocalizedText;
   serviceIndex: LocalizedText;
   routeItems: Record<string, LocalizedText>;
@@ -32,6 +39,10 @@ type CommonLabels = {
 };
 
 export const commonLabels = {
+  skipLink: {
+    it: 'Vai al contenuto principale',
+    en: 'Skip to content',
+  },
   languageSwitcher: {
     it: 'Lingua',
     en: 'Language',
@@ -51,6 +62,30 @@ export const commonLabels = {
   footerNavigation: {
     it: 'Navigazione nel footer',
     en: 'Footer navigation',
+  },
+  footerContactTitle: {
+    it: 'Contatti studio',
+    en: 'Practice contact',
+  },
+  footerContactNote: {
+    it: 'I dettagli di contatto sono raccolti nella pagina contatti.',
+    en: 'Contact details are collected on the contact page.',
+  },
+  footerLegalTitle: {
+    it: 'Legale',
+    en: 'Legal',
+  },
+  mobileMenu: {
+    it: 'Menu',
+    en: 'Menu',
+  },
+  privacyPolicy: {
+    it: 'Privacy',
+    en: 'Privacy policy',
+  },
+  cookiePolicy: {
+    it: 'Cookie',
+    en: 'Cookie policy',
   },
   routeMap: {
     it: 'Mappa URL',

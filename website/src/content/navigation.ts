@@ -2,6 +2,7 @@ import {
   sectionRoutes,
   type Locale,
 } from '@/lib/siteArchitecture';
+import { commonLabels } from '@/content/common';
 
 export const navigationContent = {
   primary: {
@@ -30,6 +31,16 @@ export const navigationContent = {
       { label: 'Contact', href: sectionRoutes.contact.en },
     ],
   },
+  legal: {
+    it: [
+      { label: commonLabels.privacyPolicy.it, href: '#privacy-policy' },
+      { label: commonLabels.cookiePolicy.it, href: '#cookie-policy' },
+    ],
+    en: [
+      { label: commonLabels.privacyPolicy.en, href: '#privacy-policy' },
+      { label: commonLabels.cookiePolicy.en, href: '#cookie-policy' },
+    ],
+  },
   languageSwitcher: {
     it: { label: 'Italiano', href: sectionRoutes.home.it },
     en: { label: 'English', href: sectionRoutes.home.en },
@@ -37,5 +48,6 @@ export const navigationContent = {
 } as const satisfies {
   primary: Record<Locale, Array<{ label: string; href: string }>>;
   footer: Record<Locale, Array<{ label: string; href: string }>>;
+  legal: Record<Locale, Array<{ label: string; href: string }>>;
   languageSwitcher: Record<Locale, { label: string; href: string }>;
 };

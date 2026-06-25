@@ -21,35 +21,33 @@ const metadata = metaContent.notFound.it;
   alternateLinks={getLanguageSwitcherLinks('home', locale)}
   robots="noindex,follow"
 >
-  <main id="content" class="page-shell section-shell">
-    <section class="surface overflow-hidden">
-      <div class="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-        <div class="p-6 sm:p-8 lg:p-10">
-          <Badge tone="warm">{content.eyebrow}</Badge>
-          <h1 class="display-title mt-5 max-w-xl">{content.title}</h1>
-          <p class="lead mt-4 max-w-2xl">{content.intro}</p>
+  <section class="surface overflow-hidden">
+    <div class="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="p-6 sm:p-8 lg:p-10">
+        <Badge tone="warm">{content.eyebrow}</Badge>
+        <h1 class="display-title mt-5 max-w-xl">{content.title}</h1>
+        <p class="lead mt-4 max-w-2xl">{content.intro}</p>
 
-          <div class="mt-8 flex flex-wrap gap-3">
-            <Button href={sectionRoutes.home.it}>{content.primaryButtonLabel}</Button>
-            <Button href={sectionRoutes.home.en} variant="secondary">
-              {content.secondaryButtonLabel}
-            </Button>
-          </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href={sectionRoutes.home.it}>{content.primaryButtonLabel}</Button>
+          <Button href={sectionRoutes.home.en} variant="secondary">
+            {content.secondaryButtonLabel}
+          </Button>
         </div>
-
-        <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
-          <Card class="p-5">
-            <p class="eyebrow">{commonLabels.primaryNavigation.it}</p>
-            <div class="mt-4 flex flex-wrap gap-3 text-sm">
-              {navigationContent.primary.it.map((item) => (
-                <Button href={item.href} variant="secondary" size="sm">
-                  {item.label}
-                </Button>
-              ))}
-            </div>
-          </Card>
-        </aside>
       </div>
-    </section>
-  </main>
+
+      <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
+        <Card class="p-5">
+          <p class="eyebrow">{commonLabels.primaryNavigation.it}</p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            {navigationContent.primary.it.map((item) => (
+              <Button href={item.href} variant="secondary" size="sm">
+                {item.label}
+              </Button>
+            ))}
+          </div>
+        </Card>
+      </aside>
+    </div>
+  </section>
 </BaseLayout>
