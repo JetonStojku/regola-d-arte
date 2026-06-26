@@ -10,6 +10,18 @@ import { getLanguageSwitcherLinks, getSeoAlternateLinks } from '@/lib/siteArchit
 const locale = 'en' as const;
 const metadata = pageMetadata.contact.en;
 const content = contactPageContent.en;
+const facebookEmbedUrl = content.facebookPageHref
+  ? `https://www.facebook.com/plugins/page.php?${new URLSearchParams({
+      href: content.facebookPageHref,
+      tabs: 'timeline',
+      width: '500',
+      height: '700',
+      small_header: 'false',
+      adapt_container_width: 'true',
+      hide_cover: 'false',
+      show_facepile: 'true',
+    }).toString()}`
+  : null;
 ---
 
 <BaseLayout
@@ -118,6 +130,49 @@ const content = contactPageContent.en;
           <p class="eyebrow">{content.mapEyebrow}</p>
           <p class="mt-3 text-lg font-semibold text-ink">{content.mapTitle}</p>
           <p class="mt-3 text-sm leading-7 text-ink-soft">{content.mapFallbackNote}</p>
+        </Card>
+      )}
+    </div>
+  </section>
+
+  <section class="surface mt-6 p-6 sm:p-8 lg:p-10">
+    <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+      <Card class="p-5">
+        <p class="eyebrow">{content.facebookEyebrow}</p>
+        <p class="mt-3 text-lg font-semibold text-ink">{content.facebookTitle}</p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">{content.facebookIntro}</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {content.facebookPageHref ? (
+            <a href={content.facebookPageHref} class="button button--secondary" target="_blank" rel="noreferrer">
+              {content.facebookListingLabel}
+            </a>
+          ) : null}
+        </div>
+        {!content.facebookPageHref ? <p class="mt-4 text-xs leading-6 text-ink-soft">{content.facebookMissingNote}</p> : null}
+      </Card>
+
+      {facebookEmbedUrl ? (
+        <Card class="overflow-hidden p-0">
+          <div class="min-h-[32rem]" style="aspect-ratio: 16 / 12;">
+            <iframe
+              src={facebookEmbedUrl}
+              title={content.facebookIframeTitle}
+              class="h-full w-full border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </Card>
+      ) : (
+        <Card tone="muted" class="p-6">
+          <p class="eyebrow">{content.facebookEyebrow}</p>
+          <p class="mt-3 text-lg font-semibold text-ink">{content.facebookTitle}</p>
+          <p class="mt-3 text-sm leading-7 text-ink-soft">{content.facebookFallbackNote}</p>
+          {content.facebookPageHref ? (
+            <a href={content.facebookPageHref} class="mt-5 inline-flex text-link text-sm font-semibold" target="_blank" rel="noreferrer">
+              {content.facebookListingLabel}
+            </a>
+          ) : null}
         </Card>
       )}
     </div>

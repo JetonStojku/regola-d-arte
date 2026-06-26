@@ -106,6 +106,14 @@ type ContactPageContent = {
   mapListingLabel: string;
   mapListingHref: string;
   mapFallbackNote: string;
+  facebookEyebrow: string;
+  facebookTitle: string;
+  facebookIntro: string;
+  facebookPageHref: string | null;
+  facebookIframeTitle: string;
+  facebookListingLabel: string;
+  facebookFallbackNote: string;
+  facebookMissingNote: string;
   missingNote: string;
 };
 
@@ -375,6 +383,18 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     mapListingHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
     mapFallbackNote:
       'La mappa non è disponibile al momento. Usa il link della scheda Google Maps per raggiungere lo studio.',
+    facebookEyebrow: 'Facebook',
+    facebookTitle: 'Apri la pagina Facebook ufficiale dello studio',
+    facebookIntro:
+      'Il plugin ufficiale gratuito di Meta mostra la pagina e la timeline pubblica, con un link di fallback per aprire il profilo direttamente.',
+    facebookPageHref:
+      'https://www.facebook.com/profile.php?id=61558839905177&ref=NONE_xav_ig_profile_page_web#',
+    facebookIframeTitle: 'Pagina Facebook ufficiale di Regola D\'arte',
+    facebookListingLabel: 'Apri la pagina Facebook',
+    facebookFallbackNote:
+      'L embed Facebook non Ã¨ disponibile al momento. Usa il link della pagina ufficiale per aprirla direttamente.',
+    facebookMissingNote:
+      'Da confermare solo se il profilo Facebook ufficiale venisse rimosso dai materiali o sostituito con un nuovo URL.',
     missingNote:
       'Da confermare in futuro: eventuali variazioni di orario, policy di emergenza o contatti fuori orario.',
   },
@@ -419,6 +439,18 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     mapListingHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
     mapFallbackNote:
       'The map is currently unavailable. Use the Google Maps listing link to reach the clinic.',
+    facebookEyebrow: 'Facebook',
+    facebookTitle: 'Open the clinic’s official Facebook page',
+    facebookIntro:
+      'The free official Meta plugin shows the public page timeline, with a fallback link if the embed cannot load.',
+    facebookPageHref:
+      'https://www.facebook.com/profile.php?id=61558839905177&ref=NONE_xav_ig_profile_page_web#',
+    facebookIframeTitle: 'Official Facebook page for Regola D\'arte',
+    facebookListingLabel: 'Open the Facebook page',
+    facebookFallbackNote:
+      'The Facebook embed is currently unavailable. Use the official page link to open it directly.',
+    facebookMissingNote:
+      'Only needed if the official Facebook profile is removed from the materials or replaced with a new URL.',
     missingNote:
       'Still to confirm in the future: any opening-hour changes, emergency policy, or after-hours contact details.',
   },
