@@ -15,9 +15,9 @@
 - [x] 011 - Services overview page
 - [x] 012 - Service: Conservativa & Endodonzia
 - [x] 013 - Service: Chirurgia Orale & Implantologia
-- [ ] 014 - Service: Ortodonzia
-- [ ] 015 - Service: Estetica Dentale
-- [ ] 016 - Service: Igiene & Prevenzione
+- [x] 014 - Service: Ortodonzia
+- [x] 015 - Service: Estetica Dentale
+- [x] 016 - Service: Igiene & Prevenzione
 - [ ] 017 - Team section
 - [ ] 018 - Reviews & testimonials
 - [ ] 019 - Location & Google Maps
