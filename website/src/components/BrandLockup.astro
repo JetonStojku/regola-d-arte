@@ -5,7 +5,6 @@ type Props = {
   compact?: boolean;
   label?: string;
   tagline?: string;
-  alt?: string;
 };
 
 const {
@@ -14,14 +13,14 @@ const {
   compact = false,
   label = "Regola D'arte",
   tagline = 'Studio dentistico',
-  alt = label,
 } = Astro.props as Props;
 ---
 
 <a href={href} class:list={['brand-lockup', className]}>
   <img
     src="/brand/regola-d-arte-logo.svg"
-    alt={alt}
+    alt=""
+    aria-hidden="true"
     class="brand-lockup__logo"
     loading="eager"
     decoding="async"

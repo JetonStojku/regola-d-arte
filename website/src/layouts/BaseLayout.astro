@@ -47,7 +47,9 @@ const ogLocaleAlternates = supportedLocales
 const primaryNavigation = navigationContent.primary[locale];
 const footerNavigation = navigationContent.footer[locale];
 const legalNavigation = navigationContent.legal[locale];
-const isActivePath = (href: string) => pathname === href || (href !== '/' && pathname.startsWith(href));
+const localeHomeHref = sectionRoutes.home[locale];
+const isActivePath = (href: string) =>
+  pathname === href || (href !== '/' && href !== localeHomeHref && pathname.startsWith(href));
 const linkBaseClass =
   'inline-flex items-center rounded-full border px-3 py-2 text-sm font-semibold leading-none transition';
 const desktopLinkClass = (href: string) => [

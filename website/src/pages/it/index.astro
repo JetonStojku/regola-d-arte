@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
+import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { homePageContent, metaContent } from '@/content/pages';
 import { navigationContent } from '@/content/navigation';
 import { getLocalizedServices } from '@/content/services';
@@ -65,11 +66,16 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
         <div class="grid gap-4">
           <Card class="overflow-hidden p-0">
-            <img
+            <ResponsiveImage
               src="/brand/homepage-hero.jpg"
-              alt="Regola D'arte studio dentistico"
+              alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
               class="h-72 w-full object-cover object-center"
+              width={1280}
+              height={720}
+              sizes="(min-width: 1024px) 35rem, 100vw"
+              widths={[640, 960, 1280]}
               loading="eager"
+              fetchpriority="high"
             />
           </Card>
 

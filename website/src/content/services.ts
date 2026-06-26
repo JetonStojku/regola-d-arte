@@ -89,8 +89,8 @@ const serviceCatalogEntries = {
       hero: {
         src: '/brand/homepage-hero.jpg',
         alt: {
-          it: "Studio dentistico Regola D'arte",
-          en: "Regola D'arte dental clinic",
+          it: "Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
+          en: 'Dr. Genti Dylgjeri in a modern dental surgery',
         },
       },
     },
@@ -316,8 +316,8 @@ const serviceCatalogEntries = {
       hero: {
         src: '/brand/about-doctor.jpg',
         alt: {
-          it: "Professionista di Regola D'arte in studio",
-          en: "Regola D'arte clinician in the practice",
+          it: "Ritratto del Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
+          en: 'Portrait of Dr. Genti Dylgjeri in a modern dental surgery',
         },
       },
     },
@@ -541,8 +541,8 @@ const serviceCatalogEntries = {
       hero: {
         src: '/brand/about-clinic.jpg',
         alt: {
-          it: "Interno dello studio Regola D'arte",
-          en: "Inside the Regola D'arte clinic",
+          it: 'Equipe odontoiatrica durante una seduta di cura in uno studio moderno',
+          en: 'Dental team during a treatment session in a modern clinic',
         },
       },
     },
@@ -792,8 +792,8 @@ const serviceCatalogEntries = {
       hero: {
         src: '/brand/homepage-hero.jpg',
         alt: {
-          it: 'Sorriso e accoglienza nello studio Regola D\'arte',
-          en: "Smile and welcome at the Regola D'arte clinic",
+          it: "Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
+          en: 'Dr. Genti Dylgjeri in a modern dental surgery',
         },
       },
     },
@@ -1041,8 +1041,8 @@ const serviceCatalogEntries = {
       hero: {
         src: '/brand/about-clinic.jpg',
         alt: {
-          it: "Igiene orale professionale nello studio Regola D'arte",
-          en: "Professional oral hygiene at Regola D'arte",
+          it: 'Equipe odontoiatrica durante una seduta di cura in uno studio moderno',
+          en: 'Dental team during a treatment session in a modern clinic',
         },
       },
     },

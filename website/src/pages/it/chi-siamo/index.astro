@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
+import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { pageMetadata } from '@/content/metadata';
 import { navigationContent } from '@/content/navigation';
 import { teamSectionContent } from '@/content/pages';
@@ -70,20 +71,30 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
         <div class="grid gap-4">
           <Card class="overflow-hidden p-0">
-            <img
+            <ResponsiveImage
               src="/brand/about-doctor.jpg"
-              alt="Fotografia del medico dello studio Regola D&apos;arte"
+              alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
               class="h-72 w-full object-cover object-center"
+              width={1280}
+              height={720}
+              sizes="(min-width: 1024px) 35rem, 100vw"
+              widths={[640, 960, 1280]}
               loading="eager"
+              fetchpriority="high"
             />
           </Card>
 
           <Card class="overflow-hidden p-0">
-            <img
+            <ResponsiveImage
               src="/brand/about-clinic.jpg"
-              alt="Interno dello studio dentistico Regola D&apos;arte"
+              alt="Equipe odontoiatrica durante una seduta di cura in uno studio moderno"
               class="h-56 w-full object-cover object-center"
+              width={800}
+              height={533}
+              sizes="(min-width: 1024px) 35rem, 100vw"
+              widths={[480, 800, 1200]}
               loading="eager"
+              fetchpriority="high"
             />
           </Card>
 
@@ -143,10 +154,14 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       <div class="grid gap-4 sm:grid-cols-2">
         {teamContent.members.map((member) => (
           <Card class="overflow-hidden p-0">
-            <img
+            <ResponsiveImage
               src={member.photoSrc}
               alt={member.photoAlt}
               class="h-56 w-full object-cover object-center"
+              width={member.photoSrc === '/brand/about-clinic.jpg' ? 800 : 1280}
+              height={member.photoSrc === '/brand/about-clinic.jpg' ? 533 : 720}
+              sizes="(min-width: 640px) 20rem, 100vw"
+              widths={member.photoSrc === '/brand/about-clinic.jpg' ? [480, 800, 1200] : [640, 960, 1280]}
               loading="lazy"
             />
             <div class="p-5">

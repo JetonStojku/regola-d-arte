@@ -535,14 +535,14 @@ export const teamSectionContent: Record<Locale, TeamSectionContent> = {
         summary:
           'Nome pubblicabile con cautela, in attesa di conferma per qualifiche, specializzazioni e testo biografico.',
         photoSrc: '/brand/about-doctor.jpg',
-        photoAlt: 'Ritratto di un medico dello studio in un contesto professionale odontoiatrico',
+        photoAlt: "Ritratto del Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
       },
       {
         role: 'Collaborazione di studio',
         summary:
           'Ulteriori ruoli del team non sono ancora confermati nei materiali forniti e restano volutamente generici.',
         photoSrc: '/brand/about-clinic.jpg',
-        photoAlt: 'Interno dello studio dentistico con atmosfera professionale e accogliente',
+        photoAlt: 'Equipe odontoiatrica durante una seduta di cura in uno studio moderno',
       },
     ],
     missingNote:
@@ -562,14 +562,14 @@ export const teamSectionContent: Record<Locale, TeamSectionContent> = {
         summary:
           'Publicly usable name, pending confirmation of qualifications, specializations, and biography copy.',
         photoSrc: '/brand/about-doctor.jpg',
-        photoAlt: 'Portrait of a clinic doctor in a professional dental setting',
+        photoAlt: 'Portrait of Dr. Genti Dylgjeri in a modern dental surgery',
       },
       {
         role: 'Practice collaboration',
         summary:
           'Additional team roles are not yet confirmed in the provided materials and remain intentionally generic.',
         photoSrc: '/brand/about-clinic.jpg',
-        photoAlt: 'Interior view of the dental clinic with a welcoming professional atmosphere',
+        photoAlt: 'Dental team during a treatment session in a modern clinic',
       },
     ],
     missingNote:

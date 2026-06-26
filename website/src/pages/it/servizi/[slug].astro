@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
+import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { getLocalizedServiceContent, getServiceEntry, getServiceKeyByLocalizedSlug, serviceCatalog } from '@/content/services';
 import { serviceMetadata } from '@/content/metadata';
 import { buildClinicSchema, buildServiceSchema } from '@/lib/schema';
@@ -19,6 +20,10 @@ if (!serviceKey) {
 const service = getServiceEntry(serviceKey);
 const content = getLocalizedServiceContent(serviceKey, locale);
 const metadata = serviceMetadata[serviceKey].it;
+const heroIsClinicImage = service.images.hero.src === '/brand/about-clinic.jpg';
+const heroImageWidth = heroIsClinicImage ? 800 : 1280;
+const heroImageHeight = heroIsClinicImage ? 533 : 720;
+const heroImageWidths = heroIsClinicImage ? [480, 800, 1200] : [640, 960, 1280];
 const localizedAlternates = {
   it: service.paths.it,
   en: service.paths.en,
@@ -60,7 +65,17 @@ export function getStaticPaths() {
       </div>
       <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
         <Card class="overflow-hidden p-0">
-          <img src={service.images.hero.src} alt={service.images.hero.alt.it} class="h-80 w-full object-cover object-center" loading="eager" />
+          <ResponsiveImage
+            src={service.images.hero.src}
+            alt={service.images.hero.alt.it}
+            class="h-80 w-full object-cover object-center"
+            width={heroImageWidth}
+            height={heroImageHeight}
+            sizes="(min-width: 1024px) 35rem, 100vw"
+            widths={heroImageWidths}
+            loading="eager"
+            fetchpriority="high"
+          />
         </Card>
       </aside>
     </div>
