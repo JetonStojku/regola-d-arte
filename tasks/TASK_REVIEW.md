@@ -13,8 +13,8 @@
 - [x] 009 - About clinic page
 - [x] 010 - Services data model
 - [x] 011 - Services overview page
-- [ ] 012 - Service: Conservativa & Endodonzia
-- [ ] 013 - Service: Chirurgia Orale & Implantologia
+- [x] 012 - Service: Conservativa & Endodonzia
+- [x] 013 - Service: Chirurgia Orale & Implantologia
 - [ ] 014 - Service: Ortodonzia
 - [ ] 015 - Service: Estetica Dentale
 - [ ] 016 - Service: Igiene & Prevenzione

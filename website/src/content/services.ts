@@ -426,11 +426,11 @@ const serviceCatalogEntries = {
         sections: [
           {
             eyebrow: {
-              it: 'Implantologia',
+              it: 'Implantology',
               en: 'Implantology',
             },
             title: {
-              it: 'Radici artificiali in titanio e osteointegrazione',
+              it: 'Titanium artificial roots and osseointegration',
               en: 'Titanium artificial roots and osseointegration',
             },
             body: {
@@ -442,11 +442,11 @@ const serviceCatalogEntries = {
           },
           {
             eyebrow: {
-              it: 'Comfort e sicurezza',
+              it: 'Comfort and safety',
               en: 'Comfort and safety',
             },
             title: {
-              it: 'Anestesia locale e supporto per il paziente ansioso',
+              it: 'Local anesthesia and support for anxious patients',
               en: 'Local anesthesia and support for anxious patients',
             },
             body: {
@@ -458,11 +458,11 @@ const serviceCatalogEntries = {
           },
           {
             eyebrow: {
-              it: 'Carico immediato',
+              it: 'Immediate loading',
               en: 'Immediate loading',
             },
             title: {
-              it: 'Protesi provvisoria entro 36 ore',
+              it: 'Temporary prosthesis within 36 hours',
               en: 'Temporary prosthesis within 36 hours',
             },
             body: {
@@ -478,8 +478,8 @@ const serviceCatalogEntries = {
                 'Il piano chirurgico va sempre valutato sul singolo caso.',
               ],
               en: [
-                'Technique often associated with All-on-Four.',
-                'Used to rehabilitate edentulous patients in one or both arches.',
+                'Often associated with the All-on-Four technique, which uses four strategically placed implants.',
+                'Can be used to rehabilitate edentulous patients in one or both arches.',
                 'The surgical plan must always be evaluated case by case.',
               ],
             },
