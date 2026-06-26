@@ -47,7 +47,11 @@ type HomePageContent = {
   servicesIntro: string;
   reviewsEyebrow: string;
   reviewsTitle: string;
-  reviewFallback: string;
+  reviewsIntro: string;
+  reviewsOfficialLabel: string;
+  reviewsOfficialHref: string;
+  reviewsOfficialNote: string;
+  reviewsMissingNote: string;
   contactEyebrow: string;
   contactTitle: string;
   contactIntro: string;
@@ -150,8 +154,15 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     servicesIntro:
       'Ogni servizio ha una scheda dedicata e viene presentato con una sintesi comprensibile sia in italiano sia in inglese.',
     reviewsEyebrow: 'Recensioni',
-    reviewsTitle: 'Le recensioni non sono pubblicate qui, quindi mostriamo il fallback corretto.',
-    reviewFallback: 'Per una valutazione puntuale del caso clinico, usate i contatti dello studio e la pagina dedicata.',
+    reviewsTitle: 'Nessuna recensione pubblica è stata confermata nei materiali disponibili.',
+    reviewsIntro:
+      'Per restare fedeli alle fonti, non mostriamo testimonianze inventate o widget a pagamento.',
+    reviewsOfficialLabel: 'Apri la scheda ufficiale su Google Maps',
+    reviewsOfficialHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
+    reviewsOfficialNote:
+      'Il link porta alla scheda mappa ufficiale condivisa nei materiali; non è stato fornito un profilo Google Business separato.',
+    reviewsMissingNote:
+      'Da confermare: eventuali snippet di recensioni, nome del profilo Google Business e permessi di pubblicazione.',
     contactEyebrow: 'Contatti',
     contactTitle: 'Prenota un primo confronto o approfondisci un trattamento specifico.',
     contactIntro:
@@ -185,8 +196,15 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     servicesIntro:
       'Each service has its own page and is introduced with concise copy in both Italian and English.',
     reviewsEyebrow: 'Reviews',
-    reviewsTitle: 'Reviews are not published here, so we show the correct fallback.',
-    reviewFallback: 'For a case-specific assessment, use the practice contact page or the localized service pages.',
+    reviewsTitle: 'No public reviews have been confirmed in the available materials.',
+    reviewsIntro:
+      'To stay source-backed, we do not show invented testimonials or paid review widgets.',
+    reviewsOfficialLabel: 'Open the official Google Maps listing',
+    reviewsOfficialHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
+    reviewsOfficialNote:
+      'This link points to the official map listing shared in the materials; no separate Google Business profile URL was provided.',
+    reviewsMissingNote:
+      'Still to confirm: any review snippets, the Google Business profile URL, and publication permissions.',
     contactEyebrow: 'Contact',
     contactTitle: 'Book an initial consultation or ask about a specific treatment.',
     contactIntro:

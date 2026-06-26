@@ -19,7 +19,7 @@
 - [x] 015 - Service: Estetica Dentale
 - [x] 016 - Service: Igiene & Prevenzione
 - [x] 017 - Team section
-- [ ] 018 - Reviews & testimonials
+- [x] 018 - Reviews & testimonials
 - [ ] 019 - Location & Google Maps
 - [ ] 020 - Facebook embed
 - [ ] 021 - Contact page & form

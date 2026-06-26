@@ -126,7 +126,7 @@
 - Named doctor list and titles, beyond `Dott. Genti Dylgjeri`
 - Names of owner, associates, hygienists, assistants, and admin staff, if they should be public-facing
 - Team bios and credentials, if they should be published
-- Review snippets or review source links, if any should be added
+- Review snippets, Google Business profile URL, or review source links, if any should be added
 - Insurance / payment / financing details, if they should be published
 - Languages spoken by staff
 - Specific treatment pricing

@@ -13,7 +13,7 @@
 - Named doctor list and titles - Dott. Genti Dylgjeri
 - Names of owner, associates, hygienists, assistants, and admin staff - add demo data
 - Team bios and credentials - add demo data
-- Review snippets or review source links - add demo data
+- Review snippets, Google Business profile URL, or review source links - add demo data
 - Insurance / payment / financing details - add demo data
 - Languages spoken by staff - add demo data
 - Specific treatment pricing - add demo data
