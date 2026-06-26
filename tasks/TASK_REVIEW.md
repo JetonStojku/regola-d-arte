@@ -20,7 +20,7 @@
 - [x] 016 - Service: Igiene & Prevenzione
 - [x] 017 - Team section
 - [x] 018 - Reviews & testimonials
-- [ ] 019 - Location & Google Maps
+- [x] 019 - Location & Google Maps
 - [ ] 020 - Facebook embed
 - [ ] 021 - Contact page & form
 - [ ] 022 - Local business schema

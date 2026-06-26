@@ -76,6 +76,39 @@ type SectionPageContent = {
   ctaLabel: string;
 };
 
+type ContactPageContent = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  addressLabel: string;
+  addressLine: string;
+  fullAddress: string;
+  cityLine: string;
+  directionsLabel: string;
+  directionsHref: string;
+  directionsNote: string;
+  phoneLabel: string;
+  phoneHref: string;
+  whatsappLabel: string;
+  whatsappHref: string;
+  emailLabel: string;
+  emailHref: string;
+  hoursLabel: string;
+  openingHours: Array<{
+    day: string;
+    hours: string;
+  }>;
+  mapEyebrow: string;
+  mapTitle: string;
+  mapIntro: string;
+  mapIframeTitle: string;
+  mapEmbedUrl: string | null;
+  mapListingLabel: string;
+  mapListingHref: string;
+  mapFallbackNote: string;
+  missingNote: string;
+};
+
 type TeamMemberContent = {
   name?: string;
   role: string;
@@ -297,6 +330,97 @@ export const sectionPageContent: Record<
         'The contact page can reuse the same data in Italian and English without duplicating presentation logic.',
       ctaLabel: ctaCopy.primary.en,
     },
+  },
+};
+
+export const contactPageContent: Record<Locale, ContactPageContent> = {
+  it: {
+    eyebrow: 'Contatti',
+    title: 'Dove trovarci e come raggiungerci',
+    intro:
+      'La sede dello studio è a Lecce e i riferimenti utili sono raccolti qui in una forma chiara, bilingue e verificabile.',
+    addressLabel: 'Indirizzo',
+    addressLine: 'Via Taranto, 237',
+    fullAddress: 'Via Taranto, 237, 73100 Lecce LE, Italy',
+    cityLine: 'Lecce - LE, Italy',
+    directionsLabel: 'Indicazioni stradali',
+    directionsHref:
+      'https://www.google.com/maps/dir/?api=1&destination=Via%20Taranto%2C%20237%2C%2073100%20Lecce%20LE%2C%20Italy',
+    directionsNote:
+      'Apri le indicazioni su Google Maps per avviare subito il percorso verso lo studio.',
+    phoneLabel: 'Telefono',
+    phoneHref: 'tel:+393279747044',
+    whatsappLabel: 'WhatsApp',
+    whatsappHref: 'https://wa.me/393279747044',
+    emailLabel: 'Email',
+    emailHref: 'mailto:info@regola-darte.it',
+    hoursLabel: 'Orari di apertura',
+    openingHours: [
+      { day: 'Lunedì', hours: '9:00 - 20:00' },
+      { day: 'Martedì', hours: 'Chiuso' },
+      { day: 'Mercoledì', hours: 'Chiuso' },
+      { day: 'Giovedì', hours: '9:00 - 20:00' },
+      { day: 'Venerdì', hours: 'Chiuso' },
+      { day: 'Sabato', hours: '9:00 - 19:00' },
+      { day: 'Domenica', hours: 'Chiuso' },
+    ],
+    mapEyebrow: 'Mappa',
+    mapTitle: 'Apri la posizione dello studio su Google Maps',
+    mapIntro:
+      'L embed usa un iframe gratuito basato sull indirizzo confermato, senza chiavi API o widget a pagamento.',
+    mapIframeTitle: 'Mappa Google Maps dello studio Regola D\'arte a Lecce',
+    mapEmbedUrl:
+      'https://www.google.com/maps?q=Via%20Taranto%2C%20237%2C%2073100%20Lecce%20LE%2C%20Italy&output=embed',
+    mapListingLabel: 'Apri la scheda su Google Maps',
+    mapListingHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
+    mapFallbackNote:
+      'La mappa non è disponibile al momento. Usa il link della scheda Google Maps per raggiungere lo studio.',
+    missingNote:
+      'Da confermare in futuro: eventuali variazioni di orario, policy di emergenza o contatti fuori orario.',
+  },
+  en: {
+    eyebrow: 'Contact',
+    title: 'Find us and plan your visit',
+    intro:
+      'The practice is located in Lecce, and the useful contact details are collected here in a clear, bilingual, source-backed format.',
+    addressLabel: 'Address',
+    addressLine: 'Via Taranto, 237',
+    fullAddress: 'Via Taranto, 237, 73100 Lecce LE, Italy',
+    cityLine: 'Lecce - LE, Italy',
+    directionsLabel: 'Get directions',
+    directionsHref:
+      'https://www.google.com/maps/dir/?api=1&destination=Via%20Taranto%2C%20237%2C%2073100%20Lecce%20LE%2C%20Italy',
+    directionsNote:
+      'Open Google Maps directions to start the route to the clinic right away.',
+    phoneLabel: 'Phone',
+    phoneHref: 'tel:+393279747044',
+    whatsappLabel: 'WhatsApp',
+    whatsappHref: 'https://wa.me/393279747044',
+    emailLabel: 'Email',
+    emailHref: 'mailto:info@regola-darte.it',
+    hoursLabel: 'Opening hours',
+    openingHours: [
+      { day: 'Monday', hours: '9:00 AM - 8:00 PM' },
+      { day: 'Tuesday', hours: 'Closed' },
+      { day: 'Wednesday', hours: 'Closed' },
+      { day: 'Thursday', hours: '9:00 AM - 8:00 PM' },
+      { day: 'Friday', hours: 'Closed' },
+      { day: 'Saturday', hours: '9:00 AM - 7:00 PM' },
+      { day: 'Sunday', hours: 'Closed' },
+    ],
+    mapEyebrow: 'Map',
+    mapTitle: 'Open the clinic location on Google Maps',
+    mapIntro:
+      'The embed uses a free iframe based on the confirmed address, with no API key or paid widget involved.',
+    mapIframeTitle: 'Google Maps location for Regola D\'arte clinic in Lecce',
+    mapEmbedUrl:
+      'https://www.google.com/maps?q=Via%20Taranto%2C%20237%2C%2073100%20Lecce%20LE%2C%20Italy&output=embed',
+    mapListingLabel: 'Open the Google Maps listing',
+    mapListingHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
+    mapFallbackNote:
+      'The map is currently unavailable. Use the Google Maps listing link to reach the clinic.',
+    missingNote:
+      'Still to confirm in the future: any opening-hour changes, emergency policy, or after-hours contact details.',
   },
 };
 
