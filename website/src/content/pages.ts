@@ -32,6 +32,25 @@ type HomePageContent = {
   eyebrow: string;
   title: string;
   intro: string;
+  heroPrimaryCta: string;
+  heroSecondaryCta: string;
+  heroNote: string;
+  storyEyebrow: string;
+  storyTitle: string;
+  storyBody: string;
+  storyHighlight: string;
+  trustEyebrow: string;
+  trustTitle: string;
+  trustPoints: string[];
+  servicesEyebrow: string;
+  servicesTitle: string;
+  servicesIntro: string;
+  reviewsEyebrow: string;
+  reviewsTitle: string;
+  reviewFallback: string;
+  contactEyebrow: string;
+  contactTitle: string;
+  contactIntro: string;
   homePathLabel: string;
   navigationTitle: string;
   routeLabel: string;
@@ -90,19 +109,71 @@ export const rootGatewayPageContent: Record<Locale, RootGatewayPageContent> = {
 
 export const homePageContent: Record<Locale, HomePageContent> = {
   it: {
-    eyebrow: 'Homepage italiana',
-    title: 'Regola D\'arte',
+    eyebrow: 'Studio dentistico premium',
+    title: 'Cura clinica precisa, estetica naturale, accoglienza attenta.',
     intro:
-      'Questa pagina esiste come punto di ingresso per il percorso italiano e rimanda alla navigazione principale del sito.',
+      'Regola D\'arte unisce odontoiatria conservativa, chirurgia, implantologia, ortodonzia ed estetica in un percorso chiaro e personalizzato.',
+    heroPrimaryCta: ctaCopy.primary.it,
+    heroSecondaryCta: ctaCopy.secondary.it,
+    heroNote: 'Accesso diretto ai servizi confermati e ai contatti dello studio.',
+    storyEyebrow: 'Posizionamento',
+    storyTitle: 'Un approccio che mette insieme funzione, comfort e precisione.',
+    storyBody:
+      'Il sito presenta un brand dentistico contemporaneo, fondato su contenuti verificabili, routing bilingue e una gerarchia informativa semplice da esplorare.',
+    storyHighlight: 'Trattamenti presentati con chiarezza, senza promesse generiche o elementi decorativi superflui.',
+    trustEyebrow: 'Affidabilità',
+    trustTitle: 'I segnali di fiducia sono concreti, non inventati.',
+    trustPoints: [
+      'Percorsi bilingui con contenuti locali coerenti.',
+      'Servizi e slug derivati dai dati di contenuto.',
+      'Uso di immagini reali dello studio e del team.',
+    ],
+    servicesEyebrow: 'Servizi principali',
+    servicesTitle: 'Una panoramica dei trattamenti più richiesti.',
+    servicesIntro:
+      'Ogni servizio ha una scheda dedicata e viene presentato con una sintesi comprensibile sia in italiano sia in inglese.',
+    reviewsEyebrow: 'Recensioni',
+    reviewsTitle: 'Le recensioni non sono pubblicate qui, quindi mostriamo il fallback corretto.',
+    reviewFallback: 'Per una valutazione puntuale del caso clinico, usate i contatti dello studio e la pagina dedicata.',
+    contactEyebrow: 'Contatti',
+    contactTitle: 'Prenota un primo confronto o approfondisci un trattamento specifico.',
+    contactIntro:
+      'La call to action porta alla pagina contatti localizzata, mentre i servizi rimandano alla panoramica completa.',
     homePathLabel: 'Home',
     navigationTitle: commonLabels.primaryNavigation.it,
     routeLabel: 'Percorso italiano',
   },
   en: {
-    eyebrow: 'Italian home',
-    title: 'Regola D\'arte',
+    eyebrow: 'Premium dental clinic',
+    title: 'Precise clinical care, natural aesthetics, attentive hospitality.',
     intro:
-      'This page serves as the entry point for the English route set and links back to the localized navigation.',
+      'Regola D\'arte combines restorative dentistry, oral surgery, implantology, orthodontics, and aesthetics in a clear, personalized patient journey.',
+    heroPrimaryCta: ctaCopy.primary.en,
+    heroSecondaryCta: ctaCopy.secondary.en,
+    heroNote: 'Direct access to confirmed services and the practice contact page.',
+    storyEyebrow: 'Positioning',
+    storyTitle: 'An approach that brings together function, comfort, and precision.',
+    storyBody:
+      'The site presents a contemporary dental brand built on verifiable content, bilingual routing, and a simple information hierarchy.',
+    storyHighlight: 'Treatments are presented clearly, without generic claims or unnecessary decoration.',
+    trustEyebrow: 'Trust signals',
+    trustTitle: 'The trust cues are concrete, not invented.',
+    trustPoints: [
+      'Bilingual routes with consistent local content.',
+      'Services and slugs derived from content data.',
+      'Real clinic and team imagery instead of stock visuals.',
+    ],
+    servicesEyebrow: 'Core services',
+    servicesTitle: 'An overview of the most requested treatments.',
+    servicesIntro:
+      'Each service has its own page and is introduced with concise copy in both Italian and English.',
+    reviewsEyebrow: 'Reviews',
+    reviewsTitle: 'Reviews are not published here, so we show the correct fallback.',
+    reviewFallback: 'For a case-specific assessment, use the practice contact page or the localized service pages.',
+    contactEyebrow: 'Contact',
+    contactTitle: 'Book an initial consultation or ask about a specific treatment.',
+    contactIntro:
+      'The primary CTA links to the localized contact page, and services lead to the full overview.',
     homePathLabel: 'Home',
     navigationTitle: commonLabels.primaryNavigation.en,
     routeLabel: 'English route',
