@@ -98,7 +98,7 @@ const serviceCatalogEntries = {
       it: {
         summary: 'Prevenzione e trattamento delle lesioni dentali causate da carie o traumi.',
         details:
-          'Terapie conservative mininvasive e endodonzia con materiali biocompatibili di prima scelta.',
+          'Terapie conservative mininvasive, otturazioni e endodonzia con materiali biocompatibili di prima scelta.',
         sections: [
           {
             eyebrow: {
@@ -122,8 +122,8 @@ const serviceCatalogEntries = {
               en: 'Minimally invasive restorative care',
             },
             title: {
-              it: 'Ripristino morfologico, estetico e funzionale',
-              en: 'Morphologic, aesthetic, and functional restoration',
+              it: 'Otturazioni e ricostruzioni del dente',
+              en: 'Fillings and tooth reconstruction',
             },
             body: {
               it:
@@ -134,13 +134,13 @@ const serviceCatalogEntries = {
             bullets: {
               it: [
                 'Minima invasivita quando il quadro clinico lo consente.',
+                'Otturazioni con materiali restaurativi come amalgama e compositi.',
                 'Ricostruzione del dente dal punto di vista morfologico, estetico e funzionale.',
-                'Materiali restaurativi scelti in base alla situazione clinica.',
               ],
               en: [
                 'Minimal invasiveness when the clinical picture allows it.',
+                'Fillings with restorative materials such as amalgam and composites.',
                 'Rebuild the tooth morphologically, aesthetically, and functionally.',
-                'Restorative materials selected according to the clinical situation.',
               ],
             },
           },
@@ -197,7 +197,7 @@ const serviceCatalogEntries = {
       en: {
         summary: 'Prevention and treatment of tooth lesions caused by caries or trauma.',
         details:
-          'Minimally invasive restorative care and endodontics using first-choice biocompatible materials.',
+          'Minimally invasive restorative care, fillings, and endodontics using first-choice biocompatible materials.',
         sections: [
           {
             eyebrow: {
@@ -221,8 +221,8 @@ const serviceCatalogEntries = {
               en: 'Minimally invasive restorative care',
             },
             title: {
-              it: 'Ripristino morfologico, estetico e funzionale',
-              en: 'Morphologic, aesthetic, and functional restoration',
+              it: 'Fillings and tooth reconstruction',
+              en: 'Fillings and tooth reconstruction',
             },
             body: {
               it:
@@ -233,13 +233,13 @@ const serviceCatalogEntries = {
             bullets: {
               it: [
                 'Minima invasivita quando il quadro clinico lo consente.',
+                'Otturazioni con materiali restaurativi come amalgama e compositi.',
                 'Ricostruzione del dente dal punto di vista morfologico, estetico e funzionale.',
-                'Materiali restaurativi scelti in base alla situazione clinica.',
               ],
               en: [
                 'Minimal invasiveness when the clinical picture allows it.',
+                'Fillings with restorative materials such as amalgam and composites.',
                 'Rebuild the tooth morphologically, aesthetically, and functionally.',
-                'Restorative materials selected according to the clinical situation.',
               ],
             },
           },
