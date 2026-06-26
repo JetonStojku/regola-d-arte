@@ -6,12 +6,14 @@ import Card from '@/components/ui/Card.astro';
 import { pageMetadata } from '@/content/metadata';
 import { navigationContent } from '@/content/navigation';
 import { teamSectionContent } from '@/content/pages';
+import { buildClinicSchema } from '@/lib/schema';
 import { sectionRoutes } from '@/lib/siteArchitecture';
 import { getLanguageSwitcherLinks, getSeoAlternateLinks } from '@/lib/siteArchitecture';
 
 const locale = 'en' as const;
 const metadata = pageMetadata.about.en;
 const teamContent = teamSectionContent.en;
+const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
 ---
 
 <BaseLayout
@@ -21,6 +23,7 @@ const teamContent = teamSectionContent.en;
   canonical={sectionRoutes.about.en}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.about, locale)}
   alternateLinks={getLanguageSwitcherLinks('about', locale)}
+  structuredData={structuredData}
 >
   <section class="surface overflow-hidden">
     <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">

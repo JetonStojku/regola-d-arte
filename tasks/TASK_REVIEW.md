@@ -23,7 +23,7 @@
 - [x] 019 - Location & Google Maps
 - [ ] 020 - Facebook embed
 - [ ] 021 - Contact page & form
-- [ ] 022 - Local business schema
+- [x] 022 - Local business schema
 - [ ] 023 - Sitemap, robots.txt, and 404
 - [ ] 024 - Image optimization & accessibility
 - [ ] 025 - Performance & mobile polish

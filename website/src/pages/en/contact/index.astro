@@ -5,12 +5,14 @@ import Card from '@/components/ui/Card.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import { contactPageContent } from '@/content/pages';
 import { pageMetadata } from '@/content/metadata';
+import { buildClinicSchema } from '@/lib/schema';
 import { sectionRoutes } from '@/lib/siteArchitecture';
 import { getLanguageSwitcherLinks, getSeoAlternateLinks } from '@/lib/siteArchitecture';
 
 const locale = 'en' as const;
 const metadata = pageMetadata.contact.en;
 const content = contactPageContent.en;
+const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
 const facebookEmbedUrl = content.facebookPageHref
   ? `https://www.facebook.com/plugins/page.php?${new URLSearchParams({
       href: content.facebookPageHref,
@@ -32,6 +34,7 @@ const facebookEmbedUrl = content.facebookPageHref
   canonical={sectionRoutes.contact.en}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.contact, locale)}
   alternateLinks={getLanguageSwitcherLinks('contact', locale)}
+  structuredData={structuredData}
 >
   <section class="surface overflow-hidden">
     <div class="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">

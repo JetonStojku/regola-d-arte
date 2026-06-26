@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
 import { getLocalizedServiceContent, getServiceEntry, getServiceKeyByLocalizedSlug, serviceCatalog } from '@/content/services';
 import { serviceMetadata } from '@/content/metadata';
+import { buildClinicSchema, buildServiceSchema } from '@/lib/schema';
 import { getOtherLocale, getSeoAlternateLinks, sectionRoutes } from '@/lib/siteArchitecture';
 
 const locale = 'en' as const;
@@ -17,10 +18,15 @@ if (!serviceKey) {
 
 const service = getServiceEntry(serviceKey);
 const content = getLocalizedServiceContent(serviceKey, locale);
+const metadata = serviceMetadata[serviceKey].en;
 const localizedAlternates = {
   it: service.paths.it,
   en: service.paths.en,
 };
+const structuredData = [
+  buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+  buildServiceSchema(serviceKey, locale, metadata.description, { site: Astro.site }),
+];
 
 export function getStaticPaths() {
   return Object.entries(serviceCatalog).map(([, service]) => ({
@@ -36,6 +42,7 @@ export function getStaticPaths() {
   canonical={service.paths.en}
   hreflangLinks={getSeoAlternateLinks(localizedAlternates, locale)}
   alternateLinks={[{ locale: getOtherLocale(locale), href: service.paths.it, label: 'Italiano', isCurrent: false }]}
+  structuredData={structuredData}
 >
   <section class="surface overflow-hidden">
     <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">

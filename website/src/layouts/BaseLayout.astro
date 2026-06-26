@@ -9,6 +9,7 @@ import { brandContent } from '@/content/pages';
 import { localeMeta, sectionRoutes, supportedLocales, type Locale } from '@/lib/siteArchitecture';
 import type { SeoAlternateLink } from '@/lib/seo';
 import { resolveCanonicalUrl } from '@/lib/seo';
+import { serializeJsonLd, type JsonLdValue } from '@/lib/schema';
 
 type Props = {
   title?: string;
@@ -23,6 +24,7 @@ type Props = {
     href: string;
     isCurrent: boolean;
   }>;
+  structuredData?: JsonLdValue[];
 };
 
 const {
@@ -33,6 +35,7 @@ const {
   canonical,
   hreflangLinks = [],
   alternateLinks = [],
+  structuredData = [],
 } = Astro.props as Props;
 
 const pathname = Astro.url.pathname;
@@ -84,6 +87,9 @@ const switcherLinkClass = (isCurrent: boolean) => [
     <link rel="canonical" href={canonicalUrl} />
     {hreflangLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={resolveCanonicalUrl(link.href, Astro.site)} />
+    ))}
+    {structuredData.map((schema) => (
+      <script type="application/ld+json" set:html={serializeJsonLd(schema)} />
     ))}
     {robots && <meta name="robots" content={robots} />}
   </head>
