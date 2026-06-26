@@ -1,25 +1,20 @@
 import type { Locale } from '@/lib/siteArchitecture';
-import { serviceCopy } from '@/content/services';
-import { services, type ServiceKey } from '@/lib/siteArchitecture';
-
-type SeoMetadata = {
-  title: string;
-  description: string;
-};
+import { serviceCatalog, type SeoMetadata } from '@/content/services';
+import { type ServiceKey } from '@/lib/siteArchitecture';
 
 type LocalizedSeoMetadata = Record<Locale, SeoMetadata>;
 
 function buildServiceMetadata(serviceKey: ServiceKey): LocalizedSeoMetadata {
-  const service = services[serviceKey];
+  const service = serviceCatalog[serviceKey];
 
   return {
     it: {
-      title: `${service.labels.it} | Regola D'arte`,
-      description: `${serviceCopy[serviceKey].summary.it} ${serviceCopy[serviceKey].details.it}`,
+      title: service.metadata.it.title,
+      description: service.metadata.it.description,
     },
     en: {
-      title: `${service.labels.en} | Regola D'arte`,
-      description: `${serviceCopy[serviceKey].summary.en} ${serviceCopy[serviceKey].details.en}`,
+      title: service.metadata.en.title,
+      description: service.metadata.en.description,
     },
   };
 }
