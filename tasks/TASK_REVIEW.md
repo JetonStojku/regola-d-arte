@@ -18,7 +18,7 @@
 - [x] 014 - Service: Ortodonzia
 - [x] 015 - Service: Estetica Dentale
 - [x] 016 - Service: Igiene & Prevenzione
-- [ ] 017 - Team section
+- [x] 017 - Team section
 - [ ] 018 - Reviews & testimonials
 - [ ] 019 - Location & Google Maps
 - [ ] 020 - Facebook embed

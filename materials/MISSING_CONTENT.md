@@ -195,6 +195,8 @@
 ### Team
 
 - Named doctor listed in the missing-info file: `Dott. Genti Dylgjeri`
+- Confirmed public-facing team details remain incomplete: roles, qualifications, bios, and any additional staff names still need confirmation before publication.
+- Photo-by-photo identity mapping for `materials/photos/01-owner-and-doctore-of-clinic/` is still not confirmed, so the site should continue using descriptive non-identifying alt text.
 
 ### Media rights
 

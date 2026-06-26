@@ -72,6 +72,23 @@ type SectionPageContent = {
   ctaLabel: string;
 };
 
+type TeamMemberContent = {
+  name?: string;
+  role: string;
+  summary: string;
+  photoSrc: string;
+  photoAlt: string;
+};
+
+type TeamSectionContent = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  fallbackNote: string;
+  members: TeamMemberContent[];
+  missingNote: string;
+};
+
 export const rootGatewayPageContent: Record<Locale, RootGatewayPageContent> = {
   it: {
     eyebrow: 'Architettura informativa',
@@ -262,6 +279,63 @@ export const sectionPageContent: Record<
         'The contact page can reuse the same data in Italian and English without duplicating presentation logic.',
       ctaLabel: ctaCopy.primary.en,
     },
+  },
+};
+
+export const teamSectionContent: Record<Locale, TeamSectionContent> = {
+  it: {
+    eyebrow: 'Team',
+    title: 'Persone e competenze presentate solo quando confermate',
+    intro:
+      'Al momento possiamo pubblicare soltanto il nome del medico confermato dai materiali disponibili, senza aggiungere ruoli o credenziali non verificati.',
+    fallbackNote:
+      'Le immagini della sezione mostrano il contesto umano dello studio, con didascalie descrittive e non identificative quando il materiale non specifica ulteriori dettagli.',
+    members: [
+      {
+        name: 'Dott. Genti Dylgjeri',
+        role: 'Medico confermato dai materiali disponibili',
+        summary:
+          'Nome pubblicabile con cautela, in attesa di conferma per qualifiche, specializzazioni e testo biografico.',
+        photoSrc: '/brand/about-doctor.jpg',
+        photoAlt: 'Ritratto di un medico dello studio in un contesto professionale odontoiatrico',
+      },
+      {
+        role: 'Collaborazione di studio',
+        summary:
+          'Ulteriori ruoli del team non sono ancora confermati nei materiali forniti e restano volutamente generici.',
+        photoSrc: '/brand/about-clinic.jpg',
+        photoAlt: 'Interno dello studio dentistico con atmosfera professionale e accogliente',
+      },
+    ],
+    missingNote:
+      'Da confermare: ruoli del team, qualifiche, eventuali bio pubbliche e identità aggiuntive del personale.',
+  },
+  en: {
+    eyebrow: 'Team',
+    title: 'People and expertise are shown only when confirmed',
+    intro:
+      'For now we can only publish the doctor name confirmed in the available materials, without adding unverified titles or credentials.',
+    fallbackNote:
+      'The section imagery shows the human context of the practice, with descriptive and non-identifying captions whenever the source material does not specify more detail.',
+    members: [
+      {
+        name: 'Dott. Genti Dylgjeri',
+        role: 'Doctor confirmed by the available materials',
+        summary:
+          'Publicly usable name, pending confirmation of qualifications, specializations, and biography copy.',
+        photoSrc: '/brand/about-doctor.jpg',
+        photoAlt: 'Portrait of a clinic doctor in a professional dental setting',
+      },
+      {
+        role: 'Practice collaboration',
+        summary:
+          'Additional team roles are not yet confirmed in the provided materials and remain intentionally generic.',
+        photoSrc: '/brand/about-clinic.jpg',
+        photoAlt: 'Interior view of the dental clinic with a welcoming professional atmosphere',
+      },
+    ],
+    missingNote:
+      'Still to confirm: team roles, qualifications, public bios, and any additional staff identities.',
   },
 };
 
