@@ -41,3 +41,5 @@ Run a production build and confirm the documented output directory matches the a
 
 - Do not assume SSH or Node.js is available on the shared host.
 - The deployed site should run as static files after upload.
+- Configure the production domain before building by setting `SITE_URL` in `website/astro.config.mjs` to the final live origin. That value is used for canonical URLs, sitemap URLs, and robots output, so it must match the deployed domain exactly.
+- Do not leave the site on the localhost fallback for production builds.
