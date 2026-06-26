@@ -1,0 +1,59 @@
+---
+type Props = {
+  src: string;
+  title: string;
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  loadLabel: string;
+  openLabel: string;
+  openHref: string;
+  note?: string;
+  aspectRatio?: string;
+  minHeightClass?: string;
+  class?: string;
+};
+
+const {
+  src,
+  title,
+  eyebrow,
+  heading,
+  intro,
+  loadLabel,
+  openLabel,
+  openHref,
+  note,
+  aspectRatio = '16 / 10',
+  minHeightClass = 'min-h-[18rem] sm:min-h-[22rem]',
+  class: className = '',
+} = Astro.props as Props;
+---
+
+<div
+  class:list={['relative overflow-hidden bg-white', minHeightClass, className]}
+  style={`aspect-ratio: ${aspectRatio};`}
+  data-deferred-embed
+  data-src={src}
+  data-title={title}
+  data-open-href={openHref}
+>
+  <div class="absolute inset-0 flex items-center justify-center p-5 text-center" data-deferred-embed-placeholder>
+    <div class="max-w-md space-y-3">
+      <p class="eyebrow">{eyebrow}</p>
+      <p class="text-lg font-semibold text-ink">{heading}</p>
+      <p class="text-sm leading-7 text-ink-soft">{intro}</p>
+      <div class="flex flex-wrap justify-center gap-3 pt-2">
+        <button type="button" class="button button--secondary button--sm" data-deferred-embed-trigger>
+          {loadLabel}
+        </button>
+        <a href={openHref} class="button button--ghost button--sm" target="_blank" rel="noreferrer">
+          {openLabel}
+        </a>
+      </div>
+      {note ? <p class="text-xs leading-6 text-ink-soft">{note}</p> : null}
+    </div>
+  </div>
+
+  <div class="absolute inset-0 hidden" data-deferred-embed-frame></div>
+</div>

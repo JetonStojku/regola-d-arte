@@ -304,5 +304,74 @@ const switcherLinkClass = (isCurrent: boolean) => [
         </div>
       </div>
     </footer>
+
+    <script is:inline type="module">
+      const initializeDeferredEmbeds = () => {
+        const embeds = Array.from(document.querySelectorAll('[data-deferred-embed]'));
+
+        if (embeds.length === 0) {
+          return;
+        }
+
+        const loadEmbed = (container) => {
+          if (container.dataset.loaded === 'true') {
+            return;
+          }
+
+          const src = container.dataset.src;
+          if (!src) {
+            return;
+          }
+
+          const frameHost = container.querySelector('[data-deferred-embed-frame]');
+          if (!frameHost) {
+            return;
+          }
+
+          const iframe = document.createElement('iframe');
+          iframe.src = src;
+          iframe.title = container.dataset.title || '';
+          iframe.loading = 'lazy';
+          iframe.referrerPolicy = 'no-referrer-when-downgrade';
+          iframe.className = 'h-full w-full border-0';
+
+          frameHost.appendChild(iframe);
+          frameHost.classList.remove('hidden');
+          container.querySelector('[data-deferred-embed-placeholder]')?.setAttribute('hidden', '');
+          container.dataset.loaded = 'true';
+        };
+
+        const observe = 'IntersectionObserver' in window
+          ? new IntersectionObserver((entries, observer) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                  return;
+                }
+
+                loadEmbed(entry.target);
+                observer.unobserve(entry.target);
+              });
+            }, { rootMargin: '200px 0px' })
+          : null;
+
+        embeds.forEach((container) => {
+          const trigger = container.querySelector('[data-deferred-embed-trigger]');
+
+          trigger?.addEventListener('click', () => {
+            loadEmbed(container);
+          });
+
+          if (observe) {
+            observe.observe(container);
+          }
+        });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeDeferredEmbeds, { once: true });
+      } else {
+        initializeDeferredEmbeds();
+      }
+    </script>
   </body>
 </html>

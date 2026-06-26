@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Card from '@/components/ui/Card.astro';
+import DeferredEmbed from '@/components/ui/DeferredEmbed.astro';
 import ContactForm from '@/components/ContactForm.astro';
 import { contactPageContent } from '@/content/pages';
 import { pageMetadata } from '@/content/metadata';
@@ -77,7 +78,7 @@ const facebookEmbedUrl = content.facebookPageHref
             <p class="eyebrow">{content.hoursLabel}</p>
             <dl class="mt-4 grid gap-2 text-sm leading-6 text-ink-soft">
               {content.openingHours.map((entry) => (
-                <div class="flex items-center justify-between gap-4 border-b border-border/60 py-2 last:border-b-0">
+                <div class="grid gap-1 border-b border-border/60 py-2 last:border-b-0 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4">
                   <dt class="font-medium text-ink">{entry.day}</dt>
                   <dd>{entry.hours}</dd>
                 </div>
@@ -121,15 +122,18 @@ const facebookEmbedUrl = content.facebookPageHref
 
       {content.mapEmbedUrl ? (
         <Card class="overflow-hidden p-0">
-          <div class="h-full min-h-[24rem]" style="aspect-ratio: 16 / 10;">
-            <iframe
-              src={content.mapEmbedUrl}
-              title={content.mapIframeTitle}
-              class="h-full w-full border-0"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <DeferredEmbed
+            src={content.mapEmbedUrl}
+            title={content.mapIframeTitle}
+            eyebrow={content.mapEyebrow}
+            heading={content.mapTitle}
+            intro={content.mapIntro}
+            loadLabel="Carica la mappa"
+            openLabel={content.mapListingLabel}
+            openHref={content.mapListingHref}
+            note={content.mapFallbackNote}
+            minHeightClass="min-h-[24rem]"
+          />
         </Card>
       ) : (
         <Card tone="muted" class="p-6">
@@ -159,15 +163,19 @@ const facebookEmbedUrl = content.facebookPageHref
 
       {facebookEmbedUrl ? (
         <Card class="overflow-hidden p-0">
-          <div class="min-h-[32rem]" style="aspect-ratio: 16 / 12;">
-            <iframe
-              src={facebookEmbedUrl}
-              title={content.facebookIframeTitle}
-              class="h-full w-full border-0"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            />
-          </div>
+          <DeferredEmbed
+            src={facebookEmbedUrl}
+            title={content.facebookIframeTitle}
+            eyebrow={content.facebookEyebrow}
+            heading={content.facebookTitle}
+            intro={content.facebookIntro}
+            loadLabel="Carica Facebook"
+            openLabel={content.facebookListingLabel}
+            openHref={content.facebookPageHref}
+            note={content.facebookFallbackNote}
+            aspectRatio="16 / 12"
+            minHeightClass="min-h-[32rem]"
+          />
         </Card>
       ) : (
         <Card tone="muted" class="p-6">
