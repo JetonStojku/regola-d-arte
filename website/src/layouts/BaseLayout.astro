@@ -19,7 +19,9 @@ type Props = {
   hreflangLinks?: SeoAlternateLink[];
   alternateLinks?: Array<{
     locale: Locale;
+    label: string;
     href: string;
+    isCurrent: boolean;
   }>;
 };
 

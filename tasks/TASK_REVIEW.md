@@ -2,17 +2,17 @@
 
 ## Project Tasks
 
-- [ ] 001 - Project setup
-- [ ] 002 - Materials content audit
-- [ ] 003 - Information architecture
-- [ ] 004 - i18n content architecture
-- [ ] 005 - Design system
-- [ ] 006 - Layout shell
-- [ ] 007 - SEO metadata system
-- [ ] 008 - Homepage
-- [ ] 009 - About clinic page
-- [ ] 010 - Services data model
-- [ ] 011 - Services overview page
+- [x] 001 - Project setup
+- [x] 002 - Materials content audit
+- [x] 003 - Information architecture
+- [x] 004 - i18n content architecture
+- [x] 005 - Design system
+- [x] 006 - Layout shell
+- [x] 007 - SEO metadata system
+- [x] 008 - Homepage
+- [x] 009 - About clinic page
+- [x] 010 - Services data model
+- [x] 011 - Services overview page
 - [ ] 012 - Service: Conservativa & Endodonzia
 - [ ] 013 - Service: Chirurgia Orale & Implantologia
 - [ ] 014 - Service: Ortodonzia

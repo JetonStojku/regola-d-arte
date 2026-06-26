@@ -1304,3 +1304,8 @@ export function getLocalizedServices(locale: Locale): ServiceOverviewCard[] {
   });
 }
 
+export function getServiceKeyByLocalizedSlug(slug: string, locale: Locale): ServiceKey | undefined {
+  return (Object.keys(serviceCatalog) as ServiceKey[]).find(
+    (serviceKey) => serviceCatalog[serviceKey].slugs[locale] === slug,
+  );
+}
