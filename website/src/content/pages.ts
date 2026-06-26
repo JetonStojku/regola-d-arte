@@ -80,6 +80,24 @@ type ContactPageContent = {
   eyebrow: string;
   title: string;
   intro: string;
+  contactFormEyebrow: string;
+  contactFormTitle: string;
+  contactFormIntro: string;
+  contactFormNote: string;
+  contactFormSubmitLabel: string;
+  contactFormFallbackLabel: string;
+  contactFormFallbackNote: string;
+  contactFormRequiredNote: string;
+  contactFormPrivacyNote: string;
+  contactFormSensitiveNote: string;
+  contactFormNameLabel: string;
+  contactFormNamePlaceholder: string;
+  contactFormEmailLabel: string;
+  contactFormEmailPlaceholder: string;
+  contactFormPhoneLabel: string;
+  contactFormPhonePlaceholder: string;
+  contactFormMessageLabel: string;
+  contactFormMessagePlaceholder: string;
   addressLabel: string;
   addressLine: string;
   fullAddress: string;
@@ -347,6 +365,29 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     title: 'Dove trovarci e come raggiungerci',
     intro:
       'La sede dello studio è a Lecce e i riferimenti utili sono raccolti qui in una forma chiara, bilingue e verificabile.',
+    contactFormEyebrow: 'Richiesta rapida',
+    contactFormTitle: 'Scrivici un messaggio essenziale e ti risponderemo appena possibile.',
+    contactFormIntro:
+      'Il modulo è pensato per richieste di contatto generiche e non raccoglie dati clinici sensibili.',
+    contactFormNote:
+      'Puoi pubblicare il modulo su un servizio statico gratuito oppure usare il fallback via email senza aggiungere backend.',
+    contactFormSubmitLabel: 'Invia la richiesta',
+    contactFormFallbackLabel: 'Apri una email invece',
+    contactFormFallbackNote:
+      'Se non è configurato alcun endpoint, l invio apre il client email con i campi già compilati.',
+    contactFormRequiredNote: 'I campi con * sono obbligatori.',
+    contactFormPrivacyNote:
+      'Non inserire informazioni sanitarie sensibili, urgenze o dati che preferisci non condividere via email.',
+    contactFormSensitiveNote:
+      'Per dettagli clinici useremo un confronto diretto dopo il primo contatto.',
+    contactFormNameLabel: 'Nome e cognome',
+    contactFormNamePlaceholder: 'Il tuo nome',
+    contactFormEmailLabel: 'Email',
+    contactFormEmailPlaceholder: 'nome@esempio.it',
+    contactFormPhoneLabel: 'Telefono',
+    contactFormPhonePlaceholder: '+39 3XX XXX XXXX',
+    contactFormMessageLabel: 'Messaggio',
+    contactFormMessagePlaceholder: 'Raccontaci in poche righe come possiamo aiutarti.',
     addressLabel: 'Indirizzo',
     addressLine: 'Via Taranto, 237',
     fullAddress: 'Via Taranto, 237, 73100 Lecce LE, Italy',
@@ -403,6 +444,29 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     title: 'Find us and plan your visit',
     intro:
       'The practice is located in Lecce, and the useful contact details are collected here in a clear, bilingual, source-backed format.',
+    contactFormEyebrow: 'Quick request',
+    contactFormTitle: 'Send a concise message and we will reply as soon as possible.',
+    contactFormIntro:
+      'The form is meant for general contact requests and does not collect sensitive clinical details.',
+    contactFormNote:
+      'You can connect the form to a free static provider or use the email fallback without adding a backend.',
+    contactFormSubmitLabel: 'Send request',
+    contactFormFallbackLabel: 'Open an email instead',
+    contactFormFallbackNote:
+      'If no endpoint is configured, submitting will open the email client with the fields prefilled.',
+    contactFormRequiredNote: 'Fields marked with * are required.',
+    contactFormPrivacyNote:
+      'Do not include sensitive health information, urgent concerns, or anything you prefer not to share by email.',
+    contactFormSensitiveNote:
+      'We can discuss clinical details directly after the first contact.',
+    contactFormNameLabel: 'Full name',
+    contactFormNamePlaceholder: 'Your name',
+    contactFormEmailLabel: 'Email',
+    contactFormEmailPlaceholder: 'name@example.com',
+    contactFormPhoneLabel: 'Phone',
+    contactFormPhonePlaceholder: '+39 3XX XXX XXXX',
+    contactFormMessageLabel: 'Message',
+    contactFormMessagePlaceholder: 'Tell us briefly how we can help.',
     addressLabel: 'Address',
     addressLine: 'Via Taranto, 237',
     fullAddress: 'Via Taranto, 237, 73100 Lecce LE, Italy',

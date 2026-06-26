@@ -1,0 +1,150 @@
+---
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+
+type ContactFormContent = {
+  contactFormEyebrow: string;
+  contactFormTitle: string;
+  contactFormIntro: string;
+  contactFormNote: string;
+  contactFormSubmitLabel: string;
+  contactFormFallbackLabel: string;
+  contactFormFallbackNote: string;
+  contactFormRequiredNote: string;
+  contactFormPrivacyNote: string;
+  contactFormSensitiveNote: string;
+  contactFormNameLabel: string;
+  contactFormNamePlaceholder: string;
+  contactFormEmailLabel: string;
+  contactFormEmailPlaceholder: string;
+  contactFormPhoneLabel: string;
+  contactFormPhonePlaceholder: string;
+  contactFormMessageLabel: string;
+  contactFormMessagePlaceholder: string;
+  emailHref: string;
+};
+
+type Props = {
+  locale: 'it' | 'en';
+  content: ContactFormContent;
+};
+
+const { locale, content } = Astro.props as Props;
+const contactFormEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ACTION?.trim() || null;
+const emailAddress = content.emailHref.replace('mailto:', '');
+const mailtoFallbackHref = `mailto:${emailAddress}?${new URLSearchParams({
+  subject:
+    locale === 'it'
+      ? 'Richiesta dal modulo contatti'
+      : 'Contact form request',
+  body:
+    locale === 'it'
+      ? 'Nome:\nEmail:\nTelefono:\n\nMessaggio:\n'
+      : 'Name:\nEmail:\nPhone:\n\nMessage:\n',
+}).toString()}`;
+const formAction = contactFormEndpoint ?? mailtoFallbackHref;
+const usesStaticEndpoint = Boolean(contactFormEndpoint);
+---
+
+<section class="surface mt-6 p-6 sm:p-8 lg:p-10">
+  <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+    <Card class="p-5">
+      <p class="eyebrow">{content.contactFormEyebrow}</p>
+      <h2 class="section-title mt-3 max-w-xl">{content.contactFormTitle}</h2>
+      <p class="mt-4 max-w-xl text-sm leading-7 text-ink-soft">{content.contactFormIntro}</p>
+      <p class="mt-3 max-w-xl text-sm leading-7 text-ink-soft">{content.contactFormNote}</p>
+      <p class="mt-4 text-sm font-semibold text-ink">{content.contactFormRequiredNote}</p>
+      <p class="mt-3 text-sm leading-7 text-ink-soft">{content.contactFormPrivacyNote}</p>
+      <p class="mt-3 text-sm leading-7 text-ink-soft">{content.contactFormSensitiveNote}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <Button href={mailtoFallbackHref} variant="secondary" size="sm">
+          {content.contactFormFallbackLabel}
+        </Button>
+      </div>
+      <p class="mt-4 text-xs leading-6 text-ink-soft">
+        {usesStaticEndpoint
+          ? locale === 'it'
+            ? 'Il modulo invia i dati al provider statico configurato.'
+            : 'The form sends data to the configured static provider.'
+          : content.contactFormFallbackNote}
+      </p>
+    </Card>
+
+    <Card class="p-5">
+      <form action={formAction} method="post" enctype={usesStaticEndpoint ? undefined : 'text/plain'} class="grid gap-4">
+        <input type="hidden" name="locale" value={locale} />
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <label class="grid gap-2">
+            <span class="text-sm font-semibold text-ink">
+              {content.contactFormNameLabel} <span aria-hidden="true">*</span>
+            </span>
+            <input
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              minlength="2"
+              maxlength="80"
+              placeholder={content.contactFormNamePlaceholder}
+              class="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
+            />
+          </label>
+
+          <label class="grid gap-2">
+            <span class="text-sm font-semibold text-ink">
+              {content.contactFormEmailLabel} <span aria-hidden="true">*</span>
+            </span>
+            <input
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              maxlength="120"
+              placeholder={content.contactFormEmailPlaceholder}
+              class="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
+            />
+          </label>
+        </div>
+
+        <label class="grid gap-2">
+          <span class="text-sm font-semibold text-ink">{content.contactFormPhoneLabel}</span>
+          <input
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            inputmode="tel"
+            maxlength="32"
+            pattern="[0-9+() ./-]{7,}"
+            placeholder={content.contactFormPhonePlaceholder}
+            class="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
+          />
+        </label>
+
+        <label class="grid gap-2">
+          <span class="text-sm font-semibold text-ink">
+            {content.contactFormMessageLabel} <span aria-hidden="true">*</span>
+          </span>
+          <textarea
+            name="message"
+            required
+            minlength="20"
+            maxlength="1200"
+            rows="7"
+            placeholder={content.contactFormMessagePlaceholder}
+            class="w-full resize-y rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
+          />
+        </label>
+
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <button type="submit" class="button button--primary">
+            {content.contactFormSubmitLabel}
+          </button>
+          <a href={mailtoFallbackHref} class="text-link text-sm font-semibold">
+            {content.contactFormFallbackLabel}
+          </a>
+        </div>
+      </form>
+    </Card>
+  </div>
+</section>

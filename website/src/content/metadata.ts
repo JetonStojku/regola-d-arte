@@ -84,12 +84,12 @@ export const pageMetadata = {
     it: {
       title: 'Regola D\'arte | Contatti',
       description:
-        'Contatti e orari dello studio Regola D\'arte, con informazioni utili per prenotare o chiedere un primo confronto.',
+        'Contatti, orari e modulo di richiesta dello studio Regola D\'arte, con fallback email se non è configurato un provider statico.',
     },
     en: {
       title: 'Regola D\'arte | Contact',
       description:
-        'Contact details and opening hours for Regola D\'arte, with the information needed to book or ask for a first consultation.',
+        'Contact details, opening hours, and a request form for Regola D\'arte, with an email fallback if no static provider is configured.',
     },
   },
 } as const satisfies Record<
