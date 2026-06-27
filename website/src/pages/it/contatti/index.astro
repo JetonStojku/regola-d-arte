@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Badge from "@/components/ui/Badge.astro";
 import Card from "@/components/ui/Card.astro";
 import DeferredEmbed from "@/components/ui/DeferredEmbed.astro";
+import Icon from "@/components/ui/Icon.astro";
 import ContactForm from "@/components/ContactForm.astro";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder.astro";
 import { contactPageContent } from "@/content/pages";
@@ -60,17 +61,20 @@ const facebookEmbedUrl = content.facebookPageHref
             target="_blank"
             rel="noreferrer"
           >
+            <Icon icon="lucide:map-pin" class="h-4 w-4" />
             {content.directionsLabel}
           </a>
-          <a href={content.phoneHref} class="button button--secondary"
-            >{content.phoneLabel}</a
-          >
+          <a href={content.phoneHref} class="button button--secondary">
+            <Icon icon="lucide:phone" class="h-4 w-4" />
+            {content.phoneLabel}
+          </a>
           <a
             href={content.whatsappHref}
             class="button button--ghost"
             target="_blank"
             rel="noreferrer"
           >
+            <Icon icon="simple-icons:whatsapp" class="h-4 w-4" />
             {content.whatsappLabel}
           </a>
         </div>
@@ -78,7 +82,10 @@ const facebookEmbedUrl = content.facebookPageHref
 
       <div class="grid gap-4 md:grid-cols-2">
           <div class="info-tile">
-            <p class="eyebrow">{content.addressLabel}</p>
+            <p class="eyebrow inline-flex items-center gap-2">
+              <Icon icon="lucide:map-pin" class="h-4 w-4 text-clinic-700" />
+              {content.addressLabel}
+            </p>
             <p class="mt-3 text-lg font-semibold text-ink">
               {content.addressLine}
             </p>
@@ -87,15 +94,19 @@ const facebookEmbedUrl = content.facebookPageHref
             </p>
             <div class="mt-5 space-y-3 text-sm leading-7 text-ink-soft">
               <p>
-                <span class="font-semibold text-ink">{content.phoneLabel}:</span
-                >
+                <span class="inline-flex items-center gap-2 font-semibold text-ink">
+                  <Icon icon="lucide:phone" class="h-4 w-4 text-clinic-700" />
+                  {content.phoneLabel}:
+                </span>
                 <a href={content.phoneHref} class="ml-2 text-link"
                   >{content.phoneHref.replace("tel:", "")}</a
                 >
               </p>
               <p>
-                <span class="font-semibold text-ink">{content.emailLabel}:</span
-                >
+                <span class="inline-flex items-center gap-2 font-semibold text-ink">
+                  <Icon icon="lucide:mail" class="h-4 w-4 text-clinic-700" />
+                  {content.emailLabel}:
+                </span>
                 <a href={content.emailHref} class="ml-2 text-link"
                   >{content.emailHref.replace("mailto:", "")}</a
                 >
@@ -104,7 +115,10 @@ const facebookEmbedUrl = content.facebookPageHref
           </div>
 
           <div class="info-tile">
-            <p class="eyebrow">{content.hoursLabel}</p>
+            <p class="eyebrow inline-flex items-center gap-2">
+              <Icon icon="lucide:clock" class="h-4 w-4 text-clinic-700" />
+              {content.hoursLabel}
+            </p>
             <dl class="mt-4 grid gap-2 text-sm leading-6 text-ink-soft">
               {
                 content.openingHours.map((entry) => (
@@ -145,6 +159,7 @@ const facebookEmbedUrl = content.facebookPageHref
             target="_blank"
             rel="noreferrer"
           >
+            <Icon icon="lucide:map-pin" class="h-4 w-4" />
             {content.directionsLabel}
           </a>
           <a
@@ -153,6 +168,7 @@ const facebookEmbedUrl = content.facebookPageHref
             target="_blank"
             rel="noreferrer"
           >
+            <Icon icon="simple-icons:googlemaps" class="h-4 w-4" />
             {content.mapListingLabel}
           </a>
         </div>
@@ -195,7 +211,10 @@ const facebookEmbedUrl = content.facebookPageHref
   <section class="content-band mt-6">
     <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
       <div class="info-tile">
-        <p class="eyebrow">{content.facebookEyebrow}</p>
+        <p class="eyebrow inline-flex items-center gap-2">
+          <Icon icon="simple-icons:facebook" class="h-4 w-4 text-clinic-700" />
+          {content.facebookEyebrow}
+        </p>
         <p class="mt-3 text-lg font-semibold text-ink">
           {content.facebookTitle}
         </p>
@@ -211,6 +230,7 @@ const facebookEmbedUrl = content.facebookPageHref
                 target="_blank"
                 rel="noreferrer"
               >
+                <Icon icon="simple-icons:facebook" class="h-4 w-4" />
                 {content.facebookListingLabel}
               </a>
             ) : null
@@ -258,6 +278,7 @@ const facebookEmbedUrl = content.facebookPageHref
                 target="_blank"
                 rel="noreferrer"
               >
+                <Icon icon="simple-icons:facebook" class="mr-2 h-4 w-4" />
                 {content.facebookListingLabel}
               </a>
             ) : null}

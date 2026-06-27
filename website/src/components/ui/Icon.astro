@@ -1,0 +1,49 @@
+---
+import lucide from '@iconify-json/lucide/icons.json';
+import simpleIcons from '@iconify-json/simple-icons/icons.json';
+
+type Props = {
+  icon: string;
+  class?: string;
+  decorative?: boolean;
+  title?: string;
+  size?: string;
+};
+
+const { icon, class: className = '', decorative = true, title, size = '1em' } = Astro.props as Props;
+
+const iconSets = {
+  [lucide.prefix]: lucide,
+  [simpleIcons.prefix]: simpleIcons,
+} as const;
+
+const [prefix, iconName] = icon.includes(':') ? icon.split(':', 2) : [lucide.prefix, icon];
+const iconSet = iconSets[prefix as keyof typeof iconSets];
+
+if (!iconSet) {
+  throw new Error(`Unsupported icon set: ${prefix}`);
+}
+
+const iconData = iconSet.icons[iconName as keyof typeof iconSet.icons];
+
+if (!iconData) {
+  throw new Error(`Unknown icon: ${icon}`);
+}
+
+const hidden = decorative || !title;
+---
+
+<svg
+  class:list={['icon', className]}
+  width={size}
+  height={size}
+  viewBox={`0 0 ${iconSet.width} ${iconSet.height}`}
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden={hidden ? 'true' : undefined}
+  role={hidden ? undefined : 'img'}
+  focusable="false"
+>
+  {!hidden ? <title>{title}</title> : null}
+  <g set:html={iconData.body} />
+</svg>

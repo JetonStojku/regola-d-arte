@@ -65,6 +65,12 @@ svg {
   max-width: 100%;
 }
 
+.icon {
+  display: block;
+  flex: none;
+  vertical-align: middle;
+}
+
 ::selection {
   background: var(--color-clinic-100);
   color: var(--color-ink);
@@ -446,10 +452,9 @@ svg {
     background-color 160ms ease;
 }
 
-.social-links svg {
+.social-links .icon {
   width: 1.05rem;
   height: 1.05rem;
-  fill: currentColor;
 }
 
 .social-links a:hover {

@@ -12,6 +12,8 @@
     "astro": "*"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.114",
+    "@iconify-json/simple-icons": "^1.2.87",
     "@tailwindcss/vite": "*",
     "tailwindcss": "*",
     "typescript": "*"

@@ -1,4 +1,6 @@
 ---
+import Icon from '@/components/ui/Icon.astro';
+
 type Props = {
   src: string;
   title: string;
@@ -48,6 +50,7 @@ const {
           {loadLabel}
         </button>
         <a href={openHref} class="button button--ghost button--sm" target="_blank" rel="noreferrer">
+          <Icon icon="lucide:arrow-up-right" class="h-4 w-4" />
           {openLabel}
         </a>
       </div>

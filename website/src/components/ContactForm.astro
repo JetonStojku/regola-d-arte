@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/ui/Icon.astro';
 import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
 
@@ -58,6 +59,7 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
       <p class="mt-3 text-sm leading-7 text-ink-soft">{content.contactFormSensitiveNote}</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <Button href={mailtoFallbackHref} variant="secondary" size="sm">
+          <Icon icon="lucide:mail" class="h-4 w-4" />
           {content.contactFormFallbackLabel}
         </Button>
       </div>
@@ -138,6 +140,7 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
 
         <div class="flex flex-wrap items-center gap-3 pt-2">
           <button type="submit" class="button button--primary">
+            <Icon icon="lucide:send" class="h-4 w-4" />
             {content.contactFormSubmitLabel}
           </button>
           <a href={mailtoFallbackHref} class="text-link text-sm font-semibold">

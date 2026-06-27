@@ -1,5 +1,6 @@
 ---
 import { contactPageContent } from '@/content/pages';
+import Icon from '@/components/ui/Icon.astro';
 
 type Locale = 'it' | 'en';
 
@@ -13,31 +14,31 @@ const contact = contactPageContent[locale];
 const actions = [
   {
     label: contact.facebookListingLabel,
-    icon: 'facebook',
+    icon: 'simple-icons:facebook',
     href: contact.facebookPageHref,
     external: true,
   },
   {
     label: contact.whatsappLabel,
-    icon: 'whatsapp',
+    icon: 'simple-icons:whatsapp',
     href: contact.whatsappHref,
     external: true,
   },
   {
     label: contact.phoneLabel,
-    icon: 'phone',
+    icon: 'lucide:phone',
     href: contact.phoneHref,
     external: false,
   },
   {
     label: contact.mapListingLabel,
-    icon: 'map',
+    icon: 'simple-icons:googlemaps',
     href: contact.mapListingHref,
     external: true,
   },
   {
     label: contact.instagramLabel,
-    icon: 'instagram',
+    icon: 'simple-icons:instagram',
     href: contact.instagramHref,
     external: true,
   },
@@ -50,13 +51,6 @@ const classMap = {
   inline: 'social-links social-links--inline',
 } as const;
 
-const iconPaths = {
-  facebook: 'M13.5 4H10c-1.38 0-2.5 1.12-2.5 2.5V10H5v4h2.5v6h4v-6h3l.5-4h-3.5V7.5c0-.28.22-.5.5-.5h3V4z',
-  whatsapp: 'M18.5 5.5A8.5 8.5 0 0 0 4 11.5c0 1.47.38 2.9 1.09 4.16L4 20l4.47-1.06A8.48 8.48 0 0 0 19.5 11.5 8.5 8.5 0 0 0 18.5 5.5zm-7 11.5c-2.78 0-5.05-2.26-5.05-5.05 0-2.78 2.27-5.05 5.05-5.05 2.79 0 5.05 2.27 5.05 5.05 0 2.79-2.26 5.05-5.05 5.05z',
-  phone: 'M6.6 2.8A1.8 1.8 0 0 1 8.2 2h2a1.8 1.8 0 0 1 1.77 1.46l.6 3a1.8 1.8 0 0 1-1.02 2.02l-1.45.64a10.9 10.9 0 0 0 4.6 4.6l.64-1.45a1.8 1.8 0 0 1 2.02-1.02l3 .6A1.8 1.8 0 0 1 22 15.75v2a1.8 1.8 0 0 1-1.8 1.8C10.3 19.55 4.45 13.7 4.45 6a1.8 1.8 0 0 1 2.15-1.77z',
-  map: 'M12 2.5 6 4.5v17l6-2 6 2 6-2v-17l-6 2-6-2zm0 2.1 4 1.33v12.96l-4-1.33-4 1.33V5.93l4-1.33z',
-  instagram: 'M12 5.1c-3.8 0-6.9 3.1-6.9 6.9s3.1 6.9 6.9 6.9 6.9-3.1 6.9-6.9-3.1-6.9-6.9-6.9zm0 11.2A4.3 4.3 0 1 1 12 7.7a4.3 4.3 0 0 1 0 8.6zm7-11.7a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0z',
-} as const;
 ---
 
 <nav class={classMap[variant]} aria-label={locale === 'it' ? 'Link social e contatti rapidi' : 'Social and quick contact links'}>
@@ -70,9 +64,7 @@ const iconPaths = {
           target={action.external ? '_blank' : undefined}
           rel={action.external ? 'noreferrer' : undefined}
         >
-          <svg aria-hidden="true" viewBox="0 0 24 24" role="img">
-            <path d={iconPaths[action.icon]} />
-          </svg>
+          <Icon icon={action.icon} class="h-[1.05rem] w-[1.05rem]" />
         </a>
       </li>
     ))}
