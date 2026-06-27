@@ -111,6 +111,13 @@ type ContactPageContent = {
   whatsappHref: string;
   emailLabel: string;
   emailHref: string;
+  legalDetailsTitle: string;
+  vatLabel: string;
+  vatNumber: string;
+  directorLabel: string;
+  directorName: string;
+  registerLabel: string;
+  registerNumber: string;
   hoursLabel: string;
   openingHours: Array<{
     day: string;
@@ -407,6 +414,13 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     whatsappHref: 'https://wa.me/393279747044',
     emailLabel: 'Email',
     emailHref: 'mailto:info@regola-darte.it',
+    legalDetailsTitle: 'Dati legali',
+    vatLabel: 'P.IVA',
+    vatNumber: '07173540480',
+    directorLabel: 'Direttore sanitario',
+    directorName: 'Dr. Genti Dylgjeri',
+    registerLabel: "Iscritto all'Albo degli Odontoiatri di Firenze",
+    registerNumber: '01900',
     hoursLabel: 'Orari di apertura',
     openingHours: [
       { day: 'Lunedì', hours: '9:00 - 20:00' },
@@ -492,6 +506,13 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     whatsappHref: 'https://wa.me/393279747044',
     emailLabel: 'Email',
     emailHref: 'mailto:info@regola-darte.it',
+    legalDetailsTitle: 'Legal details',
+    vatLabel: 'VAT number',
+    vatNumber: '07173540480',
+    directorLabel: 'Medical director',
+    directorName: 'Dr. Genti Dylgjeri',
+    registerLabel: 'Registered with the Florence Dental Register',
+    registerNumber: '01900',
     hoursLabel: 'Opening hours',
     openingHours: [
       { day: 'Monday', hours: '9:00 AM - 8:00 PM' },

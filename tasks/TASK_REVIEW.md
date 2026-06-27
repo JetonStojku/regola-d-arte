@@ -29,3 +29,4 @@
 - [x] 025 - Performance & mobile polish
 - [x] 026 - InterServer deployment notes
 - [x] 027 - Final QA
+- [x] 028 - Legal compliance information

@@ -26,6 +26,7 @@ type CommonLabels = {
   footerNavigation: LocalizedText;
   footerContactTitle: LocalizedText;
   footerContactNote: LocalizedText;
+  footerLegalDetailsTitle: LocalizedText;
   footerLegalTitle: LocalizedText;
   mobileMenu: LocalizedText;
   privacyPolicy: LocalizedText;
@@ -70,6 +71,10 @@ export const commonLabels = {
   footerContactNote: {
     it: 'I dettagli di contatto sono raccolti nella pagina contatti.',
     en: 'Contact details are collected on the contact page.',
+  },
+  footerLegalDetailsTitle: {
+    it: 'Dati legali',
+    en: 'Legal details',
   },
   footerLegalTitle: {
     it: 'Legale',

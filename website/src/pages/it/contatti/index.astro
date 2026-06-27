@@ -105,6 +105,24 @@ const facebookEmbedUrl = content.facebookPageHref
             </div>
           </Card>
 
+          <Card class="p-5">
+            <p class="eyebrow">{content.legalDetailsTitle}</p>
+            <dl class="mt-4 space-y-3 text-sm leading-7 text-ink-soft">
+              <div>
+                <dt class="font-semibold text-ink">{content.vatLabel}</dt>
+                <dd>{content.vatNumber}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-ink">{content.directorLabel}</dt>
+                <dd>{content.directorName}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-ink">{content.registerLabel}</dt>
+                <dd>{content.registerNumber}</dd>
+              </div>
+            </dl>
+          </Card>
+
           <Card tone="muted" class="p-5">
             <p class="eyebrow">{content.hoursLabel}</p>
             <dl class="mt-4 grid gap-2 text-sm leading-6 text-ink-soft">

@@ -262,6 +262,19 @@ const switcherLinkClass = (isCurrent: boolean) => [
             <p id="footer-legal" class="eyebrow">
               {commonLabels.footerLegalTitle[locale]}
             </p>
+            <p class="mt-4 max-w-md text-sm leading-7 text-ink-soft">
+              {commonLabels.footerLegalDetailsTitle[locale]}
+            </p>
+            <ul class="mt-4 space-y-2 text-sm leading-6 text-ink-soft">
+              <li>{brandContent.name[locale]}</li>
+              <li>Via Taranto 237, Lecce, CAP 73100, Italia</li>
+              <li>+39 327 974 7044</li>
+              <li>0832 169 5809</li>
+              <li>info@regola-darte.it</li>
+              <li>P.IVA 07173540480</li>
+              <li>Direttore sanitario: Dr. Genti Dylgjeri</li>
+              <li>Iscritto all'Albo degli Odontoiatri di Firenze: 01900</li>
+            </ul>
             <nav aria-label={commonLabels.footerLegalTitle[locale]} class="mt-4">
               <ul class="space-y-2">
                 {legalNavigation.map((item) => (
