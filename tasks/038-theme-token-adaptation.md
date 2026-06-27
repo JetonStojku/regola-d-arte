@@ -19,6 +19,7 @@ medium
 Inspect first:
 
 * `tasks/037-lumio-theme-audit.md`
+* `tasks\037-lumio-theme-audit-summary.md`
 * `website/src/styles/global.css`
 * `website/tailwind.config.mjs`
 * `theme/lumio-lite-astro-main/src/styles/theme.css`

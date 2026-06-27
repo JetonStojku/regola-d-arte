@@ -6,8 +6,13 @@
   --color-canvas: #f7f3ed;
   --color-canvas-soft: #eef4f0;
   --color-surface: #ffffff;
-  --color-surface-muted: #f6f1e8;
+  --color-surface-muted: #f5f0e6;
+  --color-theme-light: #f4efe6;
+  --color-theme-dark: #1a2420;
+  --color-text-inverse: #fbf8f2;
+  --color-text-inverse-muted: #d8ddd7;
   --color-border: #d8ddd6;
+  --color-border-strong: #c6cec6;
   --color-clinic-50: #eff8f3;
   --color-clinic-100: #d9ece2;
   --color-clinic-200: #b8d8c8;
@@ -18,6 +23,12 @@
   --color-gold-400: #c7a15d;
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-display: ui-serif, Georgia, serif;
+  --spacing-section: 2.5rem;
+  --spacing-section-sm: 2rem;
+  --spacing-section-lg: 4rem;
+  --container-shell: 76rem;
+  --container-wide: 84rem;
+  --container-2xl: 92rem;
   --shadow-clinic: 0 18px 45px -32px rgba(23, 33, 29, 0.48);
   --shadow-clinic-strong: 0 24px 60px -30px rgba(23, 33, 29, 0.5);
   --shadow-clinic-soft: 0 16px 34px -28px rgba(23, 33, 29, 0.38);
@@ -40,10 +51,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink);
   background-color: var(--color-canvas);
-  background-image:
-    radial-gradient(circle at top left, rgba(63, 143, 115, 0.09), transparent 28%),
-    radial-gradient(circle at top right, rgba(199, 161, 93, 0.08), transparent 24%),
-    linear-gradient(180deg, #f8f4ee 0%, #f9f7f2 38%, #f2f7f4 100%);
+  background-image: linear-gradient(180deg, #f7f2eb 0%, #f8f5f0 44%, #f1f6f2 100%);
 }
 
 @media (max-width: 767px) {
@@ -103,7 +111,7 @@ svg {
 .page-shell {
   margin-inline: auto;
   width: 100%;
-  max-width: 72rem;
+  max-width: var(--container-shell);
   padding-inline: 1rem;
 }
 
@@ -120,38 +128,112 @@ svg {
 }
 
 .section-shell {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-block: var(--spacing-section-sm);
 }
 
 @media (min-width: 640px) {
   .section-shell {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-block: var(--spacing-section);
   }
 }
 
 @media (min-width: 1024px) {
   .section-shell {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-block: var(--spacing-section-lg);
   }
 }
 
+.container-shell,
+.container-wide,
+.container-2xl {
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: 1rem;
+}
+
+.container-shell {
+  max-width: var(--container-shell);
+}
+
+.container-wide {
+  max-width: var(--container-wide);
+}
+
+.container-2xl {
+  max-width: var(--container-2xl);
+}
+
+.full-width-band,
+.band--full {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+}
+
+.band,
+.content-band {
+  position: relative;
+  overflow: clip;
+}
+
+.band {
+  padding-block: var(--spacing-section);
+}
+
+.band--light {
+  background: var(--color-theme-light);
+  color: var(--color-ink);
+}
+
+.band--dark {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)),
+    var(--color-theme-dark);
+  color: var(--color-text-inverse);
+}
+
+.band--dark :is(.display-title, .section-title) {
+  color: var(--color-text-inverse);
+}
+
+.band--dark :is(.lead, p, li) {
+  color: var(--color-text-inverse-muted);
+}
+
+.band--image {
+  background:
+    linear-gradient(135deg, rgba(63, 143, 115, 0.08), transparent 42%),
+    linear-gradient(315deg, rgba(199, 161, 93, 0.1), transparent 40%),
+    var(--color-theme-light);
+}
+
+.band--image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.band--image > *,
+.band--dark > * {
+  position: relative;
+  z-index: 1;
+}
+
 .surface {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-clinic-lg);
-  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  background: color-mix(in srgb, var(--color-surface) 94%, var(--color-theme-light) 6%);
   box-shadow: var(--shadow-clinic);
   backdrop-filter: blur(12px);
 }
 
 .content-band {
-  border: 1px solid color-mix(in srgb, var(--color-border) 74%, transparent);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-clinic-lg);
-  background: color-mix(in srgb, var(--color-surface) 86%, var(--color-canvas) 14%);
+  background: color-mix(in srgb, var(--color-theme-light) 88%, var(--color-surface) 12%);
   padding: 1.5rem;
-  box-shadow: var(--shadow-clinic-soft);
+  box-shadow: none;
 }
 
 @media (min-width: 640px) {
@@ -172,7 +254,7 @@ svg {
 
 .visual-frame {
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-clinic);
   background: var(--color-surface);
   box-shadow: var(--shadow-clinic-soft);
@@ -183,7 +265,7 @@ svg {
   min-height: 14rem;
   align-items: end;
   overflow: hidden;
-  border: 1px dashed color-mix(in srgb, var(--color-clinic-500) 48%, var(--color-border));
+  border: 1px dashed color-mix(in srgb, var(--color-clinic-500) 48%, var(--color-border-strong));
   border-radius: var(--radius-clinic);
   background:
     linear-gradient(135deg, rgba(63, 143, 115, 0.12), transparent 38%),
@@ -193,23 +275,97 @@ svg {
 }
 
 .info-tile {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-clinic);
-  background: color-mix(in srgb, white 84%, var(--color-canvas) 16%);
+  background: color-mix(in srgb, white 88%, var(--color-theme-light) 12%);
   padding: 1.25rem;
 }
 
 .card {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-clinic);
   background: var(--color-surface);
   box-shadow: var(--shadow-clinic);
 }
 
 .card-muted {
-  border: 1px solid color-mix(in srgb, var(--color-border) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 82%, transparent);
   border-radius: var(--radius-clinic);
-  background: color-mix(in srgb, var(--color-surface-muted) 72%, white);
+  background: color-mix(in srgb, var(--color-surface-muted) 80%, white);
+}
+
+.text-inverse {
+  color: var(--color-text-inverse);
+}
+
+.text-inverse-muted {
+  color: var(--color-text-inverse-muted);
+}
+
+.hover-restrained {
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.hover-restrained:hover {
+  transform: translateY(-1px);
+}
+
+.feature-tile {
+  display: flex;
+  gap: 0.95rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-clinic);
+  background: color-mix(in srgb, white 86%, var(--color-theme-light) 14%);
+  padding: 1.25rem;
+}
+
+.feature-tile__number {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-clinic-200);
+  background: var(--color-clinic-50);
+  color: var(--color-clinic-900);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.service-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-strong);
+  padding-block: 1rem;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.service-row:first-child {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.service-row:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--color-theme-light) 78%, white);
+}
+
+.service-row__meta {
+  flex: none;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .eyebrow {
@@ -223,7 +379,7 @@ svg {
 
 .display-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: 2.35rem;
   font-weight: 600;
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -232,7 +388,7 @@ svg {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-size: 1.85rem;
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -246,8 +402,26 @@ svg {
 }
 
 @media (min-width: 640px) {
+  .display-title {
+    font-size: 3.4rem;
+  }
+
+  .section-title {
+    font-size: 2.35rem;
+  }
+
   .lead {
     font-size: 1.0625rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .display-title {
+    font-size: 4.5rem;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
   }
 }
 
@@ -265,7 +439,7 @@ svg {
 }
 
 .ds-badge--neutral {
-  border-color: var(--color-border);
+  border-color: var(--color-border-strong);
   background: color-mix(in srgb, var(--color-surface) 88%, var(--color-canvas) 12%);
   color: var(--color-ink-soft);
 }
@@ -316,7 +490,7 @@ svg {
 }
 
 .button--secondary {
-  border-color: var(--color-border);
+  border-color: var(--color-border-strong);
   background: color-mix(in srgb, white 80%, var(--color-canvas) 20%);
   color: var(--color-ink);
 }
@@ -360,7 +534,7 @@ svg {
 }
 
 .chip--quiet {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   background: color-mix(in srgb, white 82%, var(--color-canvas) 18%);
   color: var(--color-ink-soft);
 }
@@ -437,7 +611,7 @@ svg {
   justify-content: center;
   min-width: 2.45rem;
   height: 2.45rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: 9999px;
   background: color-mix(in srgb, white 88%, var(--color-canvas) 12%);
   color: var(--color-clinic-900);
@@ -460,7 +634,7 @@ svg {
 .social-links a:hover {
   transform: translateY(-1px);
   border-color: var(--color-clinic-200);
-  background: var(--color-clinic-50);
+  background: color-mix(in srgb, var(--color-clinic-50) 84%, white);
 }
 
 .social-links--rail {
@@ -483,7 +657,7 @@ svg {
   left: 1rem;
   z-index: 45;
   display: block;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: 9999px;
   background: color-mix(in srgb, var(--color-surface) 92%, transparent);
   padding: 0.45rem;
@@ -536,12 +710,12 @@ svg {
   }
 
   .display-title {
-    font-size: clamp(2.15rem, 13vw, 3.15rem);
+    font-size: 2.15rem;
     letter-spacing: -0.025em;
   }
 
   .section-title {
-    font-size: clamp(1.65rem, 9vw, 2.15rem);
+    font-size: 1.65rem;
     letter-spacing: -0.02em;
   }
 }
