@@ -5,7 +5,7 @@ import Card from "@/components/ui/Card.astro";
 import DeferredEmbed from "@/components/ui/DeferredEmbed.astro";
 import Icon from "@/components/ui/Icon.astro";
 import ContactForm from "@/components/ContactForm.astro";
-import PhotoPlaceholder from "@/components/PhotoPlaceholder.astro";
+import ResponsiveImage from "@/components/ui/ResponsiveImage.astro";
 import { contactPageContent } from "@/content/pages";
 import { pageMetadata } from "@/content/metadata";
 import { buildClinicSchema } from "@/lib/schema";
@@ -81,63 +81,72 @@ const facebookEmbedUrl = content.facebookPageHref
       </div>
 
       <div class="grid gap-4 md:grid-cols-2">
-          <div class="info-tile">
-            <p class="eyebrow inline-flex items-center gap-2">
-              <Icon icon="lucide:map-pin" class="h-4 w-4 text-clinic-700" />
-              {content.addressLabel}
+        <div class="info-tile">
+          <p class="eyebrow inline-flex items-center gap-2">
+            <Icon icon="lucide:map-pin" class="h-4 w-4 text-clinic-700" />
+            {content.addressLabel}
+          </p>
+          <p class="mt-3 text-lg font-semibold text-ink">
+            {content.addressLine}
+          </p>
+          <p class="mt-2 text-sm leading-7 text-ink-soft">
+            {content.cityLine}
+          </p>
+          <div class="mt-5 space-y-3 text-sm leading-7 text-ink-soft">
+            <p>
+              <span
+                class="inline-flex items-center gap-2 font-semibold text-ink"
+              >
+                <Icon icon="lucide:phone" class="h-4 w-4 text-clinic-700" />
+                {content.phoneLabel}:
+              </span>
+              <a href={content.phoneHref} class="ml-2 text-link"
+                >{content.phoneHref.replace("tel:", "")}</a
+              >
             </p>
-            <p class="mt-3 text-lg font-semibold text-ink">
-              {content.addressLine}
+            <p>
+              <span
+                class="inline-flex items-center gap-2 font-semibold text-ink"
+              >
+                <Icon icon="lucide:mail" class="h-4 w-4 text-clinic-700" />
+                {content.emailLabel}:
+              </span>
+              <a href={content.emailHref} class="ml-2 text-link"
+                >{content.emailHref.replace("mailto:", "")}</a
+              >
             </p>
-            <p class="mt-2 text-sm leading-7 text-ink-soft">
-              {content.cityLine}
-            </p>
-            <div class="mt-5 space-y-3 text-sm leading-7 text-ink-soft">
-              <p>
-                <span class="inline-flex items-center gap-2 font-semibold text-ink">
-                  <Icon icon="lucide:phone" class="h-4 w-4 text-clinic-700" />
-                  {content.phoneLabel}:
-                </span>
-                <a href={content.phoneHref} class="ml-2 text-link"
-                  >{content.phoneHref.replace("tel:", "")}</a
-                >
-              </p>
-              <p>
-                <span class="inline-flex items-center gap-2 font-semibold text-ink">
-                  <Icon icon="lucide:mail" class="h-4 w-4 text-clinic-700" />
-                  {content.emailLabel}:
-                </span>
-                <a href={content.emailHref} class="ml-2 text-link"
-                  >{content.emailHref.replace("mailto:", "")}</a
-                >
-              </p>
-            </div>
           </div>
+        </div>
 
-          <div class="info-tile">
-            <p class="eyebrow inline-flex items-center gap-2">
-              <Icon icon="lucide:clock" class="h-4 w-4 text-clinic-700" />
-              {content.hoursLabel}
-            </p>
-            <dl class="mt-4 grid gap-2 text-sm leading-6 text-ink-soft">
-              {
-                content.openingHours.map((entry) => (
-                  <div class="grid gap-1 border-b border-border/60 py-2 last:border-b-0 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4">
-                    <dt class="font-medium text-ink">{entry.day}</dt>
-                    <dd>{entry.hours}</dd>
-                  </div>
-                ))
-              }
-            </dl>
-          </div>
+        <div class="info-tile">
+          <p class="eyebrow inline-flex items-center gap-2">
+            <Icon icon="lucide:clock" class="h-4 w-4 text-clinic-700" />
+            {content.hoursLabel}
+          </p>
+          <dl class="mt-4 grid gap-2 text-sm leading-6 text-ink-soft">
+            {
+              content.openingHours.map((entry) => (
+                <div class="grid gap-1 border-b border-border/60 py-2 last:border-b-0 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-4">
+                  <dt class="font-medium text-ink">{entry.day}</dt>
+                  <dd>{entry.hours}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
 
-          <PhotoPlaceholder
-            eyebrow="Foto esterno"
-            title="Ingresso o riferimento visivo"
-            description="Inserire una foto dell'ingresso o un dettaglio che aiuti a riconoscere lo studio."
-            class="md:col-span-2"
-            aspect="aspect-[16/7]"
+        <Card class="md:col-span-2 overflow-hidden p-0">
+          <ResponsiveImage
+            src="/brand/about-clinic.jpg"
+            alt="Interno luminoso dello studio Regola D'arte"
+            class="h-[16rem] w-full object-cover object-center sm:h-[18rem]"
+            width={1200}
+            height={800}
+            sizes="100vw"
+            widths={[480, 800, 1200]}
+            loading="lazy"
           />
+        </Card>
       </div>
     </div>
   </section>
@@ -290,43 +299,43 @@ const facebookEmbedUrl = content.facebookPageHref
 
   <section class="content-band band--dark mt-6">
     <div class="grid gap-4 lg:grid-cols-3">
-    <div class="info-tile">
-      <p class="eyebrow">{content.legalDetailsTitle}</p>
-      <dl class="mt-4 space-y-3 text-sm leading-7 text-ink-soft">
-        <div>
-          <dt class="font-semibold text-ink">{content.vatLabel}</dt>
-          <dd>{content.vatNumber}</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-ink">{content.directorLabel}</dt>
-          <dd>{content.directorName}</dd>
-        </div>
-        <div>
-          <dt class="font-semibold text-ink">{content.registerLabel}</dt>
-          <dd>{content.registerNumber}</dd>
-        </div>
-      </dl>
-    </div>
+      <div class="info-tile">
+        <p class="eyebrow">{content.legalDetailsTitle}</p>
+        <dl class="mt-4 space-y-3 text-sm leading-7 text-ink-soft">
+          <div>
+            <dt class="font-semibold text-ink">{content.vatLabel}</dt>
+            <dd>{content.vatNumber}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-ink">{content.directorLabel}</dt>
+            <dd>{content.directorName}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-ink">{content.registerLabel}</dt>
+            <dd>{content.registerNumber}</dd>
+          </div>
+        </dl>
+      </div>
 
-    <div id="privacy-policy" class="info-tile scroll-mt-28">
-      <p class="eyebrow">{content.privacyPolicyTitle}</p>
-      <p class="mt-3 text-lg font-semibold text-ink">
-        {content.privacyPolicyTitle}
-      </p>
-      <p class="mt-3 text-sm leading-7 text-ink-soft">
-        {content.privacyPolicyBody}
-      </p>
-    </div>
+      <div id="privacy-policy" class="info-tile scroll-mt-28">
+        <p class="eyebrow">{content.privacyPolicyTitle}</p>
+        <p class="mt-3 text-lg font-semibold text-ink">
+          {content.privacyPolicyTitle}
+        </p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">
+          {content.privacyPolicyBody}
+        </p>
+      </div>
 
-    <div id="cookie-policy" class="info-tile scroll-mt-28">
-      <p class="eyebrow">{content.cookiePolicyTitle}</p>
-      <p class="mt-3 text-lg font-semibold text-ink">
-        {content.cookiePolicyTitle}
-      </p>
-      <p class="mt-3 text-sm leading-7 text-ink-soft">
-        {content.cookiePolicyBody}
-      </p>
-    </div>
+      <div id="cookie-policy" class="info-tile scroll-mt-28">
+        <p class="eyebrow">{content.cookiePolicyTitle}</p>
+        <p class="mt-3 text-lg font-semibold text-ink">
+          {content.cookiePolicyTitle}
+        </p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">
+          {content.cookiePolicyBody}
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>

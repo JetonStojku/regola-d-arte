@@ -1,21 +1,26 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
-import Button from '@/components/ui/Button.astro';
-import Card from '@/components/ui/Card.astro';
-import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
-import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
-import { pageMetadata } from '@/content/metadata';
-import { navigationContent } from '@/content/navigation';
-import { teamSectionContent } from '@/content/pages';
-import { buildClinicSchema } from '@/lib/schema';
-import { sectionRoutes } from '@/lib/siteArchitecture';
-import { getLanguageSwitcherLinks, getSeoAlternateLinks } from '@/lib/siteArchitecture';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FeatureGridSection from "@/components/sections/FeatureGridSection.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import SplitMediaSection from "@/components/sections/SplitMediaSection.astro";
+import ResponsiveImage from "@/components/ui/ResponsiveImage.astro";
+import { pageMetadata } from "@/content/metadata";
+import { navigationContent } from "@/content/navigation";
+import { teamSectionContent } from "@/content/pages";
+import { buildClinicSchema } from "@/lib/schema";
+import { sectionRoutes } from "@/lib/siteArchitecture";
+import {
+  getLanguageSwitcherLinks,
+  getSeoAlternateLinks,
+} from "@/lib/siteArchitecture";
 
-const locale = 'en' as const;
+const locale = "en" as const;
 const metadata = pageMetadata.about.en;
 const teamContent = teamSectionContent.en;
-const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
+const structuredData = [
+  buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+];
 ---
 
 <BaseLayout
@@ -24,7 +29,7 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   locale={locale}
   canonical={sectionRoutes.about.en}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.about, locale)}
-  alternateLinks={getLanguageSwitcherLinks('about', locale)}
+  alternateLinks={getLanguageSwitcherLinks("about", locale)}
   structuredData={structuredData}
 >
   <SplitMediaSection
@@ -34,30 +39,43 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     intro="We believe every smile deserves attention, precision, and beauty. That is why we combine clinical expertise, aesthetics, science, and humanity in a personalized care journey."
     body="Our philosophy is built on treatment precision, material quality, and close attention to biomechanics, occlusion, and function, so the results are functional, harmonious, and durable."
     note="The verified focus stays on five points: precision, function, aesthetics, diagnosis, and confirmed services."
-    primaryCta={{ href: sectionRoutes.servicesOverview.en, label: navigationContent.primary.en[1].label }}
-    secondaryCta={{ href: sectionRoutes.contact.en, label: navigationContent.primary.en[2].label, variant: 'secondary' }}
+    primaryCta={{
+      href: sectionRoutes.servicesOverview.en,
+      label: navigationContent.primary.en[1].label,
+    }}
+    secondaryCta={{
+      href: sectionRoutes.contact.en,
+      label: navigationContent.primary.en[2].label,
+      variant: "secondary",
+    }}
     image={{
-      src: '/brand/about-doctor.jpg',
-      alt: 'Dr. Genti Dylgjeri in a modern dental surgery',
+      src: "/brand/about-doctor.jpg",
+      alt: "Dr. Genti Dylgjeri in a modern dental surgery",
       width: 1280,
       height: 720,
-      sizes: '(min-width: 1024px) 35rem, 100vw',
+      sizes: "(min-width: 1024px) 35rem, 100vw",
       widths: [640, 960, 1280],
-      loading: 'eager',
-      fetchpriority: 'high',
+      loading: "eager",
+      fetchpriority: "high",
     }}
-    supportingPlaceholders={[
+    supportingImages={[
       {
-        eyebrow: 'Diagnosis and function',
-        title: 'Accurate case evaluation',
-        description:
-          "Every treatment starts with a careful reading of occlusion and the patient's clinical needs.",
+        src: "/brand/about-clinic.jpg",
+        alt: "Bright interior of the Regola D'arte clinic",
+        width: 1200,
+        height: 800,
+        sizes: "(min-width: 640px) 20rem, 100vw",
+        widths: [480, 800, 1200],
+        class: "h-44 w-full object-cover object-center",
       },
       {
-        eyebrow: 'Confirmed services',
-        title: 'Clear clinical path',
-        description:
-          'Restorative dentistry, endodontics, oral surgery and implantology, orthodontics, dental aesthetics, and professional hygiene.',
+        src: "/brand/homepage-hero.jpg",
+        alt: "Modern dental surgery with the team at work",
+        width: 1280,
+        height: 720,
+        sizes: "(min-width: 640px) 20rem, 100vw",
+        widths: [640, 960, 1280],
+        class: "h-44 w-full object-cover object-center",
       },
     ]}
   />
@@ -68,22 +86,22 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     intro="The structure of this page summarizes diagnosis, aesthetics, and confirmed services without introducing unverified content."
     items={[
       {
-        eyebrow: 'Precision and function',
-        title: 'Every plan starts from an accurate diagnosis.',
+        eyebrow: "Precision and function",
+        title: "Every plan starts from an accurate diagnosis.",
         description:
           "Treatments are prepared with care and a multidisciplinary mindset, always tailored to the patient's specific needs.",
       },
       {
-        eyebrow: 'Aesthetics and science',
-        title: 'Smile design follows solid clinical criteria.',
+        eyebrow: "Aesthetics and science",
+        title: "Smile design follows solid clinical criteria.",
         description:
-          'Aesthetic care is never detached from function: the goal is a result that feels natural, comfortable, and stable over time.',
+          "Aesthetic care is never detached from function: the goal is a result that feels natural, comfortable, and stable over time.",
       },
       {
-        eyebrow: 'Confirmed services',
-        title: 'From preventive care to more complex treatment plans.',
+        eyebrow: "Confirmed services",
+        title: "From preventive care to more complex treatment plans.",
         description:
-          'The practice covers restorative dentistry and endodontics, oral surgery and implantology, orthodontics, dental aesthetics, and professional oral hygiene.',
+          "The practice covers restorative dentistry and endodontics, oral surgery and implantology, orthodontics, dental aesthetics, and professional oral hygiene.",
       },
     ]}
   />
@@ -94,37 +112,57 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
         <p class="eyebrow">{teamContent.eyebrow}</p>
         <h2 class="section-title mt-4">{teamContent.title}</h2>
         <p class="mt-4 text-sm leading-7 text-ink-soft">{teamContent.intro}</p>
-        <p class="mt-4 rounded-2xl border border-border bg-canvas-soft/70 p-4 text-sm leading-7 text-ink-soft">
+        <p
+          class="mt-4 rounded-2xl border border-border bg-canvas-soft/70 p-4 text-sm leading-7 text-ink-soft"
+        >
           {teamContent.fallbackNote}
         </p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
-        {teamContent.members.map((member) => (
-          <Card class="overflow-hidden p-0">
-            <ResponsiveImage
-              src={member.photoSrc}
-              alt={member.photoAlt}
-              class="h-56 w-full object-cover object-center"
-              width={member.photoSrc === '/brand/about-clinic.jpg' ? 800 : 1280}
-              height={member.photoSrc === '/brand/about-clinic.jpg' ? 533 : 720}
-              sizes="(min-width: 640px) 20rem, 100vw"
-              widths={member.photoSrc === '/brand/about-clinic.jpg' ? [480, 800, 1200] : [640, 960, 1280]}
-              loading="lazy"
-            />
-            <div class="p-5">
-              <p class="text-lg font-semibold text-ink">{member.name ?? member.role}</p>
-              <p class="mt-2 text-xs uppercase tracking-[0.18em] text-ink-soft">{member.role}</p>
-              <p class="mt-3 text-sm leading-7 text-ink-soft">{member.summary}</p>
-            </div>
-          </Card>
-        ))}
+        {
+          teamContent.members.map((member) => (
+            <Card class="overflow-hidden p-0">
+              <ResponsiveImage
+                src={member.photoSrc}
+                alt={member.photoAlt}
+                class="h-56 w-full object-cover object-center"
+                width={
+                  member.photoSrc === "/brand/about-clinic.jpg" ? 800 : 1280
+                }
+                height={
+                  member.photoSrc === "/brand/about-clinic.jpg" ? 533 : 720
+                }
+                sizes="(min-width: 640px) 20rem, 100vw"
+                widths={
+                  member.photoSrc === "/brand/about-clinic.jpg"
+                    ? [480, 800, 1200]
+                    : [640, 960, 1280]
+                }
+                loading="lazy"
+              />
+              <div class="p-5">
+                <p class="text-lg font-semibold text-ink">
+                  {member.name ?? member.role}
+                </p>
+                <p class="mt-2 text-xs uppercase tracking-[0.18em] text-ink-soft">
+                  {member.role}
+                </p>
+                <p class="mt-3 text-sm leading-7 text-ink-soft">
+                  {member.summary}
+                </p>
+              </div>
+            </Card>
+          ))
+        }
       </div>
     </div>
 
     <div class="info-tile mt-6">
       <p class="eyebrow">Missing content</p>
-      <p class="mt-3 text-sm leading-7 text-ink-soft">{teamContent.missingNote}</p>
+      <p class="mt-3 text-sm leading-7 text-ink-soft">
+        {teamContent.missingNote}
+      </p>
     </div>
   </section>
 </BaseLayout>

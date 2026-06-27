@@ -1,7 +1,25 @@
 ---
-import Icon from '@/components/ui/Icon.astro';
-import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
-import type { Locale } from '@/lib/siteArchitecture';
+import Icon from "@/components/ui/Icon.astro";
+import ResponsiveImage from "@/components/ui/ResponsiveImage.astro";
+import type { Locale } from "@/lib/siteArchitecture";
+
+const serviceImageSizing = {
+  "/brand/about-clinic.jpg": {
+    width: 1200,
+    height: 800,
+    widths: [480, 800, 1200],
+  },
+  "/brand/about-doctor.jpg": {
+    width: 1280,
+    height: 720,
+    widths: [640, 960, 1280],
+  },
+  "/brand/homepage-hero.jpg": {
+    width: 1280,
+    height: 720,
+    widths: [640, 960, 1280],
+  },
+} as const;
 
 type ServiceRow = {
   key: string;
@@ -32,73 +50,94 @@ const {
   intro,
   note,
   services,
-  class: className = '',
+  class: className = "",
 } = Astro.props as Props;
+
+const getServiceImageSizing = (src: string) =>
+  serviceImageSizing[src as keyof typeof serviceImageSizing] ??
+  serviceImageSizing["/brand/homepage-hero.jpg"];
 ---
 
-<section class:list={['content-band mt-6', className]}>
+<section class:list={["content-band mt-6", className]}>
   <div class="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
     <div class="section-copy">
       {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
-      <h2 class:list={['section-title', eyebrow && 'mt-4']}>{title}</h2>
-      {intro ? <p class="mt-4 text-sm leading-7 text-ink-soft">{intro}</p> : null}
-      {note ? <p class="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">{note}</p> : null}
+      <h2 class:list={["section-title", eyebrow && "mt-4"]}>{title}</h2>
+      {
+        intro ? (
+          <p class="mt-4 text-sm leading-7 text-ink-soft">{intro}</p>
+        ) : null
+      }
+      {
+        note ? (
+          <p class="mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-ink-soft">
+            {note}
+          </p>
+        ) : null
+      }
     </div>
 
-    <div class="service-list-panel rounded-[var(--radius-clinic-lg)] border border-border-strong bg-white/82 shadow-[var(--shadow-clinic-soft)]">
+    <div
+      class="service-list-panel rounded-[var(--radius-clinic-lg)] border border-border-strong bg-white/82 shadow-[var(--shadow-clinic-soft)]"
+    >
       <ol class="service-list">
-        {services.map((service, index) => {
-          const number = String(index + 1).padStart(2, '0');
-          const titleId = `service-${service.key}-${index}-title`;
-          const summaryId = `service-${service.key}-${index}-summary`;
-          const detailsId = `service-${service.key}-${index}-details`;
-          const describedBy = service.details ? `${summaryId} ${detailsId}` : summaryId;
+        {
+          services.map((service, index) => {
+            const number = String(index + 1).padStart(2, "0");
+            const titleId = `service-${service.key}-${index}-title`;
+            const summaryId = `service-${service.key}-${index}-summary`;
+            const detailsId = `service-${service.key}-${index}-details`;
+            const describedBy = service.details
+              ? `${summaryId} ${detailsId}`
+              : summaryId;
+            const imageSizing = getServiceImageSizing(service.image.src);
 
-          return (
-            <li class="service-list__item">
-              <a
-                href={service.href}
-                class="service-row hover-restrained group no-underline"
-                aria-labelledby={titleId}
-                aria-describedby={describedBy}
-              >
-                <span class="service-row__number" aria-hidden="true">
-                  {number}
-                </span>
+            return (
+              <li class="service-list__item">
+                <a
+                  href={service.href}
+                  class="service-row hover-restrained group no-underline"
+                  aria-labelledby={titleId}
+                  aria-describedby={describedBy}
+                >
+                  <span class="service-row__number" aria-hidden="true">
+                    {number}
+                  </span>
 
-                <div class="service-row__copy">
-                  <h3 id={titleId} class="service-row__title">
-                    {service.label}
-                  </h3>
-                  <p id={summaryId} class="service-row__summary">
-                    {service.summary}
-                  </p>
-                  {service.details ? (
-                    <p id={detailsId} class="service-row__details">
-                      {service.details}
+                  <div class="service-row__copy">
+                    <h3 id={titleId} class="service-row__title">
+                      {service.label}
+                    </h3>
+                    <p id={summaryId} class="service-row__summary">
+                      {service.summary}
                     </p>
-                  ) : null}
-                </div>
+                    {service.details ? (
+                      <p id={detailsId} class="service-row__details">
+                        {service.details}
+                      </p>
+                    ) : null}
+                  </div>
 
-                <div class="service-row__media" aria-hidden="true">
-                  <ResponsiveImage
-                    src={service.image.src}
-                    alt={service.image.alt[locale]}
-                    width={960}
-                    height={720}
-                    sizes="(min-width: 1024px) 10rem, 100vw"
-                    widths={[360, 540, 720, 960]}
-                    class="h-full w-full object-cover object-center"
-                  />
-                </div>
+                  <div class="service-row__media" aria-hidden="true">
+                    <ResponsiveImage
+                      src={service.image.src}
+                      alt={service.image.alt[locale]}
+                      width={imageSizing.width}
+                      height={imageSizing.height}
+                      sizes="(min-width: 1024px) 10rem, 100vw"
+                      widths={Array.from(imageSizing.widths)}
+                      class="h-full w-full object-cover object-center"
+                    />
+                  </div>
 
-                <span class="service-row__arrow" aria-hidden="true">
-                  <Icon icon="lucide:arrow-up-right" class="h-4 w-4" />
-                </span>
-              </a>
-            </li>
-          );
-        })}
+                  <span class="service-row__arrow" aria-hidden="true">
+                    <Icon icon="lucide:arrow-up-right" class="h-4 w-4" />
+                  </span>
+                </a>
+              </li>
+            );
+          })
+        }
       </ol>
     </div>
   </div>
