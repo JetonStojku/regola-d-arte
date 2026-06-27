@@ -132,6 +132,10 @@ type ContactPageContent = {
   facebookListingLabel: string;
   facebookFallbackNote: string;
   facebookMissingNote: string;
+  privacyPolicyTitle: string;
+  privacyPolicyBody: string;
+  cookiePolicyTitle: string;
+  cookiePolicyBody: string;
   missingNote: string;
 };
 
@@ -416,7 +420,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     mapEyebrow: 'Mappa',
     mapTitle: 'Apri la posizione dello studio su Google Maps',
     mapIntro:
-      'L embed usa un iframe gratuito basato sull indirizzo confermato, senza chiavi API o widget a pagamento.',
+      "L'embed usa un iframe gratuito basato sull'indirizzo confermato, senza chiavi API o widget a pagamento.",
     mapIframeTitle: 'Mappa Google Maps dello studio Regola D\'arte a Lecce',
     mapEmbedUrl:
       'https://www.google.com/maps?q=Via%20Taranto%2C%20237%2C%2073100%20Lecce%20LE%2C%20Italy&output=embed',
@@ -433,9 +437,15 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     facebookIframeTitle: 'Pagina Facebook ufficiale di Regola D\'arte',
     facebookListingLabel: 'Apri la pagina Facebook',
     facebookFallbackNote:
-      'L embed Facebook non Ã¨ disponibile al momento. Usa il link della pagina ufficiale per aprirla direttamente.',
+      "L'embed Facebook non è disponibile al momento. Usa il link della pagina ufficiale per aprirla direttamente.",
     facebookMissingNote:
       'Da confermare solo se il profilo Facebook ufficiale venisse rimosso dai materiali o sostituito con un nuovo URL.',
+    privacyPolicyTitle: 'Privacy policy',
+    privacyPolicyBody:
+      'La policy completa non è ancora pubblicata. Il sito raccoglie solo i dati inseriti volontariamente nei moduli di contatto e li usa per rispondere alla richiesta.',
+    cookiePolicyTitle: 'Cookie policy',
+    cookiePolicyBody:
+      'Questo sito statico non usa cookie analitici o di profilazione. Gli embed di terze parti vengono caricati solo su richiesta.',
     missingNote:
       'Da confermare in futuro: eventuali variazioni di orario, policy di emergenza o contatti fuori orario.',
   },
@@ -515,6 +525,12 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
       'The Facebook embed is currently unavailable. Use the official page link to open it directly.',
     facebookMissingNote:
       'Only needed if the official Facebook profile is removed from the materials or replaced with a new URL.',
+    privacyPolicyTitle: 'Privacy policy',
+    privacyPolicyBody:
+      'The full policy is not published yet. The site only collects data entered voluntarily through the contact forms and uses it to answer the request.',
+    cookiePolicyTitle: 'Cookie policy',
+    cookiePolicyBody:
+      'This static site does not use analytics or profiling cookies. Third-party embeds load only on request.',
     missingNote:
       'Still to confirm in the future: any opening-hour changes, emergency policy, or after-hours contact details.',
   },

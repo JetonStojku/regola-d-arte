@@ -28,4 +28,4 @@
 - [x] 024 - Image optimization & accessibility
 - [x] 025 - Performance & mobile polish
 - [x] 026 - InterServer deployment notes
-- [ ] 027 - Final QA
+- [x] 027 - Final QA

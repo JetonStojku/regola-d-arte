@@ -33,12 +33,12 @@ export const navigationContent = {
   },
   legal: {
     it: [
-      { label: commonLabels.privacyPolicy.it, href: '#privacy-policy' },
-      { label: commonLabels.cookiePolicy.it, href: '#cookie-policy' },
+      { label: commonLabels.privacyPolicy.it, href: `${sectionRoutes.contact.it}#privacy-policy` },
+      { label: commonLabels.cookiePolicy.it, href: `${sectionRoutes.contact.it}#cookie-policy` },
     ],
     en: [
-      { label: commonLabels.privacyPolicy.en, href: '#privacy-policy' },
-      { label: commonLabels.cookiePolicy.en, href: '#cookie-policy' },
+      { label: commonLabels.privacyPolicy.en, href: `${sectionRoutes.contact.en}#privacy-policy` },
+      { label: commonLabels.cookiePolicy.en, href: `${sectionRoutes.contact.en}#cookie-policy` },
     ],
   },
   languageSwitcher: {
