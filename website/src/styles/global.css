@@ -446,6 +446,12 @@ svg {
     background-color 160ms ease;
 }
 
+.social-links svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+}
+
 .social-links a:hover {
   transform: translateY(-1px);
   border-color: var(--color-clinic-200);
