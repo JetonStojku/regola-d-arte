@@ -1,11 +1,11 @@
 ---
-import Button from '@/components/ui/Button.astro';
-import Icon from '@/components/ui/Icon.astro';
+import Button from "@/components/ui/Button.astro";
+import Icon from "@/components/ui/Icon.astro";
 
 type CtaLink = {
   label: string;
   href: string;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: "primary" | "secondary" | "ghost";
 };
 
 type Props = {
@@ -25,29 +25,55 @@ const {
   primaryCta,
   secondaryCta,
   note,
-  class: className = '',
+  class: className = "",
 } = Astro.props as Props;
 ---
 
-<section class:list={['band band--dark mt-6 rounded-[var(--radius-clinic-lg)]', className]}>
+<section
+  class:list={[
+    "band band--dark mt-6 rounded-[var(--radius-clinic-lg)]",
+    className,
+  ]}
+>
   <div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-    <div class="section-copy">
+    <div class="section-copy" data-reveal>
       {eyebrow ? <p class="eyebrow text-text-inverse/70">{eyebrow}</p> : null}
-      <h2 class:list={['section-title mt-4', 'text-text-inverse']}>{title}</h2>
-      {intro ? <p class="mt-4 max-w-2xl text-sm leading-7 text-text-inverse-muted">{intro}</p> : null}
-      {note ? <p class="mt-4 max-w-xl text-xs leading-6 text-text-inverse-muted">{note}</p> : null}
+      <h2 class:list={["section-title mt-4", "text-text-inverse"]}>{title}</h2>
+      {
+        intro ? (
+          <p class="mt-4 max-w-2xl text-sm leading-7 text-text-inverse-muted">
+            {intro}
+          </p>
+        ) : null
+      }
+      {
+        note ? (
+          <p class="mt-4 max-w-xl text-xs leading-6 text-text-inverse-muted">
+            {note}
+          </p>
+        ) : null
+      }
     </div>
 
-    <div class="flex flex-wrap gap-3 lg:justify-end">
-      <Button href={primaryCta.href} variant={primaryCta.variant ?? 'primary'}>
+    <div
+      class="flex flex-wrap gap-3 lg:justify-end"
+      data-reveal
+      data-reveal-delay="120"
+    >
+      <Button href={primaryCta.href} variant={primaryCta.variant ?? "primary"}>
         <Icon icon="lucide:arrow-right" class="h-4 w-4" />
         {primaryCta.label}
       </Button>
-      {secondaryCta ? (
-        <Button href={secondaryCta.href} variant={secondaryCta.variant ?? 'secondary'}>
-          {secondaryCta.label}
-        </Button>
-      ) : null}
+      {
+        secondaryCta ? (
+          <Button
+            href={secondaryCta.href}
+            variant={secondaryCta.variant ?? "secondary"}
+          >
+            {secondaryCta.label}
+          </Button>
+        ) : null
+      }
     </div>
   </div>
 </section>

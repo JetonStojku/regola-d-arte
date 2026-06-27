@@ -60,7 +60,7 @@ const getServiceImageSizing = (src: string) =>
 
 <section class:list={["content-band mt-6", className]}>
   <div class="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
-    <div class="section-copy">
+    <div class="section-copy" data-reveal>
       {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
       <h2 class:list={["section-title", eyebrow && "mt-4"]}>{title}</h2>
       {
@@ -93,7 +93,11 @@ const getServiceImageSizing = (src: string) =>
             const imageSizing = getServiceImageSizing(service.image.src);
 
             return (
-              <li class="service-list__item">
+              <li
+                class="service-list__item"
+                data-reveal
+                data-reveal-delay={index * 70}
+              >
                 <a
                   href={service.href}
                   class="service-row hover-restrained group no-underline"

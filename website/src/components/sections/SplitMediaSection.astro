@@ -76,7 +76,7 @@ const Tag = titleTag;
       reverse ? "lg:grid-cols-[1.1fr_0.9fr]" : "lg:grid-cols-[0.92fr_1.08fr]",
     ]}
   >
-    <div class:list={["section-copy", reverse && "lg:order-2"]}>
+    <div class:list={["section-copy", reverse && "lg:order-2"]} data-reveal>
       {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
       <Tag class:list={[titleClass, eyebrow && "mt-4"]}>{title}</Tag>
       <p class="mt-4 max-w-2xl text-sm leading-7 text-ink-soft">{intro}</p>
@@ -119,6 +119,8 @@ const Tag = titleTag;
         "grid gap-4 sm:grid-cols-[1.1fr_0.9fr]",
         reverse && "lg:order-1",
       ]}
+      data-reveal
+      data-reveal-delay="120"
     >
       <div class="visual-frame sm:col-span-2">
         <ResponsiveImage

@@ -76,7 +76,7 @@ const mobileLinkClass = (isActive: boolean) => [
     : "border-border bg-white text-ink-soft hover:border-clinic-200 hover:text-ink",
 ];
 const navBadgeClass =
-  "inline-flex items-center rounded-full bg-[#2f64ff] px-2 py-1 text-[0.64rem] font-bold leading-none text-white";
+  "inline-flex items-center rounded-full bg-clinic-700 px-2 py-1 text-[0.64rem] font-bold leading-none text-white";
 const desktopLanguageSummaryClass =
   "inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border bg-white/90 px-4 py-3 text-sm font-semibold leading-none text-ink transition hover:border-clinic-200 hover:text-ink";
 const localeDropdownPanelClass =
@@ -192,12 +192,12 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                 <summary class={desktopLanguageSummaryClass}>
                   <Icon
                     icon="lucide:languages"
-                    class="h-4 w-4 text-[#2f64ff]"
+                    class="h-4 w-4 text-clinic-700"
                   />
                   <span>{localeCode}</span>
                   <Icon
                     icon="lucide:chevron-down"
-                    class="h-4 w-4 text-[#2f64ff]"
+                    class="h-4 w-4 text-clinic-700"
                   />
                 </summary>
 
@@ -218,7 +218,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                               ]}
                             >
                               <span>{link.label}</span>
-                              <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
+                              <span class="text-xs font-bold tracking-[0.18em] text-clinic-700">
                                 {link.code}
                               </span>
                             </a>
@@ -233,7 +233,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
               <Button
                 href={sectionRoutes.contact[locale]}
                 size="sm"
-                class="rounded-xl !border-[#2f64ff] !bg-[#2f64ff] !px-5 !py-3 !text-sm !shadow-[0_16px_32px_-22px_rgba(47,100,255,0.72)] hover:!bg-[#2458eb]"
+                class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-5 !py-3 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
               >
                 {ctaCopy.primary[locale]}
               </Button>
@@ -244,7 +244,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
             <Button
               href={sectionRoutes.contact[locale]}
               size="sm"
-              class="rounded-xl !border-[#2f64ff] !bg-[#2f64ff] !px-4 !py-3 !text-sm !shadow-[0_16px_32px_-22px_rgba(47,100,255,0.72)] hover:!bg-[#2458eb]"
+              class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-4 !py-3 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
             >
               {mobileCtaLabel}
             </Button>
@@ -297,12 +297,12 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                         <span class="flex items-center gap-2">
                           <Icon
                             icon="lucide:languages"
-                            class="h-4 w-4 text-[#2f64ff]"
+                            class="h-4 w-4 text-clinic-700"
                           />
                           <span>{commonLabels.languageSwitcher[locale]}</span>
                         </span>
                         <span
-                          class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]"
+                          class="text-xs font-bold tracking-[0.18em] text-clinic-700"
                         >
                           {localeCode}
                         </span>
@@ -328,7 +328,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                                   ]}
                                 >
                                   <span>{link.label}</span>
-                                  <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
+                                  <span class="text-xs font-bold tracking-[0.18em] text-clinic-700">
                                     {link.code}
                                   </span>
                                 </a>
@@ -517,6 +517,64 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
     </footer>
 
     <script is:inline type="module">
+      const initializeSectionReveals = () => {
+        const revealItems = Array.from(
+          document.querySelectorAll("[data-reveal]"),
+        );
+
+        if (revealItems.length === 0) {
+          return;
+        }
+
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        document.documentElement.classList.add("reveal-ready");
+
+        const reveal = (item) => {
+          item.classList.add("is-revealed");
+        };
+
+        revealItems.forEach((item) => {
+          const delay = item.getAttribute("data-reveal-delay");
+          const duration = item.getAttribute("data-reveal-duration");
+
+          if (delay) {
+            item.style.setProperty("--reveal-delay", `${delay}ms`);
+          }
+
+          if (duration) {
+            item.style.setProperty("--reveal-duration", `${duration}ms`);
+          }
+        });
+
+        if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+          revealItems.forEach(reveal);
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              reveal(entry.target);
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px 0px -8% 0px",
+          },
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      };
+
       const initializeDeferredEmbeds = () => {
         const embeds = Array.from(
           document.querySelectorAll("[data-deferred-embed]"),
@@ -593,10 +651,16 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
       if (document.readyState === "loading") {
         document.addEventListener(
           "DOMContentLoaded",
+          initializeSectionReveals,
+          { once: true },
+        );
+        document.addEventListener(
+          "DOMContentLoaded",
           initializeDeferredEmbeds,
           { once: true },
         );
       } else {
+        initializeSectionReveals();
         initializeDeferredEmbeds();
       }
     </script>
