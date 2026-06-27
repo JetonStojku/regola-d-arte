@@ -21,11 +21,11 @@
 - [x] 017 - Team section
 - [x] 018 - Reviews & testimonials
 - [x] 019 - Location & Google Maps
-- [ ] 020 - Facebook embed
-- [ ] 021 - Contact page & form
+- [x] 020 - Facebook embed
+- [x] 021 - Contact page & form
 - [x] 022 - Local business schema
-- [ ] 023 - Sitemap, robots.txt, and 404
-- [ ] 024 - Image optimization & accessibility
-- [ ] 025 - Performance & mobile polish
-- [ ] 026 - InterServer deployment notes
+- [x] 023 - Sitemap, robots.txt, and 404
+- [x] 024 - Image optimization & accessibility
+- [x] 025 - Performance & mobile polish
+- [x] 026 - InterServer deployment notes
 - [ ] 027 - Final QA
