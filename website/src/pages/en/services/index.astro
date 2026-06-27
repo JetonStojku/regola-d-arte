@@ -1,19 +1,24 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import BeforeAfterSection from '@/components/BeforeAfterSection.astro';
-import ContactCtaBand from '@/components/sections/ContactCtaBand.astro';
-import HeroImageSection from '@/components/sections/HeroImageSection.astro';
-import ServiceRowListSection from '@/components/sections/ServiceRowListSection.astro';
-import { getLocalizedServices } from '@/content/services';
-import { pageMetadata } from '@/content/metadata';
-import { buildClinicSchema } from '@/lib/schema';
-import { sectionRoutes } from '@/lib/siteArchitecture';
-import { getLanguageSwitcherLinks, getSeoAlternateLinks } from '@/lib/siteArchitecture';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BeforeAfterSection from "@/components/BeforeAfterSection.astro";
+import ContactCtaBand from "@/components/sections/ContactCtaBand.astro";
+import HeroImageSection from "@/components/sections/HeroImageSection.astro";
+import ServiceRowListSection from "@/components/sections/ServiceRowListSection.astro";
+import { getLocalizedServices } from "@/content/services";
+import { pageMetadata } from "@/content/metadata";
+import { buildClinicSchema } from "@/lib/schema";
+import { sectionRoutes } from "@/lib/siteArchitecture";
+import {
+  getLanguageSwitcherLinks,
+  getSeoAlternateLinks,
+} from "@/lib/siteArchitecture";
 
-const locale = 'en' as const;
+const locale = "en" as const;
 const metadata = pageMetadata.servicesOverview.en;
 const services = getLocalizedServices(locale);
-const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
+const structuredData = [
+  buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+];
 ---
 
 <BaseLayout
@@ -22,25 +27,29 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   locale={locale}
   canonical={sectionRoutes.servicesOverview.en}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.servicesOverview, locale)}
-  alternateLinks={getLanguageSwitcherLinks('servicesOverview', locale)}
+  alternateLinks={getLanguageSwitcherLinks("servicesOverview", locale)}
   structuredData={structuredData}
 >
   <HeroImageSection
+    titleTag="h1"
     eyebrow="Services"
     title="From diagnosis to the most suitable treatment."
     intro="The confirmed treatments are presented as an essential list, with clear summaries and links to the local detail pages."
     note="One main heading and content linked directly from the catalog data."
-    primaryCta={{ label: 'Book a consultation', href: sectionRoutes.contact.en }}
+    primaryCta={{
+      label: "Book a consultation",
+      href: sectionRoutes.contact.en,
+    }}
     image={{
-      src: '/brand/homepage-hero.jpg',
-      alt: 'Modern dental clinic with a structured treatment pathway',
+      src: "/brand/homepage-hero.jpg",
+      alt: "Modern dental clinic with a structured treatment pathway",
       width: 1280,
       height: 720,
-      sizes: '(min-width: 1024px) 35rem, 100vw',
+      sizes: "(min-width: 1024px) 35rem, 100vw",
       widths: [640, 960, 1280],
-      loading: 'eager',
-      fetchpriority: 'high',
-      class: 'h-[22rem] w-full object-cover object-center',
+      loading: "eager",
+      fetchpriority: "high",
+      class: "h-[22rem] w-full object-cover object-center",
     }}
   />
 
@@ -48,7 +57,7 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     eyebrow="Service overview"
     title="Confirmed services linked to the local pages."
     intro="Each row shows the title, summary, details, and a reference image, all sourced from content data."
-    note={`${String(services.length).padStart(2, '0')} confirmed services`}
+    note={`${String(services.length).padStart(2, "0")} confirmed services`}
     locale={locale}
     services={services}
   />
@@ -58,8 +67,15 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     title="Need help choosing where to start?"
     intro="We can point you toward the most suitable service and explain the first steps in the treatment journey."
     note="Contact us for an initial assessment or more details."
-    primaryCta={{ label: 'Book a consultation', href: sectionRoutes.contact.en }}
-    secondaryCta={{ label: 'Request information', href: sectionRoutes.contact.en, variant: 'secondary' }}
+    primaryCta={{
+      label: "Book a consultation",
+      href: sectionRoutes.contact.en,
+    }}
+    secondaryCta={{
+      label: "Request information",
+      href: sectionRoutes.contact.en,
+      variant: "secondary",
+    }}
   />
 
   <BeforeAfterSection locale={locale} />
