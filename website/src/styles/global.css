@@ -238,6 +238,80 @@ svg {
   box-shadow: none;
 }
 
+.content-band.band--dark {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, rgba(47, 100, 255, 0.12), transparent 42%),
+    linear-gradient(315deg, rgba(199, 161, 93, 0.08), transparent 38%),
+    var(--color-theme-dark);
+  color: var(--color-text-inverse);
+}
+
+.content-band.band--dark :is(.display-title, .section-title) {
+  color: var(--color-text-inverse);
+}
+
+.content-band.band--dark .eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.content-band.band--dark :is(.display-title, .section-title, .text-ink, .text-link) {
+  color: var(--color-text-inverse);
+}
+
+.content-band.band--dark :is(.lead, .text-ink-soft) {
+  color: var(--color-text-inverse-muted);
+}
+
+.content-band.band--dark :is(.info-tile, .card, .card-muted, .photo-placeholder) {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 22px 50px -36px rgba(0, 0, 0, 0.85);
+}
+
+.content-band.band--dark .button--secondary {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-inverse);
+}
+
+.content-band.band--dark .button--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.content-band.band--dark .button--ghost {
+  color: var(--color-text-inverse);
+}
+
+.content-band.band--dark .button--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.content-band.band--dark .contact-form-control {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-inverse);
+}
+
+.content-band.band--dark .contact-form-control::placeholder {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.content-band.band--dark .contact-form-control:focus {
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.content-band.band--dark .contact-embed {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 22px 50px -36px rgba(0, 0, 0, 0.85);
+}
+
 @media (min-width: 640px) {
   .content-band {
     padding: 2rem;

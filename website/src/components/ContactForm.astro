@@ -47,7 +47,7 @@ const formAction = contactFormEndpoint ?? mailtoFallbackHref;
 const usesStaticEndpoint = Boolean(contactFormEndpoint);
 ---
 
-<section class="content-band mt-6">
+<section class="content-band band--dark mt-6">
   <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
     <div class="info-tile">
       <p class="eyebrow">{content.contactFormEyebrow}</p>
@@ -82,6 +82,7 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
               {content.contactFormNameLabel} <span aria-hidden="true">*</span>
             </span>
             <input
+              class="contact-form-control w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
               name="name"
               type="text"
               autocomplete="name"
@@ -89,7 +90,6 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
               minlength="2"
               maxlength="80"
               placeholder={content.contactFormNamePlaceholder}
-              class="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
             />
           </label>
 
@@ -98,13 +98,13 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
               {content.contactFormEmailLabel} <span aria-hidden="true">*</span>
             </span>
             <input
+              class="contact-form-control w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
               name="email"
               type="email"
               autocomplete="email"
               required
               maxlength="120"
               placeholder={content.contactFormEmailPlaceholder}
-              class="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
             />
           </label>
         </div>
@@ -112,6 +112,7 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
         <label class="grid gap-2">
           <span class="text-sm font-semibold text-ink">{content.contactFormPhoneLabel}</span>
           <input
+            class="contact-form-control w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
             name="phone"
             type="tel"
             autocomplete="tel"
@@ -119,7 +120,6 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
             maxlength="32"
             pattern="[0-9+() ./-]{7,}"
             placeholder={content.contactFormPhonePlaceholder}
-            class="w-full rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
           />
         </label>
 
@@ -128,13 +128,13 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
             {content.contactFormMessageLabel} <span aria-hidden="true">*</span>
           </span>
           <textarea
+            class="contact-form-control w-full resize-y rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
             name="message"
             required
             minlength="20"
             maxlength="1200"
             rows="7"
             placeholder={content.contactFormMessagePlaceholder}
-            class="w-full resize-y rounded-2xl border border-border bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/60 focus:border-clinic-200 focus:ring-4 focus:ring-clinic-100/50"
           />
         </label>
 
