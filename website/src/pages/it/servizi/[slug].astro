@@ -1,9 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/ui/Button.astro';
-import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
-import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
-import { getLocalizedServiceContent, getServiceEntry, getServiceKeyByLocalizedSlug, serviceCatalog } from '@/content/services';
+import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
+import {
+  getLocalizedServiceContent,
+  getServiceEntry,
+  getServiceKeyByLocalizedSlug,
+  serviceCatalog,
+} from '@/content/services';
 import { serviceMetadata } from '@/content/metadata';
 import { buildClinicSchema, buildServiceSchema } from '@/lib/schema';
 import { getOtherLocale, getSeoAlternateLinks, sectionRoutes } from '@/lib/siteArchitecture';
@@ -31,6 +35,24 @@ const structuredData = [
   buildClinicSchema(locale, metadata.description, { site: Astro.site }),
   buildServiceSchema(serviceKey, locale, metadata.description, { site: Astro.site }),
 ];
+const sectionHighlights = content.sections.map((section, index) => ({
+  number: String(index + 1).padStart(2, '0'),
+  eyebrow: section.eyebrow.it,
+  title: section.title.it,
+  body: section.body.it,
+  bullets: section.bullets?.it ?? [],
+}));
+const relatedServices = content.relatedServices.map((relatedServiceKey) => {
+  const relatedService = getServiceEntry(relatedServiceKey);
+  const relatedContent = getLocalizedServiceContent(relatedServiceKey, locale);
+
+  return {
+    label: relatedService.labels.it,
+    href: relatedService.paths.it,
+    summary: relatedContent.summary,
+    details: relatedContent.details,
+  };
+});
 
 export function getStaticPaths() {
   return Object.entries(serviceCatalog).map(([, service]) => ({
@@ -48,76 +70,166 @@ export function getStaticPaths() {
   alternateLinks={[{ locale: getOtherLocale(locale), href: service.paths.en, label: 'English', isCurrent: false }]}
   structuredData={structuredData}
 >
-  <SplitMediaSection
-    eyebrow="Servizio"
-    title={service.labels.it}
-    intro={content.summary}
-    body={content.details}
-    primaryCta={{ label: content.ctas.primary, href: sectionRoutes.contact.it }}
-    secondaryCta={{ label: 'Torna ai servizi', href: sectionRoutes.servicesOverview.it, variant: 'secondary' }}
-    image={{
-      src: service.images.hero.src,
-      alt: service.images.hero.alt.it,
-      class: 'h-[22rem] w-full object-cover object-center',
-      width: heroImageWidth,
-      height: heroImageHeight,
-      sizes: '(min-width: 1024px) 35rem, 100vw',
-      widths: heroImageWidths,
-      loading: 'eager',
-      fetchpriority: 'high',
-    }}
-    supportingPlaceholders={[
-      {
-        eyebrow: 'Dettaglio servizio',
-        title: 'Immagine clinica dedicata',
-        description: 'Inserire una foto approvata specifica per questo trattamento.',
-      },
-      {
-        eyebrow: 'Percorso paziente',
-        title: 'Fase del trattamento',
-        description: 'Inserire una seconda immagine o dettaglio per bilanciare la pagina.',
-      },
-    ]}
-    titleTag="h1"
-    titleClass="display-title"
-  />
-
-  <FeatureGridSection
-    eyebrow="Contenuti chiave"
-    title="I punti principali del trattamento."
-    intro="La griglia riassume i blocchi informativi già presenti nel contenuto locale, mantenendo il ritmo visivo della pagina."
-    items={content.sections.map((section) => ({
-      eyebrow: section.eyebrow.it,
-      title: section.title.it,
-      description: section.body.it,
-      note: section.bullets?.it ? section.bullets.it.join(' • ') : undefined,
-    }))}
-    columns={2}
-  />
-
   <section class="content-band mt-6">
-    <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-      <div class="info-tile">
-        <p class="eyebrow">Domande frequenti</p>
-        <div class="mt-4 space-y-4">
-          {content.faqs.map((faq) => (
-            <div>
-              <p class="font-semibold text-ink">{faq.question.it}</p>
-              <p class="mt-2 text-sm leading-7 text-ink-soft">{faq.answer.it}</p>
-            </div>
-          ))}
+    <div class="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+      <div class="section-copy">
+        <p class="eyebrow">Servizio</p>
+        <h1 class="display-title mt-4 max-w-2xl">{service.labels.it}</h1>
+        <p class="mt-5 max-w-2xl text-base leading-8 text-ink-soft">{content.summary}</p>
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-ink-soft">{content.details}</p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <Button href={sectionRoutes.contact.it}>{content.ctas.primary}</Button>
+          <Button href={sectionRoutes.servicesOverview.it} variant="secondary">
+            {content.ctas.secondary}
+          </Button>
+        </div>
+
+        <div class="mt-8 grid gap-3 sm:grid-cols-3">
+          <div class="info-tile">
+            <p class="text-xs uppercase tracking-[0.24em] text-ink-soft">Sezioni</p>
+            <p class="mt-2 text-2xl font-semibold text-ink">{String(content.sections.length).padStart(2, '0')}</p>
+            <p class="mt-2 text-sm leading-6 text-ink-soft">Blocchi informativi</p>
+          </div>
+          <div class="info-tile">
+            <p class="text-xs uppercase tracking-[0.24em] text-ink-soft">FAQ</p>
+            <p class="mt-2 text-2xl font-semibold text-ink">{String(content.faqs.length).padStart(2, '0')}</p>
+            <p class="mt-2 text-sm leading-6 text-ink-soft">Domande frequenti</p>
+          </div>
+          <div class="info-tile">
+            <p class="text-xs uppercase tracking-[0.24em] text-ink-soft">Link</p>
+            <p class="mt-2 text-2xl font-semibold text-ink">{String(content.relatedServices.length).padStart(2, '0')}</p>
+            <p class="mt-2 text-sm leading-6 text-ink-soft">Servizi collegati</p>
+          </div>
         </div>
       </div>
-      <div class="info-tile">
-        <p class="eyebrow">{content.ctas.related}</p>
-        <p class="mt-3 text-lg font-semibold text-ink">Scopri anche i servizi collegati.</p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          {content.relatedServices.map((relatedServiceKey) => (
-            <Button href={getServiceEntry(relatedServiceKey).paths.it} variant="secondary">
-              {getServiceEntry(relatedServiceKey).labels.it}
-            </Button>
-          ))}
+
+      <div class="grid gap-4">
+        <div class="visual-frame">
+          <ResponsiveImage
+            src={service.images.hero.src}
+            alt={service.images.hero.alt.it}
+            class="h-[22rem] w-full object-cover object-center"
+            width={heroImageWidth}
+            height={heroImageHeight}
+            sizes="(min-width: 1024px) 35rem, 100vw"
+            widths={heroImageWidths}
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
+
+        <div class="info-tile">
+          <p class="eyebrow">Cosa trovi in questa pagina</p>
+          <p class="mt-3 text-sm leading-7 text-ink-soft">
+            Le sezioni riprendono il contenuto locale già presente e guidano la lettura senza introdurre nuove
+            affermazioni.
+          </p>
+          <ol class="mt-4 space-y-4">
+            {sectionHighlights.map((section) => (
+              <li class="flex gap-3">
+                <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full border border-border-strong bg-white text-sm font-semibold text-ink">
+                  {section.number}
+                </span>
+                <div class="min-w-0">
+                  <p class="font-semibold text-ink">{section.eyebrow}</p>
+                  <p class="mt-1 text-sm leading-6 text-ink-soft">{section.title}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-band mt-6">
+    <div class="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
+      <div class="section-copy">
+        <p class="eyebrow">Contenuti chiave</p>
+        <h2 class="section-title mt-4">Blocchi informativi principali.</h2>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          Ogni scheda usa i dati già presenti nel catalogo per mantenere la pagina chiara, stabile e leggibile su
+          desktop e mobile.
+        </p>
+      </div>
+
+      <div class="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        {sectionHighlights.map((section) => (
+          <article class="feature-tile h-full flex-col">
+            <div class="flex items-start gap-3">
+              <div class="feature-tile__number">{section.number}</div>
+              <div class="min-w-0">
+                <p class="eyebrow">{section.eyebrow}</p>
+                <h3 class="text-lg font-semibold text-ink">{section.title}</h3>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm leading-7 text-ink-soft">{section.body}</p>
+
+            {section.bullets.length > 0 ? (
+              <ul class="mt-4 space-y-2">
+                {section.bullets.map((bullet) => (
+                  <li class="flex gap-2 text-sm leading-6 text-ink-soft">
+                    <span aria-hidden="true" class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clinic-500" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="content-band mt-6">
+    <div class="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
+      <div class="section-copy">
+        <p class="eyebrow">Domande frequenti</p>
+        <h2 class="section-title mt-4">Risposte essenziali per orientarsi.</h2>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          Le Q&A statiche restano accessibili senza JavaScript e usano solo i contenuti del servizio.
+        </p>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        {content.faqs.map((faq) => (
+          <details class="info-tile group">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink">
+              <span>{faq.question.it}</span>
+              <span aria-hidden="true" class="text-lg leading-none text-ink-soft transition-transform group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <p class="mt-4 text-sm leading-7 text-ink-soft">{faq.answer.it}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="content-band mt-6">
+    <div class="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
+      <div class="section-copy">
+        <p class="eyebrow">{content.ctas.related}</p>
+        <h2 class="section-title mt-4">Percorsi collegati da valutare insieme.</h2>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          I link usano i servizi già presenti nel catalogo locale e portano alle rispettive pagine dedicate.
+        </p>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        {relatedServices.map((relatedService) => (
+          <a href={relatedService.href} class="card hover-restrained block p-5">
+            <p class="eyebrow">{relatedService.label}</p>
+            <p class="mt-3 text-lg font-semibold text-ink">{relatedService.summary}</p>
+            <p class="mt-3 text-sm leading-7 text-ink-soft">{relatedService.details}</p>
+            <p class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-clinic-700">
+              Apri il servizio <span aria-hidden="true">→</span>
+            </p>
+          </a>
+        ))}
       </div>
     </div>
   </section>

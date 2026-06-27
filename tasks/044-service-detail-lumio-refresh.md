@@ -57,8 +57,8 @@ Inspect first:
 
 * Run `npm run build` in `website/`.
 * Check at least:
-   * `/it/servizi/odontoiatria-conservativa-endodonzia/`
-   * `/en/services/conservative-dentistry-endodontics/`
+  * `/it/servizi/odontoiatria-conservativa-endodonzia/`
+  * `/en/services/conservative-dentistry-endodontics/`
 * Check one more service in each locale if time allows.
 * Confirm one H1 per page.
 * Confirm related service links work.
