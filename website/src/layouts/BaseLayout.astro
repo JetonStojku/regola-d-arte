@@ -59,13 +59,34 @@ const desktopLinkClass = (href: string) => [
   linkBaseClass,
   isActivePath(href)
     ? 'border-clinic-200 bg-clinic-50 text-clinic-900 shadow-[0_12px_24px_-20px_rgba(43,111,89,0.55)]'
-    : 'border-transparent bg-transparent text-ink-soft hover:border-border hover:bg-surface',
+    : 'border-border bg-white/65 text-ink-soft hover:border-clinic-200 hover:bg-white hover:text-ink',
 ];
 const switcherLinkClass = (isCurrent: boolean) => [
   linkBaseClass,
   isCurrent
     ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
-    : 'border-border bg-white/80 text-ink-soft hover:border-clinic-200 hover:text-ink',
+    : 'border-border bg-white/80 text-ink-soft hover:border-clinic-200 hover:bg-white hover:text-ink',
+];
+const mobileLinkClass = (isActive: boolean) => [
+  'flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition',
+  isActive
+    ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
+    : 'border-border bg-white text-ink-soft hover:border-clinic-200 hover:text-ink',
+];
+const footerLinkClass = (isActive: boolean) => [
+  'flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition',
+  isActive
+    ? 'border-white/20 bg-white/10 text-text-inverse'
+    : 'border-white/10 bg-white/[0.04] text-text-inverse-muted hover:border-white/20 hover:bg-white/10 hover:text-text-inverse',
+];
+const footerLegalLinkClass = [
+  'inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-text-inverse-muted transition hover:border-white/20 hover:bg-white/10 hover:text-text-inverse',
+];
+const footerSwitcherLinkClass = (isCurrent: boolean) => [
+  linkBaseClass,
+  isCurrent
+    ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
+    : 'border-white/10 bg-white/[0.04] text-text-inverse-muted hover:border-white/20 hover:bg-white/10 hover:text-text-inverse',
 ];
 ---
 
@@ -108,16 +129,16 @@ const switcherLinkClass = (isCurrent: boolean) => [
     </a>
 
     <header class="sticky top-0 z-40 border-b border-border/70 bg-canvas/92 backdrop-blur">
-      <div class="page-shell py-3 sm:py-4">
-        <div class="flex items-center justify-between gap-3">
+      <div class="page-shell py-3 sm:py-4 lg:py-5">
+        <div class="flex items-center justify-between gap-3 lg:gap-6">
           <BrandLockup
             href={sectionRoutes.home[locale]}
             label={brandContent.name[locale]}
             tagline={brandContent.tagline[locale]}
-            class="max-w-[15rem] sm:max-w-[18rem]"
+            class="max-w-[12.5rem] sm:max-w-[16rem] lg:max-w-[18rem]"
           />
 
-          <div class="hidden flex-1 items-center justify-end gap-4 lg:flex">
+          <div class="hidden flex-1 items-center justify-end gap-5 lg:flex">
             <nav aria-label={commonLabels.primaryNavigation[locale]}>
               <ul class="flex items-center gap-2">
                 {primaryNavigation.map((item) => (
@@ -135,26 +156,31 @@ const switcherLinkClass = (isCurrent: boolean) => [
             </nav>
 
             {alternateLinks.length > 0 && (
-              <nav aria-label={commonLabels.languageSwitcher[locale]} class="border-l border-border pl-4">
-                <ul class="flex items-center gap-2">
-                  {alternateLinks.map((link) => (
-                    <li>
-                      <a
-                        href={link.href}
-                        aria-current={link.isCurrent ? 'page' : undefined}
-                        class:list={switcherLinkClass(link.isCurrent)}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <div class="flex flex-col items-start gap-2 border-l border-border pl-5">
+                <p class="eyebrow">{commonLabels.languageSwitcher[locale]}</p>
+                <nav aria-label={commonLabels.languageSwitcher[locale]}>
+                  <ul class="flex items-center gap-2">
+                    {alternateLinks.map((link) => (
+                      <li>
+                        <a
+                          href={link.href}
+                          aria-current={link.isCurrent ? 'page' : undefined}
+                          class:list={switcherLinkClass(link.isCurrent)}
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
             )}
 
-            <Button href={sectionRoutes.contact[locale]} size="sm">
-              {ctaCopy.primary[locale]}
-            </Button>
+            <div class="border-l border-border pl-5">
+              <Button href={sectionRoutes.contact[locale]} size="sm">
+                {ctaCopy.primary[locale]}
+              </Button>
+            </div>
           </div>
 
           <div class="flex items-center gap-2 lg:hidden">
@@ -180,12 +206,7 @@ const switcherLinkClass = (isCurrent: boolean) => [
                           <a
                             href={item.href}
                             aria-current={isActivePath(item.href) ? 'page' : undefined}
-                            class:list={[
-                              'flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition',
-                              isActivePath(item.href)
-                                ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
-                                : 'border-border bg-white text-ink-soft hover:border-clinic-200 hover:text-ink',
-                            ]}
+                            class:list={mobileLinkClass(isActivePath(item.href))}
                           >
                             <span>{item.label}</span>
                             <Icon icon="lucide:arrow-right" class="h-4 w-4 shrink-0 text-clinic-500" />
@@ -234,105 +255,116 @@ const switcherLinkClass = (isCurrent: boolean) => [
       <slot />
     </main>
 
-    <footer class="border-t border-border/70 bg-canvas/75">
-      <div class="page-shell py-10 sm:py-12">
-        <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr_1fr]">
-          <section aria-labelledby="footer-navigation">
-            <p id="footer-navigation" class="eyebrow">
-              {commonLabels.footerNavigation[locale]}
-            </p>
-            <nav aria-label={commonLabels.footerNavigation[locale]} class="mt-4">
-              <ul class="grid gap-2 sm:grid-cols-2">
-                {footerNavigation.map((item) => (
-                  <li>
-                    <a
-                      href={item.href}
-                      aria-current={isActivePath(item.href) ? 'page' : undefined}
-                      class:list={desktopLinkClass(item.href)}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+    <footer class="site-footer border-t border-border/70 bg-canvas/75">
+      <div class="page-shell py-10 sm:py-12 lg:py-14">
+        <div class="overflow-hidden rounded-[var(--radius-clinic-lg)] border border-border-strong bg-theme-dark shadow-[0_24px_60px_-34px_rgba(17,23,20,0.55)]">
+          <div class="grid gap-px bg-white/10 lg:grid-cols-[1.05fr_0.95fr_1fr]">
+            <section class="bg-theme-dark p-6 sm:p-8 lg:p-9" aria-labelledby="footer-contact">
+              <div class="site-footer__brand">
+                <BrandLockup
+                  href={sectionRoutes.home[locale]}
+                  label={brandContent.name[locale]}
+                  tagline={brandContent.tagline[locale]}
+                  class="max-w-[15rem]"
+                />
+              </div>
+              <p class="mt-4 max-w-md text-sm leading-7 text-text-inverse-muted">
+                {commonLabels.footerContactNote[locale]}
+              </p>
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <Button href={sectionRoutes.contact[locale]} size="sm">
+                  {ctaCopy.primary[locale]}
+                </Button>
+              </div>
+              <div class="mt-6">
+                <p class="eyebrow text-text-inverse/70">{commonLabels.footerContactTitle[locale]}</p>
+                <div class="mt-3">
+                  <SocialLinks locale={locale} variant="footer" />
+                </div>
+              </div>
+            </section>
+
+            <section class="bg-theme-dark p-6 sm:p-8 lg:p-9" aria-labelledby="footer-navigation">
+              <p id="footer-navigation" class="eyebrow text-text-inverse/70">
+                {commonLabels.footerNavigation[locale]}
+              </p>
+              <nav aria-label={commonLabels.footerNavigation[locale]} class="mt-4">
+                <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                  {footerNavigation.map((item) => (
+                    <li>
+                      <a
+                        href={item.href}
+                        aria-current={isActivePath(item.href) ? 'page' : undefined}
+                        class:list={footerLinkClass(isActivePath(item.href))}
+                      >
+                        <span>{item.label}</span>
+                        <Icon icon="lucide:arrow-right" class="h-4 w-4 shrink-0 text-text-inverse-muted" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </section>
+
+            <section class="bg-theme-dark p-6 sm:p-8 lg:p-9" aria-labelledby="footer-legal">
+              <p id="footer-legal" class="eyebrow text-text-inverse/70">
+                {commonLabels.footerLegalTitle[locale]}
+              </p>
+              <p class="mt-4 max-w-md text-sm leading-7 text-text-inverse-muted">
+                {commonLabels.footerLegalDetailsTitle[locale]}
+              </p>
+              <ul class="mt-4 space-y-2 text-sm leading-6 text-text-inverse-muted">
+                <li>{brandContent.name[locale]}</li>
+                <li>Via Taranto 237, Lecce, CAP 73100, Italia</li>
+                <li>+39 327 974 7044</li>
+                <li>0832 169 5809</li>
+                <li>info@regola-darte.it</li>
+                <li>P.IVA 07173540480</li>
+                <li>Direttore sanitario: Dr. Genti Dylgjeri</li>
+                <li>Iscritto all'Albo degli Odontoiatri di Firenze: 01900</li>
               </ul>
-            </nav>
-          </section>
+              <nav aria-label={commonLabels.footerLegalTitle[locale]} class="mt-5">
+                <ul class="flex flex-wrap gap-2">
+                  {legalNavigation.map((item) => (
+                    <li>
+                      <a href={item.href} class:list={footerLegalLinkClass}>
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </section>
+          </div>
 
-          <section aria-labelledby="footer-contact">
-            <p id="footer-contact" class="eyebrow">
-              {commonLabels.footerContactTitle[locale]}
-            </p>
-            <p class="mt-4 max-w-md text-sm leading-7 text-ink-soft">
-              {commonLabels.footerContactNote[locale]}
-            </p>
-            <div class="mt-5 flex flex-wrap gap-3">
-              <Button href={sectionRoutes.contact[locale]} variant="secondary" size="sm">
-                {ctaCopy.primary[locale]}
-              </Button>
-              <SocialLinks locale={locale} variant="footer" />
-            </div>
-          </section>
+          <div class="flex flex-col gap-4 border-t border-white/10 bg-white/[0.03] px-6 py-5 sm:px-8 sm:py-6 lg:flex-row lg:items-center lg:justify-between">
+            <BrandLockup
+              href={sectionRoutes.home[locale]}
+              compact
+              label={brandContent.name[locale]}
+              tagline={brandContent.tagline[locale]}
+              class="site-footer__brand-compact max-w-[16rem]"
+            />
 
-          <section aria-labelledby="footer-legal">
-            <p id="footer-legal" class="eyebrow">
-              {commonLabels.footerLegalTitle[locale]}
-            </p>
-            <p class="mt-4 max-w-md text-sm leading-7 text-ink-soft">
-              {commonLabels.footerLegalDetailsTitle[locale]}
-            </p>
-            <ul class="mt-4 space-y-2 text-sm leading-6 text-ink-soft">
-              <li>{brandContent.name[locale]}</li>
-              <li>Via Taranto 237, Lecce, CAP 73100, Italia</li>
-              <li>+39 327 974 7044</li>
-              <li>0832 169 5809</li>
-              <li>info@regola-darte.it</li>
-              <li>P.IVA 07173540480</li>
-              <li>Direttore sanitario: Dr. Genti Dylgjeri</li>
-              <li>Iscritto all'Albo degli Odontoiatri di Firenze: 01900</li>
-            </ul>
-            <nav aria-label={commonLabels.footerLegalTitle[locale]} class="mt-4">
-              <ul class="space-y-2">
-                {legalNavigation.map((item) => (
-                  <li>
-                    <a
-                      href={item.href}
-                      class="inline-flex rounded-full border border-border bg-white/80 px-3 py-2 text-sm font-semibold text-ink-soft transition hover:border-clinic-200 hover:text-ink"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </section>
-        </div>
-
-        <div class="mt-8 flex flex-col gap-4 border-t border-border/70 pt-6 md:flex-row md:items-center md:justify-between">
-          <BrandLockup
-            href={sectionRoutes.home[locale]}
-            compact
-            label={brandContent.name[locale]}
-            tagline={brandContent.tagline[locale]}
-            class="max-w-[16rem]"
-          />
-
-          {alternateLinks.length > 0 && (
-            <nav aria-label={commonLabels.languageSwitcher[locale]}>
-              <ul class="flex flex-wrap gap-2">
-                {alternateLinks.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      aria-current={link.isCurrent ? 'page' : undefined}
-                      class:list={switcherLinkClass(link.isCurrent)}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          )}
+            {alternateLinks.length > 0 && (
+              <nav aria-label={commonLabels.languageSwitcher[locale]} class="space-y-2">
+                <p class="eyebrow text-text-inverse/70">{commonLabels.languageSwitcher[locale]}</p>
+                <ul class="flex flex-wrap gap-2">
+                  {alternateLinks.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        aria-current={link.isCurrent ? 'page' : undefined}
+                        class:list={footerSwitcherLinkClass(link.isCurrent)}
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+          </div>
         </div>
       </div>
     </footer>
