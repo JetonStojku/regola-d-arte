@@ -4,8 +4,8 @@ import BeforeAfterSection from '@/components/BeforeAfterSection.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
+import HeroImageSection from '@/components/sections/HeroImageSection.astro';
 import PhotoPlaceholder from '@/components/PhotoPlaceholder.astro';
-import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { homePageContent, metaContent } from '@/content/pages';
 import { navigationContent } from '@/content/navigation';
 import { getLocalizedServices } from '@/content/services';
@@ -32,49 +32,38 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   alternateLinks={getLanguageSwitcherLinks('home', locale)}
   structuredData={structuredData}
 >
-  <section class="content-band">
-    <div class="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
-      <div class="section-copy">
-        <Badge tone="accent">{content.eyebrow}</Badge>
-        <h1 class="display-title mt-5 max-w-2xl">{content.title}</h1>
-        <p class="lead mt-4 max-w-2xl">{content.intro}</p>
-        <p class="mt-4 max-w-xl text-sm leading-7 text-ink-soft">{content.heroNote}</p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <Button href={sectionRoutes.servicesOverview.it}>{content.heroPrimaryCta}</Button>
-          <Button href={sectionRoutes.contact.it} variant="secondary">
-            {content.heroSecondaryCta}
-          </Button>
-        </div>
-      </div>
-
-      <div class="grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
-        <div class="visual-frame sm:col-span-2">
-            <ResponsiveImage
-              src="/brand/homepage-hero.jpg"
-              alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
-              class="h-[22rem] w-full object-cover object-center"
-              width={1280}
-              height={720}
-              sizes="(min-width: 1024px) 35rem, 100vw"
-              widths={[640, 960, 1280]}
-              loading="eager"
-              fetchpriority="high"
-            />
-        </div>
-        <PhotoPlaceholder
-          eyebrow="Foto studio"
-          title="Dettaglio ambiente"
-          description="Inserire una foto luminosa della reception, sala operativa o dettaglio dello studio."
-        />
-        <PhotoPlaceholder
-          eyebrow="Foto team"
-          title="Accoglienza"
-          description="Inserire una foto del team o di un momento di accoglienza approvato."
-        />
-      </div>
-    </div>
-  </section>
+  <HeroImageSection
+    eyebrow={content.eyebrow}
+    title={content.title}
+    intro={content.intro}
+    note={content.heroNote}
+    primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.servicesOverview.it }}
+    secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.contact.it, variant: 'secondary' }}
+    image={{
+      src: '/brand/homepage-hero.jpg',
+      alt: 'Dott. Genti Dylgjeri in uno studio odontoiatrico moderno',
+      width: 1280,
+      height: 720,
+      sizes: '(min-width: 1024px) 35rem, 100vw',
+      widths: [640, 960, 1280],
+      loading: 'eager',
+      fetchpriority: 'high',
+      class: 'h-[22rem] w-full object-cover object-center',
+    }}
+    supportingPlaceholders={[
+      {
+        eyebrow: 'Foto studio',
+        title: 'Dettaglio ambiente',
+        description:
+          'Inserire una foto luminosa della reception, sala operativa o dettaglio dello studio.',
+      },
+      {
+        eyebrow: 'Foto team',
+        title: 'Accoglienza',
+        description: 'Inserire una foto del team o di un momento di accoglienza approvato.',
+      },
+    ]}
+  />
 
   <section class="content-band mt-6">
     <div class="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">

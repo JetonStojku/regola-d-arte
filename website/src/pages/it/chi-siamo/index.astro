@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
@@ -48,35 +49,34 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
             {navigationContent.primary.it[2].label}
           </Button>
         </div>
-
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="visual-frame sm:col-span-2">
-            <ResponsiveImage
-              src="/brand/about-doctor.jpg"
-              alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
-              class="h-[22rem] w-full object-cover object-center"
-              width={1280}
-              height={720}
-              sizes="(min-width: 1024px) 35rem, 100vw"
-              widths={[640, 960, 1280]}
-              loading="eager"
-              fetchpriority="high"
-            />
+          <ResponsiveImage
+            src="/brand/about-doctor.jpg"
+            alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
+            class="h-[22rem] w-full object-cover object-center"
+            width={1280}
+            height={720}
+            sizes="(min-width: 1024px) 35rem, 100vw"
+            widths={[640, 960, 1280]}
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
         <div class="visual-frame">
-            <ResponsiveImage
-              src="/brand/about-clinic.jpg"
-              alt="Equipe odontoiatrica durante una seduta di cura in uno studio moderno"
-              class="h-56 w-full object-cover object-center"
-              width={800}
-              height={533}
-              sizes="(min-width: 1024px) 35rem, 100vw"
-              widths={[480, 800, 1200]}
-              loading="eager"
-              fetchpriority="high"
-            />
+          <ResponsiveImage
+            src="/brand/about-clinic.jpg"
+            alt="Equipe odontoiatrica durante una seduta di cura in uno studio moderno"
+            class="h-56 w-full object-cover object-center"
+            width={800}
+            height={533}
+            sizes="(min-width: 1024px) 35rem, 100vw"
+            widths={[480, 800, 1200]}
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
         <PhotoPlaceholder
           eyebrow="Foto studio"
@@ -87,40 +87,31 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     </div>
   </section>
 
-  <section class="content-band mt-6">
-    <div class="grid gap-4 lg:grid-cols-3">
-      <div class="info-tile">
-        <p class="eyebrow">Precisione e funzione</p>
-        <p class="mt-3 text-lg font-semibold text-ink">Ogni piano parte da una diagnosi accurata.</p>
-        <p class="mt-3 text-sm leading-7 text-ink-soft">
-          I trattamenti sono preceduti da una valutazione attenta e costruiti con un approccio
-          multidisciplinare, sempre orientato al caso specifico.
-        </p>
-      </div>
-      <div class="info-tile">
-        <p class="eyebrow">Estetica e scienza</p>
-        <p class="mt-3 text-lg font-semibold text-ink">La bellezza del sorriso segue criteri clinici solidi.</p>
-        <p class="mt-3 text-sm leading-7 text-ink-soft">
-          La cura estetica non è separata dalla funzione: lavoriamo per risultati naturali,
-          confortevoli e stabili nel tempo.
-        </p>
-      </div>
-      <div class="info-tile">
-        <p class="eyebrow">Servizi confermati</p>
-        <p class="mt-3 text-lg font-semibold text-ink">Dal controllo preventivo ai trattamenti più complessi.</p>
-        <p class="mt-3 text-sm leading-7 text-ink-soft">
-          L&apos;offerta copre conservativa ed endodonzia, chirurgia orale e implantologia,
-          ortodonzia, estetica dentale e igiene orale professionale.
-        </p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <Button href={sectionRoutes.servicesOverview.it}>{navigationContent.primary.it[1].label}</Button>
-          <Button href={sectionRoutes.contact.it} variant="secondary">
-            {navigationContent.primary.it[2].label}
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <FeatureGridSection
+    eyebrow="Punti chiave"
+    title="Tre segnali concreti del nostro approccio."
+    intro="La struttura della pagina sintetizza diagnosi, estetica e servizi confermati senza introdurre contenuti non verificati."
+    items={[
+      {
+        eyebrow: 'Precisione e funzione',
+        title: 'Ogni piano parte da una diagnosi accurata.',
+        description:
+          'I trattamenti sono preceduti da una valutazione attenta e costruiti con un approccio multidisciplinare, sempre orientato al caso specifico.',
+      },
+      {
+        eyebrow: 'Estetica e scienza',
+        title: 'La bellezza del sorriso segue criteri clinici solidi.',
+        description:
+          'La cura estetica non è separata dalla funzione: lavoriamo per risultati naturali, confortevoli e stabili nel tempo.',
+      },
+      {
+        eyebrow: 'Servizi confermati',
+        title: 'Dal controllo preventivo ai trattamenti più complessi.',
+        description:
+          "L'offerta copre conservativa ed endodonzia, chirurgia orale e implantologia, ortodonzia, estetica dentale e igiene orale professionale.",
+      },
+    ]}
+  />
 
   <section class="content-band mt-6">
     <div class="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
