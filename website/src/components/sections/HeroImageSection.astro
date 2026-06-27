@@ -37,9 +37,6 @@ type Props = {
   title: string;
   intro: string;
   note?: string;
-  heroStatValue?: string;
-  heroStatLabel?: string;
-  heroStatNote?: string;
   primaryCta?: CtaLink;
   secondaryCta?: CtaLink;
   image: ImageAsset;
@@ -54,9 +51,6 @@ const {
   title,
   intro,
   note,
-  heroStatValue = '',
-  heroStatLabel = '',
-  heroStatNote = '',
   primaryCta,
   secondaryCta,
   image,
@@ -107,76 +101,19 @@ const avatarSources = supportingImages.slice(0, 3);
         </div>
 
         <div class="mt-6 border-t border-white/15 pt-6 sm:mt-8 sm:pt-7">
-          <div class="grid items-end gap-6 lg:grid-cols-[1.05fr_auto_1fr] lg:gap-8">
-            <div class="max-w-xl">
-              <p class="text-sm font-semibold leading-7 text-white/92 sm:text-base">
-                {note ?? intro}
-              </p>
-            </div>
-
-            <div class="flex justify-center">
-              {primaryCta ? (
-                <Button
-                  href={primaryCta.href}
-                  variant={primaryCta.variant ?? 'primary'}
-                  class="rounded-xl !border-[#2f64ff] !bg-[#2f64ff] !px-6 !py-4 !text-base !shadow-[0_18px_36px_-20px_rgba(47,100,255,0.72)] hover:!bg-[#2458eb]"
-                >
-                  <span class="inline-flex items-center gap-2">
-                    <span>{primaryCta.label}</span>
-                    <span aria-hidden="true">↗</span>
-                  </span>
-                </Button>
-              ) : null}
-            </div>
-
-            <div class="flex justify-start lg:justify-end">
-              <div class="flex w-full items-center justify-between gap-4 rounded-full border border-white/18 bg-white/10 px-3 py-2.5 shadow-[0_20px_50px_-32px_rgba(0,0,0,0.68)] backdrop-blur-md sm:w-auto sm:justify-start sm:px-4">
-                <div class="flex items-center">
-                  <div class="-space-x-3 flex items-center">
-                    {avatarSources.map((avatar, index) => (
-                      <span
-                        class:list={[
-                          'inline-flex h-11 w-11 overflow-hidden rounded-full border-2 border-white/85 bg-white/20 shadow-sm',
-                          index === 0 && 'z-30',
-                          index === 1 && 'z-20',
-                          index === 2 && 'z-10',
-                        ]}
-                      >
-                        <ResponsiveImage
-                          src={avatar.src}
-                          alt={avatar.alt}
-                          class="h-full w-full object-cover object-center"
-                          width={avatar.width}
-                          height={avatar.height}
-                          sizes="44px"
-                          widths={[44, 88]}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </span>
-                    ))}
-                    <span class="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/85 bg-[#1a2320] text-2xl font-semibold text-white shadow-sm">
-                      +
-                    </span>
-                  </div>
-
-                  <div class="min-w-0 pl-2 sm:pl-3">
-                    <p class="text-2xl font-semibold tracking-[-0.05em] text-white sm:text-[2.15rem]">
-                      {heroStatValue}
-                    </p>
-                  </div>
-                </div>
-
-                <div class="min-w-0 text-right sm:text-left">
-                  <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/82">
-                    {heroStatLabel}
-                  </p>
-                  <p class="mt-1 max-w-[15rem] text-xs leading-5 text-white/76 sm:max-w-none">
-                    {heroStatNote}
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div class="flex justify-center">
+            {primaryCta ? (
+              <Button
+                href={primaryCta.href}
+                variant={primaryCta.variant ?? 'primary'}
+                class="rounded-xl !border-[#2f64ff] !bg-[#2f64ff] !px-6 !py-4 !text-base !shadow-[0_18px_36px_-20px_rgba(47,100,255,0.72)] hover:!bg-[#2458eb]"
+              >
+                <span class="inline-flex items-center gap-2">
+                  <span>{primaryCta.label}</span>
+                  <span aria-hidden="true">↗</span>
+                </span>
+              </Button>
+            ) : null}
           </div>
         </div>
       </div>

@@ -180,9 +180,6 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                         class:list={desktopLinkClass(item.href)}
                       >
                         <span>{item.label}</span>
-                        {item.badge ? (
-                          <span class={navBadgeClass}>{item.badge}</span>
-                        ) : null}
                       </a>
                     </li>
                   ))
