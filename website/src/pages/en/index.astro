@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BeforeAfterSection from '@/components/BeforeAfterSection.astro';
-import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
-import Card from '@/components/ui/Card.astro';
+import ContactCtaBand from '@/components/sections/ContactCtaBand.astro';
 import HeroImageSection from '@/components/sections/HeroImageSection.astro';
-import PhotoPlaceholder from '@/components/PhotoPlaceholder.astro';
+import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
+import ServiceRowListSection from '@/components/sections/ServiceRowListSection.astro';
+import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
 import { homePageContent, metaContent } from '@/content/pages';
-import { navigationContent } from '@/content/navigation';
 import { getLocalizedServices } from '@/content/services';
 import { buildClinicSchema } from '@/lib/schema';
 import {
@@ -19,7 +19,21 @@ import {
 const locale = 'en' as const;
 const content = homePageContent.en;
 const metadata = metaContent.home.en;
-const services = getLocalizedServices(locale).slice(0, 3);
+const services = getLocalizedServices(locale);
+const trustItems = [
+  {
+    title: 'Bilingual routes',
+    description: content.trustPoints[0],
+  },
+  {
+    title: 'Content-backed data',
+    description: content.trustPoints[1],
+  },
+  {
+    title: 'Real imagery',
+    description: content.trustPoints[2],
+  },
+] as const;
 const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
 ---
 
@@ -33,6 +47,7 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   structuredData={structuredData}
 >
   <HeroImageSection
+    variant="hero"
     eyebrow={content.eyebrow}
     title={content.title}
     intro={content.intro}
@@ -44,80 +59,94 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       alt: 'Dr. Genti Dylgjeri in a modern dental surgery',
       width: 1280,
       height: 720,
-      sizes: '(min-width: 1024px) 35rem, 100vw',
+      sizes: '(min-width: 1280px) 44rem, (min-width: 1024px) 48vw, 100vw',
       widths: [640, 960, 1280],
       loading: 'eager',
       fetchpriority: 'high',
-      class: 'h-[22rem] w-full object-cover object-center',
+      class: 'h-[27rem] w-full object-cover object-center',
     }}
-    supportingPlaceholders={[
+    supportingImages={[
       {
-        eyebrow: 'Clinic photo',
-        title: 'Interior detail',
-        description: 'Add a bright photo of reception, surgery room, or a clinic detail.',
+        src: '/brand/about-doctor.jpg',
+        alt: 'Portrait of Dr. Genti Dylgjeri in a modern dental surgery',
+        width: 1200,
+        height: 800,
+        sizes: '(min-width: 1280px) 22rem, (min-width: 1024px) 24vw, 48vw',
+        widths: [480, 800, 1200],
+        class: 'h-44 w-full object-cover object-center',
       },
       {
-        eyebrow: 'Team photo',
-        title: 'Welcome moment',
-        description: 'Add an approved photo of the team or patient welcome experience.',
+        src: '/brand/about-clinic.jpg',
+        alt: 'Dental team during a treatment session in a modern clinic',
+        width: 1200,
+        height: 800,
+        sizes: '(min-width: 1280px) 22rem, (min-width: 1024px) 24vw, 48vw',
+        widths: [480, 800, 1200],
+        class: 'h-44 w-full object-cover object-center',
       },
     ]}
   />
 
-  <section class="content-band mt-6">
-    <div class="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
-      <div class="section-copy">
-        <p class="eyebrow">{content.servicesEyebrow}</p>
-        <h2 class="section-title mt-4">{content.servicesTitle}</h2>
-        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.servicesIntro}</p>
-      </div>
-      <div class="grid gap-4 md:grid-cols-3">
-        {services.map((service) => (
-          <Card href={service.href} as="article" class="overflow-hidden p-0 transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-clinic)]">
-            <PhotoPlaceholder
-              eyebrow="Service image"
-              title={service.label}
-              description="Replace with a photo matching this treatment."
-              aspect="aspect-[4/3]"
-              class="rounded-b-none border-x-0 border-t-0"
-            />
-            <div class="p-5">
-              <p class="text-lg font-semibold text-ink">{service.label}</p>
-              <p class="mt-3 text-sm leading-7 text-ink-soft">{service.summary}</p>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
+  <SplitMediaSection
+    reverse
+    eyebrow={content.storyEyebrow}
+    title={content.storyTitle}
+    intro={content.storyBody}
+    body={content.storyHighlight}
+    image={{
+      src: '/brand/about-clinic.jpg',
+      alt: 'Bright interior of the Regola D\'arte clinic',
+      width: 1200,
+      height: 800,
+      sizes: '(min-width: 1024px) 38rem, 100vw',
+      widths: [480, 800, 1200],
+      class: 'h-[25rem] w-full object-cover object-center',
+    }}
+  />
+
+  <ServiceRowListSection
+    eyebrow={content.servicesEyebrow}
+    title={content.servicesTitle}
+    intro={content.servicesIntro}
+    services={services.slice(0, 5)}
+  />
 
   <BeforeAfterSection locale={locale} />
 
+  <FeatureGridSection
+    eyebrow={content.trustEyebrow}
+    title={content.trustTitle}
+    intro={content.storyHighlight}
+    columns={3}
+    items={trustItems}
+  />
+
   <section class="content-band mt-6">
-    <div class="grid gap-6 lg:grid-cols-3">
-      <div class="info-tile">
-        <p class="eyebrow">{content.storyEyebrow}</p>
-        <p class="mt-3 text-lg font-semibold text-ink">{content.storyTitle}</p>
-        <p class="mt-3 text-sm leading-7 text-ink-soft">{content.storyBody}</p>
+    <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+      <div class="section-copy">
+        <p class="eyebrow">{content.reviewsEyebrow}</p>
+        <h2 class="section-title mt-4">{content.reviewsTitle}</h2>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.reviewsIntro}</p>
       </div>
-      <div class="info-tile">
-        <p class="eyebrow">{content.trustEyebrow}</p>
-        <p class="mt-3 text-lg font-semibold text-ink">{content.trustTitle}</p>
-        <ul class="mt-3 space-y-2 text-sm leading-6 text-ink-soft">
-          {content.trustPoints.map((point) => <li>{point}</li>)}
-        </ul>
-      </div>
-      <div class="info-tile">
-        <p class="eyebrow">{content.contactEyebrow}</p>
-        <p class="mt-3 text-lg font-semibold text-ink">{content.contactTitle}</p>
-        <p class="mt-3 text-sm leading-7 text-ink-soft">{content.contactIntro}</p>
+
+      <div class="rounded-[var(--radius-clinic)] border border-border-strong bg-white/82 p-5 shadow-[var(--shadow-clinic-soft)]">
+        <p class="text-sm leading-7 text-ink-soft">{content.reviewsOfficialNote}</p>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.reviewsMissingNote}</p>
         <div class="mt-5 flex flex-wrap gap-3">
-          <Button href={sectionRoutes.contact.en}>{navigationContent.primary.en[2].label}</Button>
-          <Button href={sectionRoutes.servicesOverview.en} variant="secondary">
-            {navigationContent.primary.en[1].label}
+          <Button href={content.reviewsOfficialHref} variant="secondary">
+            {content.reviewsOfficialLabel}
           </Button>
         </div>
       </div>
     </div>
   </section>
+
+  <ContactCtaBand
+    eyebrow={content.contactEyebrow}
+    title={content.contactTitle}
+    intro={content.contactIntro}
+    primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.contact.en }}
+    secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.servicesOverview.en, variant: 'secondary' }}
+    note={content.heroNote}
+  />
 </BaseLayout>

@@ -23,6 +23,8 @@ type ImageAsset = {
   class?: string;
 };
 
+type SupportingImage = ImageAsset;
+
 type PlaceholderTile = {
   eyebrow: string;
   title: string;
@@ -38,7 +40,9 @@ type Props = {
   primaryCta?: CtaLink;
   secondaryCta?: CtaLink;
   image: ImageAsset;
+  supportingImages?: SupportingImage[];
   supportingPlaceholders?: PlaceholderTile[];
+  variant?: 'standard' | 'hero';
   class?: string;
 };
 
@@ -50,15 +54,26 @@ const {
   primaryCta,
   secondaryCta,
   image,
+  supportingImages = [],
   supportingPlaceholders = [],
+  variant = 'standard',
   class: className = '',
 } = Astro.props as Props;
+
+const isHero = variant === 'hero';
 ---
 
-<section class:list={['content-band', className]}>
-  <div class="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
-    <div class="section-copy">
-      {eyebrow ? <Badge tone="accent">{eyebrow}</Badge> : null}
+<section class:list={[
+  isHero ? 'full-width-band band band--image' : 'content-band',
+  className,
+]}>
+  <div class:list={[
+    isHero ? 'container-2xl' : '',
+    'grid gap-8 lg:items-center',
+    isHero ? 'lg:grid-cols-[0.92fr_1.08fr]' : 'lg:grid-cols-[0.94fr_1.06fr]',
+  ]}>
+    <div class:list={['section-copy', isHero && 'lg:pr-6']}>
+      {eyebrow ? <Badge tone={isHero ? 'warm' : 'accent'}>{eyebrow}</Badge> : null}
       <h1 class:list={['display-title mt-5 max-w-2xl', eyebrow && 'mt-5']}>{title}</h1>
       <p class="lead mt-4 max-w-2xl">{intro}</p>
       {note ? <p class="mt-4 max-w-xl text-sm leading-7 text-ink-soft">{note}</p> : null}
@@ -79,12 +94,15 @@ const {
       ) : null}
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
-      <div class="visual-frame sm:col-span-2">
+    <div class:list={[
+      'grid gap-4',
+      isHero ? 'sm:grid-cols-2' : 'sm:grid-cols-[1.1fr_0.9fr]',
+    ]}>
+      <div class:list={['visual-frame', isHero ? 'sm:col-span-2' : 'sm:col-span-2']}>
         <ResponsiveImage
           src={image.src}
           alt={image.alt}
-          class={image.class ?? 'h-[22rem] w-full object-cover object-center'}
+          class={image.class ?? (isHero ? 'h-[27rem] w-full object-cover object-center' : 'h-[22rem] w-full object-cover object-center')}
           width={image.width}
           height={image.height}
           sizes={image.sizes}
@@ -95,14 +113,31 @@ const {
         />
       </div>
 
-      {supportingPlaceholders.map((placeholder) => (
-        <PhotoPlaceholder
-          eyebrow={placeholder.eyebrow}
-          title={placeholder.title}
-          description={placeholder.description}
-          aspect={placeholder.aspect}
-        />
-      ))}
+      {supportingImages.length > 0
+        ? supportingImages.map((supportingImage) => (
+            <div class="visual-frame">
+              <ResponsiveImage
+                src={supportingImage.src}
+                alt={supportingImage.alt}
+                class={supportingImage.class ?? 'h-44 w-full object-cover object-center'}
+                width={supportingImage.width}
+                height={supportingImage.height}
+                sizes={supportingImage.sizes}
+                widths={supportingImage.widths}
+                loading={supportingImage.loading ?? 'lazy'}
+                decoding={supportingImage.decoding ?? 'async'}
+                fetchpriority={supportingImage.fetchpriority}
+              />
+            </div>
+          ))
+        : supportingPlaceholders.map((placeholder) => (
+            <PhotoPlaceholder
+              eyebrow={placeholder.eyebrow}
+              title={placeholder.title}
+              description={placeholder.description}
+              aspect={placeholder.aspect}
+            />
+          ))}
     </div>
   </div>
 </section>
