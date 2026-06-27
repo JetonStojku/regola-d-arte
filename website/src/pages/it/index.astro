@@ -1,40 +1,42 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import BeforeAfterSection from '@/components/BeforeAfterSection.astro';
-import Button from '@/components/ui/Button.astro';
-import ContactCtaBand from '@/components/sections/ContactCtaBand.astro';
-import HeroImageSection from '@/components/sections/HeroImageSection.astro';
-import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
-import ServiceRowListSection from '@/components/sections/ServiceRowListSection.astro';
-import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
-import { homePageContent, metaContent } from '@/content/pages';
-import { getLocalizedServices } from '@/content/services';
-import { buildClinicSchema } from '@/lib/schema';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BeforeAfterSection from "@/components/BeforeAfterSection.astro";
+import Button from "@/components/ui/Button.astro";
+import ContactCtaBand from "@/components/sections/ContactCtaBand.astro";
+import HeroImageSection from "@/components/sections/HeroImageSection.astro";
+import FeatureGridSection from "@/components/sections/FeatureGridSection.astro";
+import ServiceRowListSection from "@/components/sections/ServiceRowListSection.astro";
+import SplitMediaSection from "@/components/sections/SplitMediaSection.astro";
+import { homePageContent, metaContent } from "@/content/pages";
+import { getLocalizedServices } from "@/content/services";
+import { buildClinicSchema } from "@/lib/schema";
 import {
   getLanguageSwitcherLinks,
   getSeoAlternateLinks,
   sectionRoutes,
-} from '@/lib/siteArchitecture';
+} from "@/lib/siteArchitecture";
 
-const locale = 'it' as const;
+const locale = "it" as const;
 const content = homePageContent.it;
 const metadata = metaContent.home.it;
 const services = getLocalizedServices(locale);
 const trustItems = [
   {
-    title: 'Percorsi bilingui',
+    title: "Percorsi bilingui",
     description: content.trustPoints[0],
   },
   {
-    title: 'Dati di contenuto',
+    title: "Dati di contenuto",
     description: content.trustPoints[1],
   },
   {
-    title: 'Immagini reali',
+    title: "Immagini reali",
     description: content.trustPoints[2],
   },
 ] as const;
-const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
+const structuredData = [
+  buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+];
 ---
 
 <BaseLayout
@@ -44,7 +46,7 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   mainClass="pt-0"
   canonical={sectionRoutes.home.it}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.home, locale)}
-  alternateLinks={getLanguageSwitcherLinks('home', locale)}
+  alternateLinks={getLanguageSwitcherLinks("home", locale)}
   structuredData={structuredData}
 >
   <HeroImageSection
@@ -53,46 +55,53 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     title={content.title}
     intro={content.intro}
     note={content.heroNote}
-    primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.servicesOverview.it }}
-    secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.contact.it, variant: 'secondary' }}
+    primaryCta={{
+      label: content.heroPrimaryCta,
+      href: sectionRoutes.servicesOverview.it,
+    }}
+    secondaryCta={{
+      label: content.heroSecondaryCta,
+      href: sectionRoutes.contact.it,
+      variant: "secondary",
+    }}
     image={{
-      src: '/brand/homepage-hero.jpg',
-      alt: 'Dott. Genti Dylgjeri in uno studio odontoiatrico moderno',
+      src: "/brand/homepage-hero.jpg",
+      alt: "Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
       width: 1280,
       height: 720,
-      sizes: '100vw',
+      sizes: "100vw",
       widths: [640, 960, 1280],
-      loading: 'eager',
-      fetchpriority: 'high',
-      class: 'h-full w-full object-cover object-center',
+      loading: "eager",
+      fetchpriority: "high",
+      class: "h-full w-full object-cover object-center",
     }}
     supportingImages={[
       {
-        src: '/brand/about-doctor.jpg',
-        alt: 'Ritratto del Dott. Genti Dylgjeri in uno studio odontoiatrico moderno',
+        src: "/brand/about-doctor.jpg",
+        alt: "Ritratto del Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
         width: 1200,
         height: 800,
-        sizes: '44px',
+        sizes: "44px",
         widths: [480, 800, 1200],
-        class: 'h-full w-full object-cover object-center',
+        class: "h-full w-full object-cover object-center",
       },
       {
-        src: '/brand/about-clinic.jpg',
-        alt: 'Equipe odontoiatrica durante una seduta di cura in uno studio moderno',
+        src: "/brand/about-clinic.jpg",
+        alt: "Equipe odontoiatrica durante una seduta di cura in uno studio moderno",
         width: 1200,
         height: 800,
-        sizes: '44px',
+        sizes: "44px",
         widths: [480, 800, 1200],
-        class: 'h-full w-full object-cover object-center',
+        class: "h-full w-full object-cover object-center",
       },
       {
-        src: '/brand/homepage-hero.jpg',
-        alt: 'Studio odontoiatrico moderno con team al lavoro',
+        src: "/brand/homepage-hero.jpg",
+        alt: "Studio odontoiatrico moderno con team al lavoro",
         width: 1280,
         height: 720,
-        sizes: '44px',
+        sizes: "44px",
         widths: [640, 960, 1280],
-        class: 'h-full w-full object-cover object-center',
+        class: "h-full w-full object-cover object-center",
       },
     ]}
   />
@@ -104,13 +113,14 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     intro={content.storyBody}
     body={content.storyHighlight}
     image={{
-      src: '/brand/about-clinic.jpg',
-      alt: 'Interno luminoso dello studio Regola D\'arte',
+      src: "/brand/about-clinic.jpg",
+      alt: "Interno luminoso dello studio Regola D'arte",
       width: 1200,
       height: 800,
-      sizes: '(min-width: 1024px) 38rem, 100vw',
+      sizes: "(min-width: 1024px) 38rem, 100vw",
       widths: [480, 800, 1200],
-      class: 'h-[25rem] w-full object-cover object-center',
+      class:
+        "h-[18rem] w-full object-cover object-center sm:h-[20rem] lg:h-[25rem]",
     }}
   />
 
@@ -137,12 +147,20 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       <div class="section-copy">
         <p class="eyebrow">{content.reviewsEyebrow}</p>
         <h2 class="section-title mt-4">{content.reviewsTitle}</h2>
-        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.reviewsIntro}</p>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          {content.reviewsIntro}
+        </p>
       </div>
 
-      <div class="rounded-[var(--radius-clinic)] border border-border-strong bg-white/82 p-5 shadow-[var(--shadow-clinic-soft)]">
-        <p class="text-sm leading-7 text-ink-soft">{content.reviewsOfficialNote}</p>
-        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.reviewsMissingNote}</p>
+      <div
+        class="rounded-[var(--radius-clinic)] border border-border-strong bg-white/82 p-5 shadow-[var(--shadow-clinic-soft)]"
+      >
+        <p class="text-sm leading-7 text-ink-soft">
+          {content.reviewsOfficialNote}
+        </p>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          {content.reviewsMissingNote}
+        </p>
         <div class="mt-5 flex flex-wrap gap-3">
           <Button href={content.reviewsOfficialHref} variant="secondary">
             {content.reviewsOfficialLabel}
@@ -156,9 +174,15 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     eyebrow={content.contactEyebrow}
     title={content.contactTitle}
     intro={content.contactIntro}
-    primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.contact.it }}
-    secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.servicesOverview.it, variant: 'secondary' }}
+    primaryCta={{
+      label: content.heroPrimaryCta,
+      href: sectionRoutes.contact.it,
+    }}
+    secondaryCta={{
+      label: content.heroSecondaryCta,
+      href: sectionRoutes.servicesOverview.it,
+      variant: "secondary",
+    }}
     note={content.heroNote}
   />
 </BaseLayout>
-

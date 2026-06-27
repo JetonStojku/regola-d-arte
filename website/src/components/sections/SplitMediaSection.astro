@@ -126,7 +126,8 @@ const Tag = titleTag;
         <ResponsiveImage
           src={image.src}
           alt={image.alt}
-          class={image.class ?? "h-[22rem] w-full object-cover object-center"}
+          class={image.class ??
+            "h-[18rem] w-full object-cover object-center sm:h-[20rem] lg:h-[22rem]"}
           width={image.width}
           height={image.height}
           sizes={image.sizes}
@@ -146,7 +147,7 @@ const Tag = titleTag;
                   alt={supportingImage.alt}
                   class={
                     supportingImage.class ??
-                    "h-44 w-full object-cover object-center"
+                    "h-40 w-full object-cover object-center sm:h-44"
                   }
                   width={supportingImage.width}
                   height={supportingImage.height}

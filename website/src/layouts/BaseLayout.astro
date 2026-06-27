@@ -64,7 +64,7 @@ const isActivePath = (href: string) =>
 const linkBaseClass =
   "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold leading-none transition";
 const desktopLinkClass = (href: string) => [
-  "inline-flex flex-nowrap items-center gap-2 whitespace-nowrap rounded-xl px-4 py-3 text-sm font-semibold leading-none transition",
+  "inline-flex flex-nowrap items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2.5 text-sm font-semibold leading-none transition lg:px-3.5 lg:py-2.5 xl:px-4 xl:py-3",
   isActivePath(href)
     ? "border-clinic-100 bg-clinic-50 text-clinic-900 shadow-[0_12px_24px_-20px_rgba(43,111,89,0.55)]"
     : "border-transparent bg-transparent text-ink-soft hover:border-border hover:bg-white hover:text-ink",
@@ -78,7 +78,7 @@ const mobileLinkClass = (isActive: boolean) => [
 const navBadgeClass =
   "inline-flex items-center rounded-full bg-clinic-700 px-2 py-1 text-[0.64rem] font-bold leading-none text-white";
 const desktopLanguageSummaryClass =
-  "inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border bg-white/90 px-4 py-3 text-sm font-semibold leading-none text-ink transition hover:border-clinic-200 hover:text-ink";
+  "inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border bg-white/90 px-3 py-2.5 text-sm font-semibold leading-none text-ink transition hover:border-clinic-200 hover:text-ink lg:px-3.5 lg:py-2.5 xl:px-4 xl:py-3";
 const localeDropdownPanelClass =
   "absolute right-0 z-50 mt-3 w-56 overflow-hidden rounded-[1.1rem] border border-border bg-white p-2 shadow-[0_24px_60px_-30px_rgba(23,33,29,0.35)]";
 const footerLinkClass = (isActive: boolean) => [
@@ -158,12 +158,12 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
       class="sticky top-0 z-40 border-b border-black/10 bg-white/96 shadow-[0_10px_32px_-28px_rgba(17,23,20,0.55)] backdrop-blur-xl overflow-x-clip"
     >
       <div class="page-shell py-3 sm:py-4 lg:py-5">
-        <div class="flex items-center gap-3 lg:gap-6">
+        <div class="flex items-center gap-3 lg:gap-4 xl:gap-6">
           <BrandLockup
             href={sectionRoutes.home[locale]}
             label={brandContent.name[locale]}
             tagline={brandContent.tagline[locale]}
-            class="max-w-[12.5rem] sm:max-w-[16rem] lg:max-w-[18rem]"
+            class="max-w-[12.5rem] sm:max-w-[16rem] lg:max-w-[15rem] xl:max-w-[18rem]"
           />
 
           <div class="hidden flex-1 items-center justify-center gap-3 lg:flex">
@@ -233,7 +233,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
               <Button
                 href={sectionRoutes.contact[locale]}
                 size="sm"
-                class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-5 !py-3 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
+                class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-4 !py-2.5 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
               >
                 {ctaCopy.primary[locale]}
               </Button>
@@ -244,7 +244,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
             <Button
               href={sectionRoutes.contact[locale]}
               size="sm"
-              class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-4 !py-3 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
+              class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-4 !py-2.5 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
             >
               {mobileCtaLabel}
             </Button>
