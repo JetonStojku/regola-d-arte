@@ -27,11 +27,10 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
 >
   <HeroImageSection
     eyebrow="Servizi"
-    title="Diagnosi accurata e piano di cura multidisciplinare."
-    intro="Ogni servizio parte da una valutazione clinica precisa, utile a definire il trattamento più adatto e a collegare le competenze necessarie quando il caso richiede un approccio integrato."
-    note="Le schede qui sotto introducono i servizi confermati e rimandano alle relative pagine individuali, dove trovi contenuti locali più dettagliati."
+    title="Dal consulto al trattamento più adatto."
+    intro="I trattamenti confermati sono presentati come una lista essenziale, con sintesi chiare e link alle pagine locali dedicate."
+    note="Una sola intestazione principale e contenuti collegati ai dati del catalogo."
     primaryCta={{ label: 'Prenota un confronto', href: sectionRoutes.contact.it }}
-    secondaryCta={{ label: 'Richiedi informazioni', href: sectionRoutes.contact.it, variant: 'secondary' }}
     image={{
       src: '/brand/homepage-hero.jpg',
       alt: 'Studio odontoiatrico moderno con percorso di cura organizzato',
@@ -43,38 +42,25 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       fetchpriority: 'high',
       class: 'h-[22rem] w-full object-cover object-center',
     }}
-    supportingPlaceholders={[
-      {
-        eyebrow: 'Foto diagnosi',
-        title: 'Prima visita e valutazione',
-        description:
-          "Inserire un'immagine dello studio durante una valutazione o una preparazione clinica.",
-        aspect: 'aspect-[4/3]',
-      },
-      {
-        eyebrow: 'Foto trattamento',
-        title: 'Tecnologia e precisione',
-        description: 'Inserire un dettaglio di strumenti, workflow o ambiente operativo approvato.',
-        aspect: 'aspect-[4/3]',
-      },
-    ]}
   />
 
   <ServiceRowListSection
     eyebrow="Panoramica servizi"
-    title="Dalla diagnosi alla terapia più adatta."
-    intro="La lista segue i servizi confermati e rimanda alle relative pagine individuali, senza trasformare ogni voce in una card."
+    title="Servizi confermati e collegati alle pagine locali."
+    intro="Ogni riga mostra titolo, sintesi, dettagli e immagine di riferimento, sempre dai dati di contenuto."
+    note={`${String(services.length).padStart(2, '0')} servizi confermati`}
+    locale={locale}
     services={services}
   />
 
-  <BeforeAfterSection locale={locale} />
-
   <ContactCtaBand
     eyebrow="Contatto"
-    title="Hai bisogno di orientarti tra i servizi?"
+    title="Hai bisogno di capire da dove iniziare?"
     intro="Possiamo indicarti il servizio più adatto e spiegare i passaggi iniziali del percorso."
     note="Contattaci per una prima valutazione o per maggiori dettagli."
     primaryCta={{ label: 'Prenota un confronto', href: sectionRoutes.contact.it }}
     secondaryCta={{ label: 'Richiedi informazioni', href: sectionRoutes.contact.it, variant: 'secondary' }}
   />
+
+  <BeforeAfterSection locale={locale} />
 </BaseLayout>
