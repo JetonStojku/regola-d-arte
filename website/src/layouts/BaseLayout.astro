@@ -1,17 +1,22 @@
 ---
-import '../styles/global.css';
-import BrandLockup from '@/components/BrandLockup.astro';
-import Icon from '@/components/ui/Icon.astro';
-import SocialLinks from '@/components/SocialLinks.astro';
-import Button from '@/components/ui/Button.astro';
-import { commonLabels } from '@/content/common';
-import { ctaCopy } from '@/content/ctas';
-import { navigationContent } from '@/content/navigation';
-import { brandContent } from '@/content/pages';
-import { localeMeta, sectionRoutes, supportedLocales, type Locale } from '@/lib/siteArchitecture';
-import type { SeoAlternateLink } from '@/lib/seo';
-import { resolveCanonicalUrl } from '@/lib/seo';
-import { serializeJsonLd, type JsonLdValue } from '@/lib/schema';
+import "../styles/global.css";
+import BrandLockup from "@/components/BrandLockup.astro";
+import Icon from "@/components/ui/Icon.astro";
+import SocialLinks from "@/components/SocialLinks.astro";
+import Button from "@/components/ui/Button.astro";
+import { commonLabels } from "@/content/common";
+import { ctaCopy } from "@/content/ctas";
+import { navigationContent } from "@/content/navigation";
+import { brandContent } from "@/content/pages";
+import {
+  localeMeta,
+  sectionRoutes,
+  supportedLocales,
+  type Locale,
+} from "@/lib/siteArchitecture";
+import type { SeoAlternateLink } from "@/lib/seo";
+import { resolveCanonicalUrl } from "@/lib/seo";
+import { serializeJsonLd, type JsonLdValue } from "@/lib/schema";
 
 type Props = {
   title?: string;
@@ -19,6 +24,7 @@ type Props = {
   robots?: string;
   locale?: Locale;
   canonical?: string;
+  mainClass?: string;
   hreflangLinks?: SeoAlternateLink[];
   alternateLinks?: Array<{
     locale: Locale;
@@ -31,10 +37,11 @@ type Props = {
 
 const {
   title = "Regola D'arte",
-  description = 'Regola D\'arte clinic website scaffold.',
+  description = "Regola D'arte clinic website scaffold.",
   robots,
-  locale = 'it',
+  locale = "it",
   canonical,
+  mainClass = "",
   hreflangLinks = [],
   alternateLinks = [],
   structuredData = [],
@@ -52,41 +59,42 @@ const legalNavigation = navigationContent.legal[locale];
 const localeHomeHref = sectionRoutes.home[locale];
 const mobileCtaLabel = ctaCopy.primary[locale];
 const isActivePath = (href: string) =>
-  pathname === href || (href !== '/' && href !== localeHomeHref && pathname.startsWith(href));
+  pathname === href ||
+  (href !== "/" && href !== localeHomeHref && pathname.startsWith(href));
 const linkBaseClass =
-  'inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold leading-none transition';
+  "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold leading-none transition";
 const desktopLinkClass = (href: string) => [
-  'inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold leading-none transition',
+  "inline-flex flex-nowrap items-center gap-2 whitespace-nowrap rounded-xl px-4 py-3 text-sm font-semibold leading-none transition",
   isActivePath(href)
-    ? 'border-clinic-100 bg-clinic-50 text-clinic-900 shadow-[0_12px_24px_-20px_rgba(43,111,89,0.55)]'
-    : 'border-transparent bg-transparent text-ink-soft hover:border-border hover:bg-white hover:text-ink',
+    ? "border-clinic-100 bg-clinic-50 text-clinic-900 shadow-[0_12px_24px_-20px_rgba(43,111,89,0.55)]"
+    : "border-transparent bg-transparent text-ink-soft hover:border-border hover:bg-white hover:text-ink",
 ];
 const mobileLinkClass = (isActive: boolean) => [
-  'flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition',
+  "flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition",
   isActive
-    ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
-    : 'border-border bg-white text-ink-soft hover:border-clinic-200 hover:text-ink',
+    ? "border-clinic-200 bg-clinic-50 text-clinic-900"
+    : "border-border bg-white text-ink-soft hover:border-clinic-200 hover:text-ink",
 ];
 const navBadgeClass =
-  'inline-flex items-center rounded-full bg-[#2f64ff] px-2 py-1 text-[0.64rem] font-bold leading-none text-white';
+  "inline-flex items-center rounded-full bg-[#2f64ff] px-2 py-1 text-[0.64rem] font-bold leading-none text-white";
 const desktopLanguageSummaryClass =
-  'inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border bg-white/90 px-4 py-3 text-sm font-semibold leading-none text-ink transition hover:border-clinic-200 hover:text-ink';
+  "inline-flex cursor-pointer list-none items-center gap-2 rounded-xl border border-border bg-white/90 px-4 py-3 text-sm font-semibold leading-none text-ink transition hover:border-clinic-200 hover:text-ink";
 const localeDropdownPanelClass =
-  'absolute right-0 z-50 mt-3 w-56 overflow-hidden rounded-[1.1rem] border border-border bg-white p-2 shadow-[0_24px_60px_-30px_rgba(23,33,29,0.35)]';
+  "absolute right-0 z-50 mt-3 w-56 overflow-hidden rounded-[1.1rem] border border-border bg-white p-2 shadow-[0_24px_60px_-30px_rgba(23,33,29,0.35)]";
 const footerLinkClass = (isActive: boolean) => [
-  'flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition',
+  "flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition",
   isActive
-    ? 'border-white/20 bg-white/10 text-text-inverse'
-    : 'border-white/10 bg-white/[0.04] text-text-inverse-muted hover:border-white/20 hover:bg-white/10 hover:text-text-inverse',
+    ? "border-white/20 bg-white/10 text-text-inverse"
+    : "border-white/10 bg-white/[0.04] text-text-inverse-muted hover:border-white/20 hover:bg-white/10 hover:text-text-inverse",
 ];
 const footerLegalLinkClass = [
-  'inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-text-inverse-muted transition hover:border-white/20 hover:bg-white/10 hover:text-text-inverse',
+  "inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-text-inverse-muted transition hover:border-white/20 hover:bg-white/10 hover:text-text-inverse",
 ];
 const footerSwitcherLinkClass = (isCurrent: boolean) => [
   linkBaseClass,
   isCurrent
-    ? 'border-clinic-200 bg-clinic-50 text-clinic-900'
-    : 'border-white/10 bg-white/[0.04] text-text-inverse-muted hover:border-white/20 hover:bg-white/10 hover:text-text-inverse',
+    ? "border-clinic-200 bg-clinic-50 text-clinic-900"
+    : "border-white/10 bg-white/[0.04] text-text-inverse-muted hover:border-white/20 hover:bg-white/10 hover:text-text-inverse",
 ];
 const localeCode = locale.toUpperCase();
 const localeLinks = supportedLocales.map((supportedLocale) => ({
@@ -116,19 +124,29 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={brandContent.name[locale]} />
     <meta property="og:locale" content={ogLocale} />
-    {ogLocaleAlternates.map((alternateLocale) => (
-      <meta property="og:locale:alternate" content={alternateLocale} />
-    ))}
+    {
+      ogLocaleAlternates.map((alternateLocale) => (
+        <meta property="og:locale:alternate" content={alternateLocale} />
+      ))
+    }
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    {hreflangLinks.map((link) => (
-      <link rel="alternate" hreflang={link.hreflang} href={resolveCanonicalUrl(link.href, Astro.site)} />
-    ))}
-    {structuredData.map((schema) => (
-      <script type="application/ld+json" set:html={serializeJsonLd(schema)} />
-    ))}
+    {
+      hreflangLinks.map((link) => (
+        <link
+          rel="alternate"
+          hreflang={link.hreflang}
+          href={resolveCanonicalUrl(link.href, Astro.site)}
+        />
+      ))
+    }
+    {
+      structuredData.map((schema) => (
+        <script type="application/ld+json" set:html={serializeJsonLd(schema)} />
+      ))
+    }
     {robots && <meta name="robots" content={robots} />}
   </head>
   <body>
@@ -136,7 +154,9 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
       {commonLabels.skipLink[locale]}
     </a>
 
-    <header class="sticky top-0 z-40 border-b border-black/10 bg-white/96 shadow-[0_10px_32px_-28px_rgba(17,23,20,0.55)] backdrop-blur-xl">
+    <header
+      class="sticky top-0 z-40 border-b border-black/10 bg-white/96 shadow-[0_10px_32px_-28px_rgba(17,23,20,0.55)] backdrop-blur-xl overflow-x-clip"
+    >
       <div class="page-shell py-3 sm:py-4 lg:py-5">
         <div class="flex items-center gap-3 lg:gap-6">
           <BrandLockup
@@ -149,51 +169,65 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
           <div class="hidden flex-1 items-center justify-center gap-3 lg:flex">
             <nav aria-label={commonLabels.primaryNavigation[locale]}>
               <ul class="flex items-center gap-1">
-                {primaryNavigation.map((item) => (
-                  <li>
-                    <a
-                      href={item.href}
-                      aria-current={isActivePath(item.href) ? 'page' : undefined}
-                      class:list={desktopLinkClass(item.href)}
-                    >
-                      <span>{item.label}</span>
-                      {item.badge ? <span class={navBadgeClass}>{item.badge}</span> : null}
-                    </a>
-                  </li>
-                ))}
+                {
+                  primaryNavigation.map((item) => (
+                    <li>
+                      <a
+                        href={item.href}
+                        aria-current={
+                          isActivePath(item.href) ? "page" : undefined
+                        }
+                        class:list={desktopLinkClass(item.href)}
+                      >
+                        <span>{item.label}</span>
+                        {item.badge ? (
+                          <span class={navBadgeClass}>{item.badge}</span>
+                        ) : null}
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </nav>
 
             <div class="flex items-center gap-3 border-l border-border pl-5">
               <details class="relative">
                 <summary class={desktopLanguageSummaryClass}>
-                  <Icon icon="lucide:languages" class="h-4 w-4 text-[#2f64ff]" />
+                  <Icon
+                    icon="lucide:languages"
+                    class="h-4 w-4 text-[#2f64ff]"
+                  />
                   <span>{localeCode}</span>
-                  <Icon icon="lucide:chevron-down" class="h-4 w-4 text-[#2f64ff]" />
+                  <Icon
+                    icon="lucide:chevron-down"
+                    class="h-4 w-4 text-[#2f64ff]"
+                  />
                 </summary>
 
                 <div class={localeDropdownPanelClass}>
                   <nav aria-label={commonLabels.languageSwitcher[locale]}>
                     <ul class="space-y-1">
-                      {localeLinks.map((link) => (
-                        <li>
-                          <a
-                            href={link.href}
-                            aria-current={link.isCurrent ? 'page' : undefined}
-                            class:list={[
-                              'flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold transition',
-                              link.isCurrent
-                                ? 'bg-clinic-50 text-clinic-900'
-                                : 'text-ink-soft hover:bg-canvas-soft hover:text-ink',
-                            ]}
-                          >
-                            <span>{link.label}</span>
-                            <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
-                              {link.code}
-                            </span>
-                          </a>
-                        </li>
-                      ))}
+                      {
+                        localeLinks.map((link) => (
+                          <li>
+                            <a
+                              href={link.href}
+                              aria-current={link.isCurrent ? "page" : undefined}
+                              class:list={[
+                                "flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold transition",
+                                link.isCurrent
+                                  ? "bg-clinic-50 text-clinic-900"
+                                  : "text-ink-soft hover:bg-canvas-soft hover:text-ink",
+                              ]}
+                            >
+                              <span>{link.label}</span>
+                              <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
+                                {link.code}
+                              </span>
+                            </a>
+                          </li>
+                        ))
+                      }
                     </ul>
                   </nav>
                 </div>
@@ -226,61 +260,84 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                 <Icon icon="lucide:menu" class="h-4 w-4" />
               </summary>
 
-              <div class="absolute right-0 z-50 mt-3 max-h-[calc(100vh-7rem)] w-[min(92vw,27rem)] overflow-auto rounded-[1.35rem] border border-border bg-white p-4 shadow-[0_24px_60px_-30px_rgba(23,33,29,0.4)]">
+              <div
+                class="absolute right-0 z-50 mt-3 max-h-[calc(100vh-7rem)] w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] overflow-auto rounded-[1.35rem] border border-border bg-white p-4 shadow-[0_24px_60px_-30px_rgba(23,33,29,0.4)] sm:w-[min(92vw,27rem)] sm:max-w-[27rem]"
+              >
                 <div class="space-y-5">
                   <nav aria-label={commonLabels.primaryNavigation[locale]}>
                     <ul class="space-y-2">
-                      {primaryNavigation.map((item) => (
-                        <li>
-                          <a
-                            href={item.href}
-                            aria-current={isActivePath(item.href) ? 'page' : undefined}
-                            class:list={mobileLinkClass(isActivePath(item.href))}
-                          >
-                            <span class="flex items-center gap-2">
-                              <span>{item.label}</span>
-                              {item.badge ? <span class={navBadgeClass}>{item.badge}</span> : null}
-                            </span>
-                            <Icon icon="lucide:arrow-right" class="h-4 w-4 shrink-0 text-clinic-500" />
-                          </a>
-                        </li>
-                      ))}
+                      {
+                        primaryNavigation.map((item) => (
+                          <li>
+                            <a
+                              href={item.href}
+                              aria-current={
+                                isActivePath(item.href) ? "page" : undefined
+                              }
+                              class:list={mobileLinkClass(
+                                isActivePath(item.href),
+                              )}
+                            >
+                              <span class="flex items-center gap-2">
+                                {item.label}
+                              </span>
+                              <Icon
+                                icon="lucide:arrow-right"
+                                class="h-4 w-4 shrink-0 text-clinic-500"
+                              />
+                            </a>
+                          </li>
+                        ))
+                      }
                     </ul>
                   </nav>
 
                   <div class="border-t border-border pt-4">
                     <details class="relative">
-                      <summary class="flex cursor-pointer list-none items-center justify-between rounded-2xl border border-border bg-canvas/70 px-4 py-3 text-sm font-semibold text-ink-soft transition hover:border-clinic-200 hover:text-ink">
+                      <summary
+                        class="flex cursor-pointer list-none items-center justify-between rounded-2xl border border-border bg-canvas/70 px-4 py-3 text-sm font-semibold text-ink-soft transition hover:border-clinic-200 hover:text-ink"
+                      >
                         <span class="flex items-center gap-2">
-                          <Icon icon="lucide:languages" class="h-4 w-4 text-[#2f64ff]" />
+                          <Icon
+                            icon="lucide:languages"
+                            class="h-4 w-4 text-[#2f64ff]"
+                          />
                           <span>{commonLabels.languageSwitcher[locale]}</span>
                         </span>
-                        <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
+                        <span
+                          class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]"
+                        >
                           {localeCode}
                         </span>
                       </summary>
 
-                      <div class="mt-3 rounded-2xl border border-border bg-white p-2 shadow-[0_18px_44px_-30px_rgba(23,33,29,0.28)]">
+                      <div
+                        class="mt-3 rounded-2xl border border-border bg-white p-2 shadow-[0_18px_44px_-30px_rgba(23,33,29,0.28)]"
+                      >
                         <ul class="space-y-1">
-                          {localeLinks.map((link) => (
-                            <li>
-                              <a
-                                href={link.href}
-                                aria-current={link.isCurrent ? 'page' : undefined}
-                                class:list={[
-                                  'flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold transition',
-                                  link.isCurrent
-                                    ? 'bg-clinic-50 text-clinic-900'
-                                    : 'text-ink-soft hover:bg-canvas-soft hover:text-ink',
-                                ]}
-                              >
-                                <span>{link.label}</span>
-                                <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
-                                  {link.code}
-                                </span>
-                              </a>
-                            </li>
-                          ))}
+                          {
+                            localeLinks.map((link) => (
+                              <li>
+                                <a
+                                  href={link.href}
+                                  aria-current={
+                                    link.isCurrent ? "page" : undefined
+                                  }
+                                  class:list={[
+                                    "flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold transition",
+                                    link.isCurrent
+                                      ? "bg-clinic-50 text-clinic-900"
+                                      : "text-ink-soft hover:bg-canvas-soft hover:text-ink",
+                                  ]}
+                                >
+                                  <span>{link.label}</span>
+                                  <span class="text-xs font-bold tracking-[0.18em] text-[#2f64ff]">
+                                    {link.code}
+                                  </span>
+                                </a>
+                              </li>
+                            ))
+                          }
                         </ul>
                       </div>
                     </details>
@@ -296,15 +353,23 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
     <SocialLinks locale={locale} variant="rail" />
     <SocialLinks locale={locale} variant="mobile" />
 
-    <main id="content" class="page-shell section-shell">
+    <main
+      id="content"
+      class:list={["page-shell section-shell overflow-x-clip", mainClass]}
+    >
       <slot />
     </main>
 
     <footer class="site-footer border-t border-border/70 bg-canvas/75">
       <div class="page-shell py-10 sm:py-12 lg:py-14">
-        <div class="overflow-hidden rounded-[var(--radius-clinic-lg)] border border-border-strong bg-theme-dark shadow-[0_24px_60px_-34px_rgba(17,23,20,0.55)]">
+        <div
+          class="overflow-hidden rounded-[var(--radius-clinic-lg)] border border-border-strong bg-theme-dark shadow-[0_24px_60px_-34px_rgba(17,23,20,0.55)]"
+        >
           <div class="grid gap-px bg-white/10 lg:grid-cols-[1.05fr_0.95fr_1fr]">
-            <section class="bg-theme-dark p-6 sm:p-8 lg:p-9" aria-labelledby="footer-contact">
+            <section
+              class="bg-theme-dark p-6 sm:p-8 lg:p-9"
+              aria-labelledby="footer-contact"
+            >
               <div class="site-footer__brand">
                 <BrandLockup
                   href={sectionRoutes.home[locale]}
@@ -314,7 +379,9 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                   class="max-w-[15rem]"
                 />
               </div>
-              <p class="mt-4 max-w-md text-sm leading-7 text-text-inverse-muted">
+              <p
+                class="mt-4 max-w-md text-sm leading-7 text-text-inverse-muted"
+              >
                 {commonLabels.footerContactNote[locale]}
               </p>
               <div class="mt-5 flex flex-wrap items-center gap-3">
@@ -323,43 +390,65 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                 </Button>
               </div>
               <div class="mt-6">
-                <p class="eyebrow text-text-inverse/70">{commonLabels.footerContactTitle[locale]}</p>
+                <p class="eyebrow text-text-inverse/70">
+                  {commonLabels.footerContactTitle[locale]}
+                </p>
                 <div class="mt-3">
                   <SocialLinks locale={locale} variant="footer" />
                 </div>
               </div>
             </section>
 
-            <section class="bg-theme-dark p-6 sm:p-8 lg:p-9" aria-labelledby="footer-navigation">
+            <section
+              class="bg-theme-dark p-6 sm:p-8 lg:p-9"
+              aria-labelledby="footer-navigation"
+            >
               <p id="footer-navigation" class="eyebrow text-text-inverse/70">
                 {commonLabels.footerNavigation[locale]}
               </p>
-              <nav aria-label={commonLabels.footerNavigation[locale]} class="mt-4">
+              <nav
+                aria-label={commonLabels.footerNavigation[locale]}
+                class="mt-4"
+              >
                 <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  {footerNavigation.map((item) => (
-                    <li>
-                      <a
-                        href={item.href}
-                        aria-current={isActivePath(item.href) ? 'page' : undefined}
-                        class:list={footerLinkClass(isActivePath(item.href))}
-                      >
-                        <span>{item.label}</span>
-                        <Icon icon="lucide:arrow-right" class="h-4 w-4 shrink-0 text-text-inverse-muted" />
-                      </a>
-                    </li>
-                  ))}
+                  {
+                    footerNavigation.map((item) => (
+                      <li>
+                        <a
+                          href={item.href}
+                          aria-current={
+                            isActivePath(item.href) ? "page" : undefined
+                          }
+                          class:list={footerLinkClass(isActivePath(item.href))}
+                        >
+                          <span>{item.label}</span>
+                          <Icon
+                            icon="lucide:arrow-right"
+                            class="h-4 w-4 shrink-0 text-text-inverse-muted"
+                          />
+                        </a>
+                      </li>
+                    ))
+                  }
                 </ul>
               </nav>
             </section>
 
-            <section class="bg-theme-dark p-6 sm:p-8 lg:p-9" aria-labelledby="footer-legal">
+            <section
+              class="bg-theme-dark p-6 sm:p-8 lg:p-9"
+              aria-labelledby="footer-legal"
+            >
               <p id="footer-legal" class="eyebrow text-text-inverse/70">
                 {commonLabels.footerLegalTitle[locale]}
               </p>
-              <p class="mt-4 max-w-md text-sm leading-7 text-text-inverse-muted">
+              <p
+                class="mt-4 max-w-md text-sm leading-7 text-text-inverse-muted"
+              >
                 {commonLabels.footerLegalDetailsTitle[locale]}
               </p>
-              <ul class="mt-4 space-y-2 text-sm leading-6 text-text-inverse-muted">
+              <ul
+                class="mt-4 space-y-2 text-sm leading-6 text-text-inverse-muted"
+              >
                 <li>{brandContent.name[locale]}</li>
                 <li>Via Taranto 237, Lecce, CAP 73100, Italia</li>
                 <li>+39 327 974 7044</li>
@@ -369,21 +458,28 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                 <li>Direttore sanitario: Dr. Genti Dylgjeri</li>
                 <li>Iscritto all'Albo degli Odontoiatri di Firenze: 01900</li>
               </ul>
-              <nav aria-label={commonLabels.footerLegalTitle[locale]} class="mt-5">
+              <nav
+                aria-label={commonLabels.footerLegalTitle[locale]}
+                class="mt-5"
+              >
                 <ul class="flex flex-wrap gap-2">
-                  {legalNavigation.map((item) => (
-                    <li>
-                      <a href={item.href} class:list={footerLegalLinkClass}>
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
+                  {
+                    legalNavigation.map((item) => (
+                      <li>
+                        <a href={item.href} class:list={footerLegalLinkClass}>
+                          {item.label}
+                        </a>
+                      </li>
+                    ))
+                  }
                 </ul>
               </nav>
             </section>
           </div>
 
-          <div class="flex flex-col gap-4 border-t border-white/10 bg-white/[0.03] px-6 py-5 sm:px-8 sm:py-6 lg:flex-row lg:items-center lg:justify-between">
+          <div
+            class="flex flex-col gap-4 border-t border-white/10 bg-white/[0.03] px-6 py-5 sm:px-8 sm:py-6 lg:flex-row lg:items-center lg:justify-between"
+          >
             <BrandLockup
               href={sectionRoutes.home[locale]}
               compact
@@ -393,24 +489,31 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
               class="site-footer__brand-compact max-w-[16rem]"
             />
 
-            {alternateLinks.length > 0 && (
-              <nav aria-label={commonLabels.languageSwitcher[locale]} class="space-y-2">
-                <p class="eyebrow text-text-inverse/70">{commonLabels.languageSwitcher[locale]}</p>
-                <ul class="flex flex-wrap gap-2">
-                  {alternateLinks.map((link) => (
-                    <li>
-                      <a
-                        href={link.href}
-                        aria-current={link.isCurrent ? 'page' : undefined}
-                        class:list={footerSwitcherLinkClass(link.isCurrent)}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            )}
+            {
+              alternateLinks.length > 0 && (
+                <nav
+                  aria-label={commonLabels.languageSwitcher[locale]}
+                  class="space-y-2"
+                >
+                  <p class="eyebrow text-text-inverse/70">
+                    {commonLabels.languageSwitcher[locale]}
+                  </p>
+                  <ul class="flex flex-wrap gap-2">
+                    {alternateLinks.map((link) => (
+                      <li>
+                        <a
+                          href={link.href}
+                          aria-current={link.isCurrent ? "page" : undefined}
+                          class:list={footerSwitcherLinkClass(link.isCurrent)}
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )
+            }
           </div>
         </div>
       </div>
@@ -418,14 +521,16 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
 
     <script is:inline type="module">
       const initializeDeferredEmbeds = () => {
-        const embeds = Array.from(document.querySelectorAll('[data-deferred-embed]'));
+        const embeds = Array.from(
+          document.querySelectorAll("[data-deferred-embed]"),
+        );
 
         if (embeds.length === 0) {
           return;
         }
 
         const loadEmbed = (container) => {
-          if (container.dataset.loaded === 'true') {
+          if (container.dataset.loaded === "true") {
             return;
           }
 
@@ -434,41 +539,51 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
             return;
           }
 
-          const frameHost = container.querySelector('[data-deferred-embed-frame]');
+          const frameHost = container.querySelector(
+            "[data-deferred-embed-frame]",
+          );
           if (!frameHost) {
             return;
           }
 
-          const iframe = document.createElement('iframe');
+          const iframe = document.createElement("iframe");
           iframe.src = src;
-          iframe.title = container.dataset.title || '';
-          iframe.loading = 'lazy';
-          iframe.referrerPolicy = 'no-referrer-when-downgrade';
-          iframe.className = 'h-full w-full border-0';
+          iframe.title = container.dataset.title || "";
+          iframe.loading = "lazy";
+          iframe.referrerPolicy = "no-referrer-when-downgrade";
+          iframe.className = "h-full w-full border-0";
 
           frameHost.appendChild(iframe);
-          frameHost.classList.remove('hidden');
-          container.querySelector('[data-deferred-embed-placeholder]')?.setAttribute('hidden', '');
-          container.dataset.loaded = 'true';
+          frameHost.classList.remove("hidden");
+          container
+            .querySelector("[data-deferred-embed-placeholder]")
+            ?.setAttribute("hidden", "");
+          container.dataset.loaded = "true";
         };
 
-        const observe = 'IntersectionObserver' in window
-          ? new IntersectionObserver((entries, observer) => {
-              entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                  return;
-                }
+        const observe =
+          "IntersectionObserver" in window
+            ? new IntersectionObserver(
+                (entries, observer) => {
+                  entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                      return;
+                    }
 
-                loadEmbed(entry.target);
-                observer.unobserve(entry.target);
-              });
-            }, { rootMargin: '200px 0px' })
-          : null;
+                    loadEmbed(entry.target);
+                    observer.unobserve(entry.target);
+                  });
+                },
+                { rootMargin: "200px 0px" },
+              )
+            : null;
 
         embeds.forEach((container) => {
-          const trigger = container.querySelector('[data-deferred-embed-trigger]');
+          const trigger = container.querySelector(
+            "[data-deferred-embed-trigger]",
+          );
 
-          trigger?.addEventListener('click', () => {
+          trigger?.addEventListener("click", () => {
             loadEmbed(container);
           });
 
@@ -478,8 +593,12 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
         });
       };
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeDeferredEmbeds, { once: true });
+      if (document.readyState === "loading") {
+        document.addEventListener(
+          "DOMContentLoaded",
+          initializeDeferredEmbeds,
+          { once: true },
+        );
       } else {
         initializeDeferredEmbeds();
       }

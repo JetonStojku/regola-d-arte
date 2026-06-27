@@ -52,6 +52,7 @@ body {
   color: var(--color-ink);
   background-color: var(--color-canvas);
   background-image: linear-gradient(180deg, #f7f2eb 0%, #f8f5f0 44%, #f1f6f2 100%);
+  overflow-x: clip;
 }
 
 @media (max-width: 767px) {

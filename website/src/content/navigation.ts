@@ -9,13 +9,13 @@ export const navigationContent = {
     it: [
       { label: 'Home', href: sectionRoutes.home.it },
       { label: 'Chi siamo', href: sectionRoutes.about.it },
-      { label: 'Servizi', href: sectionRoutes.servicesOverview.it, badge: 'Nuovo' },
+      { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
       { label: 'Contatti', href: sectionRoutes.contact.it },
     ],
     en: [
       { label: 'Home', href: sectionRoutes.home.en },
       { label: 'About', href: sectionRoutes.about.en },
-      { label: 'Services', href: sectionRoutes.servicesOverview.en, badge: 'New' },
+      { label: 'Services', href: sectionRoutes.servicesOverview.en },
       { label: 'Contact', href: sectionRoutes.contact.en },
     ],
   },
@@ -48,7 +48,7 @@ export const navigationContent = {
     en: { label: 'English', href: sectionRoutes.home.en },
   },
 } as const satisfies {
-  primary: Record<Locale, Array<{ label: string; href: string; badge?: string }>>;
+  primary: Record<Locale, Array<{ label: string; href: string }>>;
   footer: Record<Locale, Array<{ label: string; href: string }>>;
   legal: Record<Locale, Array<{ label: string; href: string }>>;
   languageSwitcher: Record<Locale, { label: string; href: string }>;
