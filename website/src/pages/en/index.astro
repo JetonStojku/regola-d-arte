@@ -48,9 +48,12 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
 >
   <HeroImageSection
     variant="hero"
-    eyebrow={content.eyebrow}
+    eyebrow={content.heroBadge}
     title={content.title}
     intro={content.intro}
+    heroStatValue={content.heroStatValue}
+    heroStatLabel={content.heroStatLabel}
+    heroStatNote={content.heroStatNote}
     note={content.heroNote}
     primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.servicesOverview.en }}
     secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.contact.en, variant: 'secondary' }}
@@ -59,11 +62,11 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       alt: 'Dr. Genti Dylgjeri in a modern dental surgery',
       width: 1280,
       height: 720,
-      sizes: '(min-width: 1280px) 44rem, (min-width: 1024px) 48vw, 100vw',
+      sizes: '100vw',
       widths: [640, 960, 1280],
       loading: 'eager',
       fetchpriority: 'high',
-      class: 'h-[27rem] w-full object-cover object-center',
+      class: 'h-full w-full object-cover object-center',
     }}
     supportingImages={[
       {
@@ -71,18 +74,27 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
         alt: 'Portrait of Dr. Genti Dylgjeri in a modern dental surgery',
         width: 1200,
         height: 800,
-        sizes: '(min-width: 1280px) 22rem, (min-width: 1024px) 24vw, 48vw',
+        sizes: '44px',
         widths: [480, 800, 1200],
-        class: 'h-44 w-full object-cover object-center',
+        class: 'h-full w-full object-cover object-center',
       },
       {
         src: '/brand/about-clinic.jpg',
         alt: 'Dental team during a treatment session in a modern clinic',
         width: 1200,
         height: 800,
-        sizes: '(min-width: 1280px) 22rem, (min-width: 1024px) 24vw, 48vw',
+        sizes: '44px',
         widths: [480, 800, 1200],
-        class: 'h-44 w-full object-cover object-center',
+        class: 'h-full w-full object-cover object-center',
+      },
+      {
+        src: '/brand/homepage-hero.jpg',
+        alt: 'Modern dental surgery with the team at work',
+        width: 1280,
+        height: 720,
+        sizes: '44px',
+        widths: [640, 960, 1280],
+        class: 'h-full w-full object-cover object-center',
       },
     ]}
   />
@@ -150,3 +162,4 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     note={content.heroNote}
   />
 </BaseLayout>
+

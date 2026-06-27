@@ -32,9 +32,13 @@ type HomePageContent = {
   eyebrow: string;
   title: string;
   intro: string;
+  heroBadge: string;
   heroPrimaryCta: string;
   heroSecondaryCta: string;
   heroNote: string;
+  heroStatValue: string;
+  heroStatLabel: string;
+  heroStatNote: string;
   storyEyebrow: string;
   storyTitle: string;
   storyBody: string;
@@ -203,12 +207,16 @@ export const rootGatewayPageContent: Record<Locale, RootGatewayPageContent> = {
 export const homePageContent: Record<Locale, HomePageContent> = {
   it: {
     eyebrow: 'Studio dentistico premium',
-    title: 'Cura clinica precisa, estetica naturale, accoglienza attenta.',
+    title: 'Aiutiamo i pazienti a ritrovare salute, comfort e un sorriso naturale.',
     intro:
       'Regola D\'arte unisce odontoiatria conservativa, chirurgia, implantologia, ortodonzia ed estetica in un percorso chiaro e personalizzato.',
+    heroBadge: 'We are a premium dental clinic',
     heroPrimaryCta: ctaCopy.primary.it,
     heroSecondaryCta: ctaCopy.secondary.it,
-    heroNote: 'Accesso diretto ai servizi confermati e ai contatti dello studio.',
+    heroNote: 'Percorsi bilingui, immagini reali e informazioni confermate.',
+    heroStatValue: '2',
+    heroStatLabel: 'lingue',
+    heroStatNote: 'Home, servizi e contatti sempre disponibili in italiano e inglese.',
     storyEyebrow: 'Posizionamento',
     storyTitle: 'Un approccio che mette insieme funzione, comfort e precisione.',
     storyBody:
@@ -245,12 +253,16 @@ export const homePageContent: Record<Locale, HomePageContent> = {
   },
   en: {
     eyebrow: 'Premium dental clinic',
-    title: 'Precise clinical care, natural aesthetics, attentive hospitality.',
+    title: 'We help patients protect their smile and feel confident again.',
     intro:
       'Regola D\'arte combines restorative dentistry, oral surgery, implantology, orthodontics, and aesthetics in a clear, personalized patient journey.',
+    heroBadge: 'We are a premium dental clinic',
     heroPrimaryCta: ctaCopy.primary.en,
     heroSecondaryCta: ctaCopy.secondary.en,
-    heroNote: 'Direct access to confirmed services and the practice contact page.',
+    heroNote: 'Bilingual routes, real imagery, and confirmed information.',
+    heroStatValue: '2',
+    heroStatLabel: 'languages',
+    heroStatNote: 'Home, services, and contact are available in Italian and English.',
     storyEyebrow: 'Positioning',
     storyTitle: 'An approach that brings together function, comfort, and precision.',
     storyBody:
