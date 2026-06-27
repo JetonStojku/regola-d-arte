@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
-import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
-import PhotoPlaceholder from '@/components/PhotoPlaceholder.astro';
+import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
 import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { pageMetadata } from '@/content/metadata';
 import { navigationContent } from '@/content/navigation';
@@ -28,64 +27,40 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   alternateLinks={getLanguageSwitcherLinks('about', locale)}
   structuredData={structuredData}
 >
-  <section class="content-band">
-    <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-      <div class="section-copy">
-        <Badge tone="accent">Chi siamo</Badge>
-        <h1 class="display-title mt-5 max-w-2xl">Regola D&apos;arte, il vostro sorriso, la nostra arte</h1>
-        <p class="lead mt-4 max-w-2xl">
-          Crediamo che ogni sorriso meriti attenzione, precisione e bellezza. Per questo uniamo
-          competenza clinica, estetica, scienza e umanità in un percorso di cura personalizzato.
-        </p>
-        <p class="mt-4 max-w-2xl text-sm leading-7 text-ink-soft">
-          La nostra filosofia si basa sulla precisione dell&apos;intervento, sulla qualità dei
-          materiali e sull&apos;attenzione a biomeccanica, occlusione e funzione, per risultati
-          funzionali, armonici e duraturi.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <Button href={sectionRoutes.servicesOverview.it}>{navigationContent.primary.it[1].label}</Button>
-          <Button href={sectionRoutes.contact.it} variant="secondary">
-            {navigationContent.primary.it[2].label}
-          </Button>
-        </div>
-      </div>
-
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="visual-frame sm:col-span-2">
-          <ResponsiveImage
-            src="/brand/about-doctor.jpg"
-            alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
-            class="h-[22rem] w-full object-cover object-center"
-            width={1280}
-            height={720}
-            sizes="(min-width: 1024px) 35rem, 100vw"
-            widths={[640, 960, 1280]}
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <div class="visual-frame">
-          <ResponsiveImage
-            src="/brand/about-clinic.jpg"
-            alt="Equipe odontoiatrica durante una seduta di cura in uno studio moderno"
-            class="h-56 w-full object-cover object-center"
-            width={800}
-            height={533}
-            sizes="(min-width: 1024px) 35rem, 100vw"
-            widths={[480, 800, 1200]}
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <PhotoPlaceholder
-          eyebrow="Foto studio"
-          title="Dettaglio professionale"
-          description="Inserire una foto di strumentazione, sala o dettaglio che comunichi precisione."
-        />
-      </div>
-    </div>
-  </section>
+  <SplitMediaSection
+    titleTag="h1"
+    eyebrow="Chi siamo"
+    title="Regola D'arte, il vostro sorriso, la nostra arte"
+    intro="Crediamo che ogni sorriso meriti attenzione, precisione e bellezza. Per questo uniamo competenza clinica, estetica, scienza e umanità in un percorso di cura personalizzato."
+    body="La nostra filosofia si basa sulla precisione dell'intervento, sulla qualità dei materiali e sull'attenzione a biomeccanica, occlusione e funzione, per risultati funzionali, armonici e duraturi."
+    note="Puntiamo su cinque elementi verificati: precisione, funzione, estetica, diagnosi e servizi confermati."
+    primaryCta={{ href: sectionRoutes.servicesOverview.it, label: navigationContent.primary.it[1].label }}
+    secondaryCta={{ href: sectionRoutes.contact.it, label: navigationContent.primary.it[2].label, variant: 'secondary' }}
+    image={{
+      src: '/brand/about-doctor.jpg',
+      alt: 'Dott. Genti Dylgjeri in uno studio odontoiatrico moderno',
+      width: 1280,
+      height: 720,
+      sizes: '(min-width: 1024px) 35rem, 100vw',
+      widths: [640, 960, 1280],
+      loading: 'eager',
+      fetchpriority: 'high',
+    }}
+    supportingPlaceholders={[
+      {
+        eyebrow: 'Diagnosi e funzione',
+        title: 'Valutazione accurata del caso',
+        description:
+          "Ogni trattamento parte da una lettura attenta dell'occlusione e delle esigenze cliniche del paziente.",
+      },
+      {
+        eyebrow: 'Servizi confermati',
+        title: 'Percorso clinico chiaro',
+        description:
+          'Conservativa, endodonzia, chirurgia orale e implantologia, ortodonzia, estetica dentale e igiene professionale.',
+      },
+    ]}
+  />
 
   <FeatureGridSection
     eyebrow="Punti chiave"

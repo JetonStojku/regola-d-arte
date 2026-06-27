@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
-import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
-import PhotoPlaceholder from '@/components/PhotoPlaceholder.astro';
+import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
 import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { pageMetadata } from '@/content/metadata';
 import { navigationContent } from '@/content/navigation';
@@ -28,64 +27,40 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   alternateLinks={getLanguageSwitcherLinks('about', locale)}
   structuredData={structuredData}
 >
-  <section class="content-band">
-    <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-      <div class="section-copy">
-        <Badge tone="accent">About</Badge>
-        <h1 class="display-title mt-5 max-w-2xl">Regola D&apos;arte, your smile, our art</h1>
-        <p class="lead mt-4 max-w-2xl">
-          We believe every smile deserves attention, precision, and beauty. That is why we combine
-          clinical expertise, aesthetics, science, and humanity in a personalized care journey.
-        </p>
-        <p class="mt-4 max-w-2xl text-sm leading-7 text-ink-soft">
-          Our philosophy is built on treatment precision, material quality, and close attention to
-          biomechanics, occlusion, and function, so the results are functional, harmonious, and
-          durable.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <Button href={sectionRoutes.servicesOverview.en}>{navigationContent.primary.en[1].label}</Button>
-          <Button href={sectionRoutes.contact.en} variant="secondary">
-            {navigationContent.primary.en[2].label}
-          </Button>
-        </div>
-      </div>
-
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="visual-frame sm:col-span-2">
-          <ResponsiveImage
-            src="/brand/about-doctor.jpg"
-            alt="Dr. Genti Dylgjeri in a modern dental surgery"
-            class="h-[22rem] w-full object-cover object-center"
-            width={1280}
-            height={720}
-            sizes="(min-width: 1024px) 35rem, 100vw"
-            widths={[640, 960, 1280]}
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <div class="visual-frame">
-          <ResponsiveImage
-            src="/brand/about-clinic.jpg"
-            alt="Dental team during a treatment session in a modern clinic"
-            class="h-56 w-full object-cover object-center"
-            width={800}
-            height={533}
-            sizes="(min-width: 1024px) 35rem, 100vw"
-            widths={[480, 800, 1200]}
-            loading="eager"
-            fetchpriority="high"
-          />
-        </div>
-        <PhotoPlaceholder
-          eyebrow="Clinic photo"
-          title="Professional detail"
-          description="Add a photo of equipment, room, or a detail that communicates precision."
-        />
-      </div>
-    </div>
-  </section>
+  <SplitMediaSection
+    titleTag="h1"
+    eyebrow="About"
+    title="Regola D'arte, your smile, our art"
+    intro="We believe every smile deserves attention, precision, and beauty. That is why we combine clinical expertise, aesthetics, science, and humanity in a personalized care journey."
+    body="Our philosophy is built on treatment precision, material quality, and close attention to biomechanics, occlusion, and function, so the results are functional, harmonious, and durable."
+    note="The verified focus stays on five points: precision, function, aesthetics, diagnosis, and confirmed services."
+    primaryCta={{ href: sectionRoutes.servicesOverview.en, label: navigationContent.primary.en[1].label }}
+    secondaryCta={{ href: sectionRoutes.contact.en, label: navigationContent.primary.en[2].label, variant: 'secondary' }}
+    image={{
+      src: '/brand/about-doctor.jpg',
+      alt: 'Dr. Genti Dylgjeri in a modern dental surgery',
+      width: 1280,
+      height: 720,
+      sizes: '(min-width: 1024px) 35rem, 100vw',
+      widths: [640, 960, 1280],
+      loading: 'eager',
+      fetchpriority: 'high',
+    }}
+    supportingPlaceholders={[
+      {
+        eyebrow: 'Diagnosis and function',
+        title: 'Accurate case evaluation',
+        description:
+          "Every treatment starts with a careful reading of occlusion and the patient's clinical needs.",
+      },
+      {
+        eyebrow: 'Confirmed services',
+        title: 'Clear clinical path',
+        description:
+          'Restorative dentistry, endodontics, oral surgery and implantology, orthodontics, dental aesthetics, and professional hygiene.',
+      },
+    ]}
+  />
 
   <FeatureGridSection
     eyebrow="Key points"
@@ -96,7 +71,7 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
         eyebrow: 'Precision and function',
         title: 'Every plan starts from an accurate diagnosis.',
         description:
-          'Treatments are prepared with care and a multidisciplinary mindset, always tailored to the patient&apos;s specific needs.',
+          "Treatments are prepared with care and a multidisciplinary mindset, always tailored to the patient's specific needs.",
       },
       {
         eyebrow: 'Aesthetics and science',
