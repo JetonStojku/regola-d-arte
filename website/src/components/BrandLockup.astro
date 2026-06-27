@@ -5,6 +5,7 @@ type Props = {
   compact?: boolean;
   label?: string;
   tagline?: string;
+  variant?: 'default' | 'inverse';
 };
 
 const {
@@ -13,12 +14,13 @@ const {
   compact = false,
   label = "Regola D'arte",
   tagline = 'Studio dentistico',
+  variant = 'default',
 } = Astro.props as Props;
 ---
 
 <a href={href} class:list={['brand-lockup', className]}>
   <img
-    src="/brand/regola-d-arte-logo.svg"
+    src={variant === 'inverse' ? '/brand/regola-d-arte-logo-light.svg' : '/brand/regola-d-arte-logo.svg'}
     alt=""
     aria-hidden="true"
     class="brand-lockup__logo"
