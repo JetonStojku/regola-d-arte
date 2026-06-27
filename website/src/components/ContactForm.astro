@@ -46,9 +46,9 @@ const formAction = contactFormEndpoint ?? mailtoFallbackHref;
 const usesStaticEndpoint = Boolean(contactFormEndpoint);
 ---
 
-<section class="surface mt-6 p-6 sm:p-8 lg:p-10">
+<section class="content-band mt-6">
   <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-    <Card class="p-5">
+    <div class="info-tile">
       <p class="eyebrow">{content.contactFormEyebrow}</p>
       <h2 class="section-title mt-3 max-w-xl">{content.contactFormTitle}</h2>
       <p class="mt-4 max-w-xl text-sm leading-7 text-ink-soft">{content.contactFormIntro}</p>
@@ -68,7 +68,7 @@ const usesStaticEndpoint = Boolean(contactFormEndpoint);
             : 'The form sends data to the configured static provider.'
           : content.contactFormFallbackNote}
       </p>
-    </Card>
+    </div>
 
     <Card class="p-5">
       <form action={formAction} method="post" enctype={usesStaticEndpoint ? undefined : 'text/plain'} class="grid gap-4">

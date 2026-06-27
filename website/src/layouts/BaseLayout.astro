@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import BrandLockup from '@/components/BrandLockup.astro';
+import SocialLinks from '@/components/SocialLinks.astro';
 import Button from '@/components/ui/Button.astro';
 import { commonLabels } from '@/content/common';
 import { ctaCopy } from '@/content/ctas';
@@ -48,6 +49,7 @@ const primaryNavigation = navigationContent.primary[locale];
 const footerNavigation = navigationContent.footer[locale];
 const legalNavigation = navigationContent.legal[locale];
 const localeHomeHref = sectionRoutes.home[locale];
+const mobileCtaLabel = locale === 'it' ? 'Prenota' : 'Book';
 const isActivePath = (href: string) =>
   pathname === href || (href !== '/' && href !== localeHomeHref && pathname.startsWith(href));
 const linkBaseClass =
@@ -104,17 +106,17 @@ const switcherLinkClass = (isCurrent: boolean) => [
       {commonLabels.skipLink[locale]}
     </a>
 
-    <header class="sticky top-0 z-40 border-b border-border/70 bg-canvas/88 backdrop-blur">
-      <div class="page-shell py-4 sm:py-5">
-        <div class="flex items-center justify-between gap-4">
+    <header class="sticky top-0 z-40 border-b border-border/70 bg-canvas/92 backdrop-blur">
+      <div class="page-shell py-3 sm:py-4">
+        <div class="flex items-center justify-between gap-3">
           <BrandLockup
             href={sectionRoutes.home[locale]}
             label={brandContent.name[locale]}
             tagline={brandContent.tagline[locale]}
-            class="max-w-[18rem]"
+            class="max-w-[15rem] sm:max-w-[18rem]"
           />
 
-          <div class="hidden flex-1 items-center justify-end gap-3 lg:flex">
+          <div class="hidden flex-1 items-center justify-end gap-4 lg:flex">
             <nav aria-label={commonLabels.primaryNavigation[locale]}>
               <ul class="flex items-center gap-2">
                 {primaryNavigation.map((item) => (
@@ -132,7 +134,7 @@ const switcherLinkClass = (isCurrent: boolean) => [
             </nav>
 
             {alternateLinks.length > 0 && (
-              <nav aria-label={commonLabels.languageSwitcher[locale]}>
+              <nav aria-label={commonLabels.languageSwitcher[locale]} class="border-l border-border pl-4">
                 <ul class="flex items-center gap-2">
                   {alternateLinks.map((link) => (
                     <li>
@@ -156,7 +158,7 @@ const switcherLinkClass = (isCurrent: boolean) => [
 
           <div class="flex items-center gap-2 lg:hidden">
             <Button href={sectionRoutes.contact[locale]} variant="secondary" size="sm">
-              {ctaCopy.primary[locale]}
+              {mobileCtaLabel}
             </Button>
 
             <details class="relative">
@@ -192,7 +194,10 @@ const switcherLinkClass = (isCurrent: boolean) => [
                   </nav>
 
                   {alternateLinks.length > 0 && (
-                    <nav aria-label={commonLabels.languageSwitcher[locale]}>
+                    <nav aria-label={commonLabels.languageSwitcher[locale]} class="border-t border-border pt-4">
+                      <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-ink-soft">
+                        {commonLabels.languageSwitcher[locale]}
+                      </p>
                       <ul class="flex flex-wrap gap-2">
                         {alternateLinks.map((link) => (
                           <li>
@@ -208,6 +213,10 @@ const switcherLinkClass = (isCurrent: boolean) => [
                       </ul>
                     </nav>
                   )}
+
+                  <div class="border-t border-border pt-4">
+                    <SocialLinks locale={locale} variant="inline" />
+                  </div>
                 </div>
               </div>
             </details>
@@ -216,13 +225,16 @@ const switcherLinkClass = (isCurrent: boolean) => [
       </div>
     </header>
 
+    <SocialLinks locale={locale} variant="rail" />
+    <SocialLinks locale={locale} variant="mobile" />
+
     <main id="content" class="page-shell section-shell">
       <slot />
     </main>
 
     <footer class="border-t border-border/70 bg-canvas/75">
       <div class="page-shell py-10 sm:py-12">
-        <div class="grid gap-8 lg:grid-cols-[1.05fr_1fr_0.9fr]">
+        <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr_1fr]">
           <section aria-labelledby="footer-navigation">
             <p id="footer-navigation" class="eyebrow">
               {commonLabels.footerNavigation[locale]}
@@ -251,10 +263,11 @@ const switcherLinkClass = (isCurrent: boolean) => [
             <p class="mt-4 max-w-md text-sm leading-7 text-ink-soft">
               {commonLabels.footerContactNote[locale]}
             </p>
-            <div class="mt-5">
+            <div class="mt-5 flex flex-wrap gap-3">
               <Button href={sectionRoutes.contact[locale]} variant="secondary" size="sm">
                 {ctaCopy.primary[locale]}
               </Button>
+              <SocialLinks locale={locale} variant="footer" />
             </div>
           </section>
 

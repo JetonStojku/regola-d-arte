@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
+import PhotoPlaceholder from '@/components/PhotoPlaceholder.astro';
 import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { pageMetadata } from '@/content/metadata';
 import { navigationContent } from '@/content/navigation';
@@ -26,9 +27,9 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   alternateLinks={getLanguageSwitcherLinks('about', locale)}
   structuredData={structuredData}
 >
-  <section class="surface overflow-hidden">
-    <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
-      <div class="p-6 sm:p-8 lg:p-10">
+  <section class="content-band">
+    <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+      <div class="section-copy">
         <Badge tone="accent">Chi siamo</Badge>
         <h1 class="display-title mt-5 max-w-2xl">Regola D&apos;arte, il vostro sorriso, la nostra arte</h1>
         <p class="lead mt-4 max-w-2xl">
@@ -48,33 +49,14 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
           </Button>
         </div>
 
-        <div class="mt-10 grid gap-4 sm:grid-cols-2">
-          <Card class="p-5">
-            <p class="eyebrow">Precisione e funzione</p>
-            <p class="mt-3 text-lg font-semibold text-ink">Ogni piano parte da una diagnosi accurata.</p>
-            <p class="mt-3 text-sm leading-7 text-ink-soft">
-              I trattamenti sono preceduti da una valutazione attenta e costruiti con un approccio
-              multidisciplinare, sempre orientato al caso specifico.
-            </p>
-          </Card>
-          <Card tone="muted" class="p-5">
-            <p class="eyebrow">Estetica e scienza</p>
-            <p class="mt-3 text-lg font-semibold text-ink">La bellezza del sorriso segue criteri clinici solidi.</p>
-            <p class="mt-3 text-sm leading-7 text-ink-soft">
-              La cura estetica non è separata dalla funzione: lavoriamo per ottenere risultati che
-              siano naturali, confortevoli e stabili nel tempo.
-            </p>
-          </Card>
-        </div>
       </div>
 
-      <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
-        <div class="grid gap-4">
-          <Card class="overflow-hidden p-0">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="visual-frame sm:col-span-2">
             <ResponsiveImage
               src="/brand/about-doctor.jpg"
               alt="Dott. Genti Dylgjeri in uno studio odontoiatrico moderno"
-              class="h-72 w-full object-cover object-center"
+              class="h-[22rem] w-full object-cover object-center"
               width={1280}
               height={720}
               sizes="(min-width: 1024px) 35rem, 100vw"
@@ -82,9 +64,8 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
               loading="eager"
               fetchpriority="high"
             />
-          </Card>
-
-          <Card class="overflow-hidden p-0">
+        </div>
+        <div class="visual-frame">
             <ResponsiveImage
               src="/brand/about-clinic.jpg"
               alt="Equipe odontoiatrica durante una seduta di cura in uno studio moderno"
@@ -96,39 +77,40 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
               loading="eager"
               fetchpriority="high"
             />
-          </Card>
-
-          <Card class="p-5">
-            <p class="eyebrow">Il nostro metodo</p>
-            <p class="mt-3 text-lg font-semibold text-ink">Cura personalizzata per prevenzione, estetica e funzione.</p>
-            <ul class="mt-3 space-y-2 text-sm leading-6 text-ink-soft">
-              <li>• Precisione dell&apos;intervento e materiali di qualità</li>
-              <li>• Attenzione a biomeccanica, occlusione e funzione</li>
-              <li>• Risultati funzionali, duraturi e armonici</li>
-            </ul>
-          </Card>
         </div>
-      </aside>
+        <PhotoPlaceholder
+          eyebrow="Foto studio"
+          title="Dettaglio professionale"
+          description="Inserire una foto di strumentazione, sala o dettaglio che comunichi precisione."
+        />
+      </div>
     </div>
   </section>
 
-  <section class="surface mt-6 p-6 sm:p-8 lg:p-10">
-    <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-      <Card class="p-5">
+  <section class="content-band mt-6">
+    <div class="grid gap-4 lg:grid-cols-3">
+      <div class="info-tile">
+        <p class="eyebrow">Precisione e funzione</p>
+        <p class="mt-3 text-lg font-semibold text-ink">Ogni piano parte da una diagnosi accurata.</p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">
+          I trattamenti sono preceduti da una valutazione attenta e costruiti con un approccio
+          multidisciplinare, sempre orientato al caso specifico.
+        </p>
+      </div>
+      <div class="info-tile">
+        <p class="eyebrow">Estetica e scienza</p>
+        <p class="mt-3 text-lg font-semibold text-ink">La bellezza del sorriso segue criteri clinici solidi.</p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">
+          La cura estetica non è separata dalla funzione: lavoriamo per risultati naturali,
+          confortevoli e stabili nel tempo.
+        </p>
+      </div>
+      <div class="info-tile">
         <p class="eyebrow">Servizi confermati</p>
         <p class="mt-3 text-lg font-semibold text-ink">Dal controllo preventivo ai trattamenti più complessi.</p>
         <p class="mt-3 text-sm leading-7 text-ink-soft">
           L&apos;offerta copre conservativa ed endodonzia, chirurgia orale e implantologia,
           ortodonzia, estetica dentale e igiene orale professionale.
-        </p>
-      </Card>
-
-      <Card tone="muted" class="p-5">
-        <p class="eyebrow">Continua</p>
-        <p class="mt-3 text-lg font-semibold text-ink">Esplora i trattamenti o contattaci per un primo confronto.</p>
-        <p class="mt-3 max-w-2xl text-sm leading-7 text-ink-soft">
-          Ogni trattamento viene pianificato con chiarezza, in base ai bisogni specifici di chi ci
-          sceglie.
         </p>
         <div class="mt-5 flex flex-wrap gap-3">
           <Button href={sectionRoutes.servicesOverview.it}>{navigationContent.primary.it[1].label}</Button>
@@ -136,20 +118,20 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
             {navigationContent.primary.it[2].label}
           </Button>
         </div>
-      </Card>
+      </div>
     </div>
   </section>
 
-  <section class="surface mt-6 p-6 sm:p-8 lg:p-10">
-    <div class="grid gap-6 lg:grid-cols-[0.84fr_1.16fr]">
-      <Card class="p-5">
+  <section class="content-band mt-6">
+    <div class="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
+      <div class="section-copy">
         <p class="eyebrow">{teamContent.eyebrow}</p>
         <h2 class="section-title mt-4">{teamContent.title}</h2>
         <p class="mt-4 text-sm leading-7 text-ink-soft">{teamContent.intro}</p>
         <p class="mt-4 rounded-2xl border border-border bg-canvas-soft/70 p-4 text-sm leading-7 text-ink-soft">
           {teamContent.fallbackNote}
         </p>
-      </Card>
+      </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
         {teamContent.members.map((member) => (
@@ -174,9 +156,9 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       </div>
     </div>
 
-    <Card tone="muted" class="mt-6 p-5">
+    <div class="info-tile mt-6">
       <p class="eyebrow">Contenuti mancanti</p>
       <p class="mt-3 text-sm leading-7 text-ink-soft">{teamContent.missingNote}</p>
-    </Card>
+    </div>
   </section>
 </BaseLayout>

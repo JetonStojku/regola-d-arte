@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
 import Card from '@/components/ui/Card.astro';
+import PhotoPlaceholder from '@/components/PhotoPlaceholder.astro';
 import ResponsiveImage from '@/components/ui/ResponsiveImage.astro';
 import { pageMetadata } from '@/content/metadata';
 import { navigationContent } from '@/content/navigation';
@@ -26,9 +27,9 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   alternateLinks={getLanguageSwitcherLinks('about', locale)}
   structuredData={structuredData}
 >
-  <section class="surface overflow-hidden">
-    <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
-      <div class="p-6 sm:p-8 lg:p-10">
+  <section class="content-band">
+    <div class="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+      <div class="section-copy">
         <Badge tone="accent">About</Badge>
         <h1 class="display-title mt-5 max-w-2xl">Regola D&apos;arte, your smile, our art</h1>
         <p class="lead mt-4 max-w-2xl">
@@ -48,33 +49,14 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
           </Button>
         </div>
 
-        <div class="mt-10 grid gap-4 sm:grid-cols-2">
-          <Card class="p-5">
-            <p class="eyebrow">Precision and function</p>
-            <p class="mt-3 text-lg font-semibold text-ink">Every plan starts with an accurate diagnosis.</p>
-            <p class="mt-3 text-sm leading-7 text-ink-soft">
-              Treatments are prepared with care and a multidisciplinary mindset, always tailored to
-              the patient&apos;s specific needs.
-            </p>
-          </Card>
-          <Card tone="muted" class="p-5">
-            <p class="eyebrow">Aesthetics and science</p>
-            <p class="mt-3 text-lg font-semibold text-ink">Smile design follows solid clinical criteria.</p>
-            <p class="mt-3 text-sm leading-7 text-ink-soft">
-              Aesthetic care is never detached from function: the goal is a result that feels
-              natural, comfortable, and stable over time.
-            </p>
-          </Card>
-        </div>
       </div>
 
-      <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
-        <div class="grid gap-4">
-          <Card class="overflow-hidden p-0">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="visual-frame sm:col-span-2">
             <ResponsiveImage
               src="/brand/about-doctor.jpg"
               alt="Dr. Genti Dylgjeri in a modern dental surgery"
-              class="h-72 w-full object-cover object-center"
+              class="h-[22rem] w-full object-cover object-center"
               width={1280}
               height={720}
               sizes="(min-width: 1024px) 35rem, 100vw"
@@ -82,9 +64,8 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
               loading="eager"
               fetchpriority="high"
             />
-          </Card>
-
-          <Card class="overflow-hidden p-0">
+        </div>
+        <div class="visual-frame">
             <ResponsiveImage
               src="/brand/about-clinic.jpg"
               alt="Dental team during a treatment session in a modern clinic"
@@ -96,38 +77,40 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
               loading="eager"
               fetchpriority="high"
             />
-          </Card>
-
-          <Card class="p-5">
-            <p class="eyebrow">Our method</p>
-            <p class="mt-3 text-lg font-semibold text-ink">Personalized care for prevention, aesthetics, and function.</p>
-            <ul class="mt-3 space-y-2 text-sm leading-6 text-ink-soft">
-              <li>• Treatment precision and quality materials</li>
-              <li>• Attention to biomechanics, occlusion, and function</li>
-              <li>• Functional, durable, and harmonious outcomes</li>
-            </ul>
-          </Card>
         </div>
-      </aside>
+        <PhotoPlaceholder
+          eyebrow="Clinic photo"
+          title="Professional detail"
+          description="Add a photo of equipment, room, or a detail that communicates precision."
+        />
+      </div>
     </div>
   </section>
 
-  <section class="surface mt-6 p-6 sm:p-8 lg:p-10">
-    <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-      <Card class="p-5">
+  <section class="content-band mt-6">
+    <div class="grid gap-4 lg:grid-cols-3">
+      <div class="info-tile">
+        <p class="eyebrow">Precision and function</p>
+        <p class="mt-3 text-lg font-semibold text-ink">Every plan starts with an accurate diagnosis.</p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">
+          Treatments are prepared with care and a multidisciplinary mindset, always tailored to the
+          patient&apos;s specific needs.
+        </p>
+      </div>
+      <div class="info-tile">
+        <p class="eyebrow">Aesthetics and science</p>
+        <p class="mt-3 text-lg font-semibold text-ink">Smile design follows solid clinical criteria.</p>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">
+          Aesthetic care is never detached from function: the goal is a result that feels natural,
+          comfortable, and stable over time.
+        </p>
+      </div>
+      <div class="info-tile">
         <p class="eyebrow">Confirmed services</p>
         <p class="mt-3 text-lg font-semibold text-ink">From preventive care to more complex treatment plans.</p>
         <p class="mt-3 text-sm leading-7 text-ink-soft">
           The practice covers restorative dentistry and endodontics, oral surgery and implantology,
           orthodontics, dental aesthetics, and professional oral hygiene.
-        </p>
-      </Card>
-
-      <Card tone="muted" class="p-5">
-        <p class="eyebrow">Next step</p>
-        <p class="mt-3 text-lg font-semibold text-ink">Explore treatments or contact us for an initial consultation.</p>
-        <p class="mt-3 max-w-2xl text-sm leading-7 text-ink-soft">
-          Every treatment is planned clearly, based on the specific needs of each patient.
         </p>
         <div class="mt-5 flex flex-wrap gap-3">
           <Button href={sectionRoutes.servicesOverview.en}>{navigationContent.primary.en[1].label}</Button>
@@ -135,20 +118,20 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
             {navigationContent.primary.en[2].label}
           </Button>
         </div>
-      </Card>
+      </div>
     </div>
   </section>
 
-  <section class="surface mt-6 p-6 sm:p-8 lg:p-10">
-    <div class="grid gap-6 lg:grid-cols-[0.84fr_1.16fr]">
-      <Card class="p-5">
+  <section class="content-band mt-6">
+    <div class="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
+      <div class="section-copy">
         <p class="eyebrow">{teamContent.eyebrow}</p>
         <h2 class="section-title mt-4">{teamContent.title}</h2>
         <p class="mt-4 text-sm leading-7 text-ink-soft">{teamContent.intro}</p>
         <p class="mt-4 rounded-2xl border border-border bg-canvas-soft/70 p-4 text-sm leading-7 text-ink-soft">
           {teamContent.fallbackNote}
         </p>
-      </Card>
+      </div>
 
       <div class="grid gap-4 sm:grid-cols-2">
         {teamContent.members.map((member) => (
@@ -173,9 +156,9 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       </div>
     </div>
 
-    <Card tone="muted" class="mt-6 p-5">
+    <div class="info-tile mt-6">
       <p class="eyebrow">Missing content</p>
       <p class="mt-3 text-sm leading-7 text-ink-soft">{teamContent.missingNote}</p>
-    </Card>
+    </div>
   </section>
 </BaseLayout>

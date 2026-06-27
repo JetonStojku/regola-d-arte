@@ -139,6 +139,8 @@ type ContactPageContent = {
   facebookListingLabel: string;
   facebookFallbackNote: string;
   facebookMissingNote: string;
+  instagramLabel: string;
+  instagramHref: string;
   privacyPolicyTitle: string;
   privacyPolicyBody: string;
   cookiePolicyTitle: string;
@@ -454,6 +456,8 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
       "L'embed Facebook non è disponibile al momento. Usa il link della pagina ufficiale per aprirla direttamente.",
     facebookMissingNote:
       'Da confermare solo se il profilo Facebook ufficiale venisse rimosso dai materiali o sostituito con un nuovo URL.',
+    instagramLabel: 'Instagram',
+    instagramHref: 'https://www.instagram.com/regoladarte_studiodentistico/',
     privacyPolicyTitle: 'Privacy policy',
     privacyPolicyBody:
       'La policy completa non è ancora pubblicata. Il sito raccoglie solo i dati inseriti volontariamente nei moduli di contatto e li usa per rispondere alla richiesta.',
@@ -546,6 +550,8 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
       'The Facebook embed is currently unavailable. Use the official page link to open it directly.',
     facebookMissingNote:
       'Only needed if the official Facebook profile is removed from the materials or replaced with a new URL.',
+    instagramLabel: 'Instagram',
+    instagramHref: 'https://www.instagram.com/regoladarte_studiodentistico/',
     privacyPolicyTitle: 'Privacy policy',
     privacyPolicyBody:
       'The full policy is not published yet. The site only collects data entered voluntarily through the contact forms and uses it to answer the request.',

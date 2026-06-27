@@ -31,6 +31,14 @@ This folder contains the implementation tasks for building the static multilingu
 25. `025-performance-mobile-polish.md`
 26. `026-interserver-deployment-notes.md`
 27. `027-final-qa.md`
+28. `028-legal-compliance-information.md`
+29. `029-layout-refresh-audit.md`
+30. `030-shared-header-social-shell.md`
+31. `031-photo-placeholder-system.md`
+32. `032-page-layout-refresh.md`
+33. `033-before-after-section.md`
+34. `034-layout-qa-mobile-accessibility.md`
+35. `035-codex-rules-and-skills.md`
 
 ## Dependencies
 
@@ -45,13 +53,14 @@ This folder contains the implementation tasks for building the static multilingu
 - The five individual service page tasks can run in parallel after `010-services-data-model.md`, `006-layout-shell.md`, and `007-seo-metadata-system.md`.
 - `017-team-section.md`, `018-reviews-testimonials.md`, `019-location-google-maps.md`, and `020-facebook-embed.md` can run independently after the content audit.
 - `026-interserver-deployment-notes.md` can start once project setup and build output are known, then be finalized near the end.
+- `029` through `035` should be used for layout refreshes and future owner preference updates after the first complete website pass.
 
 ## Model and reasoning guide
 
 - Use `GPT-5.4-mini low` for straightforward page/component/content tasks:
   `002`, `008`, `009`, `011`, `012`, `013`, `014`, `015`, `016`, `017`, `018`.
 - Use `GPT-5.4-mini medium` for setup, architecture, SEO, schema, forms, image optimization, performance, deployment, and final QA:
-  `001`, `003`, `004`, `005`, `006`, `007`, `010`, `019`, `020`, `021`, `022`, `023`, `024`, `025`, `026`, `027`.
+  `001`, `003`, `004`, `005`, `006`, `007`, `010`, `019`, `020`, `021`, `022`, `023`, `024`, `025`, `026`, `027`, `029`, `030`, `031`, `032`, `033`, `034`, `035`.
 
 ## Multilingual and SEO notes
 

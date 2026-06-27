@@ -1,0 +1,70 @@
+---
+import { contactPageContent } from '@/content/pages';
+
+type Locale = 'it' | 'en';
+
+type Props = {
+  locale: Locale;
+  variant?: 'rail' | 'mobile' | 'footer' | 'inline';
+};
+
+const { locale, variant = 'inline' } = Astro.props as Props;
+const contact = contactPageContent[locale];
+const actions = [
+  {
+    label: contact.facebookListingLabel,
+    shortLabel: 'FB',
+    href: contact.facebookPageHref,
+    external: true,
+  },
+  {
+    label: contact.whatsappLabel,
+    shortLabel: 'WA',
+    href: contact.whatsappHref,
+    external: true,
+  },
+  {
+    label: contact.phoneLabel,
+    shortLabel: locale === 'it' ? 'Tel' : 'Call',
+    href: contact.phoneHref,
+    external: false,
+  },
+  {
+    label: contact.mapListingLabel,
+    shortLabel: 'Map',
+    href: contact.mapListingHref,
+    external: true,
+  },
+  {
+    label: contact.instagramLabel,
+    shortLabel: 'IG',
+    href: contact.instagramHref,
+    external: true,
+  },
+].filter((action) => action.href);
+
+const classMap = {
+  rail: 'social-links social-links--rail',
+  mobile: 'social-links social-links--mobile',
+  footer: 'social-links social-links--footer',
+  inline: 'social-links social-links--inline',
+} as const;
+---
+
+<nav class={classMap[variant]} aria-label={locale === 'it' ? 'Link social e contatti rapidi' : 'Social and quick contact links'}>
+  <ul>
+    {actions.map((action) => (
+      <li>
+        <a
+          href={action.href}
+          aria-label={action.label}
+          title={action.label}
+          target={action.external ? '_blank' : undefined}
+          rel={action.external ? 'noreferrer' : undefined}
+        >
+          <span aria-hidden="true">{action.shortLabel}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

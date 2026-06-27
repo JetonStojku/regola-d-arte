@@ -1,0 +1,25 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  class?: string;
+  aspect?: string;
+};
+
+const {
+  eyebrow,
+  title,
+  description,
+  class: className = '',
+  aspect = 'aspect-[4/3]',
+} = Astro.props as Props;
+---
+
+<div class:list={['photo-placeholder', aspect, className]}>
+  <div>
+    <p class="eyebrow">{eyebrow}</p>
+    <p class="mt-3 text-lg font-semibold text-ink">{title}</p>
+    <p class="mt-3 text-sm leading-7 text-ink-soft">{description}</p>
+  </div>
+</div>
