@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import BeforeAfterSection from "@/components/BeforeAfterSection.astro";
 import Button from "@/components/ui/Button.astro";
 import ContactCtaBand from "@/components/sections/ContactCtaBand.astro";
 import HeroImageSection from "@/components/sections/HeroImageSection.astro";
@@ -131,8 +130,6 @@ const structuredData = [
     locale={locale}
     services={services.slice(0, 5)}
   />
-
-  <BeforeAfterSection locale={locale} />
 
   <FeatureGridSection
     eyebrow={content.trustEyebrow}

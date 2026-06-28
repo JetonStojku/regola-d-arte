@@ -11,12 +11,14 @@ export const navigationContent = {
       { label: 'Chi siamo', href: sectionRoutes.about.it },
       { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
       { label: 'Contatti', href: sectionRoutes.contact.it },
+      { label: 'Prima / Dopo', href: sectionRoutes.beforeAfter.it },
     ],
     en: [
       { label: 'Home', href: sectionRoutes.home.en },
       { label: 'About', href: sectionRoutes.about.en },
       { label: 'Services', href: sectionRoutes.servicesOverview.en },
       { label: 'Contact', href: sectionRoutes.contact.en },
+      { label: 'Before / After', href: sectionRoutes.beforeAfter.en },
     ],
   },
   footer: {
@@ -25,12 +27,14 @@ export const navigationContent = {
       { label: 'Chi siamo', href: sectionRoutes.about.it },
       { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
       { label: 'Contatti', href: sectionRoutes.contact.it },
+      { label: 'Prima / Dopo', href: sectionRoutes.beforeAfter.it },
     ],
     en: [
       { label: 'Home', href: sectionRoutes.home.en },
       { label: 'About', href: sectionRoutes.about.en },
       { label: 'Services', href: sectionRoutes.servicesOverview.en },
       { label: 'Contact', href: sectionRoutes.contact.en },
+      { label: 'Before / After', href: sectionRoutes.beforeAfter.en },
     ],
   },
   legal: {

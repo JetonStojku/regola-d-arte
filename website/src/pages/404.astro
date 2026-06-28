@@ -1,27 +1,50 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Badge from '@/components/ui/Badge.astro';
-import Button from '@/components/ui/Button.astro';
-import Card from '@/components/ui/Card.astro';
-import { commonLabels } from '@/content/common';
-import { metaContent, notFoundPageContent } from '@/content/pages';
-import { getLanguageSwitcherLinks, sectionRoutes } from '@/lib/siteArchitecture';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Badge from "@/components/ui/Badge.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import { commonLabels } from "@/content/common";
+import { metaContent, notFoundPageContent } from "@/content/pages";
+import {
+  getLanguageSwitcherLinks,
+  sectionRoutes,
+} from "@/lib/siteArchitecture";
 
-const locale = 'it' as const;
+const locale = "it" as const;
 const content = notFoundPageContent.it;
 const metadata = metaContent.notFound.it;
 const quickLinks = {
   it: [
     { label: commonLabels.routeItems.home.it, href: sectionRoutes.home.it },
     { label: commonLabels.routeItems.about.it, href: sectionRoutes.about.it },
-    { label: commonLabels.routeItems.servicesOverview.it, href: sectionRoutes.servicesOverview.it },
-    { label: commonLabels.routeItems.contact.it, href: sectionRoutes.contact.it },
+    {
+      label: commonLabels.routeItems.servicesOverview.it,
+      href: sectionRoutes.servicesOverview.it,
+    },
+    {
+      label: commonLabels.routeItems.beforeAfter.it,
+      href: sectionRoutes.beforeAfter.it,
+    },
+    {
+      label: commonLabels.routeItems.contact.it,
+      href: sectionRoutes.contact.it,
+    },
   ],
   en: [
     { label: commonLabels.routeItems.home.en, href: sectionRoutes.home.en },
     { label: commonLabels.routeItems.about.en, href: sectionRoutes.about.en },
-    { label: commonLabels.routeItems.servicesOverview.en, href: sectionRoutes.servicesOverview.en },
-    { label: commonLabels.routeItems.contact.en, href: sectionRoutes.contact.en },
+    {
+      label: commonLabels.routeItems.servicesOverview.en,
+      href: sectionRoutes.servicesOverview.en,
+    },
+    {
+      label: commonLabels.routeItems.beforeAfter.en,
+      href: sectionRoutes.beforeAfter.en,
+    },
+    {
+      label: commonLabels.routeItems.contact.en,
+      href: sectionRoutes.contact.en,
+    },
   ],
 };
 ---
@@ -31,7 +54,7 @@ const quickLinks = {
   description={metadata.description}
   locale={locale}
   canonical={sectionRoutes.notFound.it}
-  alternateLinks={getLanguageSwitcherLinks('home', locale)}
+  alternateLinks={getLanguageSwitcherLinks("home", locale)}
   robots="noindex,follow"
 >
   <section class="surface overflow-hidden">
@@ -42,7 +65,9 @@ const quickLinks = {
         <p class="lead mt-4 max-w-2xl">{content.intro}</p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <Button href={sectionRoutes.home.it}>{content.primaryButtonLabel}</Button>
+          <Button href={sectionRoutes.home.it}
+            >{content.primaryButtonLabel}</Button
+          >
           <Button href={sectionRoutes.home.en} variant="secondary">
             {content.secondaryButtonLabel}
           </Button>
@@ -52,39 +77,48 @@ const quickLinks = {
           <Card class="p-5">
             <p class="eyebrow">{commonLabels.primaryNavigation.it}</p>
             <div class="mt-4 flex flex-wrap gap-2">
-              {quickLinks.it.map((item) => (
-                <Button href={item.href} variant="secondary" size="sm">
-                  {item.label}
-                </Button>
-              ))}
+              {
+                quickLinks.it.map((item) => (
+                  <Button href={item.href} variant="secondary" size="sm">
+                    {item.label}
+                  </Button>
+                ))
+              }
             </div>
           </Card>
 
           <Card tone="muted" class="p-5">
             <p class="eyebrow">{commonLabels.primaryNavigation.en}</p>
             <div class="mt-4 flex flex-wrap gap-2">
-              {quickLinks.en.map((item) => (
-                <Button href={item.href} variant="secondary" size="sm">
-                  {item.label}
-                </Button>
-              ))}
+              {
+                quickLinks.en.map((item) => (
+                  <Button href={item.href} variant="secondary" size="sm">
+                    {item.label}
+                  </Button>
+                ))
+              }
             </div>
           </Card>
         </div>
       </div>
 
-      <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
+      <aside
+        class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0"
+      >
         <div class="grid gap-4">
           <Card class="p-5">
             <p class="eyebrow">{commonLabels.footerNavigation.it}</p>
-            <p class="mt-3 text-lg font-semibold text-ink">{commonLabels.routeItems.home.it}</p>
+            <p class="mt-3 text-lg font-semibold text-ink">
+              {commonLabels.routeItems.home.it}
+            </p>
             <p class="mt-3 text-sm leading-7 text-ink-soft">{content.intro}</p>
           </Card>
 
           <Card tone="muted" class="p-5">
             <p class="eyebrow">{commonLabels.routeItems.notFound.it}</p>
             <p class="mt-3 text-sm leading-7 text-ink-soft">
-              The sitemap and navigation now point only to published pages in Italian and English.
+              The sitemap and navigation now point only to published pages in
+              Italian and English.
             </p>
           </Card>
         </div>

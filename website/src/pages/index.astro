@@ -1,11 +1,15 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Badge from '@/components/ui/Badge.astro';
-import Button from '@/components/ui/Button.astro';
-import Card from '@/components/ui/Card.astro';
-import { commonLabels } from '@/content/common';
-import { navigationContent } from '@/content/navigation';
-import { metaContent, rootGatewayPageContent, serviceOverviewCardList } from '@/content/pages';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Badge from "@/components/ui/Badge.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import { commonLabels } from "@/content/common";
+import { navigationContent } from "@/content/navigation";
+import {
+  metaContent,
+  rootGatewayPageContent,
+  serviceOverviewCardList,
+} from "@/content/pages";
 import {
   getLanguageSwitcherLinks,
   getSeoAlternateLinks,
@@ -15,16 +19,23 @@ import {
   rootRouteBehavior,
   sectionRoutes,
   type Locale,
-} from '@/lib/siteArchitecture';
+} from "@/lib/siteArchitecture";
 
-const localeChoices: Locale[] = ['it', 'en'];
+const localeChoices: Locale[] = ["it", "en"];
 const gatewayContent = rootGatewayPageContent.it;
 const metadata = metaContent.rootGateway.it;
 const serviceList = getLocalizedServiceLinks(primaryLocale);
 const routeRows = [
   { label: commonLabels.routeItems.home.it, hrefs: sectionRoutes.home },
   { label: commonLabels.routeItems.about.it, hrefs: sectionRoutes.about },
-  { label: commonLabels.routeItems.servicesOverview.it, hrefs: sectionRoutes.servicesOverview },
+  {
+    label: commonLabels.routeItems.servicesOverview.it,
+    hrefs: sectionRoutes.servicesOverview,
+  },
+  {
+    label: commonLabels.routeItems.beforeAfter.it,
+    hrefs: sectionRoutes.beforeAfter,
+  },
   { label: commonLabels.routeItems.contact.it, hrefs: sectionRoutes.contact },
   { label: commonLabels.routeItems.notFound.it, hrefs: sectionRoutes.notFound },
 ];
@@ -36,7 +47,7 @@ const routeRows = [
   locale={primaryLocale}
   canonical={rootRouteBehavior.path}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.home, primaryLocale)}
-  alternateLinks={getLanguageSwitcherLinks('home', primaryLocale)}
+  alternateLinks={getLanguageSwitcherLinks("home", primaryLocale)}
   robots="noindex,follow"
 >
   <section class="surface overflow-hidden">
@@ -47,21 +58,27 @@ const routeRows = [
         <p class="lead mt-4 max-w-2xl">{gatewayContent.intro}</p>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
-          {localeChoices.map((locale, index) => (
-            <Card
-              href={sectionRoutes.home[locale]}
-              class="p-5 transition duration-150 hover:-translate-y-0.5 hover:shadow-[var(--shadow-clinic-strong)]"
-            >
-              <p class="eyebrow">{localeMeta[locale].label}</p>
-              <p class="mt-4 text-xl font-semibold text-ink">
-                {index === 0 ? gatewayContent.primaryPathLabel : gatewayContent.secondaryPathLabel}
-              </p>
-              <p class="mt-2 text-xs uppercase tracking-[0.18em] text-ink-soft">
-                {gatewayContent.localePathLabel}
-              </p>
-              <p class="mt-3 text-sm leading-6 text-ink-soft">{sectionRoutes.home[locale]}</p>
-            </Card>
-          ))}
+          {
+            localeChoices.map((locale, index) => (
+              <Card
+                href={sectionRoutes.home[locale]}
+                class="p-5 transition duration-150 hover:-translate-y-0.5 hover:shadow-[var(--shadow-clinic-strong)]"
+              >
+                <p class="eyebrow">{localeMeta[locale].label}</p>
+                <p class="mt-4 text-xl font-semibold text-ink">
+                  {index === 0
+                    ? gatewayContent.primaryPathLabel
+                    : gatewayContent.secondaryPathLabel}
+                </p>
+                <p class="mt-2 text-xs uppercase tracking-[0.18em] text-ink-soft">
+                  {gatewayContent.localePathLabel}
+                </p>
+                <p class="mt-3 text-sm leading-6 text-ink-soft">
+                  {sectionRoutes.home[locale]}
+                </p>
+              </Card>
+            ))
+          }
         </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
@@ -72,19 +89,23 @@ const routeRows = [
         </div>
       </div>
 
-      <aside class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0">
+      <aside
+        class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0"
+      >
         <div class="grid gap-4">
           <Card tone="muted" class="p-5">
             <p class="eyebrow">{gatewayContent.urlMapTitle}</p>
             <ul class="mt-4 grid gap-3 text-sm text-ink-soft sm:grid-cols-2">
-              {routeRows.map((row) => (
-                <li>
-                  <span class="font-semibold text-ink">{row.label}</span>
-                  <div class="mt-1 text-xs uppercase tracking-[0.16em] text-ink-soft">
-                    {row.hrefs.it} | {row.hrefs.en}
-                  </div>
-                </li>
-              ))}
+              {
+                routeRows.map((row) => (
+                  <li>
+                    <span class="font-semibold text-ink">{row.label}</span>
+                    <div class="mt-1 text-xs uppercase tracking-[0.16em] text-ink-soft">
+                      {row.hrefs.it} | {row.hrefs.en}
+                    </div>
+                  </li>
+                ))
+              }
             </ul>
           </Card>
 
@@ -93,19 +114,35 @@ const routeRows = [
             <div class="mt-4 space-y-3 text-sm text-ink-soft">
               <p>
                 {commonLabels.primaryNavigation.it}:
-                {navigationContent.primary.it.map((item) => ` ${item.label} → ${item.href}`).join(' | ')}
+                {
+                  navigationContent.primary.it
+                    .map((item) => ` ${item.label} → ${item.href}`)
+                    .join(" | ")
+                }
               </p>
               <p>
                 {commonLabels.primaryNavigation.en}:
-                {navigationContent.primary.en.map((item) => ` ${item.label} → ${item.href}`).join(' | ')}
+                {
+                  navigationContent.primary.en
+                    .map((item) => ` ${item.label} → ${item.href}`)
+                    .join(" | ")
+                }
               </p>
               <p>
                 {commonLabels.footerNavigation.it}:
-                {navigationContent.footer.it.map((item) => ` ${item.label} → ${item.href}`).join(' | ')}
+                {
+                  navigationContent.footer.it
+                    .map((item) => ` ${item.label} → ${item.href}`)
+                    .join(" | ")
+                }
               </p>
               <p>
                 {commonLabels.footerNavigation.en}:
-                {navigationContent.footer.en.map((item) => ` ${item.label} → ${item.href}`).join(' | ')}
+                {
+                  navigationContent.footer.en
+                    .map((item) => ` ${item.label} → ${item.href}`)
+                    .join(" | ")
+                }
               </p>
             </div>
           </Card>
@@ -113,20 +150,24 @@ const routeRows = [
           <Card tone="muted" class="p-5">
             <p class="eyebrow">{gatewayContent.serviceTitle}</p>
             <ul class="mt-4 space-y-3 text-sm text-ink-soft">
-              {serviceList.map((service) => (
-                <li>
-                  <span class="font-semibold text-ink">{service.label}</span>
-                  <div class="mt-1 text-xs uppercase tracking-[0.16em] text-ink-soft">
-                    {service.href}
-                  </div>
-                </li>
-              ))}
+              {
+                serviceList.map((service) => (
+                  <li>
+                    <span class="font-semibold text-ink">{service.label}</span>
+                    <div class="mt-1 text-xs uppercase tracking-[0.16em] text-ink-soft">
+                      {service.href}
+                    </div>
+                  </li>
+                ))
+              }
             </ul>
           </Card>
 
           <Card class="p-5">
             <p class="eyebrow">{gatewayContent.internalLinksTitle}</p>
-            <p class="mt-4 text-sm leading-7 text-ink-soft">{gatewayContent.defaultPathNote}</p>
+            <p class="mt-4 text-sm leading-7 text-ink-soft">
+              {gatewayContent.defaultPathNote}
+            </p>
           </Card>
 
           <Card tone="muted" class="p-5">
@@ -139,11 +180,13 @@ const routeRows = [
           <Card class="p-5">
             <p class="eyebrow">{gatewayContent.plannedPagesTitle}</p>
             <ul class="mt-4 space-y-2 text-sm text-ink-soft">
-              {serviceOverviewCardList.it.map((service) => (
-                <li>
-                  {service.label}: {service.href}
-                </li>
-              ))}
+              {
+                serviceOverviewCardList.it.map((service) => (
+                  <li>
+                    {service.label}: {service.href}
+                  </li>
+                ))
+              }
             </ul>
           </Card>
         </div>

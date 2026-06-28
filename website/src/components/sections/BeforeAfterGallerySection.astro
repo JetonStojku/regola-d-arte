@@ -1,0 +1,60 @@
+---
+type GalleryImage = {
+  src: string;
+  alt: string;
+};
+
+type Props = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  note: string;
+  gridLabel: string;
+  images: GalleryImage[];
+};
+
+const { eyebrow, title, intro, note, gridLabel, images } = Astro.props as Props;
+---
+
+<section class="content-band mt-6">
+  <div class="grid gap-6">
+    <div class="section-copy" data-reveal>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 class="section-title mt-4 max-w-3xl">{title}</h1>
+      <p class="mt-4 max-w-3xl text-sm leading-7 text-ink-soft">{intro}</p>
+      <p
+        class="mt-5 max-w-3xl rounded-[var(--radius-clinic)] border border-border bg-canvas-soft/70 p-4 text-sm leading-7 text-ink-soft"
+      >
+        {note}
+      </p>
+    </div>
+
+    <div
+      class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+      data-reveal
+      data-reveal-delay="120"
+      aria-label={gridLabel}
+    >
+      {
+        images.map((image, index) => (
+          <figure class="overflow-hidden rounded-[var(--radius-clinic)] border border-border bg-white/90 shadow-[var(--shadow-clinic-soft)]">
+            <div class="aspect-square bg-canvas-soft/40">
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={4096}
+                height={4096}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+            <span class="sr-only">
+              {gridLabel} {index + 1}
+            </span>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

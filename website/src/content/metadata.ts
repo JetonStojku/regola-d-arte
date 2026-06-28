@@ -80,6 +80,18 @@ export const pageMetadata = {
         'Overview of the confirmed dental services, from restorative care to implantology, with careful clinical planning.',
     },
   },
+  beforeAfter: {
+    it: {
+      title: 'Regola D\'arte | Prima / Dopo',
+      description:
+        'Galleria dei casi prima e dopo di Regola D\'arte, con immagini composite approvate e senza separare i due momenti clinici.',
+    },
+    en: {
+      title: 'Regola D\'arte | Before / After',
+      description:
+        'Regola D\'arte before/after case gallery, with approved composite images that keep the clinical before and after together.',
+    },
+  },
   contact: {
     it: {
       title: 'Regola D\'arte | Contatti',

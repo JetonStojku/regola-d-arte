@@ -80,6 +80,14 @@ type SectionPageContent = {
   ctaLabel: string;
 };
 
+type BeforeAfterPageContent = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  note: string;
+  gridLabel: string;
+};
+
 type ContactPageContent = {
   eyebrow: string;
   title: string;
@@ -319,7 +327,7 @@ export const notFoundPageContent: Record<Locale, NotFoundPageContent> = {
 };
 
 export const sectionPageContent: Record<
-  Exclude<SiteSectionKey, 'home' | 'notFound'>,
+  Exclude<SiteSectionKey, 'home' | 'beforeAfter' | 'notFound'>,
   Record<Locale, SectionPageContent>
 > = {
   about: {
@@ -381,6 +389,27 @@ export const sectionPageContent: Record<
         'The contact page can reuse the same data in Italian and English without duplicating presentation logic.',
       ctaLabel: ctaCopy.primary.en,
     },
+  },
+};
+
+export const beforeAfterPageContent: Record<Locale, BeforeAfterPageContent> = {
+  it: {
+    eyebrow: 'Prima / Dopo',
+    title: 'Casi clinici documentati con immagini composite approvate.',
+    intro:
+      'Ogni file della galleria unisce il prima e il dopo nello stesso scatto composito. Le immagini restano complete e non vengono separate in due asset distinti.',
+    note:
+      'Le card sono volutamente essenziali: nessuna didascalia visibile, solo casi approvati e un layout chiaro.',
+    gridLabel: 'Galleria dei casi approvati',
+  },
+  en: {
+    eyebrow: 'Before / After',
+    title: 'Documented clinical cases with approved composite images.',
+    intro:
+      'Each gallery file keeps the before and after together in a single composite image. The images stay intact and are not split into separate assets.',
+    note:
+      'The cards are intentionally minimal: no visible captions, only approved cases and a clear layout.',
+    gridLabel: 'Approved case gallery',
   },
 };
 
@@ -641,6 +670,7 @@ export const routeSummary = {
   home: sectionRoutes.home,
   about: sectionRoutes.about,
   servicesOverview: sectionRoutes.servicesOverview,
+  beforeAfter: sectionRoutes.beforeAfter,
   contact: sectionRoutes.contact,
   notFound: sectionRoutes.notFound,
 } as const;

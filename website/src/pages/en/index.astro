@@ -1,40 +1,41 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import BeforeAfterSection from '@/components/BeforeAfterSection.astro';
-import Button from '@/components/ui/Button.astro';
-import ContactCtaBand from '@/components/sections/ContactCtaBand.astro';
-import HeroImageSection from '@/components/sections/HeroImageSection.astro';
-import FeatureGridSection from '@/components/sections/FeatureGridSection.astro';
-import ServiceRowListSection from '@/components/sections/ServiceRowListSection.astro';
-import SplitMediaSection from '@/components/sections/SplitMediaSection.astro';
-import { homePageContent, metaContent } from '@/content/pages';
-import { getLocalizedServices } from '@/content/services';
-import { buildClinicSchema } from '@/lib/schema';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/ui/Button.astro";
+import ContactCtaBand from "@/components/sections/ContactCtaBand.astro";
+import HeroImageSection from "@/components/sections/HeroImageSection.astro";
+import FeatureGridSection from "@/components/sections/FeatureGridSection.astro";
+import ServiceRowListSection from "@/components/sections/ServiceRowListSection.astro";
+import SplitMediaSection from "@/components/sections/SplitMediaSection.astro";
+import { homePageContent, metaContent } from "@/content/pages";
+import { getLocalizedServices } from "@/content/services";
+import { buildClinicSchema } from "@/lib/schema";
 import {
   getLanguageSwitcherLinks,
   getSeoAlternateLinks,
   sectionRoutes,
-} from '@/lib/siteArchitecture';
+} from "@/lib/siteArchitecture";
 
-const locale = 'en' as const;
+const locale = "en" as const;
 const content = homePageContent.en;
 const metadata = metaContent.home.en;
 const services = getLocalizedServices(locale);
 const trustItems = [
   {
-    title: 'Bilingual routes',
+    title: "Bilingual routes",
     description: content.trustPoints[0],
   },
   {
-    title: 'Content-backed data',
+    title: "Content-backed data",
     description: content.trustPoints[1],
   },
   {
-    title: 'Real imagery',
+    title: "Real imagery",
     description: content.trustPoints[2],
   },
 ] as const;
-const structuredData = [buildClinicSchema(locale, metadata.description, { site: Astro.site })];
+const structuredData = [
+  buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+];
 ---
 
 <BaseLayout
@@ -44,7 +45,7 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
   mainClass="pt-0"
   canonical={sectionRoutes.home.en}
   hreflangLinks={getSeoAlternateLinks(sectionRoutes.home, locale)}
-  alternateLinks={getLanguageSwitcherLinks('home', locale)}
+  alternateLinks={getLanguageSwitcherLinks("home", locale)}
   structuredData={structuredData}
 >
   <HeroImageSection
@@ -53,46 +54,53 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     title={content.title}
     intro={content.intro}
     note={content.heroNote}
-    primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.servicesOverview.en }}
-    secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.contact.en, variant: 'secondary' }}
+    primaryCta={{
+      label: content.heroPrimaryCta,
+      href: sectionRoutes.servicesOverview.en,
+    }}
+    secondaryCta={{
+      label: content.heroSecondaryCta,
+      href: sectionRoutes.contact.en,
+      variant: "secondary",
+    }}
     image={{
-      src: '/brand/homepage-hero.jpg',
-      alt: 'Dr. Genti Dylgjeri in a modern dental surgery',
+      src: "/brand/homepage-hero.jpg",
+      alt: "Dr. Genti Dylgjeri in a modern dental surgery",
       width: 1280,
       height: 720,
-      sizes: '100vw',
+      sizes: "100vw",
       widths: [640, 960, 1280],
-      loading: 'eager',
-      fetchpriority: 'high',
-      class: 'h-full w-full object-cover object-center',
+      loading: "eager",
+      fetchpriority: "high",
+      class: "h-full w-full object-cover object-center",
     }}
     supportingImages={[
       {
-        src: '/brand/about-doctor.jpg',
-        alt: 'Portrait of Dr. Genti Dylgjeri in a modern dental surgery',
+        src: "/brand/about-doctor.jpg",
+        alt: "Portrait of Dr. Genti Dylgjeri in a modern dental surgery",
         width: 1200,
         height: 800,
-        sizes: '44px',
+        sizes: "44px",
         widths: [480, 800, 1200],
-        class: 'h-full w-full object-cover object-center',
+        class: "h-full w-full object-cover object-center",
       },
       {
-        src: '/brand/about-clinic.jpg',
-        alt: 'Dental team during a treatment session in a modern clinic',
+        src: "/brand/about-clinic.jpg",
+        alt: "Dental team during a treatment session in a modern clinic",
         width: 1200,
         height: 800,
-        sizes: '44px',
+        sizes: "44px",
         widths: [480, 800, 1200],
-        class: 'h-full w-full object-cover object-center',
+        class: "h-full w-full object-cover object-center",
       },
       {
-        src: '/brand/homepage-hero.jpg',
-        alt: 'Modern dental surgery with the team at work',
+        src: "/brand/homepage-hero.jpg",
+        alt: "Modern dental surgery with the team at work",
         width: 1280,
         height: 720,
-        sizes: '44px',
+        sizes: "44px",
         widths: [640, 960, 1280],
-        class: 'h-full w-full object-cover object-center',
+        class: "h-full w-full object-cover object-center",
       },
     ]}
   />
@@ -104,13 +112,13 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     intro={content.storyBody}
     body={content.storyHighlight}
     image={{
-      src: '/brand/about-clinic.jpg',
-      alt: 'Bright interior of the Regola D\'arte clinic',
+      src: "/brand/about-clinic.jpg",
+      alt: "Bright interior of the Regola D'arte clinic",
       width: 1200,
       height: 800,
-      sizes: '(min-width: 1024px) 38rem, 100vw',
+      sizes: "(min-width: 1024px) 38rem, 100vw",
       widths: [480, 800, 1200],
-      class: 'h-[25rem] w-full object-cover object-center',
+      class: "h-[25rem] w-full object-cover object-center",
     }}
   />
 
@@ -121,8 +129,6 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     locale={locale}
     services={services.slice(0, 5)}
   />
-
-  <BeforeAfterSection locale={locale} />
 
   <FeatureGridSection
     eyebrow={content.trustEyebrow}
@@ -137,12 +143,20 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
       <div class="section-copy">
         <p class="eyebrow">{content.reviewsEyebrow}</p>
         <h2 class="section-title mt-4">{content.reviewsTitle}</h2>
-        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.reviewsIntro}</p>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          {content.reviewsIntro}
+        </p>
       </div>
 
-      <div class="rounded-[var(--radius-clinic)] border border-border-strong bg-white/82 p-5 shadow-[var(--shadow-clinic-soft)]">
-        <p class="text-sm leading-7 text-ink-soft">{content.reviewsOfficialNote}</p>
-        <p class="mt-4 text-sm leading-7 text-ink-soft">{content.reviewsMissingNote}</p>
+      <div
+        class="rounded-[var(--radius-clinic)] border border-border-strong bg-white/82 p-5 shadow-[var(--shadow-clinic-soft)]"
+      >
+        <p class="text-sm leading-7 text-ink-soft">
+          {content.reviewsOfficialNote}
+        </p>
+        <p class="mt-4 text-sm leading-7 text-ink-soft">
+          {content.reviewsMissingNote}
+        </p>
         <div class="mt-5 flex flex-wrap gap-3">
           <Button href={content.reviewsOfficialHref} variant="secondary">
             {content.reviewsOfficialLabel}
@@ -156,9 +170,15 @@ const structuredData = [buildClinicSchema(locale, metadata.description, { site: 
     eyebrow={content.contactEyebrow}
     title={content.contactTitle}
     intro={content.contactIntro}
-    primaryCta={{ label: content.heroPrimaryCta, href: sectionRoutes.contact.en }}
-    secondaryCta={{ label: content.heroSecondaryCta, href: sectionRoutes.servicesOverview.en, variant: 'secondary' }}
+    primaryCta={{
+      label: content.heroPrimaryCta,
+      href: sectionRoutes.contact.en,
+    }}
+    secondaryCta={{
+      label: content.heroSecondaryCta,
+      href: sectionRoutes.servicesOverview.en,
+      variant: "secondary",
+    }}
     note={content.heroNote}
   />
 </BaseLayout>
-

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BeforeAfterGallerySection from "@/components/sections/BeforeAfterGallerySection.astro";
+import { beforeAfterPageContent, metaContent } from "@/content/pages";
+import { buildClinicSchema } from "@/lib/schema";
+import { sectionRoutes } from "@/lib/siteArchitecture";
+import {
+  getLanguageSwitcherLinks,
+  getSeoAlternateLinks,
+} from "@/lib/siteArchitecture";
+
+const locale = "en" as const;
+const metadata = metaContent.beforeAfter.en;
+const content = beforeAfterPageContent.en;
+const images = Array.from({ length: 17 }, (_, index) => {
+  const number = String(index + 1).padStart(3, "0");
+
+  return {
+    src: `/before-after/before-after-photo-${number}.jpeg`,
+    alt: `Composite before/after clinical case ${index + 1}`,
+  };
+});
+const structuredData = [
+  buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+];
+---
+
+<BaseLayout
+  title={metadata.title}
+  description={metadata.description}
+  locale={locale}
+  canonical={sectionRoutes.beforeAfter.en}
+  hreflangLinks={getSeoAlternateLinks(sectionRoutes.beforeAfter, locale)}
+  alternateLinks={getLanguageSwitcherLinks("beforeAfter", locale)}
+  structuredData={structuredData}
+>
+  <BeforeAfterGallerySection
+    eyebrow={content.eyebrow}
+    title={content.title}
+    intro={content.intro}
+    note={content.note}
+    gridLabel={content.gridLabel}
+    images={images}
+  />
+</BaseLayout>
