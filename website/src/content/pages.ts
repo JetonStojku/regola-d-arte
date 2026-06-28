@@ -233,9 +233,9 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     trustEyebrow: 'Affidabilità',
     trustTitle: 'I segnali di fiducia sono concreti, non inventati.',
     trustPoints: [
-      'Percorsi bilingui con contenuti locali coerenti.',
-      'Servizi e slug derivati dai dati di contenuto.',
-      'Uso di immagini reali dello studio e del team.',
+      'Esperienza bilingue allineata al contesto locale e ai contenuti del sito.',
+      'Servizi, URL e sezioni generati dai dati di contenuto, senza duplicazioni manuali.',
+      'Fotografie autentiche dello studio e del team, per una presentazione credibile.',
     ],
     servicesEyebrow: 'Servizi principali',
     servicesTitle: 'Una panoramica dei trattamenti più richiesti.',
