@@ -18,7 +18,7 @@ Offriamo un’ampia gamma di servizi , dalla prevenzione all’ortodonzia , dall
 
 Tutti i piani di trattamento sono preceduti da una fase diagnostica accurata e vengono elaborati con approccio multidisciplinare
 
--   **Odontoiatria conservativa ed endodonzia**
+- **Odontoiatria conservativa ed endodonzia**
 
 L’odontoiatria conservativa ed endodonzia si occupano della prevenzione e della terapia di lesioni dentali dovute a carie o traumi.
 
@@ -30,7 +30,7 @@ L’obiettivo del trattamento conservativo è ripristinare il dente dal punto di
 
 Quando la malattia cariosa arriva a coinvolgere anche la polpa dentaria si aggiunge all’asportazione del tessuto duro del dente anche quella del tessuto pulpare. Si procede dunque a una terapia canalare (endodontica) utilizza solo materiali biocompatibili di prima scelta.
 
--   **Chirurgia orale e implantologia**
+- **Chirurgia orale e implantologia**
 
 L’implantologia dentale permette di sostituire uno o più elementi dentari persi con “radici artificiali” in titanio le quali, mediante un processo biologico che prende il nome di osteointegrazione, consentono l’applicazione di una protesi fissa.
 
@@ -50,7 +50,7 @@ La protesi provvisoria verrà mantenuta in sede per circa 3-4 mesi. Trascorso qu
 
 Il carico immediato è frequentemente utilizzato nella tecnica “All on Four”. Questa metodica, di recente introduzione, consiste nell’inserimento di quattro impianti che, posizionati in siti strategici e accuratamente studiati, permettono la riabilitazione di pazienti edentuli – ossia senza denti – in una o entrambe le arcate.
 
--   **Ortodonzia tradizionale e invisibile**
+- **Ortodonzia tradizionale e invisibile**
 
 L'ortodonzia invisibile (o con allineatori trasparenti) e l'ortodonzia tradizionale (con apparecchi fissi) sono entrambe valide opzioni per allineare i denti, ma offrono vantaggi e svantaggi diversi. L'ortodonzia invisibile è più discreta e comoda, ma può essere meno efficace per alcuni casi complessi. L'ortodonzia tradizionale è più efficace per casi complessi, ma è meno discreta e può essere meno comoda.
 
@@ -82,7 +82,7 @@ Svantaggi:
 
 Può non essere efficace per tutti i casi complessi, potrebbe richiedere un trattamento più lungo.
 
--   **Trattamenti di estetica dentale**
+- **Trattamenti di estetica dentale**
 
 L'estetica dentale, spesso definita anche odontoiatria estetica, è una branca dell'odontoiatria che mira a migliorare l'aspetto dei denti, delle gengive e del sorriso, spesso includendo trattamenti come lo sbiancamento, le faccette o le corone. L'obiettivo principale è ottenere un sorriso più sano, bello e armonioso.
 
@@ -132,7 +132,7 @@ Possono essere utilizzate anche per ripristinare la forma e la funzione di denti
 
 Il costo delle corone può variare in base al materiale utilizzato e alla complessità del caso.
 
--   **Igiene orale professionali e programmi di prevenzione personalizzati**
+- **Igiene orale professionali e programmi di prevenzione personalizzati**
 
 **L’igiene orale professionale :**
 
