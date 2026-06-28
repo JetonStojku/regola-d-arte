@@ -539,7 +539,7 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/services-photos/Ortodonzia.jpg',
+        src: '/services-photos/ortodonzia-service.jpg',
         alt: {
           it: 'Immagine del servizio ortodonzia',
           en: 'Image for orthodontics',

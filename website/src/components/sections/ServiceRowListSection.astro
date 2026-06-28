@@ -4,27 +4,27 @@ import ResponsiveImage from "@/components/ui/ResponsiveImage.astro";
 import type { Locale } from "@/lib/siteArchitecture";
 
 const serviceImageSizing = {
-  "/services-photos/Odontoiatria conservativa ed endodonzia.png": {
+  "/services-photos/Odontoiatria conservativa ed endodonzia.jpg": {
     width: 1152,
     height: 768,
     widths: [576, 864, 1152],
   },
-  "/services-photos/Chirurgia orale e implantologia.png": {
+  "/services-photos/Chirurgia orale e implantologia.jpg": {
     width: 1152,
     height: 768,
     widths: [576, 864, 1152],
   },
-  "/services-photos/Ortodonzia.png": {
+  "/services-photos/ortodonzia-service.jpg": {
     width: 1152,
     height: 768,
     widths: [576, 864, 1152],
   },
-  "/services-photos/Estetica dentale.png": {
+  "/services-photos/Estetica dentale.jpg": {
     width: 1152,
     height: 768,
     widths: [576, 864, 1152],
   },
-  "/services-photos/Igiene orale e prevenzione.png": {
+  "/services-photos/Igiene orale e prevenzione.jpg": {
     width: 1152,
     height: 768,
     widths: [576, 864, 1152],
@@ -66,7 +66,7 @@ const {
 const getServiceImageSizing = (src: string) =>
   serviceImageSizing[src as keyof typeof serviceImageSizing] ??
   serviceImageSizing[
-    "/services-photos/Odontoiatria conservativa ed endodonzia.png"
+    "/services-photos/Odontoiatria conservativa ed endodonzia.jpg"
   ];
 ---
 
