@@ -152,12 +152,17 @@ const structuredData = [
       <div
         class="rounded-[var(--radius-clinic)] border border-border-strong bg-white/82 p-5 shadow-[var(--shadow-clinic-soft)]"
       >
-        <p class="text-sm leading-7 text-ink-soft">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.24em] text-ink-soft"
+        >
           {content.reviewsOfficialNote}
         </p>
-        <p class="mt-4 text-sm leading-7 text-ink-soft">
-          {content.reviewsMissingNote}
-        </p>
+        <ul class="mt-4 space-y-3 text-sm leading-7 text-ink-soft">
+          <li>Una diagnosi accurata.</li>
+          <li>Un piano di cura personalizzato.</li>
+          <li>Risposte chiare a ogni domanda.</li>
+          <li>Attenzione alla salute orale nel tempo.</li>
+        </ul>
         <div class="mt-5 flex flex-wrap gap-3">
           <Button href={content.reviewsOfficialHref} variant="secondary">
             {content.reviewsOfficialLabel}

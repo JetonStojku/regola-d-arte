@@ -241,16 +241,15 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     servicesTitle: 'Una panoramica dei trattamenti più richiesti.',
     servicesIntro:
       'Ogni servizio ha una scheda dedicata e viene presentato con una sintesi comprensibile sia in italiano sia in inglese.',
-    reviewsEyebrow: 'Recensioni',
-    reviewsTitle: 'Nessuna recensione pubblica è stata confermata nei materiali disponibili.',
+    reviewsEyebrow: 'Trasparenza',
+    reviewsTitle: 'Ogni sorriso merita fiducia prima ancora del trattamento.',
     reviewsIntro:
-      'Per restare fedeli alle fonti, non mostriamo testimonianze inventate o widget a pagamento.',
-    reviewsOfficialLabel: 'Apri la scheda ufficiale su Google Maps',
-    reviewsOfficialHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
-    reviewsOfficialNote:
-      'Il link porta alla scheda mappa ufficiale condivisa nei materiali; non è stato fornito un profilo Google Business separato.',
+      'La fiducia nasce dall\'ascolto, dalla competenza e da informazioni chiare. Per questo preferiamo comunicare con trasparenza, senza promesse irrealistiche o testimonianze costruite.',
+    reviewsOfficialLabel: 'Prenota la tua visita',
+    reviewsOfficialHref: sectionRoutes.contact.it,
+    reviewsOfficialNote: 'Cosa puoi aspettarti',
     reviewsMissingNote:
-      'Da confermare: eventuali snippet di recensioni, nome del profilo Google Business e permessi di pubblicazione.',
+      'Una diagnosi accurata. Un piano di cura personalizzato. Risposte chiare a ogni domanda. Attenzione alla salute orale nel tempo.',
     contactEyebrow: 'Contatti',
     contactTitle: 'Prenota un primo confronto o approfondisci un trattamento specifico.',
     contactIntro:
@@ -287,16 +286,15 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     servicesTitle: 'An overview of the most requested treatments.',
     servicesIntro:
       'Each service has its own page and is introduced with concise copy in both Italian and English.',
-    reviewsEyebrow: 'Reviews',
-    reviewsTitle: 'No public reviews have been confirmed in the available materials.',
+    reviewsEyebrow: 'Transparency',
+    reviewsTitle: 'Every smile deserves trust before treatment begins.',
     reviewsIntro:
-      'To stay source-backed, we do not show invented testimonials or paid review widgets.',
-    reviewsOfficialLabel: 'Open the official Google Maps listing',
-    reviewsOfficialHref: 'https://maps.app.goo.gl/2ZjG2JtEFgHTv8vb6',
-    reviewsOfficialNote:
-      'This link points to the official map listing shared in the materials; no separate Google Business profile URL was provided.',
+      'Trust comes from listening, expertise, and clear information. That is why we prefer to communicate with transparency, without unrealistic promises or constructed testimonials.',
+    reviewsOfficialLabel: 'Book your visit',
+    reviewsOfficialHref: sectionRoutes.contact.en,
+    reviewsOfficialNote: 'What you can expect',
     reviewsMissingNote:
-      'Still to confirm: any review snippets, the Google Business profile URL, and publication permissions.',
+      'An accurate diagnosis. A personalized treatment plan. Clear answers to every question. Attention to oral health over time.',
     contactEyebrow: 'Contact',
     contactTitle: 'Book an initial consultation or ask about a specific treatment.',
     contactIntro:
