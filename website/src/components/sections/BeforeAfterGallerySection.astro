@@ -56,8 +56,7 @@ const galleryId = `before-after-gallery-${Math.random().toString(36).slice(2, 9)
                 alt={image.alt}
                 width={4096}
                 height={4096}
-                loading="lazy"
-                decoding="async"
+                loading={index < 4 ? "eager" : "lazy"}
                 class="h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.03]"
               />
 
@@ -121,6 +120,7 @@ const galleryId = `before-after-gallery-${Math.random().toString(36).slice(2, 9)
               alt=""
               width={4096}
               height={4096}
+              loading="lazy"
               class="max-h-[78vh] w-full object-contain"
             />
           </div>
@@ -223,6 +223,8 @@ const galleryId = `before-after-gallery-${Math.random().toString(36).slice(2, 9)
 
         imageEl.setAttribute("src", src);
         imageEl.setAttribute("alt", alt);
+        imageEl.removeAttribute("srcset");
+        imageEl.removeAttribute("sizes");
         labelEl.textContent = label;
         descriptionEl.textContent = alt;
         counterEl.textContent = `${index + 1} / ${triggers.length}`;
