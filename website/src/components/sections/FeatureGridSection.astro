@@ -29,7 +29,14 @@ const {
 ---
 
 <section class:list={["content-band mt-6", className]}>
-  <div class="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
+  <div
+    class:list={[
+      "grid gap-6",
+      columns === 3
+        ? "lg:grid-cols-1"
+        : "lg:items-center lg:grid-cols-[0.9fr_1.1fr]",
+    ]}
+  >
     <div class="section-copy" data-reveal>
       {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
       <h2 class:list={["section-title", eyebrow && "mt-4"]}>{title}</h2>
