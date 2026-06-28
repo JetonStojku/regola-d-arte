@@ -230,12 +230,12 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     storyBody:
       'Il sito presenta un brand dentistico contemporaneo, fondato su contenuti verificabili, routing bilingue e una gerarchia informativa semplice da esplorare.',
     storyHighlight: 'Trattamenti presentati con chiarezza, senza promesse generiche o elementi decorativi superflui.',
-    trustEyebrow: 'Affidabilità',
-    trustTitle: 'I segnali di fiducia sono concreti, non inventati.',
+    trustEyebrow: 'AFFIDABILITÀ',
+    trustTitle: "L'eccellenza non ha bisogno di promesse.",
     trustPoints: [
-      'Esperienza bilingue allineata al contesto locale e ai contenuti del sito.',
-      'Servizi, URL e sezioni generati dai dati di contenuto, senza duplicazioni manuali.',
-      'Fotografie autentiche dello studio e del team, per una presentazione credibile.',
+      'Ogni trattamento nasce da diagnosi accurate, pianificazione personalizzata e attenzione ai dettagli. È così che costruiamo rapporti di fiducia duraturi.',
+      'Ogni paziente riceve un piano di cura costruito sulle proprie esigenze.',
+      'La salute del sorriso si mantiene attraverso prevenzione, controlli e continuità.',
     ],
     servicesEyebrow: 'Servizi principali',
     servicesTitle: 'Una panoramica dei trattamenti più richiesti.',
