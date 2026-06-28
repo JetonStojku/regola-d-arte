@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 type Props = {
   src: string;
   alt: string;
@@ -7,9 +9,9 @@ type Props = {
   sizes: string;
   widths: number[];
   class?: string;
-  loading?: 'eager' | 'lazy';
-  decoding?: 'async' | 'auto' | 'sync';
-  fetchpriority?: 'high' | 'low' | 'auto';
+  loading?: "eager" | "lazy";
+  decoding?: "async" | "auto" | "sync";
+  fetchpriority?: "high" | "low" | "auto";
 };
 
 const {
@@ -19,26 +21,29 @@ const {
   height,
   sizes,
   widths,
-  class: className = '',
-  loading = 'lazy',
-  decoding = 'async',
+  class: className = "",
+  loading = "lazy",
+  decoding = "async",
   fetchpriority,
 } = Astro.props as Props;
 
 const match = src.match(/^(.*)(\.[^.]+)$/);
 const baseName = match?.[1] ?? src;
-const extension = match?.[2] ?? '';
+const extension = match?.[2] ?? "";
 const srcSet = widths
   .slice()
   .sort((a, b) => a - b)
   .map((candidateWidth) => {
-    const candidateSrc = candidateWidth === width ? src : `${baseName}-${candidateWidth}${extension}`;
+    const candidateSrc =
+      candidateWidth === width
+        ? src
+        : `${baseName}-${candidateWidth}${extension}`;
     return `${candidateSrc} ${candidateWidth}w`;
   })
-  .join(', ');
+  .join(", ");
 ---
 
-<img
+<Image
   src={src}
   srcset={srcSet}
   sizes={sizes}

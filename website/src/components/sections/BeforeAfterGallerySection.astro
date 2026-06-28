@@ -14,10 +14,11 @@ type Props = {
 };
 
 const { eyebrow, title, intro, note, gridLabel, images } = Astro.props as Props;
+const galleryId = `before-after-gallery-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
 <section class="content-band mt-6">
-  <div class="grid gap-6">
+  <div class="grid gap-8">
     <div class="section-copy" data-reveal>
       <p class="eyebrow">{eyebrow}</p>
       <h1 class="section-title mt-4 max-w-3xl">{title}</h1>
@@ -30,15 +31,26 @@ const { eyebrow, title, intro, note, gridLabel, images } = Astro.props as Props;
     </div>
 
     <div
-      class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+      class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
       data-reveal
       data-reveal-delay="120"
       aria-label={gridLabel}
     >
       {
         images.map((image, index) => (
-          <figure class="overflow-hidden rounded-[var(--radius-clinic)] border border-border bg-white/90 shadow-[var(--shadow-clinic-soft)]">
-            <div class="aspect-square bg-canvas-soft/40">
+          <button
+            type="button"
+            class="group block overflow-hidden rounded-[var(--radius-clinic-lg)] border border-border bg-white/95 text-left shadow-[var(--shadow-clinic-soft)] transition duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-clinic-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-400 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+            data-gallery-trigger
+            data-gallery-index={index}
+            data-gallery-src={image.src}
+            data-gallery-alt={image.alt}
+            data-gallery-label={`${gridLabel} ${String(index + 1).padStart(2, "0")}`}
+            aria-label={`${gridLabel} ${String(index + 1).padStart(2, "0")}`}
+            aria-haspopup="dialog"
+            aria-controls={galleryId}
+          >
+            <div class="relative aspect-[4/5] overflow-hidden bg-canvas-soft/40">
               <img
                 src={image.src}
                 alt={image.alt}
@@ -46,15 +58,217 @@ const { eyebrow, title, intro, note, gridLabel, images } = Astro.props as Props;
                 height={4096}
                 loading="lazy"
                 decoding="async"
-                class="h-full w-full object-cover object-center"
+                class="h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.03]"
               />
+
+              <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink/35 to-transparent" />
+
+              <div class="absolute left-4 top-4 rounded-full border border-white/40 bg-white/80 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-ink shadow-sm backdrop-blur-sm">
+                {gridLabel} {String(index + 1).padStart(2, "0")}
+              </div>
             </div>
-            <span class="sr-only">
-              {gridLabel} {index + 1}
-            </span>
-          </figure>
+
+            <div class="border-t border-border bg-white px-4 py-4">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-ink-soft">
+                {eyebrow}
+              </p>
+              <p class="mt-2 text-base font-semibold text-ink">{image.alt}</p>
+              <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-canvas-soft/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-soft transition group-hover:border-clinic-400 group-hover:text-ink">
+                Apri galleria
+                <span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </button>
         ))
       }
     </div>
   </div>
+
+  <dialog
+    id={galleryId}
+    class="m-auto w-[min(100%-1rem,72rem)] rounded-[var(--radius-clinic-lg)] border-0 bg-transparent p-0 text-left shadow-2xl backdrop:bg-black/75"
+    data-gallery-dialog
+    aria-label={gridLabel}
+  >
+    <div class="overflow-hidden rounded-[var(--radius-clinic-lg)] bg-white">
+      <div
+        class="flex items-start justify-between gap-4 border-b border-border bg-canvas-soft/70 px-4 py-4 sm:px-6"
+      >
+        <div>
+          <p class="eyebrow">{gridLabel}</p>
+          <p class="mt-1 text-sm leading-6 text-ink-soft" data-gallery-counter>
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-ink transition hover:bg-canvas-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-400"
+          data-gallery-close
+          aria-label="Chiudi la galleria"
+        >
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+
+      <div class="grid gap-0 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <div class="bg-black/5 p-3 sm:p-4">
+          <div
+            class="overflow-hidden rounded-[var(--radius-clinic)] bg-black/10"
+          >
+            <img
+              data-gallery-image
+              src=""
+              alt=""
+              width={4096}
+              height={4096}
+              class="max-h-[78vh] w-full object-contain"
+            />
+          </div>
+        </div>
+
+        <div
+          class="border-t border-border p-4 sm:p-6 lg:border-l lg:border-t-0"
+        >
+          <p class="eyebrow">{eyebrow}</p>
+          <h2
+            class="mt-3 text-xl font-semibold leading-tight text-ink"
+            data-gallery-label
+          >
+          </h2>
+          <p
+            class="mt-4 text-sm leading-7 text-ink-soft"
+            data-gallery-description
+          >
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button
+              type="button"
+              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-canvas-soft/70 px-4 py-3 text-sm font-semibold text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-400"
+              data-gallery-prev
+              aria-label="Immagine precedente"
+            >
+              <span aria-hidden="true">←</span>
+              Precedente
+            </button>
+            <button
+              type="button"
+              class="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-canvas-soft/70 px-4 py-3 text-sm font-semibold text-ink transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-400"
+              data-gallery-next
+              aria-label="Immagine successiva"
+            >
+              Successiva
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <p class="mt-4 text-xs leading-6 text-ink-soft">
+            Usa le frecce della tastiera per navigare tra le immagini.
+          </p>
+        </div>
+      </div>
+    </div>
+  </dialog>
 </section>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>(
+    "[data-gallery-dialog]",
+  );
+
+  if (dialog) {
+    const imageEl = dialog.querySelector<HTMLImageElement>(
+      "[data-gallery-image]",
+    );
+    const labelEl = dialog.querySelector<HTMLElement>("[data-gallery-label]");
+    const descriptionEl = dialog.querySelector<HTMLElement>(
+      "[data-gallery-description]",
+    );
+    const counterEl = dialog.querySelector<HTMLElement>(
+      "[data-gallery-counter]",
+    );
+    const closeButton = dialog.querySelector<HTMLButtonElement>(
+      "[data-gallery-close]",
+    );
+    const prevButton = dialog.querySelector<HTMLButtonElement>(
+      "[data-gallery-prev]",
+    );
+    const nextButton = dialog.querySelector<HTMLButtonElement>(
+      "[data-gallery-next]",
+    );
+    const triggers = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-gallery-trigger]"),
+    );
+
+    if (!triggers.length) {
+      dialog.remove();
+    } else {
+      let currentIndex = 0;
+
+      const getItem = (index: number): HTMLButtonElement => {
+        const count = triggers.length;
+        return triggers[(index + count) % count];
+      };
+
+      const render = (index: number) => {
+        const trigger = getItem(index);
+
+        if (!trigger || !imageEl || !labelEl || !descriptionEl || !counterEl) {
+          return;
+        }
+
+        const src = trigger.dataset.gallerySrc || "";
+        const alt = trigger.dataset.galleryAlt || "";
+        const label = trigger.dataset.galleryLabel || "";
+
+        imageEl.setAttribute("src", src);
+        imageEl.setAttribute("alt", alt);
+        labelEl.textContent = label;
+        descriptionEl.textContent = alt;
+        counterEl.textContent = `${index + 1} / ${triggers.length}`;
+
+        currentIndex = index;
+      };
+
+      const openAt = (index: number) => {
+        if (!dialog.open) {
+          dialog.showModal();
+        }
+
+        render(index);
+      };
+
+      const close = () => {
+        if (dialog.open) {
+          dialog.close();
+        }
+      };
+
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", () => openAt(index));
+      });
+
+      prevButton?.addEventListener("click", () => openAt(currentIndex - 1));
+      nextButton?.addEventListener("click", () => openAt(currentIndex + 1));
+      closeButton?.addEventListener("click", close);
+
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) {
+          close();
+        }
+      });
+
+      dialog.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          openAt(currentIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          openAt(currentIndex + 1);
+        }
+      });
+    }
+  }
+</script>

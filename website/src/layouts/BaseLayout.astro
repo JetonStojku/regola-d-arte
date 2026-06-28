@@ -164,6 +164,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
             label={brandContent.name[locale]}
             tagline={brandContent.tagline[locale]}
             class="max-w-[12.5rem] sm:max-w-[16rem] lg:max-w-[15rem] xl:max-w-[18rem]"
+            loading="eager"
           />
 
           <div class="hidden flex-1 items-center justify-center gap-3 lg:flex">
@@ -229,14 +230,6 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
                   </nav>
                 </div>
               </details>
-
-              <Button
-                href={sectionRoutes.contact[locale]}
-                size="sm"
-                class="rounded-xl !border-clinic-700 !bg-clinic-700 !px-4 !py-2.5 !text-sm !shadow-[0_16px_32px_-22px_rgba(43,111,89,0.52)] hover:!bg-clinic-900"
-              >
-                {ctaCopy.primary[locale]}
-              </Button>
             </div>
           </div>
 
@@ -383,7 +376,7 @@ const localeLinks = supportedLocales.map((supportedLocale) => ({
               </p>
               <div class="mt-5 flex flex-wrap items-center gap-3">
                 <Button href={sectionRoutes.contact[locale]} size="sm">
-                  {ctaCopy.primary[locale]}
+                  {ctaCopy.secondary[locale]}
                 </Button>
               </div>
               <div class="mt-6">

@@ -1,30 +1,38 @@
 ---
+import { Image } from "astro:assets";
+
 type Props = {
   href?: string;
   class?: string;
   compact?: boolean;
   label?: string;
   tagline?: string;
-  variant?: 'default' | 'inverse';
+  variant?: "default" | "inverse";
+  loading?: "eager" | "lazy";
 };
 
 const {
-  href = '/',
-  class: className = '',
+  href = "/",
+  class: className = "",
   compact = false,
   label = "Regola D'arte",
-  tagline = 'Studio dentistico',
-  variant = 'default',
+  tagline = "Studio dentistico",
+  variant = "default",
+  loading = "lazy",
 } = Astro.props as Props;
 ---
 
-<a href={href} class:list={['brand-lockup', className]}>
-  <img
-    src={variant === 'inverse' ? '/brand/regola-d-arte-logo-light.svg' : '/brand/regola-d-arte-logo.svg'}
+<a href={href} class:list={["brand-lockup", className]}>
+  <Image
+    src={variant === "inverse"
+      ? "/brand/regola-d-arte-logo-light.svg"
+      : "/brand/regola-d-arte-logo.svg"}
     alt=""
     aria-hidden="true"
     class="brand-lockup__logo"
-    loading="eager"
+    width={1500}
+    height={1263}
+    loading={loading}
     decoding="async"
   />
   <span class="brand-lockup__copy">
