@@ -4,20 +4,30 @@ import ResponsiveImage from "@/components/ui/ResponsiveImage.astro";
 import type { Locale } from "@/lib/siteArchitecture";
 
 const serviceImageSizing = {
-  "/brand/about-clinic.jpg": {
-    width: 1200,
-    height: 800,
-    widths: [480, 800, 1200],
+  "/services-photos/Odontoiatria conservativa ed endodonzia.png": {
+    width: 1152,
+    height: 768,
+    widths: [576, 864, 1152],
   },
-  "/brand/about-doctor.jpg": {
-    width: 1280,
-    height: 720,
-    widths: [640, 960, 1280],
+  "/services-photos/Chirurgia orale e implantologia.png": {
+    width: 1152,
+    height: 768,
+    widths: [576, 864, 1152],
   },
-  "/brand/homepage-hero.jpg": {
-    width: 1280,
-    height: 720,
-    widths: [640, 960, 1280],
+  "/services-photos/Ortodonzia.png": {
+    width: 1152,
+    height: 768,
+    widths: [576, 864, 1152],
+  },
+  "/services-photos/Estetica dentale.png": {
+    width: 1152,
+    height: 768,
+    widths: [576, 864, 1152],
+  },
+  "/services-photos/Igiene orale e prevenzione.png": {
+    width: 1152,
+    height: 768,
+    widths: [576, 864, 1152],
   },
 } as const;
 
@@ -55,7 +65,9 @@ const {
 
 const getServiceImageSizing = (src: string) =>
   serviceImageSizing[src as keyof typeof serviceImageSizing] ??
-  serviceImageSizing["/brand/homepage-hero.jpg"];
+  serviceImageSizing[
+    "/services-photos/Odontoiatria conservativa ed endodonzia.png"
+  ];
 ---
 
 <section class:list={["content-band mt-6", className]}>

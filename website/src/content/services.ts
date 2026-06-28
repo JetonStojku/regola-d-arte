@@ -87,10 +87,10 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/brand/homepage-hero.jpg',
+        src: '/services-photos/Odontoiatria conservativa ed endodonzia.jpg',
         alt: {
-          it: "Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
-          en: 'Dr. Genti Dylgjeri in a modern dental surgery',
+          it: 'Immagine del servizio odontoiatria conservativa ed endodonzia',
+          en: 'Image for conservative dentistry and endodontics',
         },
       },
     },
@@ -314,10 +314,10 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/brand/about-doctor.jpg',
+        src: '/services-photos/Chirurgia orale e implantologia.jpg',
         alt: {
-          it: "Ritratto del Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
-          en: 'Portrait of Dr. Genti Dylgjeri in a modern dental surgery',
+          it: 'Immagine del servizio chirurgia orale e implantologia',
+          en: 'Image for oral surgery and implantology',
         },
       },
     },
@@ -539,10 +539,10 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/brand/about-clinic.jpg',
+        src: '/services-photos/Ortodonzia.jpg',
         alt: {
-          it: 'Equipe odontoiatrica durante una seduta di cura in uno studio moderno',
-          en: 'Dental team during a treatment session in a modern clinic',
+          it: 'Immagine del servizio ortodonzia',
+          en: 'Image for orthodontics',
         },
       },
     },
@@ -790,10 +790,10 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/brand/homepage-hero.jpg',
+        src: '/services-photos/Estetica dentale.jpg',
         alt: {
-          it: "Dott. Genti Dylgjeri in uno studio odontoiatrico moderno",
-          en: 'Dr. Genti Dylgjeri in a modern dental surgery',
+          it: 'Immagine del servizio estetica dentale',
+          en: 'Image for dental aesthetics',
         },
       },
     },
@@ -1039,10 +1039,10 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/brand/about-clinic.jpg',
+        src: '/services-photos/Igiene orale e prevenzione.jpg',
         alt: {
-          it: 'Equipe odontoiatrica durante una seduta di cura in uno studio moderno',
-          en: 'Dental team during a treatment session in a modern clinic',
+          it: 'Immagine del servizio igiene orale e prevenzione',
+          en: 'Image for oral hygiene and prevention',
         },
       },
     },
