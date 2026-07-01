@@ -124,6 +124,7 @@ export const pageMetadata = {
 export const serviceMetadata = {
   'conservative-dentistry-endodontics': buildServiceMetadata('conservative-dentistry-endodontics'),
   'oral-surgery-implantology': buildServiceMetadata('oral-surgery-implantology'),
+  'zygomatic-implantology': buildServiceMetadata('zygomatic-implantology'),
   orthodontics: buildServiceMetadata('orthodontics'),
   'dental-aesthetics': buildServiceMetadata('dental-aesthetics'),
   'oral-hygiene-prevention': buildServiceMetadata('oral-hygiene-prevention'),

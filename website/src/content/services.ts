@@ -87,7 +87,7 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/services-photos/Odontoiatria conservativa ed endodonzia.jpg',
+        src: '/services-photos/main-photo.jpg',
         alt: {
           it: 'Immagine del servizio odontoiatria conservativa ed endodonzia',
           en: 'Image for conservative dentistry and endodontics',
@@ -418,7 +418,7 @@ const serviceCatalogEntries = {
           secondary: ctaCopy.secondary.it,
           related: 'Servizi correlati',
         },
-        relatedServices: ['conservative-dentistry-endodontics', 'oral-hygiene-prevention'],
+        relatedServices: ['conservative-dentistry-endodontics', 'zygomatic-implantology', 'oral-hygiene-prevention'],
       },
       en: {
         summary: 'Replacement of missing teeth with titanium artificial roots.',
@@ -516,7 +516,234 @@ const serviceCatalogEntries = {
           secondary: ctaCopy.secondary.en,
           related: 'Related services',
         },
-        relatedServices: ['conservative-dentistry-endodontics', 'oral-hygiene-prevention'],
+        relatedServices: ['conservative-dentistry-endodontics', 'zygomatic-implantology', 'oral-hygiene-prevention'],
+      },
+    },
+  },
+  'zygomatic-implantology': {
+    key: 'zygomatic-implantology',
+    labels: services['zygomatic-implantology'].labels,
+    slugs: services['zygomatic-implantology'].slugs,
+    paths: services['zygomatic-implantology'].paths,
+    metadata: {
+      it: {
+        title: 'Implantologia zigomatica | Studio dentistico Regola d\'Arte',
+        description:
+          'Riabilitazione implantare nei casi con osso mascellare insufficiente, usando impianti zigomatici pianificati su misura e con valutazione chirurgica dedicata.',
+      },
+      en: {
+        title: "Zygomatic implantology | Regola d'Arte",
+        description:
+          'Implant rehabilitation for cases with insufficient maxillary bone, using custom-planned zygomatic implants and dedicated surgical assessment.',
+      },
+    },
+    images: {
+      hero: {
+        src: '/services-photos/implantologia zigomatica.jpg',
+        alt: {
+          it: 'Immagine del servizio implantologia zigomatica',
+          en: 'Image for zygomatic implantology',
+        },
+      },
+    },
+    content: {
+      it: {
+        summary: 'Riabilitazione implantare per casi con osso mascellare insufficiente.',
+        details:
+          'Soluzioni chirurgiche dedicate quando gli impianti tradizionali non sono indicati o non bastano.',
+        sections: [
+          {
+            eyebrow: {
+              it: 'Valutazione chirurgica',
+              en: 'Surgical evaluation',
+            },
+            title: {
+              it: 'Quando il volume osseo non e sufficiente',
+              en: 'When bone volume is not sufficient',
+            },
+            body: {
+              it:
+                'L implantologia zigomatica e una opzione chirurgica per alcuni pazienti con grave atrofia del mascellare superiore, quando la valutazione clinica indica che gli impianti tradizionali non garantirebbero un supporto adeguato.',
+              en:
+                'Zygomatic implantology is a surgical option for selected patients with severe atrophy of the upper jaw, when clinical evaluation shows that traditional implants would not provide adequate support.',
+            },
+          },
+          {
+            eyebrow: {
+              it: 'Pianificazione',
+              en: 'Planning',
+            },
+            title: {
+              it: 'Studio del caso e progetto personalizzato',
+              en: 'Case study and personalized planning',
+            },
+            body: {
+              it:
+                'La procedura richiede una progettazione accurata, con analisi dell anatomia, valutazione radiografica e definizione del percorso chirurgico in funzione del singolo caso clinico.',
+              en:
+                'The procedure requires careful planning, with anatomical analysis, radiographic assessment, and a surgical pathway defined around the individual clinical case.',
+            },
+            bullets: {
+              it: [
+                'Valutazione preliminare della situazione ossea.',
+                'Definizione della strategia chirurgica e protesica.',
+                'Scelta della soluzione solo dopo visita specialistica.',
+              ],
+              en: [
+                'Preliminary assessment of the bone condition.',
+                'Definition of the surgical and prosthetic strategy.',
+                'Treatment choice only after a specialist consultation.',
+              ],
+            },
+          },
+          {
+            eyebrow: {
+              it: 'Obiettivo funzionale',
+              en: 'Functional goal',
+            },
+            title: {
+              it: 'Stabilita e supporto per la riabilitazione protesica',
+              en: 'Stability and support for prosthetic rehabilitation',
+            },
+            body: {
+              it:
+                'L obiettivo e ottenere un supporto stabile per la riabilitazione protesica quando le condizioni anatomiche richiedono un approccio diverso dall implantologia convenzionale.',
+              en:
+                'The goal is to obtain stable support for prosthetic rehabilitation when anatomical conditions require an approach different from conventional implantology.',
+            },
+          },
+        ],
+        faqs: [
+          {
+            question: {
+              it: 'A chi e indicata l implantologia zigomatica?',
+              en: 'Who is zygomatic implantology for?',
+            },
+            answer: {
+              it:
+                'Ai pazienti selezionati con una perdita importante di volume osseo nel mascellare superiore, dopo valutazione clinica e radiografica approfondita.',
+              en:
+                'It is intended for selected patients with major bone loss in the upper jaw, after a thorough clinical and radiographic evaluation.',
+            },
+          },
+          {
+            question: {
+              it: 'Sostituisce sempre l implantologia tradizionale?',
+              en: 'Does it always replace traditional implantology?',
+            },
+            answer: {
+              it:
+                'No. E una soluzione specifica per casi complessi e va considerata solo quando la situazione clinica lo richiede.',
+              en:
+                'No. It is a specific solution for complex cases and should be considered only when the clinical situation requires it.',
+            },
+          },
+        ],
+        ctas: {
+          primary: ctaCopy.primary.it,
+          secondary: ctaCopy.secondary.it,
+          related: 'Servizi correlati',
+        },
+        relatedServices: ['oral-surgery-implantology', 'oral-hygiene-prevention'],
+      },
+      en: {
+        summary: 'Implant rehabilitation for cases with insufficient maxillary bone.',
+        details:
+          'Dedicated surgical solutions when traditional implants are not indicated or are not enough.',
+        sections: [
+          {
+            eyebrow: {
+              it: 'Valutazione chirurgica',
+              en: 'Surgical evaluation',
+            },
+            title: {
+              it: 'Quando il volume osseo non e sufficiente',
+              en: 'When bone volume is not sufficient',
+            },
+            body: {
+              it:
+                'L implantologia zigomatica e una opzione chirurgica per alcuni pazienti con grave atrofia del mascellare superiore, quando la valutazione clinica indica che gli impianti tradizionali non garantirebbero un supporto adeguato.',
+              en:
+                'Zygomatic implantology is a surgical option for selected patients with severe atrophy of the upper jaw, when clinical evaluation shows that traditional implants would not provide adequate support.',
+            },
+          },
+          {
+            eyebrow: {
+              it: 'Pianificazione',
+              en: 'Planning',
+            },
+            title: {
+              it: 'Studio del caso e progetto personalizzato',
+              en: 'Case study and personalized planning',
+            },
+            body: {
+              it:
+                'La procedura richiede una progettazione accurata, con analisi dell anatomia, valutazione radiografica e definizione del percorso chirurgico in funzione del singolo caso clinico.',
+              en:
+                'The procedure requires careful planning, with anatomical analysis, radiographic assessment, and a surgical pathway defined around the individual clinical case.',
+            },
+            bullets: {
+              it: [
+                'Valutazione preliminare della situazione ossea.',
+                'Definizione della strategia chirurgica e protesica.',
+                'Scelta della soluzione solo dopo visita specialistica.',
+              ],
+              en: [
+                'Preliminary assessment of the bone condition.',
+                'Definition of the surgical and prosthetic strategy.',
+                'Treatment choice only after a specialist consultation.',
+              ],
+            },
+          },
+          {
+            eyebrow: {
+              it: 'Obiettivo funzionale',
+              en: 'Functional goal',
+            },
+            title: {
+              it: 'Stabilita e supporto per la riabilitazione protesica',
+              en: 'Stability and support for prosthetic rehabilitation',
+            },
+            body: {
+              it:
+                'L obiettivo e ottenere un supporto stabile per la riabilitazione protesica quando le condizioni anatomiche richiedono un approccio diverso dall implantologia convenzionale.',
+              en:
+                'The goal is to obtain stable support for prosthetic rehabilitation when anatomical conditions require an approach different from conventional implantology.',
+            },
+          },
+        ],
+        faqs: [
+          {
+            question: {
+              it: 'A chi e indicata l implantologia zigomatica?',
+              en: 'Who is zygomatic implantology for?',
+            },
+            answer: {
+              it:
+                'Ai pazienti selezionati con una perdita importante di volume osseo nel mascellare superiore, dopo valutazione clinica e radiografica approfondita.',
+              en:
+                'It is intended for selected patients with major bone loss in the upper jaw, after a thorough clinical and radiographic evaluation.',
+            },
+          },
+          {
+            question: {
+              it: 'Sostituisce sempre l implantologia tradizionale?',
+              en: 'Does it always replace traditional implantology?',
+            },
+            answer: {
+              it:
+                'No. E una soluzione specifica per casi complessi e va considerata solo quando la situazione clinica lo richiede.',
+              en:
+                'No. It is a specific solution for complex cases and should be considered only when the clinical situation requires it.',
+            },
+          },
+        ],
+        ctas: {
+          primary: ctaCopy.primary.en,
+          secondary: ctaCopy.secondary.en,
+          related: 'Related services',
+        },
+        relatedServices: ['oral-surgery-implantology', 'oral-hygiene-prevention'],
       },
     },
   },

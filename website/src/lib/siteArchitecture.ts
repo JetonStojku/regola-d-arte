@@ -70,6 +70,7 @@ export const sectionRoutes: Record<SiteSectionKey, Record<Locale, string>> = {
 export type ServiceKey =
   | 'conservative-dentistry-endodontics'
   | 'oral-surgery-implantology'
+  | 'zygomatic-implantology'
   | 'orthodontics'
   | 'dental-aesthetics'
   | 'oral-hygiene-prevention';
@@ -108,6 +109,20 @@ export const services: Record<
     paths: {
       it: '/it/servizi/chirurgia-orale-implantologia/',
       en: '/en/services/oral-surgery-implantology/',
+    },
+  },
+  'zygomatic-implantology': {
+    labels: {
+      it: 'Implantologia zigomatica',
+      en: 'Zygomatic implantology',
+    },
+    slugs: {
+      it: 'implantologia-zigomatica',
+      en: 'zygomatic-implantology',
+    },
+    paths: {
+      it: '/it/servizi/implantologia-zigomatica/',
+      en: '/en/services/zygomatic-implantology/',
     },
   },
   orthodontics: {
