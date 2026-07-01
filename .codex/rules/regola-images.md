@@ -1,4 +1,4 @@
-# Regola D'arte image rules
+# Regola d'Arte image rules
 
 - Use real clinic images only when already approved and web-optimized.
 - Use labeled placeholders when the intended image is known but the final asset is not selected.

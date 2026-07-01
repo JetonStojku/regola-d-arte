@@ -1,4 +1,4 @@
-# Regola D'arte layout rules
+# Regola d'Arte layout rules
 
 - Keep mobile header to one compact row: logo, short booking CTA, menu button.
 - Do not place primary nav, language choices, CTA, and social links in one undifferentiated row.

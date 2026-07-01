@@ -218,7 +218,7 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     title: 'Aiutiamo i pazienti a ritrovare salute, comfort e un sorriso naturale.',
     intro:
       'Regola D\'arte unisce odontoiatria conservativa, chirurgia, implantologia, ortodonzia ed estetica in un percorso chiaro e personalizzato.',
-    heroBadge: 'We are a premium dental clinic',
+    heroBadge: 'Siamo uno studio dentistico premium',
     heroPrimaryCta: ctaCopy.primary.it,
     heroSecondaryCta: ctaCopy.secondary.it,
     heroNote: 'Percorsi bilingui, immagini reali e informazioni confermate.',
@@ -263,7 +263,7 @@ export const homePageContent: Record<Locale, HomePageContent> = {
     title: 'We help patients protect their smile and feel confident again.',
     intro:
       'Regola D\'arte combines restorative dentistry, oral surgery, implantology, orthodontics, and aesthetics in a clear, personalized patient journey.',
-    heroBadge: 'We are a premium dental clinic',
+    heroBadge: 'Siamo uno studio dentistico premium',
     heroPrimaryCta: ctaCopy.primary.en,
     heroSecondaryCta: ctaCopy.secondary.en,
     heroNote: 'Bilingual routes, real imagery, and confirmed information.',
@@ -459,7 +459,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
     vatLabel: 'P.IVA',
     vatNumber: '07173540480',
     directorLabel: 'Direttore sanitario',
-    directorName: 'Dr. Genti Dylgjeri',
+    directorName: 'Dott. Genti Dylgjeri',
     registerLabel: "Iscritto all'Albo degli Odontoiatri di Firenze",
     registerNumber: '01900',
     hoursLabel: 'Orari di apertura',
@@ -688,7 +688,7 @@ export const metaContent = pageMetadata;
 
 export const brandContent = {
   name: {
-    it: 'Regola D\'arte',
+    it: 'Studio dentistico Regola D\'arte',
     en: 'Regola D\'arte',
   },
   tagline: {

@@ -1,6 +1,6 @@
 ---
 name: regola-photo-sections
-description: Add, replace, or review Regola D'arte website photos, photo placeholders, galleries, before/after sections, or visual service cards. Use when working with clinic imagery or placeholders in Astro pages.
+description: Add, replace, or review Regola d'Arte website photos, photo placeholders, galleries, before/after sections, or visual service cards. Use when working with clinic imagery or placeholders in Astro pages.
 ---
 
 # Regola Photo Sections

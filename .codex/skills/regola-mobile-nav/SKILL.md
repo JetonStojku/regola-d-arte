@@ -1,6 +1,6 @@
 ---
 name: regola-mobile-nav
-description: Modify or review Regola D'arte mobile navigation, sticky header, language switcher, booking CTA, or persistent social links. Use when touching BaseLayout, BrandLockup, nav content, or header/footer CSS.
+description: Modify or review Regola d'Arte mobile navigation, sticky header, language switcher, booking CTA, or persistent social links. Use when touching BaseLayout, BrandLockup, nav content, or header/footer CSS.
 ---
 
 # Regola Mobile Nav

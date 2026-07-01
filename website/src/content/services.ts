@@ -75,12 +75,12 @@ const serviceCatalogEntries = {
     paths: services['conservative-dentistry-endodontics'].paths,
     metadata: {
       it: {
-        title: "Odontoiatria conservativa ed endodonzia | Regola D'arte",
+        title: "Odontoiatria conservativa ed endodonzia | Studio dentistico Regola d'Arte",
         description:
           'Prevenzione e trattamento delle lesioni dentali causate da carie o trauma, con terapie conservative mininvasive e endodonzia con materiali biocompatibili.',
       },
       en: {
-        title: "Conservative dentistry and endodontics | Regola D'arte",
+        title: "Conservative dentistry and endodontics | Regola d'Arte",
         description:
           'Prevention and treatment of tooth lesions caused by caries or trauma, with minimally invasive restorative care and endodontics using biocompatible materials.',
       },
@@ -302,12 +302,12 @@ const serviceCatalogEntries = {
     paths: services['oral-surgery-implantology'].paths,
     metadata: {
       it: {
-        title: "Chirurgia orale e implantologia | Regola D'arte",
+        title: "Chirurgia orale e implantologia | Studio dentistico Regola d'Arte",
         description:
           'Sostituzione dei denti mancanti con radici artificiali in titanio, piani chirurgici personalizzati, carico immediato e supporto all ansia del paziente.',
       },
       en: {
-        title: "Oral surgery and implantology | Regola D'arte",
+        title: "Oral surgery and implantology | Regola d'Arte",
         description:
           'Replacement of missing teeth with titanium artificial roots, personalized surgical planning, immediate loading, and support for anxious patients.',
       },
@@ -527,12 +527,12 @@ const serviceCatalogEntries = {
     paths: services.orthodontics.paths,
     metadata: {
       it: {
-        title: "Ortodonzia | Regola D'arte",
+        title: "Ortodonzia | Studio dentistico Regola d'Arte",
         description:
           'Allineamento dentale con apparecchi fissi o allineatori trasparenti, valutando vantaggi, limiti e complessita del singolo caso clinico.',
       },
       en: {
-        title: "Orthodontics | Regola D'arte",
+        title: "Orthodontics | Regola d'Arte",
         description:
           'Tooth alignment with fixed appliances or clear aligners, considering benefits, limitations, and the complexity of each individual case.',
       },
@@ -778,12 +778,12 @@ const serviceCatalogEntries = {
     paths: services['dental-aesthetics'].paths,
     metadata: {
       it: {
-        title: "Estetica dentale | Regola D'arte",
+        title: "Estetica dentale | Studio dentistico Regola d'Arte",
         description:
           'Miglioramento dell aspetto del sorriso con trattamenti conservativi ed estetici, incluse faccette, corone e ricostruzioni mirate.',
       },
       en: {
-        title: "Dental aesthetics | Regola D'arte",
+        title: "Dental aesthetics | Regola d'Arte",
         description:
           'Improving smile appearance through conservative and aesthetic treatments, including veneers, crowns, and targeted reconstructions.',
       },
@@ -1027,12 +1027,12 @@ const serviceCatalogEntries = {
     paths: services['oral-hygiene-prevention'].paths,
     metadata: {
       it: {
-        title: "Igiene orale e prevenzione | Regola D'arte",
+        title: "Igiene orale e prevenzione | Studio dentistico Regola d'Arte",
         description:
           'Sedute professionali di pulizia e programmi di prevenzione personalizzati per ridurre placca, tartaro e rischi di carie o gengivite.',
       },
       en: {
-        title: "Oral hygiene and prevention | Regola D'arte",
+        title: "Oral hygiene and prevention | Regola d'Arte",
         description:
           'Professional cleaning sessions and personalized prevention programs to reduce plaque, tartar, and the risk of caries or gingivitis.',
       },

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Adapt Lumio-inspired design tokens into the current website stylesheet while preserving the Regola D'arte clinic brand.
+Adapt Lumio-inspired design tokens into the current website stylesheet while preserving the Regola d'Arte clinic brand.
 
 This task should improve the global visual foundation before page-specific refresh work starts.
 
@@ -54,7 +54,7 @@ Inspect first:
 
 * Current CSS classes still work.
 * New tokens and classes support later Lumio-inspired sections.
-* The palette still reads as Regola D'arte, not a generic tech agency theme.
+* The palette still reads as Regola d'Arte, not a generic tech agency theme.
 * Dark sections have accessible contrast.
 * No Preline, AOS, motion, or smooth-scroll CSS is imported.
 * No full Lumio stylesheet is copied into the website.

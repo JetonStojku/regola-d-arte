@@ -1,4 +1,4 @@
-# Regola D'arte website task set
+# Regola d'Arte website task set
 
 This folder contains the implementation tasks for building the static multilingual dentistry clinic website in `website/`.
 

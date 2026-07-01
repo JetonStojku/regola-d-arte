@@ -1,6 +1,6 @@
 ---
 name: regola-layout-review
-description: Review or modify Regola D'arte website page layouts. Use when working on section balance, desktop/mobile composition, card density, header/footer spacing, or overall visual hierarchy in the Astro website.
+description: Review or modify Regola d'Arte website page layouts. Use when working on section balance, desktop/mobile composition, card density, header/footer spacing, or overall visual hierarchy in the Astro website.
 ---
 
 # Regola Layout Review

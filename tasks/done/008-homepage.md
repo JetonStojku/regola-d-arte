@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build localized homepages that present Regola D'arte as a modern, trustworthy, premium dentistry clinic.
+Build localized homepages that present Regola d'Arte as a modern, trustworthy, premium dentistry clinic.
 
 ## Recommended model
 

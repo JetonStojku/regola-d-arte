@@ -5,7 +5,7 @@ import { serviceCatalog } from '@/content/services';
 export type JsonLdValue = Record<string, unknown>;
 
 const clinicFacts = {
-  name: "Regola D'arte",
+  name: "Studio dentistico Regola d'Arte",
   website: 'https://regola-darte.it/',
   email: 'info@regola-darte.it',
   telephone: '+393279747044',

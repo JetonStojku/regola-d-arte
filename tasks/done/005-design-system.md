@@ -2,7 +2,7 @@
 
 ## Goal
 
-Define a clean, modern, premium dentistry visual system using the existing Regola D'arte brand assets.
+Define a clean, modern, premium dentistry visual system using the existing Regola d'Arte brand assets.
 
 ## Recommended model
 

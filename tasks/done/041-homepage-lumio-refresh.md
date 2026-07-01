@@ -45,7 +45,7 @@ Inspect first:
 ## Acceptance criteria
 
 * `/it/` and `/en/` share the same layout structure with localized copy.
-* The first viewport clearly signals Regola D'arte and the clinic offer.
+* The first viewport clearly signals Regola d'Arte and the clinic offer.
 * The hero is not a generic marketing split card.
 * Existing SEO/schema wiring remains intact.
 * Service links use `getLocalizedServices(locale)` data.
