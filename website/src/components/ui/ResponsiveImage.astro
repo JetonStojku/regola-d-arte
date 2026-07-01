@@ -30,17 +30,19 @@ const {
 const match = src.match(/^(.*)(\.[^.]+)$/);
 const baseName = match?.[1] ?? src;
 const extension = match?.[2] ?? "";
-const srcSet = widths
-  .slice()
-  .sort((a, b) => a - b)
-  .map((candidateWidth) => {
-    const candidateSrc =
-      candidateWidth === width
-        ? src
-        : `${baseName}-${candidateWidth}${extension}`;
-    return `${candidateSrc} ${candidateWidth}w`;
-  })
-  .join(", ");
+const srcSet = src.startsWith("/")
+  ? undefined
+  : widths
+      .slice()
+      .sort((a, b) => a - b)
+      .map((candidateWidth) => {
+        const candidateSrc =
+          candidateWidth === width
+            ? src
+            : `${baseName}-${candidateWidth}${extension}`;
+        return `${candidateSrc} ${candidateWidth}w`;
+      })
+      .join(", ");
 ---
 
 <Image

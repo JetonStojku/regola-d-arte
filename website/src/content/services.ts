@@ -87,7 +87,7 @@ const serviceCatalogEntries = {
     },
     images: {
       hero: {
-        src: '/services-photos/main-photo.jpg',
+        src: '/services-photos/Odontoiatria conservativa ed endodonzia.jpg',
         alt: {
           it: 'Immagine del servizio odontoiatria conservativa ed endodonzia',
           en: 'Image for conservative dentistry and endodontics',

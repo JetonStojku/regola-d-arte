@@ -1,20 +1,5 @@
 ---
-import { sectionRoutes } from "@/lib/siteArchitecture";
+import ItHome from "./it/index.astro";
 ---
 
-<!doctype html>
-<html lang="it">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-            http-equiv="refresh"
-            content={`0; url=${sectionRoutes.home.it}`}
-        />
-        <title>Regola D'arte</title>
-        <script is:inline define:vars={{ destination: sectionRoutes.home.it }}>
-            window.location.replace(destination);
-        </script>
-    </head>
-    <body></body>
-</html>
+<ItHome />
