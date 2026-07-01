@@ -80,6 +80,21 @@ type SectionPageContent = {
   ctaLabel: string;
 };
 
+type PriceListRow = {
+  label: LocalizedText;
+  price: string;
+  note?: LocalizedText;
+};
+
+type PriceListPageContent = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  note: string;
+  rows: PriceListRow[];
+  ctaLabel: string;
+};
+
 type BeforeAfterPageContent = {
   eyebrow: string;
   title: string;
@@ -668,10 +683,92 @@ export const routeSummary = {
   home: sectionRoutes.home,
   about: sectionRoutes.about,
   servicesOverview: sectionRoutes.servicesOverview,
+  prices: sectionRoutes.prices,
   beforeAfter: sectionRoutes.beforeAfter,
   contact: sectionRoutes.contact,
   notFound: sectionRoutes.notFound,
 } as const;
+
+export const priceListPageContent: Record<Locale, PriceListPageContent> = {
+  it: {
+    eyebrow: 'Listino prezzi',
+    title: 'Prezzi dei trattamenti confermati',
+    intro:
+      'Ecco il listino dei trattamenti attualmente pubblicati. I valori sono indicativi del servizio e possono essere rivalutati in base al caso clinico.',
+    note:
+      'Per il trattamento più adatto è sempre necessaria una valutazione professionale in studio.',
+    rows: [
+      { label: { it: 'Impianto dentale (in titanio)', en: 'Dental implant (titanium)' }, price: '500€' },
+      { label: { it: 'Corona in zirconio (Katana)', en: 'Zirconia crown (Katana)' }, price: '360€' },
+      { label: { it: 'Corona in PMMA', en: 'PMMA crown' }, price: '120€' },
+      { label: { it: 'Faccette in disilicato di litio', en: 'Lithium disilicate veneers' }, price: '400€' },
+      { label: { it: 'Otturazione dentale in composito', en: 'Composite dental filling' }, price: '60€' },
+      { label: { it: 'Ricostruzione dentale', en: 'Dental reconstruction' }, price: '60€' },
+      { label: { it: 'Ricostruzione estetica', en: 'Aesthetic reconstruction' }, price: '100€' },
+      { label: { it: 'Devitalizzazione a canale', en: 'Root canal treatment' }, price: '80€' },
+      {
+        label: { it: 'Ritrattamento canalare', en: 'Root canal retreatment' },
+        price: '100€ / canale',
+      },
+      { label: { it: 'Igiene orale', en: 'Oral hygiene' }, price: '50€' },
+      { label: { it: 'Estrazione dentale', en: 'Tooth extraction' }, price: '60€' },
+      { label: { it: 'Estrazione dente di giudizio', en: 'Wisdom tooth extraction' }, price: '100-150€' },
+      { label: { it: 'Estrazione chirurgica', en: 'Surgical extraction' }, price: '150€' },
+      { label: { it: 'Rialzo del seno mascellare', en: 'Sinus lift' }, price: '800€' },
+      { label: { it: 'Sbiancamento Touch', en: 'Touch whitening' }, price: '150€' },
+      { label: { it: 'Sbiancamento Ultra', en: 'Ultra whitening' }, price: '300€' },
+      { label: { it: 'Innesto osseo', en: 'Bone grafting' }, price: '500€' },
+      { label: { it: 'Asportazione cisti', en: 'Cyst removal' }, price: '200€' },
+      { label: { it: 'Perno di rinforzo', en: 'Reinforcement post' }, price: '60€' },
+      { label: { it: 'Curetage', en: 'Curettage' }, price: '150€' },
+      { label: { it: 'Bite', en: 'Bite splint' }, price: '100€' },
+      { label: { it: 'Cementazione singola', en: 'Single cementation' }, price: '50€' },
+      { label: { it: 'Cementazione ponte', en: 'Bridge cementation' }, price: '80€' },
+      { label: { it: 'Test vitalità', en: 'Vitality test' }, price: '30€' },
+      { label: { it: 'Visita odontoiatrica', en: 'Dental visit' }, price: '40€' },
+    ],
+    ctaLabel: 'Prenota una valutazione',
+  },
+  en: {
+    eyebrow: 'Prices',
+    title: 'Prices for confirmed treatments',
+    intro:
+      'Here is the published price list for the currently confirmed treatments. Values are indicative of the service and may be reassessed according to the clinical case.',
+    note:
+      'A professional in-clinic evaluation is always required to choose the most suitable treatment.',
+    rows: [
+      { label: { it: 'Impianto dentale (in titanio)', en: 'Dental implant (titanium)' }, price: '500€' },
+      { label: { it: 'Corona in zirconio (Katana)', en: 'Zirconia crown (Katana)' }, price: '360€' },
+      { label: { it: 'Corona in PMMA', en: 'PMMA crown' }, price: '120€' },
+      { label: { it: 'Faccette in disilicato di litio', en: 'Lithium disilicate veneers' }, price: '400€' },
+      { label: { it: 'Otturazione dentale in composito', en: 'Composite dental filling' }, price: '60€' },
+      { label: { it: 'Ricostruzione dentale', en: 'Dental reconstruction' }, price: '60€' },
+      { label: { it: 'Ricostruzione estetica', en: 'Aesthetic reconstruction' }, price: '100€' },
+      { label: { it: 'Devitalizzazione a canale', en: 'Root canal treatment' }, price: '80€' },
+      {
+        label: { it: 'Ritrattamento canalare', en: 'Root canal retreatment' },
+        price: '100€ / canale',
+      },
+      { label: { it: 'Igiene orale', en: 'Oral hygiene' }, price: '50€' },
+      { label: { it: 'Estrazione dentale', en: 'Tooth extraction' }, price: '60€' },
+      { label: { it: 'Estrazione dente di giudizio', en: 'Wisdom tooth extraction' }, price: '100-150€' },
+      { label: { it: 'Estrazione chirurgica', en: 'Surgical extraction' }, price: '150€' },
+      { label: { it: 'Rialzo del seno mascellare', en: 'Sinus lift' }, price: '800€' },
+      { label: { it: 'Sbiancamento Touch', en: 'Touch whitening' }, price: '150€' },
+      { label: { it: 'Sbiancamento Ultra', en: 'Ultra whitening' }, price: '300€' },
+      { label: { it: 'Innesto osseo', en: 'Bone grafting' }, price: '500€' },
+      { label: { it: 'Asportazione cisti', en: 'Cyst removal' }, price: '200€' },
+      { label: { it: 'Perno di rinforzo', en: 'Reinforcement post' }, price: '60€' },
+      { label: { it: 'Curetage', en: 'Curettage' }, price: '150€' },
+      { label: { it: 'Bite', en: 'Bite splint' }, price: '100€' },
+      { label: { it: 'Cementazione singola', en: 'Single cementation' }, price: '50€' },
+      { label: { it: 'Cementazione ponte', en: 'Bridge cementation' }, price: '80€' },
+      { label: { it: 'Test vitalità', en: 'Vitality test' }, price: '30€' },
+      { label: { it: 'Visita odontoiatrica', en: 'Dental visit' }, price: '40€' },
+    ],
+    ctaLabel: 'Book an evaluation',
+  },
+};
 
 export const languageSwitcherContent = {
   it: {

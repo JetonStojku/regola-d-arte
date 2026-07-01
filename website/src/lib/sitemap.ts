@@ -35,6 +35,10 @@ export function getPublishedSitemapEntries(): SitemapEntry[] {
       alternates: sectionRoutes.servicesOverview,
     },
     {
+      path: sectionRoutes.prices.it,
+      alternates: sectionRoutes.prices,
+    },
+    {
       path: sectionRoutes.beforeAfter.it,
       alternates: sectionRoutes.beforeAfter,
     },

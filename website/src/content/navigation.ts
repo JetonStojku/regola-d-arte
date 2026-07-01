@@ -11,6 +11,7 @@ export const navigationContent = {
       { label: 'Chi siamo', href: sectionRoutes.about.it },
       { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
       { label: 'Contatti', href: sectionRoutes.contact.it },
+      { label: 'Listino prezzi', href: sectionRoutes.prices.it },
       { label: 'Prima / Dopo', href: sectionRoutes.beforeAfter.it },
     ],
     en: [
@@ -18,6 +19,7 @@ export const navigationContent = {
       { label: 'About', href: sectionRoutes.about.en },
       { label: 'Services', href: sectionRoutes.servicesOverview.en },
       { label: 'Contact', href: sectionRoutes.contact.en },
+      { label: 'Prices', href: sectionRoutes.prices.en },
       { label: 'Before / After', href: sectionRoutes.beforeAfter.en },
     ],
   },
@@ -27,6 +29,7 @@ export const navigationContent = {
       { label: 'Chi siamo', href: sectionRoutes.about.it },
       { label: 'Servizi', href: sectionRoutes.servicesOverview.it },
       { label: 'Contatti', href: sectionRoutes.contact.it },
+      { label: 'Listino prezzi', href: sectionRoutes.prices.it },
       { label: 'Prima / Dopo', href: sectionRoutes.beforeAfter.it },
     ],
     en: [
@@ -34,6 +37,7 @@ export const navigationContent = {
       { label: 'About', href: sectionRoutes.about.en },
       { label: 'Services', href: sectionRoutes.servicesOverview.en },
       { label: 'Contact', href: sectionRoutes.contact.en },
+      { label: 'Prices', href: sectionRoutes.prices.en },
       { label: 'Before / After', href: sectionRoutes.beforeAfter.en },
     ],
   },

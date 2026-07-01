@@ -80,6 +80,18 @@ export const pageMetadata = {
         'Overview of the confirmed dental services, from restorative care to implantology, with careful clinical planning.',
     },
   },
+  prices: {
+    it: {
+      title: 'Regola D\'arte | Listino prezzi',
+      description:
+        'Listino prezzi dei trattamenti confermati dello studio Regola D\'arte, presentato in modo chiaro per consultazione rapida.',
+    },
+    en: {
+      title: 'Regola D\'arte | Prices',
+      description:
+        'Price list for the confirmed treatments at Regola D\'arte, presented clearly for quick consultation.',
+    },
+  },
   beforeAfter: {
     it: {
       title: 'Regola D\'arte | Prima / Dopo',

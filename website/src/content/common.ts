@@ -113,6 +113,10 @@ export const commonLabels = {
       it: 'Servizi',
       en: 'Services',
     },
+    prices: {
+      it: 'Listino prezzi',
+      en: 'Prices',
+    },
     beforeAfter: {
       it: 'Prima / Dopo',
       en: 'Before / After',

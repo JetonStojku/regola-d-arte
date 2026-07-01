@@ -31,6 +31,7 @@ export type SiteSectionKey =
   | 'home'
   | 'about'
   | 'servicesOverview'
+  | 'prices'
   | 'beforeAfter'
   | 'contact'
   | 'notFound';
@@ -47,6 +48,10 @@ export const sectionRoutes: Record<SiteSectionKey, Record<Locale, string>> = {
   servicesOverview: {
     it: '/it/servizi/',
     en: '/en/services/',
+  },
+  prices: {
+    it: '/it/listino-prezzi/',
+    en: '/en/prices/',
   },
   beforeAfter: {
     it: '/it/prima-dopo/',

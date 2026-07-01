@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import { priceListPageContent, metaContent } from "@/content/pages";
+import { buildClinicSchema } from "@/lib/schema";
+import {
+    getLanguageSwitcherLinks,
+    getSeoAlternateLinks,
+    sectionRoutes,
+} from "@/lib/siteArchitecture";
+
+const locale = "it" as const;
+const content = priceListPageContent.it;
+const metadata = metaContent.prices.it;
+const structuredData = [
+    buildClinicSchema(locale, metadata.description, { site: Astro.site }),
+];
+---
+
+<BaseLayout
+    title={metadata.title}
+    description={metadata.description}
+    locale={locale}
+    canonical={sectionRoutes.prices.it}
+    hreflangLinks={getSeoAlternateLinks(sectionRoutes.prices, locale)}
+    alternateLinks={getLanguageSwitcherLinks("prices", locale)}
+    structuredData={structuredData}
+>
+    <section class="surface overflow-hidden">
+        <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
+            <div class="p-6 sm:p-8 lg:p-10">
+                <p class="eyebrow">{content.eyebrow}</p>
+                <h1 class="display-title mt-5 max-w-xl">{content.title}</h1>
+                <p class="lead mt-4 max-w-2xl">{content.intro}</p>
+                <p
+                    class="mt-5 rounded-2xl border border-border bg-canvas-soft/70 p-4 text-sm leading-7 text-ink-soft"
+                >
+                    {content.note}
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <Button href={sectionRoutes.contact.it}
+                        >{content.ctaLabel}</Button
+                    >
+                    <Button href={sectionRoutes.contact.it} variant="secondary">
+                        Contatti
+                    </Button>
+                </div>
+            </div>
+
+            <aside
+                class="border-t border-border bg-canvas-soft/70 p-6 sm:p-8 lg:border-l lg:border-t-0"
+            >
+                <Card class="overflow-hidden p-0">
+                    <div class="overflow-x-auto">
+                        <table
+                            class="min-w-full divide-y divide-border text-left"
+                        >
+                            <thead class="bg-white/70">
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-soft"
+                                    >
+                                        Trattamento
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink-soft"
+                                    >
+                                        Prezzo
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border bg-white">
+                                {
+                                    content.rows.map((row) => (
+                                        <tr>
+                                            <td class="px-4 py-4 align-top text-sm font-medium leading-6 text-ink">
+                                                {row.label.it}
+                                            </td>
+                                            <td class="px-4 py-4 align-top text-sm font-semibold leading-6 text-clinic-900">
+                                                {row.price}
+                                            </td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </Card>
+            </aside>
+        </div>
+    </section>
+</BaseLayout>
